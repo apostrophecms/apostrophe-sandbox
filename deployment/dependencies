@@ -15,6 +15,8 @@ mkdir -p node_modules
 # If there is no package.json file then we don't need npm install
 if [ -f './package.json' ]; then
   # Install npm modules
+  # Use a suitable version of Python
+  export PYTHON=/usr/bin/python26
   npm install
   if [ $? -ne 0 ]; then
     echo "Error during npm install!"
