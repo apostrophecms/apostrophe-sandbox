@@ -1,6 +1,6 @@
 {
   "name": "jotwiki",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "test wiki based on jot",
   "main": "wiki.js",
   "scripts": {
@@ -12,6 +12,8 @@
   "dependencies": {
     "appy": "~0.1.11",
     "uploadfs": "~0.3.0",
-    "async": "~0.1.22"
+    "async": "~0.1.22",
+    "jot": "0.0.1",
+    "node-jot": "~0.1.2"
   }
 }

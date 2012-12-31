@@ -10,6 +10,8 @@ Run `npm install` to install the required dependencies.
 
     node wiki.js
 
+A stagecoach deployment recipe is also provided.
+
 ## Usage
 
 Visit `http://localhost:3000` to feast your eyes on Jot Wiki.
