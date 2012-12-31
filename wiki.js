@@ -2,7 +2,7 @@ var appy = require('appy');
 var async = require('async');
 var uploadfs = require('uploadfs')();
 var fs = require('fs');
-var jot = require(__dirname + '/../jot.js')();
+var jot = require('node-jot')();
 
 var app, db;
 
