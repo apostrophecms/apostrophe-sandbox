@@ -17,7 +17,7 @@ ln -s ../../data $HERE/data
 # in a separate place so we don't have to have two express.static calls
 
 mkdir -p ../../uploads
-ln -s ../../uploads $HERE/public/uploads
+ln -s ../../../uploads $HERE/public/uploads
 
 echo "Site migrated"
 
