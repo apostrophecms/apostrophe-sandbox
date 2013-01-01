@@ -13,5 +13,11 @@ HERE=`pwd`
 mkdir -p ../../data
 ln -s ../../data $HERE/data
 
+# We also have a shared uploads folder which is convenient to keep
+# in a separate place so we don't have to have two express.static calls
+
+mkdir -p ../../uploads
+ln -s ../../uploads $HERE/public/uploads
+
 echo "Site migrated"
 

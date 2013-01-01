@@ -48,7 +48,7 @@ var options = {
     backend: 'local', 
     uploadsPath: __dirname + '/public/uploads',
     uploadsUrl: local.uploadsUrl,
-    tempPath: __dirname + '/temp/uploadfs',
+    tempPath: __dirname + '/data/temp/uploadfs',
     // jot needs these sizes to exist with these names
     imageSizes: [
       {
@@ -85,8 +85,8 @@ var options = {
 appy.bootstrap(options);
 
 function createTemp(callback) {
-  if (!fs.existsSync(__dirname + '/temp')) {
-    fs.mkdir(__dirname + '/temp', callback);
+  if (!fs.existsSync(__dirname + '/data/temp')) {
+    fs.mkdir(__dirname + '/data/temp', callback);
   } else {
     callback(null);
   }
@@ -167,10 +167,6 @@ function listen(err) {
 function fail(req, res) {
   res.statusCode = 500;
   res.send('500 error, URL was ' + req.url);
-}
-
-function getTempPath(path) {
-  return __dirname + '/temp' + path;
 }
 
 // Allow only the admin user to edit anything with Jot
