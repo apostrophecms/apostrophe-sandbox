@@ -6,6 +6,10 @@ var jot = require('node-jot')();
 
 var app, db;
 
+// Server-specific settings to be merged with options
+// See local.example.js
+var local = require('./data/local.js');
+
 var options = {
   viewEngine: function(app) {
     var nunjucks = require('nunjucks');
@@ -43,7 +47,7 @@ var options = {
   uploadfs: {
     backend: 'local', 
     uploadsPath: __dirname + '/public/uploads',
-    uploadsUrl: 'http://localhost:3000/uploads',
+    uploadsUrl: local.uploadsUrl,
     tempPath: __dirname + '/temp/uploadfs',
     // jot needs these sizes to exist with these names
     imageSizes: [

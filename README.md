@@ -6,6 +6,10 @@ Jot Wiki is a simple demo app for [Jot](http://github.com/boutell/jot).
 
 Run `npm install` to install the required dependencies.
 
+## Configuration
+
+Copy `local.example.js` to `data/local.js`. Edit the `uploadsUrl` setting if you will be configuring the site to respond somewhere other than `http://localhost:3000`. Note that this file should be excluded from your deployments so that your production server can have different settings. (There are other approaches to that problem of course, such as environment variables as popularly used on Heroku. If you don't like this strategy just edit `wiki.js`.)
+
 ## Launch
 
     node wiki.js
