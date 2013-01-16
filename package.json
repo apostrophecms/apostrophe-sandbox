@@ -10,7 +10,7 @@
   "author": "",
   "license": "BSD",
   "dependencies": {
-    "appy": "~0.1.13",
+    "appy": "~0.1.14",
     "uploadfs": "~0.3.0",
     "async": "~0.1.22",
     "node-jot": "~0.1.13",

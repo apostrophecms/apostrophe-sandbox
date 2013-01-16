@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block sidebar %}
-  {{ jotArea({ slug: slug + ':sidebar', content: sidebar, edit: edit }) }}
+  {{ jotArea({ slug: slug + ':sidebar', content: sidebar, edit: edit, controls: [ 'style', 'bold', 'italic', 'createLink', 'image', 'video' ] }) }}
 {% endblock %}
 
 {% block footer %}
