@@ -56,6 +56,12 @@ strong, b
   font-weight: bold;
 }
 
+ul
+{
+  margin: 1.5em;
+  list-style: disc outside none;
+}
+
 .main
 {
   float: left;

@@ -38,7 +38,8 @@ var options = {
     name: 'jotwiki',
     collections: [ 
       { name: 'areas', index: { fields: { slug: 1 }, unique: true } }, 
-      'files' 
+      { name: 'pages', index: { fields: { slug: 1 }, unique: true } }, 
+      'files'
     ],
   },  
 
@@ -100,6 +101,7 @@ function initJot(callback) {
   return jot.init({
     files: appy.files,
     areas: appy.areas,
+    pages: appy.pages,
     app: app,
     uploadfs: uploadfs,
     permissions: jotPermissions,
@@ -121,10 +123,14 @@ function setRoutes(callback) {
     function(req, res, next) {
       // Get content for this page
       req.slug = req.params[0];
-      jot.getAreasForPage(req.slug, function(e, info) {
+      jot.getPage(req.slug, function(e, info) {
         if (e) {
           console.log(e);
           return fail(req, res);
+        }
+        if (!info) {
+          // No such page yet
+          info = { slug: req.slug, areas: {} };
         }
         req.page = info;
         return next();
@@ -144,8 +150,8 @@ function setRoutes(callback) {
     function (req, res) {
       return res.render('page.html', { 
         slug: req.slug, 
-        main: req.page.main ? req.page.main.content : '', 
-        sidebar: req.page.sidebar ? req.page.sidebar.content : '',
+        main: req.page.areas.main ? req.page.areas.main.content : '', 
+        sidebar: req.page.areas.sidebar ? req.page.areas.sidebar.content : '',
         user: req.user,
         edit: req.user && req.user.username === 'admin',
         footer: req.footer ? req.footer.content : ''
