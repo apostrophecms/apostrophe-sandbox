@@ -150,11 +150,11 @@ function setRoutes(callback) {
     function (req, res) {
       return res.render('page.html', { 
         slug: req.slug, 
-        main: req.page.areas.main ? req.page.areas.main.content : '', 
-        sidebar: req.page.areas.sidebar ? req.page.areas.sidebar.content : '',
+        main: req.page.areas.main ? req.page.areas.main.items : [], 
+        sidebar: req.page.areas.sidebar ? req.page.areas.sidebar.items : [],
         user: req.user,
         edit: req.user && req.user.username === 'admin',
-        footer: req.footer ? req.footer.content : ''
+        footer: req.footer ? req.footer.items : []
       });
     }
   );
