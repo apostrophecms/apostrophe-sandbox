@@ -98,6 +98,9 @@ function initUploadfs(callback) {
 }
 
 function initJot(callback) {
+  require('jot-twitter')({ jot: jot, app: app });
+  require('jot-rss')({ jot: jot, app: app });
+
   return jot.init({
     files: appy.files,
     areas: appy.areas,
@@ -125,7 +128,6 @@ function setRoutes(callback) {
       req.slug = req.params[0];
       jot.getPage(req.slug, function(e, info) {
         if (e) {
-          console.log(e);
           return fail(req, res);
         }
         if (!info) {
@@ -140,7 +142,6 @@ function setRoutes(callback) {
       // Get the shared footer
       jot.getArea('footer', function(e, info) {
         if (e) {
-          console.log(e);
           return fail(req, res);
         }
         req.footer = info;
