@@ -2,6 +2,8 @@
 
 Apostrophe Wiki is a simple demo app for [Apostrophe](http://github.com/punkave/apostrophe). 
 
+## This is an early alpha quality version of Apostrophe 2, for node.js developers. Most frontend design work has not happened yet. Page trees, blogs events, etc. are not part of Apostrophe 2 yet. See [Apostrophe 1.5](http://apostrophenow.org) for the current stable and mature release of Apostrophe for PHP and Symfony.
+
 ## Installation
 
 Run `npm install` to install the required dependencies.
