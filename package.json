@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git://github.com/punkave/apostrophe-wiki.git"
   },
-  "author": "",
+  "author": "P'unk Avenue",
   "license": "BSD",
   "dependencies": {
     "appy": "~0.1.14",
