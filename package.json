@@ -16,6 +16,9 @@
     "appy": "~0.1.14",
     "uploadfs": "~0.3.0",
     "async": "~0.1.22",
-    "nunjucks": "~0.1.7"
+    "nunjucks": "~0.1.7",
+    "apostrophe": "~0.3.4",
+    "apostrophe-rss": "0.0.1",
+    "apostrophe-twitter": "0.0.1"
   }
 }
