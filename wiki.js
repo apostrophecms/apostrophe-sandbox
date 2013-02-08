@@ -98,8 +98,8 @@ function initUploadfs(callback) {
 }
 
 function initApos(callback) {
-  // require('apostrophe-twitter')({ apos: apos, app: app });
-  // require('apostrophe-rss')({ apos: apos, app: app });
+  require('apostrophe-twitter')({ apos: apos, app: app });
+  require('apostrophe-rss')({ apos: apos, app: app });
 
   return apos.init({
     files: appy.files,
