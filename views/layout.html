@@ -5,14 +5,14 @@
 {% block body %}
   <div class="login-status">
     {% if user %}
-      <a class="jot-button" href="/logout">Log Out</a>
+      <a class="apos-button" href="/logout">Log Out</a>
     {% else %}
-      <a class="jot-button" href="/login">Log In to Edit</a>
+      <a class="apos-button" href="/login">Log In to Edit</a>
       <p>Username: admin<br />Password: demo</p>
     {% endif %}
   </div>
   <div class="header">
-    <h1>Jot Wiki</h1>
+    <h1>Apostrophe Wiki</h1>
   </div>
 
   {% block before %}
@@ -30,8 +30,8 @@
 
   <div class="footer">
     {% block footer %}
-      Jot is in beta. Please open issues on 
-      <a href="http://github.com/boutell/jot">github</a>.
+      Apostrophe is in beta. Please open issues on 
+      <a href="http://github.com/punkave/apostrophe">github</a>.
     {% endblock %}
   </div>
 {% endblock %}

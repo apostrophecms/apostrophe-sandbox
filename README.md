@@ -1,6 +1,6 @@
-# Jot Wiki
+# Apostrophe Wiki
 
-Jot Wiki is a simple demo app for [Jot](http://github.com/boutell/jot). 
+Apostrophe Wiki is a simple demo app for [Apostrophe](http://github.com/punkave/apostrophe). 
 
 ## Installation
 
@@ -26,10 +26,10 @@ A stagecoach deployment recipe is also provided.
 
 ## Usage
 
-Visit `http://localhost:3000` to feast your eyes on Jot Wiki.
+Visit `http://localhost:3000` to feast your eyes on Apostrophe Wiki.
 
 The test username is `admin` and the test password is `demo`.
 
 In addition to the home page, you can make other pages just by visiting them (edit the address bar and press enter).
 
-A wiki is a good test program for Jot because it requires the infrastructure of any other CMS but doesn't need an elaborate system for managing page trees, which is an interesting but entirely separate problem.
+A wiki is a good test program for Apostrophe because it requires the infrastructure of any other CMS but doesn't need an elaborate system for managing page trees, which is an interesting but entirely separate problem.

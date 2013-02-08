@@ -1,14 +1,14 @@
 {
-  "name": "jotwiki",
-  "version": "0.3.2",
-  "description": "test wiki based on jot",
+  "name": "apostrophe-wiki",
+  "version": "0.3.3",
+  "description": "test wiki based on Apostrophe's core features",
   "main": "wiki.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/punkave/jotwiki.git"
+    "url": "git://github.com/punkave/apostrophe-wiki.git"
   },
   "author": "",
   "license": "BSD",
@@ -16,9 +16,6 @@
     "appy": "~0.1.14",
     "uploadfs": "~0.3.0",
     "async": "~0.1.22",
-    "node-jot": "~0.3.1",
-    "jot-twitter": "~0.0.1",
-    "jot-rss": "~0.0.1",
     "nunjucks": "~0.1.7"
   }
 }

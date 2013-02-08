@@ -3,16 +3,16 @@
   <head>
     <title>
       {% block title %}
-        Jot Wiki
+        Apostrophe Wiki
       {% endblock %}
     </title>
     {% block css %}
-      {{ jotStylesheets() }}
+      {{ aposStylesheets() }}
       <link href="/css/reset.css" rel="stylesheet" />
       <link href="/css/wiki.css" rel="stylesheet" />
     {% endblock %}
     {% block js %}
-      {{ jotScripts() }}
+      {{ aposScripts() }}
     {% endblock %}
   </head>
   <body>
@@ -24,11 +24,11 @@
 
     <script type="text/javascript">
       $(function() {
-        jot.enableAreas();
-        jot.enablePlayers();
+        apos.enableAreas();
+        apos.enablePlayers();
       });
     </script>
-    {# Must be present in the page in order to use jot's widget editors #}
-    {{ jotTemplates() }}
+    {# Must be present in the page in order to use apos's widget editors #}
+    {{ aposTemplates() }}
   </body>
 </html>

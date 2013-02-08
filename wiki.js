@@ -2,7 +2,7 @@ var appy = require('appy');
 var async = require('async');
 var uploadfs = require('uploadfs')();
 var fs = require('fs');
-var jot = require('node-jot')();
+var apos = require('apostrophe')();
 
 var app, db;
 
@@ -35,7 +35,7 @@ var options = {
   db: {
     // host: 'localhost'
     // port: 27017,
-    name: 'jotwiki',
+    name: 'aposwiki',
     collections: [ 
       { name: 'areas', index: { fields: { slug: 1 }, unique: true } }, 
       { name: 'pages', index: { fields: { slug: 1 }, unique: true } }, 
@@ -50,7 +50,7 @@ var options = {
     uploadsPath: __dirname + '/public/uploads',
     uploadsUrl: local.uploadsUrl,
     tempPath: __dirname + '/data/temp/uploadfs',
-    // jot needs these sizes to exist with these names
+    // apos needs these sizes to exist with these names
     imageSizes: [
       {
         name: 'full',
@@ -79,7 +79,7 @@ var options = {
   {
     app = appArg;
     db = dbArg;
-    async.series([ createTemp, initUploadfs, initJot, setRoutes ], listen);
+    async.series([ createTemp, initUploadfs, initApos, setRoutes ], listen);
   }
 };
 
@@ -97,17 +97,17 @@ function initUploadfs(callback) {
   uploadfs.init(options.uploadfs, callback);  
 }
 
-function initJot(callback) {
-  require('jot-twitter')({ jot: jot, app: app });
-  require('jot-rss')({ jot: jot, app: app });
+function initApos(callback) {
+  // require('apostrophe-twitter')({ apos: apos, app: app });
+  // require('apostrophe-rss')({ apos: apos, app: app });
 
-  return jot.init({
+  return apos.init({
     files: appy.files,
     areas: appy.areas,
     pages: appy.pages,
     app: app,
     uploadfs: uploadfs,
-    permissions: jotPermissions,
+    permissions: aposPermissions,
   }, callback);
 }
 
@@ -126,7 +126,7 @@ function setRoutes(callback) {
     function(req, res, next) {
       // Get content for this page
       req.slug = req.params[0];
-      jot.getPage(req.slug, function(e, info) {
+      apos.getPage(req.slug, function(e, info) {
         if (e) {
           return fail(req, res);
         }
@@ -140,7 +140,7 @@ function setRoutes(callback) {
     },
     function(req, res, next) {
       // Get the shared footer
-      jot.getArea('footer', function(e, info) {
+      apos.getArea('footer', function(e, info) {
         if (e) {
           return fail(req, res);
         }
@@ -176,9 +176,9 @@ function fail(req, res) {
   res.send('500 error, URL was ' + req.url);
 }
 
-// Allow only the admin user to edit anything with Jot
+// Allow only the admin user to edit anything with Apos
 
-function jotPermissions(req, action, fileOrSlug, callback) {
+function aposPermissions(req, action, fileOrSlug, callback) {
   if (req.user && (req.user.username === 'admin')) {
     // OK
     return callback(null);

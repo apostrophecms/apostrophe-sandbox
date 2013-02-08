@@ -6,7 +6,7 @@
 # web apps that use sc-proxy we make sure each is a subdirectory
 # of /opt/stagecoach/apps
 
-PROJECT=jotwiki
+PROJECT=apostrophe-wiki
 DIR=/opt/stagecoach/apps/$PROJECT
 
 # Adjust the PATH environment variable on the remote host. Here's an example
