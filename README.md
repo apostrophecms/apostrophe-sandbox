@@ -40,7 +40,7 @@ A wiki is a good test program for Apostrophe because it requires the infrastruct
 
 You can easily create your own open source or private Apostrophe project using apostrophe-wiki as a starting point. Here's how I do it:
 
-1. Go to github.com and create a new, empty repository called `myproject`, or whatever suits you. Do not add any files to it yet.
+1. Go to github.com and create a new, empty repository called `myproject`, or whatever suits you. Do not add any files to it yet. If you want a private, non-open-source project, make sure you select that option.
 2. Clone the `apostrophe-wiki` repository to your computer, naming the resulting folder `myproject` (just for example):
     
         git clone git@github.com:punkave/apostrophe-wiki.git myproject
