@@ -13,12 +13,12 @@
   "author": "P'unk Avenue",
   "license": "BSD",
   "dependencies": {
-    "appy": "~0.1.14",
-    "uploadfs": "~0.3.0",
-    "async": "~0.1.22",
-    "nunjucks": "~0.1.8",
-    "apostrophe": "~0.3.5",
-    "apostrophe-rss": "0.0.1",
-    "apostrophe-twitter": "0.0.1"
+    "appy": "0.1.x",
+    "uploadfs": "0.3.x",
+    "async": "0.1.x",
+    "nunjucks": "0.1.x",
+    "apostrophe": "0.3.x",
+    "apostrophe-rss": "0.0.x",
+    "apostrophe-twitter": "0.0.x"
   }
 }
