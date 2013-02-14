@@ -11,7 +11,8 @@ var pages;
 var local = require('./data/local.js');
 
 var options = {
-  // Don't bother with viewEngine, we'll use apos.partial()
+  // Don't bother with viewEngine, we'll use apos.partial() if we want to
+  // render anything directly
 
   auth: {
     strategy: 'local',
@@ -33,42 +34,25 @@ var options = {
     // port: 27017,
     name: 'aposwiki',
     collections: [ 
-      { name: 'areas', index: { fields: { slug: 1 }, unique: true } }, 
-      { name: 'pages', index: { fields: { slug: 1 }, unique: true } }, 
-      'files'
+      // Handy way to get appy to create mongodb collection objects for you,
+      // see the appy docs
     ],
   },  
 
+  // Supplies LESS middleware by default
   static: __dirname + '/public',
 
+  // Where uploaded images go. This can be s3 or any other backend thanks to uploadfs.
+  // Note you can't use the local backend with Heroku (Heroku does not have a persistent
+  // writable filesystem)
   uploadfs: {
     backend: 'local', 
     uploadsPath: __dirname + '/public/uploads',
     uploadsUrl: local.uploadsUrl,
     tempPath: __dirname + '/data/temp/uploadfs',
-    // apos needs these sizes to exist with these names
-    imageSizes: [
-      {
-        name: 'full',
-        width: 1140,
-        height: 1140
-      },
-      {
-        name: 'two-thirds',
-        width: 760,
-        height: 760
-      },
-      {
-        name: 'one-half',
-        width: 570,
-        height: 700
-      },
-      {
-        name: 'one-third',
-        width: 380,
-        height: 700
-      }
-    ],
+    // Register Apostrophe's standard image sizes. Notice you could
+    // concatenate your own list of sizes if you had a need to
+    imageSizes: apos.defaultImageSizes.concat([])
   },
 
   ready: function(appArg, dbArg)
@@ -98,9 +82,7 @@ function initApos(callback) {
   require('apostrophe-rss')({ apos: apos, app: app });
   pages = require('apostrophe-pages')({ apos: apos, app: app });
   return apos.init({
-    files: appy.files,
-    areas: appy.areas,
-    pages: appy.pages,
+    db: db,
     app: app,
     uploadfs: uploadfs,
     permissions: aposPermissions,
@@ -120,12 +102,7 @@ function setRoutes(callback) {
   app.get('*', pages.serve({
     templatePath: __dirname + '/views/pages',
     // Also load a shared page with things like a global footer in it
-    load: function(req, callback) {
-      apos.getPage('global', function(err, result) {
-        req.extraPages.global = result;
-        return callback(err);
-      });
-    },
+    load: [ 'global' ],
     // If a nonexistent page is requested, invent one, as Wikis do.
     // This overrides the normal "404 not found" response
     notfound: function(req, callback) {
@@ -145,12 +122,8 @@ function listen(err) {
   appy.listen();
 }
 
-function fail(req, res) {
-  res.statusCode = 500;
-  res.send('500 error, URL was ' + req.url);
-}
-
-// Allow only the admin user to edit anything with Apos
+// Allow only the admin user to edit anything with Apostrophe,
+// let everyone view pages
 
 function aposPermissions(req, action, fileOrSlug, callback) {
   if (req.user && (req.user.username === 'admin')) {
