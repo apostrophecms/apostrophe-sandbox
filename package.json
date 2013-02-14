@@ -19,6 +19,7 @@
     "nunjucks": "0.1.x",
     "apostrophe": "0.3.x",
     "apostrophe-rss": "0.0.x",
-    "apostrophe-twitter": "0.0.x"
+    "apostrophe-twitter": "0.0.x",
+    "apostrophe-pages": "0.0.x"
   }
 }

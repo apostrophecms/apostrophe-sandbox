@@ -4,15 +4,15 @@
 
 {% block main %}
   <p><em>Hint: to make more Wiki pages, just visit them by editing the URL in the address bar and pressing Enter.</em></p>
-  {{ aposArea({ slug: slug + ':main', items: main, edit: edit }) }}
+  {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
 {% endblock %}
 
 {% block sidebar %}
-  {{ aposArea({ slug: slug + ':sidebar', items: sidebar, edit: edit, controls: [ 'style', 'bold', 'italic', 'createLink', 'image', 'video' ] }) }}
+  {{ aposArea({ slug: slug + ':sidebar', area: page.areas.sidebar, edit: edit, controls: [ 'style', 'bold', 'italic', 'createLink', 'image', 'video' ] }) }}
 {% endblock %}
 
 {% block footer %}
   {# Shared footer, no page URL in the slug #}
-  {{ aposArea({ slug: 'footer', items: footer, edit: edit }) }}
+  {{ aposArea({ slug: 'global:footer', area: global.areas.footer, edit: edit }) }}
   {{ super() }}
 {% endblock %}

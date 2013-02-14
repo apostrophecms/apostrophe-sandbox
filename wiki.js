@@ -3,19 +3,15 @@ var async = require('async');
 var uploadfs = require('uploadfs')();
 var fs = require('fs');
 var apos = require('apostrophe')();
-
 var app, db;
+var pages;
 
 // Server-specific settings to be merged with options
 // See local.example.js
 var local = require('./data/local.js');
 
 var options = {
-  viewEngine: function(app) {
-    var nunjucks = require('nunjucks');
-    var env = new nunjucks.Environment(new nunjucks.FileSystemLoader(__dirname + '/views'));
-    env.express(app);
-  },
+  // Don't bother with viewEngine, we'll use apos.partial()
 
   auth: {
     strategy: 'local',
@@ -100,7 +96,7 @@ function initUploadfs(callback) {
 function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
-
+  pages = require('apostrophe-pages')({ apos: apos, app: app });
   return apos.init({
     files: appy.files,
     areas: appy.areas,
@@ -108,6 +104,8 @@ function initApos(callback) {
     app: app,
     uploadfs: uploadfs,
     permissions: aposPermissions,
+    // Allows us to extend shared layouts
+    partialPaths: [ __dirname + '/views/global' ]
   }, callback);
 }
 
@@ -116,49 +114,25 @@ function setRoutes(callback) {
 
   // LAST ROUTE: pages in the wiki. We want these at the root level.
 
-  // If we haven't matched anything else, look for a page with content.
-  // This is a wiki so if there is no content just show an empty page
-  // so the user can edit and save and bring it into being.
+  // pages.serve does all the work. Just supply callbacks for some things
+  // we'd like to do in addition.
 
-  // Note the leading slash is included. Express automatically supplies / 
-  // if the URL is empty
-  app.get('*', 
-    function(req, res, next) {
-      // Get content for this page
-      req.slug = req.params[0];
-      apos.getPage(req.slug, function(e, info) {
-        if (e) {
-          return fail(req, res);
-        }
-        if (!info) {
-          // No such page yet
-          info = { slug: req.slug, areas: {} };
-        }
-        req.page = info;
-        return next();
+  app.get('*', pages.serve({
+    templatePath: __dirname + '/views/pages',
+    // Also load a shared page with things like a global footer in it
+    load: function(req, callback) {
+      apos.getPage('global', function(err, result) {
+        req.extraPages.global = result;
+        return callback(err);
       });
     },
-    function(req, res, next) {
-      // Get the shared footer
-      apos.getArea('footer', function(e, info) {
-        if (e) {
-          return fail(req, res);
-        }
-        req.footer = info;
-        return next();
-      });
-    },
-    function (req, res) {
-      return res.render('page.html', { 
-        slug: req.slug, 
-        main: req.page.areas.main ? req.page.areas.main.items : [], 
-        sidebar: req.page.areas.sidebar ? req.page.areas.sidebar.items : [],
-        user: req.user,
-        edit: req.user && req.user.username === 'admin',
-        footer: req.footer ? req.footer.items : []
-      });
+    // If a nonexistent page is requested, invent one, as Wikis do.
+    // This overrides the normal "404 not found" response
+    notfound: function(req, callback) {
+      req.page = { areas: {} };
+      return callback(null);      
     }
-  );
+  }));
 
   return callback(null);
 }
@@ -181,6 +155,8 @@ function fail(req, res) {
 function aposPermissions(req, action, fileOrSlug, callback) {
   if (req.user && (req.user.username === 'admin')) {
     // OK
+    return callback(null);
+  } else if (action === 'view-page') {
     return callback(null);
   } else {
     return callback('Forbidden');
