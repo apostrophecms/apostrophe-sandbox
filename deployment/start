@@ -11,8 +11,8 @@
 # Useful for debugging
 #set -x verbose
 
-if [ ! -f "wiki.js" ]; then
-  echo "I don't see wiki.js in the current directory."
+if [ ! -f "app.js" ]; then
+  echo "I don't see app.js in the current directory."
   exit 1
 fi
 
@@ -38,13 +38,13 @@ fi
 # Run the app via 'forever' so that it restarts automatically if it fails
 # Use `pwd` to make sure we have a full path, forever is otherwise easily confused 
 # and will stop every server with the same filename
-forever -o data/console.log -e data/error.log start `pwd`/wiki.js && echo "Site started"
+forever -o data/console.log -e data/error.log start `pwd`/app.js && echo "Site started"
 
 # Run the app without 'forever'. Record the process id so 'stop' can kill it later.
 # We recommend installing 'forever' instead for node apps. For non-node apps this code
 # may be helpful
 #
-# node wiki.js >> data/console.log 2>&1 &
+# node app.js >> data/console.log 2>&1 &
 # PID=$!
 # echo $PID > data/pid
 #	

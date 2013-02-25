@@ -3,8 +3,8 @@
 # Shut the site down, for instance by tweaking a .htaccess file to display
 # a 'please wait' notice, or stopping a node server
 
-if [ ! -f "wiki.js" ]; then
-  echo "I don't see wiki.js in the current directory."
+if [ ! -f "app.js" ]; then
+  echo "I don't see app.js in the current directory."
   exit 1
 fi
 
@@ -12,7 +12,7 @@ fi
 # was not already running. Use `pwd` to make sure we have a full path,
 # forever is otherwise easily confused and will stop every server with
 # the same filename
-forever stop `pwd`/wiki.js && echo "Site stopped"
+forever stop `pwd`/app.js && echo "Site stopped"
 
 # Stop the app without 'forever'. We recommend using 'forever' for node apps,
 # but this may be your best bet for non-node apps

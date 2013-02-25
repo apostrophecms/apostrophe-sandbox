@@ -1,14 +1,14 @@
 {
-  "name": "apostrophe-wiki",
-  "version": "0.3.3",
-  "description": "test wiki based on Apostrophe's core features",
-  "main": "wiki.js",
+  "name": "apostrophe-sandbox",
+  "version": "0.3.4",
+  "description": "Sandbox site featuring typical Apostrophe features",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/punkave/apostrophe-wiki.git"
+    "url": "git://github.com/punkave/apostrophe-sandbox.git"
   },
   "author": "P'unk Avenue",
   "license": "BSD",

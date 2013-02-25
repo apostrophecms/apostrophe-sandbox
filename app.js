@@ -80,15 +80,23 @@ function initUploadfs(callback) {
 function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
-  pages = require('apostrophe-pages')({ apos: apos, app: app });
-  return apos.init({
-    db: db,
-    app: app,
-    uploadfs: uploadfs,
-    permissions: aposPermissions,
-    // Allows us to extend shared layouts
-    partialPaths: [ __dirname + '/views/global' ]
-  }, callback);
+
+  async.series([initAposMain, initAposPages], callback);
+
+  function initAposMain(callback) {
+    return apos.init({
+      db: db,
+      app: app,
+      uploadfs: uploadfs,
+      permissions: aposPermissions,
+      // Allows us to extend shared layouts
+      partialPaths: [ __dirname + '/views/global' ]
+    }, callback);
+  }
+
+  function initAposPages(callback) {
+    pages = require('apostrophe-pages')({ apos: apos, app: app }, callback);
+  }
 }
 
 function setRoutes(callback) {
@@ -104,11 +112,11 @@ function setRoutes(callback) {
     // Also load a shared page with things like a global footer in it
     load: [ 'global' ],
     // If a nonexistent page is requested, invent one, as Wikis do.
-    // This overrides the normal "404 not found" response
-    notfound: function(req, callback) {
-      req.page = { areas: {} };
-      return callback(null);      
-    }
+    // // This overrides the normal "404 not found" response
+    // notfound: function(req, callback) {
+    //   req.page = { areas: {} };
+    //   return callback(null);      
+    // }
   }));
 
   return callback(null);
