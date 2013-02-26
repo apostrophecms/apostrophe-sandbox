@@ -1,0 +1,156 @@
+body
+{
+  font-family: Helvetica;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+h1
+{
+  font-size: 200%;
+  font-weight: bold;
+}
+
+h2
+{
+  font-size: 175%;
+}
+
+h3
+{
+  font-size: 150%;
+}
+
+h4
+{
+  font-size: 125%;
+}
+
+h5
+{
+  font-size: 90%;
+}
+
+h6
+{
+  font-size: 80%;
+}
+
+p
+{
+  margin-bottom: 1em;
+}
+
+em, i
+{
+  font-style: italic;
+}
+
+strong, b
+{
+  font-weight: bold;
+}
+
+ul
+{
+  margin: 1.5em;
+  list-style: disc outside none;
+}
+
+.subnav
+{
+  float: left;
+  width: 18%;
+  margin: 0% 1% 0% 1%;
+  border-radius: 6px;
+  border: 1px dotted #ccc;
+}
+
+.main
+{
+  float: left;
+  width: 58%;
+  margin: 0% 1% 1% 1%;
+}
+
+h1.logo
+{
+  clear: left;
+  padding-bottom: 0.5em;
+  margin: 1em 0em 0em 0em;
+}
+
+.main .apos-normal-view, .sidebar .apos-normal-view
+{
+  border: 1px dotted #ccc;
+  border-radius: 6px;
+}
+
+.apos-editable
+{
+  /* Less annoying focus rectangle */
+  outline: 1px dotted #ccc;
+  margin-bottom: 10px;
+}
+
+.sidebar
+{
+  float: left;
+  width: 17%;
+  margin: 0% 1% 1% 1%;
+}
+
+.header
+{
+  padding: 1% 1% 0% 1%;
+}
+
+.footer
+{
+  clear: both;
+  margin-top: 200px;
+  border-top: 1px dotted #ccc;
+  padding: 1%;
+}
+
+.login-status
+{
+  float: right;
+  padding-top: 40px;
+  padding-right: 20px;
+}
+
+ol.ancestors
+{
+  list-style: none;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+ol.ancestors li
+{
+  float: left;
+}
+
+ol.ancestors li a
+{
+  text-decoration: none;
+  color: black;
+}
+
+ol.children
+{
+  list-style: none;
+  padding: 10px;
+}
+
+.ancestors-clearfix
+{
+  clear: both;
+  margin-bottom: 1em;
+}

@@ -1,12 +1,34 @@
 {% extends "layout.html" %}
 
-{% block beforeBody %}
+{% block title %}
+Apostrophe Sandbox: {{ page.title | e }}
+{% endblock %}
 
+{% block beforeBody %}
 {{ aposEditPage(page, edit) }}
 <script type="text/javascript">
-aposPages.enableUI();
+aposPages.enableUI({ root: '/', title: {{ page.title | json }} });
 </script>
+{% endblock %}
 
+{% block headerBody %}
+  <ol class="ancestors">
+  {% for relative in page.ancestors %}
+    <li><a href="{{ relative.url }}">{{ relative.title | e }} &raquo;&nbsp;</a></li>
+  {% endfor %}
+    <li>{{ page.title | e }}</li>
+  </ol>
+  <div class="ancestors-clearfix"></div>
+  {{ super() }}
+  {# <h2>{{ page.title | e }}</h2> #}
+{% endblock %}
+
+{% block subnav %}
+  <ol class="children">
+  {% for relative in page.children %}
+    <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
+  {% endfor %}
+  </ol>
 {% endblock %}
 
 {% block footer %}

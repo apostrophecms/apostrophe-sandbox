@@ -3,18 +3,7 @@
 {# Output the current content of the page, with buttons to edit it #}
 
 {% block main %}
-  <p><em>Hint: to make more Wiki pages, just visit them by editing the URL in the address bar and pressing Enter.</em></p>
-  <ol class="ancestors">
-  {% for relative in page.ancestors %}
-    <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
-  {% endfor %}
-    <li>{{ page.title | e }}</li>
-  </ol>
-  <ol class="children">
-  {% for relative in page.children %}
-    <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
-  {% endfor %}
-  </ol>
+
   {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
 {% endblock %}
 
