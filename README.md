@@ -28,7 +28,7 @@ You'll need a homepage in your database in order to get started. We'll provide a
 
 When the mongodb prompt appears, type:
 
-`db.aposPages.insert({ slug: '/', path: 'home', title: 'Home' });`
+`db.aposPages.insert({ slug: '/', path: 'home', title: 'Home', level: 0 });`
 
 ## Launch
 
