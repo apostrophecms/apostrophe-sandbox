@@ -10,6 +10,8 @@ var pages;
 // See local.example.js
 var local = require('./data/local.js');
 
+console.log('read local.js');
+
 var options = {
   // Don't bother with viewEngine, we'll use apos.partial() if we want to
   // render anything directly
@@ -57,6 +59,7 @@ var options = {
 
   ready: function(appArg, dbArg)
   {
+    console.log('ready');
     app = appArg;
     db = dbArg;
     async.series([ createTemp, initUploadfs, initApos, setRoutes ], listen);
@@ -84,6 +87,7 @@ function initApos(callback) {
   async.series([initAposMain, initAposPages], callback);
 
   function initAposMain(callback) {
+    console.log('initAposMain');
     return apos.init({
       db: db,
       app: app,
@@ -95,11 +99,13 @@ function initApos(callback) {
   }
 
   function initAposPages(callback) {
+    console.log('initAposPages');
     pages = require('apostrophe-pages')({ apos: apos, app: app }, callback);
   }
 }
 
 function setRoutes(callback) {
+  console.log('setRoutes');
   // Other app-specific routes here.
 
   // LAST ROUTE: pages in the wiki. We want these at the root level.
