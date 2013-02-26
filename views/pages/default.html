@@ -22,8 +22,3 @@
   {{ aposArea({ slug: slug + ':sidebar', area: page.areas.sidebar, edit: edit, controls: [ 'style', 'bold', 'italic', 'createLink', 'image', 'video' ] }) }}
 {% endblock %}
 
-{% block footer %}
-  {# Shared footer, no page URL in the slug #}
-  {{ aposArea({ slug: 'global:footer', area: global.areas.footer, edit: edit }) }}
-  {{ super() }}
-{% endblock %}
