@@ -24,7 +24,7 @@ Create a `data` folder (this is ignored by git). Copy `local.example.js` to `dat
 
 You'll need a homepage in your database in order to get started. We'll provide a convenient command to set this up soon. In the meantime, do this:
 
-`mongo aposwiki`
+`mongo apostrophe-sandbox`
 
 When the mongodb prompt appears, type:
 

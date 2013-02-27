@@ -34,7 +34,7 @@ var options = {
   db: {
     // host: 'localhost'
     // port: 27017,
-    name: 'aposwiki',
+    name: 'apostrophe-sandbox',
     collections: [ 
       // Handy way to get appy to create mongodb collection objects for you,
       // see the appy docs
