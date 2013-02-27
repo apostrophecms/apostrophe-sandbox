@@ -75,5 +75,3 @@ Boom! You're done. You now have your own Apostrophe project in github, based on 
 ## Keep An Eye Out For Updates
 
 Apostrophe 2 is changing fast at this early stage. The `npm update` command will install new minor versions of the Apostrophe modules, but you will want to follow our repositories on github to keep up with the latest. At some point we'll release versions with different major or middle version numbers and you won't get those with `npm update` unless you edit `package.json` (and generally for good reason, if you're not prepared to make code changes).
-
-
