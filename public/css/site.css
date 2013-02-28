@@ -2,6 +2,8 @@ body
 {
   font-family: Helvetica;
   line-height: 1.5;
+  background: rgb(55,93,100);
+  padding-top: 40px;
 }
 
 h1, h2, h3, h4, h5, h6
@@ -67,8 +69,6 @@ ul
   float: left;
   width: 18%;
   margin: 0% 1% 0% 1%;
-  border-radius: 6px;
-  border: 1px dotted #ccc;
 }
 
 .main
@@ -76,6 +76,7 @@ ul
   float: left;
   width: 58%;
   margin: 0% 1% 1% 1%;
+  background: rgb(24,58,64);
 }
 
 body.onecolumn .main
@@ -89,12 +90,6 @@ h1.logo
   clear: left;
   padding-bottom: 0.5em;
   margin: 1em 0em 0em 0em;
-}
-
-.main .apos-normal-view, .sidebar .apos-normal-view
-{
-  border: 1px dotted #ccc;
-  border-radius: 6px;
 }
 
 .apos-editable
@@ -114,19 +109,21 @@ h1.logo
 .header
 {
   padding: 1% 1% 0% 1%;
+  background:rgb(71,130,140);/* light blue */
 }
 
 .header .logo
 {
-  width: 400px;
+  width: 300px;
+  float: left;
 }
 
 .footer
 {
   clear: both;
   margin-top: 200px;
-  border-top: 1px dotted #ccc;
   padding: 1%;
+  background: rgb(24,58,64);
 }
 
 ol.ancestors
@@ -158,3 +155,5 @@ ol.children
   clear: both;
   margin-bottom: 1em;
 }
+
+

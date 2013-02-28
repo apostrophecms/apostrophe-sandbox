@@ -22,6 +22,14 @@
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+      //THIS NEEDS TO BE MOVED SOMEWHERE
+      $('.apos-accordion-title').click(function(event){
+        $(this).parent().find('.apos-accordion-items').toggleClass('open');
+      });
+
+    </script>
   {% endblock %}
 
   <div class="header">
