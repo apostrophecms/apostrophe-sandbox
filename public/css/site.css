@@ -6,7 +6,7 @@ body
 
 h1, h2, h3, h4, h5, h6
 {
-  margin-top: 1em;
+  /* margin-top is evil, it misaligns everything */
   margin-bottom: 1em;
 }
 
@@ -75,6 +75,12 @@ ul
 {
   float: left;
   width: 58%;
+  margin: 0% 1% 1% 1%;
+}
+
+body.onecolumn .main
+{
+  width: 77%;
   margin: 0% 1% 1% 1%;
 }
 

@@ -34,7 +34,7 @@ var options = {
   db: {
     // host: 'localhost'
     // port: 27017,
-    name: 'aposwiki',
+    name: 'apostrophe-sandbox',
     collections: [ 
       // Handy way to get appy to create mongodb collection objects for you,
       // see the appy docs
@@ -100,7 +100,10 @@ function initApos(callback) {
 
   function initAposPages(callback) {
     console.log('initAposPages');
-    pages = require('apostrophe-pages')({ apos: apos, app: app }, callback);
+    pages = require('apostrophe-pages')({ apos: apos, app: app, types: [ 
+      { name: 'default', label: 'Default (Two Column)' },
+      { name: 'onecolumn', label: 'One Column' } 
+    ]}, callback);
   }
 }
 

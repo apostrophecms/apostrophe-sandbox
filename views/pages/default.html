@@ -1,13 +1,34 @@
 {% extends "pageLayout.html" %}
 
+{% block bodyClass %}{{ super() }} default-page{% endblock %}
+
 {# Output the current content of the page, with buttons to edit it #}
 
-{% block main %}
+  {# Demonstrate how to test for an empty area #}
+  {% if (not edit) and aposAreaIsEmpty({ area: page.areas.main }) %}
+    <p>No one has entered content here yet.</p>
+  {% endif %}
 
+{% block main %}
   {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
+
 {% endblock %}
 
 {% block sidebar %}
+
+  {# Demonstrate singletons: areas that must feature one and only one #}
+  {# widget of a specified type #}
+  <h4>Featured Video</h4>
+  {{ aposSingleton({ slug: slug + ':sidebarVideo', type: 'video', area: page.areas.sidebarVideo, edit: edit }) }}
+
+  {# Demonstrate how to test for an empty singleton #}
+  {% if (not edit) and aposSingletonIsEmpty({ area: page.areas.sidebarVideo, type: 'video' }) %}
+    <p>No one has selected a featured video yet.</p>
+  {% endif %}
+
+  {# A regular free-form area, but with a restricted set of allowed types #}
+  <h4>Commentary</h4>
   {{ aposArea({ slug: slug + ':sidebar', area: page.areas.sidebar, edit: edit, controls: [ 'style', 'bold', 'italic', 'createLink', 'image', 'video' ] }) }}
+
 {% endblock %}
 

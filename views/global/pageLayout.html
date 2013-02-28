@@ -5,11 +5,10 @@ Apostrophe Sandbox: {{ page.title | e }}
 {% endblock %}
 
 {% block beforeBody %}
-{{ aposEditPage(page, edit) }}
-<script type="text/javascript">
-aposPages.enableUI({ root: '/', title: {{ page.title | json }} });
-</script>
+{{ aposEditPage({ page: page, edit: edit, root: '/' }) }}
 {% endblock %}
+
+{% block bodyClass %}apos-page{% endblock %}
 
 {% block logo %}
   <div class="logo">
