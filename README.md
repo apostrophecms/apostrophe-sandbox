@@ -22,13 +22,11 @@ Create a `data` folder (this is ignored by git). Copy `local.example.js` to `dat
 
 ## Database Bootstrap
 
-You'll need a homepage in your database in order to get started. We'll provide a convenient command to set this up soon. In the meantime, do this:
+You'll need a homepage in your database in order to get started. Just run:
 
-`mongo apostrophe-sandbox`
+    sh reset-db.sh
 
-When the mongodb prompt appears, type:
-
-`db.aposPages.insert({ slug: '/', path: 'home', title: 'Home', level: 0 });`
+This will create (or recreate) the apostrophe-sandbox database in your local mongodb database and insert a valid home page so that you have a starting point for edits. Take a peek at this one-line script if you're curious about what a valid home page looks like in MongoDB.
 
 ## Launch
 
