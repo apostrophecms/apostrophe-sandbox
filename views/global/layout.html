@@ -3,14 +3,27 @@
 {# HTML with typical page structure, not necessarily an apostrophe-pages page document #}
 
 {% block body %}
-  <div class="login-status">
-    {% if user %}
-      <a class="apos-button" href="/logout">Log Out</a>
-    {% else %}
-      <a class="apos-button" href="/login">Log In to Edit</a>
-      <p>Username: admin<br />Password: demo</p>
-    {% endif %}
-  </div>
+  {% block adminBar %}
+    <div class="apos-admin-bar">
+      <div class="apos-admin-bar-inner">
+        <div class="apos-logo-tiny">
+          A
+        </div>
+
+        {{ aposEditPage({ page: page, edit: edit, root: '/' }) }}
+
+        <div class="apos-admin-bar-item login-status">
+          {% if user %}
+            <a class="apos-button" href="/logout">Log Out</a>
+          {% else %}
+            <a class="apos-button" href="/login">Log In to Edit</a>
+            <p>Username: admin<br />Password: demo</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+
   <div class="header">
     {% block logo %}
     {% endblock %}
