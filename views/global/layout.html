@@ -12,7 +12,9 @@
     {% endif %}
   </div>
   <div class="header">
-    <h1 class="logo"><a href="/">Apostrophe Sandbox</a></h1>
+    {% block logo %}
+    {% endblock %}
+
     {% block headerBody %}
     {% endblock %}
   </div>

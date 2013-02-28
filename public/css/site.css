@@ -116,6 +116,11 @@ h1.logo
   padding: 1% 1% 0% 1%;
 }
 
+.header .logo
+{
+  width: 400px;
+}
+
 .footer
 {
   clear: both;
