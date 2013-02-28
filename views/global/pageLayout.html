@@ -11,6 +11,13 @@ aposPages.enableUI({ root: '/', title: {{ page.title | json }} });
 </script>
 {% endblock %}
 
+{% block logo %}
+  <div class="logo">
+    {{ aposSingleton({ slug: 'global:logo', type: 'image', area: global.areas.logo, edit: edit }) }}
+    <h1 class="page-title"><a href="/">Apostrophe Sandbox</a></h1>
+  </div>
+{% endblock %}
+
 {% block headerBody %}
   <ol class="ancestors">
   {% for relative in page.ancestors %}
