@@ -17,6 +17,11 @@ Apostrophe Sandbox: {{ page.title | e }}
 {% endblock %}
 
 {% block headerBody %}
+  <ul class="tabs">
+    {% for tab in tabs %}
+      <li><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
+    {% endfor %}
+  </ul>
   <ol class="ancestors">
   {% for relative in page.ancestors %}
     <li><a href="{{ relative.url }}">{{ relative.title | e }} &raquo;&nbsp;</a></li>

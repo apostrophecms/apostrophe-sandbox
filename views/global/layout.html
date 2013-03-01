@@ -32,19 +32,34 @@
     </script>
   {% endblock %}
 
+  
+
   <div class="header">
+    <div class="header-inner">
     {% block logo %}
     {% endblock %}
 
     {% block headerBody %}
     {% endblock %}
+    </div>
   </div>
 
   {% block before %}
   {% endblock %}
 
+<div class="content-wrapper">
+  <div class="banner">
+    {% block banner %}
+    {% endblock %}
+  </div>
+
   <div class="subnav">
     {% block subnav %}
+    {% endblock %}
+  </div>
+
+  <div class="sidebar">
+    {% block sidebar %}
     {% endblock %}
   </div>
 
@@ -53,10 +68,7 @@
     {% endblock %}
   </div>
 
-  <div class="sidebar">
-    {% block sidebar %}
-    {% endblock %}
-  </div>
+</div>
 
   <div class="footer">
     {% block footer %}

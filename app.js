@@ -119,7 +119,16 @@ function setRoutes(callback) {
   app.get('*', pages.serve({
     templatePath: __dirname + '/views/pages',
     // Also load a shared page with things like a global footer in it
-    load: [ 'global' ],
+    load: [ 'global', function(req, callback) {
+      if (!req.page) {
+        return callback(null);
+      }
+      console.log(!!req.page);
+      pages.getDescendants(req.page.ancestors[0] ? req.page.ancestors[0] : req.page, { depth: 1 }, function(err, pages) {
+        req.extras.tabs = pages;
+        return callback(err);
+      });
+    } ],
     // If a nonexistent page is requested, invent one, as Wikis do.
     // // This overrides the normal "404 not found" response
     // notfound: function(req, callback) {
