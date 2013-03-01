@@ -101,6 +101,7 @@ function initApos(callback) {
   function initAposPages(callback) {
     console.log('initAposPages');
     pages = require('apostrophe-pages')({ apos: apos, app: app, types: [ 
+      { name: 'home', label: 'Home Page' },
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' } 
     ]}, callback);

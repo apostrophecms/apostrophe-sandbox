@@ -1,6 +1,6 @@
 {% extends "pageLayout.html" %}
 
-{% block bodyClass %}{{ super() }} default-page{% endblock %}
+{% block bodyClass %}{{ super() }} home-page{% endblock %}
 
 {# Output the current content of the page, with buttons to edit it #}
 
@@ -9,22 +9,8 @@
     <p>No one has entered content here yet.</p>
   {% endif %}
 
-
+{# subnav is excluded from the homepage #}
 {% block subnav %}
-  <div class="subnav">
-    <ol class="children">
-    {% for relative in page.children %}
-      <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
-    {% endfor %}
-    </ol>
-  </div>
-{% endblock %}
-
-{% block main %}
-  {{ aposSingleton({ slug: slug + ':sidebarVideo', type: 'video', area: page.areas.sidebarVideo, edit: edit }) }}  
-
-  {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
-
 {% endblock %}
 
 {% block sidebar %}
@@ -39,5 +25,12 @@
 
   {# A regular free-form area, but with a restricted set of allowed types #}
   {{ aposArea({ slug: slug + ':sidebar', area: page.areas.sidebar, edit: edit, controls: [ 'style', 'bold', 'italic', 'createLink', 'image', 'video' ] }) }}
+
+{% endblock %}
+
+{% block main %}
+  {{ aposSingleton({ slug: slug + ':sidebarVideo', type: 'video', area: page.areas.sidebarVideo, edit: edit }) }}  
+
+  {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
 {% endblock %}
 

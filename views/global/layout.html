@@ -35,39 +35,49 @@
   
 
   <div class="header">
-    <div class="header-inner">
-    {% block logo %}
-    {% endblock %}
+    <div class="header-inner clearfix">
+      {% block logo %}
+      {% endblock %}
 
-    {% block headerBody %}
-    {% endblock %}
+      {% block mainNav %}
+      {% endblock %}
+
+      {% block headerBody %}
+      {% endblock %}
+
+
     </div>
   </div>
 
   {% block before %}
   {% endblock %}
 
-<div class="content-wrapper">
-  <div class="banner">
-    {% block banner %}
-    {% endblock %}
-  </div>
+{% block breadcrumbs %}
+{% endblock %}
 
-  <div class="subnav">
+<div class="content-wrapper clearfix">
+  <div class="content-inner">
+    <div class="banner">
+      {% block banner %}
+      {% endblock %}
+    </div>
+
     {% block subnav %}
+      <div class="subnav">
+        
+      </div>
     {% endblock %}
-  </div>
 
-  <div class="sidebar">
-    {% block sidebar %}
-    {% endblock %}
-  </div>
+    <div class="sidebar">
+      {% block sidebar %}
+      {% endblock %}
+    </div>
 
-  <div class="main">
-    {% block main %}
-    {% endblock %}
+    <div class="main">
+      {% block main %}
+      {% endblock %}
+    </div>
   </div>
-
 </div>
 
   <div class="footer">

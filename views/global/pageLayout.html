@@ -16,28 +16,26 @@ Apostrophe Sandbox: {{ page.title | e }}
   <h1 class="page-title"><a href="/">Apostrophe Sandbox</a></h1>
 {% endblock %}
 
-{% block headerBody %}
+{% block mainNav %}
   <ul class="tabs">
     {% for tab in tabs %}
       <li><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
     {% endfor %}
   </ul>
-  <ol class="ancestors">
-  {% for relative in page.ancestors %}
-    <li><a href="{{ relative.url }}">{{ relative.title | e }} &raquo;&nbsp;</a></li>
-  {% endfor %}
-    <li>{{ page.title | e }}</li>
-  </ol>
-  <div class="ancestors-clearfix"></div>
+{% endblock %}
+
+{% block headerBody %}
+  <!-- <div class="ancestors-clearfix"></div> -->
   {{ super() }}
   {# <h2>{{ page.title | e }}</h2> #}
 {% endblock %}
 
-{% block subnav %}
-  <ol class="children">
-  {% for relative in page.children %}
-    <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
-  {% endfor %}
+{% block breadcrumbs %}
+  <ol class="breadcrumbs ancestors clearfix">
+    {% for relative in page.ancestors %}
+      <li><a href="{{ relative.url }}">{{ relative.title | e }} &raquo;&nbsp;</a></li>
+    {% endfor %}
+      <li>{{ page.title | e }}</li>
   </ol>
 {% endblock %}
 

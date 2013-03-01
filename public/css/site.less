@@ -1,3 +1,5 @@
+@import 'reset.less';
+
 body
 {
   font-family: Helvetica;
@@ -92,11 +94,35 @@ h1.logo
   margin: 1em 0em 0em 0em;
 }
 
+
+.breadcrumbs
+{
+  width: 1140px;
+  margin: 10px auto;
+  /*margin: 20px 0;*/
+}
+
+.breadcrumbs li
+{
+  font-size: 12px; 
+}
+
+.breadcrumbs li::after
+{
+  content: ' /'
+}
+
+
 .content-wrapper
 {
   width: 1140px;
   margin: 0 auto;
   margin-top: 30px;
+}
+
+.content-inner
+{
+  float: left;
 }
 
 .apos-editable
@@ -110,7 +136,7 @@ h1.logo
 {
   float: left;
   width: 19%;
-  margin: 0% 1% 1% 1%;
+  /*margin: 0% 1% 1% 1%;*/
   background: rgb(24,58,64);
 }
 
@@ -137,7 +163,7 @@ h1.logo
 
 .header .logo
 {
-  width: 300px;
+  width: 200px;
   float: left;
 }
 
@@ -185,4 +211,13 @@ ol.children
   margin-bottom: 1em;
 }
 
+.home-page .sidebar
+{
+  width: 30%;
+}
+
+.home-page .main
+{
+  width: 60%;
+}
 
