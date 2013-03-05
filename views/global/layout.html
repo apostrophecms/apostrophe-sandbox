@@ -12,6 +12,11 @@
 
         {{ aposEditPage({ page: page, edit: edit, root: '/' }) }}
 
+        <div class="apos-admin-bar-item apos-preview-toggle">
+          <i class="icon-eye"></i>
+          <i class="icon-wrench"></i>
+        </div>
+
         <div class="apos-admin-bar-item login-status">
           {% if user %}
             <a class="apos-button" href="/logout">Log Out</a>
@@ -24,9 +29,14 @@
     </div>
 
     <script type="text/javascript">
-      //THIS NEEDS TO BE MOVED SOMEWHERE
+      //THIS NEEDS TO BE MOVED SOMEWHERE!!!!!!!!!!
       $('.apos-accordion-title').click(function(event){
         $(this).parent().find('.apos-accordion-items').toggleClass('open');
+      });
+
+      $('.apos-preview-toggle').click(function(event){
+        $('.apos-preview-toggle').toggleClass('previewing');
+        $('body').toggleClass('previewing');
       });
 
     </script>
@@ -44,8 +54,6 @@
 
       {% block headerBody %}
       {% endblock %}
-
-
     </div>
   </div>
 
