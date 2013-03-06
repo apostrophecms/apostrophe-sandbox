@@ -12,6 +12,11 @@
 
         {{ aposEditPage({ page: page, edit: edit, root: '/' }) }}
 
+        <div class="apos-admin-bar-item apos-preview-toggle">
+          <i class="icon-eye"></i>
+          <i class="icon-wrench"></i>
+        </div>
+
         <div class="apos-admin-bar-item login-status">
           {% if user %}
             <a class="apos-button" href="/logout">Log Out</a>
@@ -24,39 +29,64 @@
     </div>
 
     <script type="text/javascript">
-      //THIS NEEDS TO BE MOVED SOMEWHERE
+      //THIS NEEDS TO BE MOVED SOMEWHERE!!!!!!!!!!
       $('.apos-accordion-title').click(function(event){
         $(this).parent().find('.apos-accordion-items').toggleClass('open');
+      });
+
+      $('.apos-preview-toggle').click(function(event){
+        $('.apos-preview-toggle').toggleClass('previewing');
+        $('body').toggleClass('previewing');
       });
 
     </script>
   {% endblock %}
 
-  <div class="header">
-    {% block logo %}
-    {% endblock %}
+  
 
-    {% block headerBody %}
-    {% endblock %}
+  <div class="header">
+    <div class="header-inner clearfix">
+      {% block logo %}
+      {% endblock %}
+
+      {% block mainNav %}
+      {% endblock %}
+
+      {% block headerBody %}
+      {% endblock %}
+    </div>
   </div>
 
   {% block before %}
   {% endblock %}
 
-  <div class="subnav">
+{% block breadcrumbs %}
+{% endblock %}
+
+<div class="content-wrapper clearfix">
+  <div class="content-inner">
+    <div class="banner">
+      {% block banner %}
+      {% endblock %}
+    </div>
+
     {% block subnav %}
+      <div class="subnav">
+        
+      </div>
     {% endblock %}
-  </div>
 
-  <div class="main">
-    {% block main %}
-    {% endblock %}
-  </div>
+    <div class="sidebar">
+      {% block sidebar %}
+      {% endblock %}
+    </div>
 
-  <div class="sidebar">
-    {% block sidebar %}
-    {% endblock %}
+    <div class="main">
+      {% block main %}
+      {% endblock %}
+    </div>
   </div>
+</div>
 
   <div class="footer">
     {% block footer %}

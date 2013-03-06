@@ -2,3 +2,6 @@ data
 public/uploads
 temp/uploadfs
 node_modules
+
+public/css/reset.css
+public/css/site.css

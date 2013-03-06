@@ -1,3 +1,5 @@
+@import 'reset.less';
+
 body
 {
   font-family: Helvetica;
@@ -67,7 +69,7 @@ ul
 .subnav
 {
   float: left;
-  width: 18%;
+  width: 15%;
   margin: 0% 1% 0% 1%;
 }
 
@@ -92,6 +94,37 @@ h1.logo
   margin: 1em 0em 0em 0em;
 }
 
+
+.breadcrumbs
+{
+  width: 1140px;
+  margin: 10px auto;
+  /*margin: 20px 0;*/
+}
+
+.breadcrumbs li
+{
+  font-size: 12px; 
+}
+
+.breadcrumbs li::after
+{
+  content: ' /'
+}
+
+
+.content-wrapper
+{
+  width: 1140px;
+  margin: 0 auto;
+  // margin-top: 30px;
+}
+
+.content-inner
+{
+  float: left;
+}
+
 .apos-editable
 {
   /* Less annoying focus rectangle */
@@ -102,26 +135,48 @@ h1.logo
 .sidebar
 {
   float: left;
-  width: 17%;
-  margin: 0% 1% 1% 1%;
+  width: 19%;
+  /*margin: 0% 1% 1% 1%;*/
+  background: rgb(24,58,64);
+}
+
+.sidebar .apos-area,
+.main .apos-area
+{
+  padding: 20px;
+  color: #eee;
 }
 
 .header
 {
-  padding: 1% 1% 0% 1%;
+  /*padding: 1% 1% 0% 1%;*/
   background:rgb(71,130,140);/* light blue */
+  
+}
+
+.header-inner
+{
+  width: 1140px;
+  padding: 20px;
+  margin: 0 auto;
 }
 
 .header .logo
 {
-  width: 300px;
+  width: 200px;
   float: left;
+}
+
+.page-title a
+{
+  color: #fff;
+  /*text-decoration: none;*/
 }
 
 .footer
 {
   clear: both;
-  margin-top: 200px;
+  margin-top: 20px;
   padding: 1%;
   background: rgb(24,58,64);
 }
@@ -156,4 +211,13 @@ ol.children
   margin-bottom: 1em;
 }
 
+.home-page .sidebar
+{
+  width: 30%;
+}
+
+.home-page .main
+{
+  width: 68%;
+}
 
