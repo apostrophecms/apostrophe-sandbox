@@ -29,7 +29,7 @@
     <p>No one has selected a featured video yet.</p>
   {% else %}
     <h4>Featured Video</h4>
-    {{ aposSingleton({ slug: slug + ':sidebarVideo', type: 'video', area: page.areas.sidebarVideo, edit: edit }) }}  
+    {{ aposSingleton({ slug: slug + ':sidebarVideo', type: 'video', area: page.areas.sidebarVideo, edit: edit }) }}
   {% endif %}
 
   {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}

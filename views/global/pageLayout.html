@@ -35,7 +35,11 @@ Apostrophe Sandbox: {{ page.title | e }}
     {% for relative in page.ancestors %}
       <li><a href="{{ relative.url }}">{{ relative.title | e }} &raquo;&nbsp;</a></li>
     {% endfor %}
-      <li>{{ page.title | e }}</li>
+    {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
+    {# will want to make the greedy page itself a link and add more li's #}
+    {% block extraBreadcrumbs %}
+    <li>{{ page.title | e }}</li>
+    {% endblock %}
   </ol>
 {% endblock %}
 
