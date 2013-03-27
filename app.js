@@ -3,9 +3,12 @@ var async = require('async');
 var uploadfs = require('uploadfs')();
 var fs = require('fs');
 var apos = require('apostrophe')();
+var _ = require('underscore');
 var app, db;
 var pages;
+var snippets;
 var blog;
+var map;
 
 // Server-specific settings to be merged with options
 // See local.example.js
@@ -61,6 +64,7 @@ var options = {
     console.log('ready');
     app = appArg;
     db = dbArg;
+
     async.series([ createTemp, initUploadfs, initApos, setRoutes ], listen);
   }
 };
@@ -83,7 +87,7 @@ function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposBlog], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -91,6 +95,7 @@ function initApos(callback) {
       app: app,
       uploadfs: uploadfs,
       permissions: aposPermissions,
+      locals: local.locals,
       // Allows us to extend shared layouts
       partialPaths: [ __dirname + '/views/global' ]
     }, callback);
@@ -99,31 +104,29 @@ function initApos(callback) {
   function initAposPages(callback) {
     pages = require('apostrophe-pages')({ apos: apos, app: app, types: [
       { name: 'default', label: 'Default (Two Column)' },
-      { name: 'home', label: 'Home Page' },
       { name: 'onecolumn', label: 'One Column' },
+      { name: 'home', label: 'Home Page' }
     ]}, callback);
   }
 
+  function initAposSnippets(callback) {
+    snippets = require('apostrophe-snippets')({ apos: apos, pages: pages, app: app }, callback);
+    pages.addType(snippets);
+  }
+
   function initAposBlog(callback) {
-    // Tells the pages module all about the blog group
     blog = require('apostrophe-blog')({ apos: apos, pages: pages, app: app }, callback);
-    // Now we can add a type that uses the blog group
-    pages.addType({
-      name: 'blog',
-      label: 'Blog',
-      group: 'blog'
-    });
+    pages.addType(blog);
+  }
+
+  function initAposMap(callback) {
+    map = require('apostrophe-map')({ apos: apos, pages: pages, app: app, dirs: [ __dirname+'/overrides/apostrophe-map' ] }, callback);
+    pages.addType(map);
   }
 }
 
 function setRoutes(callback) {
   // Other app-specific routes here.
-
-  app.get('/api/blog-listing', function(req, res) {
-    blog.getPosts(req, req.query, function(err, posts) {
-      res.send(apos.partial('blogListing.html', { posts: posts, pageUrl: req.query.pageUrl }, __dirname + '/views/refresh'));
-    });
-  });
 
   // LAST ROUTE: pages in the wiki. We want these at the root level.
 
@@ -151,7 +154,9 @@ function setRoutes(callback) {
         });
       },
 
-      blog.loader
+      snippets.loader,
+      blog.loader,
+      map.loader
     ]
   }));
 
@@ -166,13 +171,13 @@ function listen(err) {
 }
 
 // Allow only the admin user to edit anything with Apostrophe,
-// let everyone view pages
+// let everyone view anything
 
-function aposPermissions(req, action, fileOrSlug, callback) {
+function aposPermissions(req, action, object, callback) {
   if (req.user && (req.user.username === 'admin')) {
     // OK
     return callback(null);
-  } else if (action === 'view-page') {
+  } else if (action.match(/^view/)) {
     return callback(null);
   } else {
     return callback('Forbidden');

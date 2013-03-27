@@ -2,24 +2,6 @@
 
 {% block bodyClass %}{{ super() }} default-page{% endblock %}
 
-{# Output the current content of the page, with buttons to edit it #}
-
-  {# Demonstrate how to test for an empty area #}
-  {% if (not edit) and aposAreaIsEmpty({ area: page.areas.main }) %}
-    <p>No one has entered content here yet.</p>
-  {% endif %}
-
-
-{% block subnav %}
-  <div class="subnav">
-    <ol class="children">
-    {% for relative in page.children %}
-      <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
-    {% endfor %}
-    </ol>
-  </div>
-{% endblock %}
-
 {% block main %}
 
   {# Demonstrate singletons: areas that must feature one and only one #}

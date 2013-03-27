@@ -10,18 +10,27 @@ Apostrophe Sandbox: {{ page.title | e }}
 {% block bodyClass %}apos-page{% endblock %}
 
 {% block logo %}
-  <div class="logo">
-    {{ aposSingleton({ slug: 'global:logo', type: 'image', area: global.areas.logo, edit: edit }) }}
+  <div class="logo-container">
+    <a class="drwc-logo" href="/"></a>
   </div>
-  <h1 class="page-title"><a href="/">Apostrophe Sandbox</a></h1>
 {% endblock %}
 
 {% block mainNav %}
-  <ul class="tabs">
+  <ul class="tabs clearfix">
     {% for tab in tabs %}
-      <li><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
+      <li class="tab"><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
     {% endfor %}
   </ul>
+{% endblock %}
+
+{% block subnav %}
+  <div class="subnav">
+    <ol class="children">
+    {% for relative in page.children %}
+      <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
+    {% endfor %}
+    </ol>
+  </div>
 {% endblock %}
 
 {% block headerBody %}
@@ -35,6 +44,7 @@ Apostrophe Sandbox: {{ page.title | e }}
     {% for relative in page.ancestors %}
       <li><a href="{{ relative.url }}">{{ relative.title | e }} &raquo;&nbsp;</a></li>
     {% endfor %}
+
     {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
     {# will want to make the greedy page itself a link and add more li's #}
     {% block extraBreadcrumbs %}
@@ -43,8 +53,14 @@ Apostrophe Sandbox: {{ page.title | e }}
   </ol>
 {% endblock %}
 
+{% block banner %}
+  <div class="banner">
+    
+  </div>
+{% endblock %}
+
 {% block footer %}
   {# Shared footer, no page URL in the slug #}
-  {{ aposArea({ slug: 'global:footer', area: global.areas.footer, edit: edit }) }}
+  {#{{ aposArea({ slug: 'global:footer', area: global.areas.footer, edit: edit }) }}#}
   {{ super() }}
 {% endblock %}

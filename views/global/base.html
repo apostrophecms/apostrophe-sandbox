@@ -12,9 +12,11 @@
     {% endblock %}
     {% block js %}
       {{ aposScripts() }}
+      {# Site specific js #}
+      <script src="/js/site.js"></script>
     {% endblock %}
   </head>
-  <body class="{% block bodyClass %}{%endblock %}">
+  <body class="{% block bodyClass %}{%endblock %} {% if edit %}logged-in{% else %}logged-out{% endif %}">
     {% block beforeBody %}
     {% endblock %}
 
@@ -28,7 +30,7 @@
         apos.enablePlayers();
       });
     </script>
-    {# Must be present in the page in order to use apos's widget editors #}
+    {# Must be present in the page in order to use apos's widget editors, admin dialogs, etc. #}
     {{ aposTemplates() }}
   </body>
 </html>

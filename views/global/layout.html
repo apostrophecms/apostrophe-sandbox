@@ -4,50 +4,57 @@
 
 {% block body %}
   {% block adminBar %}
-    <div class="apos-admin-bar">
-      <div class="apos-admin-bar-inner">
-        <div class="apos-logo-tiny">
-          A
-        </div>
+    {% if doNotEdit %}
+      <div class="do-not-edit">
+        This is the staging version of this site. Any changes you make to the content should be for <strong>testing purposes only.</strong>
+      </div>
+    {% endif %}
+    {# For the sandbox demo we show a login link, but usually this whole bar is hidden #}
+    {# {% if edit or editSnippet or editBlogPost or editMapLocation %} #}
+      <div class="apos-admin-bar">
+        <div class="apos-admin-bar-inner">
+          <div class="apos-logo-tiny">
+            A
+          </div>
 
-        {{ aposEditPage({ page: page, edit: edit }) }}
-        {{ aposEditBlog({ edit: blogger }) }}
+          {{ aposPagesMenu({ page: page, edit: edit }) }}
+          {{ aposSnippetMenu({ edit: editSnippet }) }}
+          {{ aposBlogMenu({ edit: editBlogPost }) }}
+          {{ aposMapMenu({ edit: editMapLocation }) }}
 
-        <div class="apos-admin-bar-item apos-preview-toggle">
-          <i class="icon-eye"></i>
-          <i class="icon-wrench"></i>
-        </div>
+          <div class="apos-admin-bar-item apos-preview-toggle">
+            <i class="icon-eye"></i>
+            <i class="icon-wrench"></i>
+          </div>
 
-        <div class="apos-admin-bar-item login-status">
-          {% if user %}
-            <a class="apos-button" href="/logout">Log Out</a>
-          {% else %}
-            <a class="apos-button" href="/login">Log In to Edit</a>
-            <p>Username: admin<br />Password: demo</p>
-          {% endif %}
+          <div class="apos-admin-bar-item login-status">
+            {% if user %}
+              <a class="apos-button" href="/logout">Log Out</a>
+            {% else %}
+              <a class="apos-button" href="/login">Log In to Edit</a>
+              <p>Username: admin<br />Password: demo</p>
+            {% endif %}
+          </div>
         </div>
       </div>
-    </div>
+      <script type="text/javascript">
+        //THIS NEEDS TO BE MOVED SOMEWHERE!!!!!!!!!!
+        $('.apos-accordion-title').click(function(event){
+          $(this).parent().find('.apos-accordion-items').toggleClass('open');
+        });
 
-    <script type="text/javascript">
-      //THIS NEEDS TO BE MOVED SOMEWHERE!!!!!!!!!!
-      $('.apos-accordion-title').click(function(event){
-        $(this).parent().find('.apos-accordion-items').toggleClass('open');
-      });
-
-      $('.apos-preview-toggle').click(function(event){
-        $('.apos-preview-toggle').toggleClass('previewing');
-        $('body').toggleClass('previewing');
-      });
-
-    </script>
+        $('.apos-preview-toggle').click(function(event){
+          $('.apos-preview-toggle').toggleClass('previewing');
+          $('body').toggleClass('previewing');
+        });
+      </script>
+    {# {% endif %} #}
   {% endblock %}
 
-  
-
   <div class="header">
-    <div class="header-inner clearfix">
+    <div class="inner">
       {% block logo %}
+
       {% endblock %}
 
       {% block mainNav %}
@@ -64,8 +71,19 @@
 {% block breadcrumbs %}
 {% endblock %}
 
-<div class="content-wrapper clearfix">
-  <div class="content-inner">
+
+<div class="marquee">
+
+  {% block marquee %}
+
+  {% endblock %}
+
+</div>
+
+<div class="page-wrapper">
+  {% block fullWidth %}
+  {% endblock %}
+  <div class="content">
     <div class="banner">
       {% block banner %}
       {% endblock %}
@@ -77,23 +95,43 @@
       </div>
     {% endblock %}
 
-    <div class="sidebar">
-      {% block sidebar %}
+    <div class="main">
+      {% block main %}
       {% endblock %}
     </div>
 
-    <div class="main">
-      {% block main %}
+    <div class="sidebar">
+      {% block sidebar %}
       {% endblock %}
     </div>
   </div>
 </div>
 
-  <div class="footer">
+
+  <footer class="footer">
     {% block footer %}
-      Apostrophe is in beta. Please open issues on 
-      <a href="http://github.com/punkave/apostrophe">github</a>.
+    <div class="major">
+      <div class="inner">
+        <div class="tweets">
+          {% block footerTwitter %}
+            <h5>Recent Tweets</h5>
+            {{ aposSingleton({ slug: 'global:tweets', type: 'twitter', area: global.areas.tweets, edit: edit }) }}
+          {% endblock %}
+        </div>
+      </div>
+
+    </div>
+    <div class="minor">
+      <div class="inner">
+        <div class="copyright">
+          {% block footerCopyright %}
+            © 2012-2013 P'unk Avenue LLC
+          {% endblock %}
+        </div>
+      </div>
+    </div>
     {% endblock %}
-  </div>
+  </footer>
+
 {% endblock %}
 
