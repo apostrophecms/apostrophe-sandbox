@@ -122,6 +122,11 @@ function initApos(callback) {
   function initAposMap(callback) {
     map = require('apostrophe-map')({ apos: apos, pages: pages, app: app, dirs: [ __dirname+'/overrides/apostrophe-map' ] }, callback);
     pages.addType(map);
+    // Start the background geocoder.
+    //
+    // NOTE: if you are using multiple processes and/or servers,
+    // call this from only ONE to avoid exceeding Google's rate limits
+    map.geocoder();
   }
 }
 
