@@ -97,7 +97,8 @@ function initApos(callback) {
       permissions: aposPermissions,
       locals: local.locals,
       // Allows us to extend shared layouts
-      partialPaths: [ __dirname + '/views/global' ]
+      partialPaths: [ __dirname + '/views/global' ],
+      minify: local.minify
     }, callback);
   }
 
