@@ -87,7 +87,7 @@ function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap, initAposAppAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -127,6 +127,15 @@ function initApos(callback) {
     // NOTE: if you are using multiple processes and/or servers,
     // call this from only ONE to avoid exceeding Google's rate limits
     map.geocoder();
+  }
+
+  function initAposAppAssets(callback) {
+    pushAsset('stylesheet', 'site');
+    pushAsset('script', 'site');
+    return callback();
+    function pushAsset(type, name) {
+      return apos.pushAsset(type, name, __dirname, '');
+    }
   }
 }
 
