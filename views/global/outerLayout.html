@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{# HTML with typical page structure, not necessarily an apostrophe-pages page document #}
+
+{% block body %}
+  {% block adminBar %}
+    {% if doNotEdit %}
+      <div class="do-not-edit">
+        This is the staging version of this site. Any changes you make to the content should be for <strong>testing purposes only.</strong>
+      </div>
+    {% endif %}
+    {# For the sandbox demo we show a login link, but usually this whole bar is hidden #}
+    {# {% if edit or editSnippet or editBlogPost or editMapLocation %} #}
+      <div class="apos-admin-bar">
+        <div class="apos-admin-bar-inner">
+          <div class="apos-logo-tiny">
+            A
+          </div>
+
+          {{ aposPagesMenu({ page: page, edit: edit }) }}
+          {{ aposSnippetMenu({ edit: editSnippet }) }}
+          {{ aposBlogMenu({ edit: editBlogPost }) }}
+          {{ aposMapMenu({ edit: editMapLocation }) }}
+
+          <div class="apos-admin-bar-item apos-preview-toggle">
+            <i class="icon-eye"></i>
+            <i class="icon-wrench"></i>
+          </div>
+
+          <div class="apos-admin-bar-item login-status">
+            {% if user %}
+              <a class="apos-button" href="/logout">Log Out</a>
+            {% else %}
+              <a class="apos-button" href="/login">Log In to Edit</a>
+              <p>Username: admin<br />Password: demo</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {# {% endif %} #}
+  {% endblock %}
+
+  {# "Why are you doing this? Why not just have the inner layout extend the outer one?" #}
+  {# Because nunjucks doesn't yet support conditional extends and we want to support #}
+  {# AJAX refreshes of the main content area. -Tom #}
+
+  <div class="apos-refreshable" data-apos-refreshable>
+    {{ content }}
+  </div>
+
+{% endblock %}
+

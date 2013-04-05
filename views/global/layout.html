@@ -1,72 +1,24 @@
-{% extends "base.html" %}
-
 {# HTML with typical page structure, not necessarily an apostrophe-pages page document #}
 
-{% block body %}
-  {% block adminBar %}
-    {% if doNotEdit %}
-      <div class="do-not-edit">
-        This is the staging version of this site. Any changes you make to the content should be for <strong>testing purposes only.</strong>
-      </div>
-    {% endif %}
-    {# For the sandbox demo we show a login link, but usually this whole bar is hidden #}
-    {# {% if edit or editSnippet or editBlogPost or editMapLocation %} #}
-      <div class="apos-admin-bar">
-        <div class="apos-admin-bar-inner">
-          <div class="apos-logo-tiny">
-            A
-          </div>
+{# DO NOT REMOVE. We pull this out for outerLayout. Temporary until we have conditional extends in nunjucks #}
+<!-- APOS-BODY-CLASS {% block bodyClass %}{% endblock %} -->
 
-          {{ aposPagesMenu({ page: page, edit: edit }) }}
-          {{ aposSnippetMenu({ edit: editSnippet }) }}
-          {{ aposBlogMenu({ edit: editBlogPost }) }}
-          {{ aposMapMenu({ edit: editMapLocation }) }}
+<div class="header">
+  <div class="inner">
+    {% block logo %}
 
-          <div class="apos-admin-bar-item apos-preview-toggle">
-            <i class="icon-eye"></i>
-            <i class="icon-wrench"></i>
-          </div>
+    {% endblock %}
 
-          <div class="apos-admin-bar-item login-status">
-            {% if user %}
-              <a class="apos-button" href="/logout">Log Out</a>
-            {% else %}
-              <a class="apos-button" href="/login">Log In to Edit</a>
-              <p>Username: admin<br />Password: demo</p>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      <script type="text/javascript">
-        //THIS NEEDS TO BE MOVED SOMEWHERE!!!!!!!!!!
-        $('.apos-accordion-title').click(function(event){
-          $(this).parent().find('.apos-accordion-items').toggleClass('open');
-        });
+    {% block mainNav %}
+    {% endblock %}
 
-        $('.apos-preview-toggle').click(function(event){
-          $('.apos-preview-toggle').toggleClass('previewing');
-          $('body').toggleClass('previewing');
-        });
-      </script>
-    {# {% endif %} #}
-  {% endblock %}
-
-  <div class="header">
-    <div class="inner">
-      {% block logo %}
-
-      {% endblock %}
-
-      {% block mainNav %}
-      {% endblock %}
-
-      {% block headerBody %}
-      {% endblock %}
-    </div>
+    {% block headerBody %}
+    {% endblock %}
   </div>
+</div>
 
-  {% block before %}
-  {% endblock %}
+{% block before %}
+{% endblock %}
 
 {% block breadcrumbs %}
 {% endblock %}
@@ -91,7 +43,6 @@
 
     {% block subnav %}
       <div class="subnav">
-        
       </div>
     {% endblock %}
 
@@ -108,30 +59,28 @@
 </div>
 
 
-  <footer class="footer">
-    {% block footer %}
-    <div class="major">
-      <div class="inner">
-        <div class="tweets">
-          {% block footerTwitter %}
-            <h5>Recent Tweets</h5>
-            {{ aposSingleton({ slug: 'global:tweets', type: 'twitter', area: global.areas.tweets, edit: edit }) }}
-          {% endblock %}
-        </div>
-      </div>
-
-    </div>
-    <div class="minor">
-      <div class="inner">
-        <div class="copyright">
-          {% block footerCopyright %}
-            © 2012-2013 P'unk Avenue LLC
-          {% endblock %}
-        </div>
+<footer class="footer">
+  {% block footer %}
+  <div class="major">
+    <div class="inner">
+      <div class="tweets">
+        {% block footerTwitter %}
+          <h5>Recent Tweets</h5>
+          {{ aposSingleton({ slug: 'global:tweets', type: 'twitter', area: global.areas.tweets, edit: edit }) }}
+        {% endblock %}
       </div>
     </div>
-    {% endblock %}
-  </footer>
 
-{% endblock %}
+  </div>
+  <div class="minor">
+    <div class="inner">
+      <div class="copyright">
+        {% block footerCopyright %}
+          © 2012-2013 P'unk Avenue LLC
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+</footer>
 
