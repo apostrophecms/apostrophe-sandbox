@@ -112,17 +112,14 @@ function initApos(callback) {
 
   function initAposSnippets(callback) {
     snippets = require('apostrophe-snippets')({ apos: apos, pages: pages, app: app }, callback);
-    pages.addType(snippets);
   }
 
   function initAposBlog(callback) {
     blog = require('apostrophe-blog')({ apos: apos, pages: pages, app: app }, callback);
-    pages.addType(blog);
   }
 
   function initAposMap(callback) {
     map = require('apostrophe-map')({ apos: apos, pages: pages, app: app, dirs: [ __dirname+'/overrides/apostrophe-map' ] }, callback);
-    pages.addType(map);
     // Start the background geocoder.
     //
     // NOTE: if you are using multiple processes and/or servers,
