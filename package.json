@@ -22,6 +22,7 @@
     "apostrophe-twitter": "0.x",
     "apostrophe-pages": "0.x",
     "apostrophe-blog": "0.x",
+    "apostrophe-events": "0.x",
     "apostrophe-snippets": "0.x",
     "apostrophe-map": "0.x",
     "underscore": "~1.4.4"
