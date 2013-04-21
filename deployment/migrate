@@ -19,5 +19,7 @@ ln -s ../../data $HERE/data
 mkdir -p ../../uploads
 ln -s ../../../uploads $HERE/public/uploads
 
+node app.js apostrophe:migrate
+
 echo "Site migrated"
 

@@ -17,7 +17,7 @@ Apostrophe Sandbox: {{ page.title | e }}
 
 {% block mainNav %}
   <ul class="tabs clearfix">
-    {% for tab in tabs %}
+    {% for tab in page.tabs %}
       <li class="tab"><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
     {% endfor %}
   </ul>

@@ -61,7 +61,6 @@ var options = {
 
   ready: function(appArg, dbArg)
   {
-    console.log('ready');
     app = appArg;
     db = dbArg;
 
@@ -124,7 +123,7 @@ function initApos(callback) {
     //
     // NOTE: if you are using multiple processes and/or servers,
     // call this from only ONE to avoid exceeding Google's rate limits
-    map.geocoder();
+    map.startGeocoder();
   }
 
   function initAposAppAssets(callback) {
@@ -147,25 +146,10 @@ function setRoutes(callback) {
 
   app.get('*', pages.serve({
     templatePath: __dirname + '/views/pages',
+    tabOptions: { depth: 2 },
     load: [
       // Load the global virtual page with things like the shared footer
       'global',
-
-      // Load descendants of the home page (tabs). TODO: refactor this into the
-      // pages module, but it's cool to show how it's done. Make sure we use
-      // req.bestPage as there may be only a partial match which the blog
-      // load function later decides is valid
-
-      function(req, callback) {
-        if (!req.bestPage) {
-          return callback(null);
-        }
-        pages.getDescendants(req.bestPage.ancestors[0] ? req.bestPage.ancestors[0] : req.bestPage, { depth: 1 }, function(err, pages) {
-          req.extras.tabs = pages;
-          return callback(err);
-        });
-      },
-
       snippets.loader,
       blog.loader,
       map.loader
@@ -178,6 +162,11 @@ function setRoutes(callback) {
 function listen(err) {
   if (err) {
     throw err;
+  }
+  // Command line tasks
+  if (apos.startTask()) {
+    // Chill and let the task run until it's done, don't try to listen or exit
+    return;
   }
   appy.listen();
 }
