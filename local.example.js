@@ -4,8 +4,8 @@
 // deployments in our stagecoach recipe
 
 module.exports = {
-  // Set as appropriate to the host domain
-  uploadsUrl: 'http://localhost:3000/uploads',
+  // Absolute URL is only necessary with s3
+  uploadsUrl: '/uploads',
   locals: {
     // Warning not to edit content with an expectation of keeping it on this server, for staging servers
     doNotEdit: false

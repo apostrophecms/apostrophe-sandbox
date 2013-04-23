@@ -4,15 +4,17 @@
 
 {% block main %}
 
-  {# Demonstrate singletons: areas that must feature one and only one #}
-  {# widget of a specified type #}
-
-  {# Demonstrate how to test for an empty singleton #}
-  {% if (not edit) and aposSingletonIsEmpty({ area: page.areas.sidebarVideo, type: 'video' }) %}
-    <p>No one has selected a featured video yet.</p>
-  {% else %}
-    <h4>Featured Video</h4>
-    {{ aposSingleton({ slug: slug + ':sidebarVideo', type: 'video', area: page.areas.sidebarVideo, edit: edit }) }}  
+  {# Commented this out because it's confusing in this context, but it's #}
+  {# a good demo of singleton widgets of a fixed type. #}
+  {% if false %}
+    {# Demonstrate singletons: areas that must feature one and only one #}
+    {# widget of a specified type #}
+    {% if (not edit) and aposSingletonIsEmpty({ area: page.areas.sidebarVideo, type: 'video' }) %}
+      <p>No one has selected a featured video yet.</p>
+    {% else %}
+      <h4>Featured Video</h4>
+      {{ aposSingleton({ slug: slug + ':sidebarVideo', type: 'video', area: page.areas.sidebarVideo, edit: edit }) }}
+    {% endif %}
   {% endif %}
   {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
 

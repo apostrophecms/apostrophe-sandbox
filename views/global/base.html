@@ -2,9 +2,13 @@
 <html lang="en">
   <head>
     <title>
-      {% block title %}
-        Apostrophe Sandbox
-      {% endblock %}
+      {%- block title -%}
+        {%- if title -%}
+          {{ title }}
+        {%- else -%}
+          Apostrophe
+        {%- endif -%}
+      {%- endblock -%}
     </title>
     {% block css %}
       {{ aposStylesheets() }}
