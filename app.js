@@ -152,7 +152,8 @@ function setRoutes(callback) {
       'global',
       snippets.loader,
       blog.loader,
-      map.loader
+      map.loader,
+      pages.searchLoader
     ]
   }));
 

@@ -1,0 +1,76 @@
+{% extends "pageLayout.html" %}
+
+{% block bodyClass %}{{ super() }} default-page{% endblock %}
+
+{# Output the current content of the page, with buttons to edit it #}
+
+  {# Demonstrate how to test for an empty area #}
+  {% if (not edit) and aposAreaIsEmpty({ area: page.areas.main }) %}
+    <p>No one has entered content here yet.</p>
+  {% endif %}
+
+
+{% block subnav %}
+
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+{% block marquee %}
+  
+    <ol class="breadcrumbs ancestors clearfix">
+      {% for relative in page.ancestors %}
+        <li><a href="{{ relative.url }}">{{ relative.title | e }} &raquo;&nbsp;</a></li>
+      {% endfor %}
+
+      {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
+      {# will want to make the greedy page itself a link and add more li's #}
+      {% block extraBreadcrumbs %}
+      <li>{{ page.title | e }}</li>
+      {% endblock %}
+    </ol>
+  <h1 class="page-title">{{ page.title | e }}</h1>
+
+{% endblock %}
+
+{% block main %}
+
+  {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
+
+  {# Form refers to self via "" #}
+  <form class="apos-search-form" method="GET" action="">
+    Search For: <input name="q" value="{{ q | e }}" /> <input type="submit" />
+  </form>
+
+  {% if search %}
+    <h3>Search Results</h3>
+    <p>
+      <input type="checkbox" name="page" checked class="apos-search-filter" /> Pages
+      <input type="checkbox" name="mapLocation" checked class="apos-search-filter" /> Places
+      <input type="checkbox" name="event" checked class="apos-search-filter" /> Events
+      <input type="checkbox" name="blogPost" checked class="apos-search-filter" /> Articles
+    </p>
+    <ul>
+      {% for result in search %}
+        <li data-type="{{ result.type }}" class="apos-result apos-result-{{ result.type }}">
+          <h4>
+            <a href="/apos-pages/search-result?slug={{ result.slug }}">{{ result.title | e }}</a></h4>
+          <p>{{ result.searchSummary }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h4>No matches. Try a less specific search.</h4>
+  {% endif %}
+
+{% endblock %}
+
+{% block sidebar %}
+  <div class="subnav">
+    <h2>Subnavigation</h2>
+    <ol class="children">
+    {% for relative in page.children %}
+      <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
+    {% endfor %}
+    </ol>
+  </div>
+{% endblock %}

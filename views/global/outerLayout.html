@@ -27,6 +27,16 @@
             <i class="icon-wrench"></i>
           </div>
 
+          <div class="apos-admin-bar-item apos-search">
+            <form action="/search">
+              {# Please do not put back a default value here unless #}
+              {# you have an implementation that really works for typical #}
+              {# user interactions like selecting it or typing over it. -Tom #}
+              Search: <input type="text" name="q" value="" class="search-field" />
+              <input type="submit" class="search-submit" value="Go" />
+            </form>
+          </div>
+
           <div class="apos-admin-bar-item login-status">
             {% if user %}
               <a class="apos-button" href="/logout">Log Out</a>
