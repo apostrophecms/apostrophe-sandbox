@@ -27,6 +27,9 @@ var options = {
           password: 'demo',
           id: 'admin'
         }
+      },
+      template: function(data) {
+        return pages.decoratePageContent({ content: apos.partial('login', data) });
       }
     }
   },
@@ -113,8 +116,23 @@ function initApos(callback) {
     snippets = require('apostrophe-snippets')({ apos: apos, pages: pages, app: app }, callback);
   }
 
+  // We are going to override the default blog templates for this project. If we weren't doing
+  // that, we would initialize the blog engine in this manner:
+  // function initAposBlog(callback) {
+  //   blog = require('apostrophe-blog')({ apos: apos, pages: pages, app: app }, callback);
+  // }
+
+  // We are subclassing the blog module in lib/modules/blog/index.js so that we can supply alternative templates.
   function initAposBlog(callback) {
-    blog = require('apostrophe-blog')({ apos: apos, pages: pages, app: app }, callback);
+    blog = require('./lib/modules/blog/index.js')({
+      apos: apos,
+      pages: pages,
+      app: app,
+      widget: true,
+      browser: {
+        construct: 'MyBlog'
+      }
+    }, callback);
   }
 
   function initAposMap(callback) {

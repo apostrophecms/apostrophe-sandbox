@@ -12,23 +12,27 @@
 {% block subnav %}
 {% endblock %}
 
-
-{% block marquee %}
-  
-  {{ aposSingleton({ slug: slug + ':marqueeSlideshowOne', size: 'full', type: 'slideshow', area: page.areas.marqueeSlideshowOne, edit: edit }) }}
-
+{% block hero %}
+  <div class="block hero">
+    <div class="inner">
+      <div class="hero-text">
+        {# {{ aposArea({ slug: slug + ":heroText", area: page.areas.heroText, edit: edit, controls: ['style', 'bold', 'italic'] }) }} #}
+        <h3>APOSTROPHE</h3>
+        <h4>This is the sandbox! Feel free to log in, play around, and see what it can do.</h4>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
-{% block sidebar %}
-  {# A regular free-form area follows, but with a restricted set of allowed types #}
-  {{ aposArea({ slug: slug + ':sidebar', area: page.areas.sidebar, edit: edit, controls: [ 'style', 'bold', 'italic', 'createLink', 'image', 'video' ] }) }}
-{% endblock %}
+{% block mainContent %}
+  <div class="column main-content-column">
+    {{ aposArea({ slug: slug + ':content1', area: page.areas.content1, edit:edit, slideshow: { aspectRatio: [2, 1] } }) }}
+  </div>
+  <div class="column main-content-column">
+    {{ aposArea({ slug: slug + ':content2', area: page.areas.content2, edit:edit, slideshow: { aspectRatio: [2, 1] } }) }}
+  </div>
+  <div class="column main-content-column">
+    {{ aposArea({ slug: slug + ':content3', area: page.areas.content3, edit:edit, slideshow: { aspectRatio: [2, 1] } }) }}
+  </div>
 
-{% block main %}
-  {# Demonstrate how to test for an empty area #}
-  {% if (not edit) and aposAreaIsEmpty({ area: page.areas.main }) %}
-    <p>No one has entered content here yet.</p>
-  {% else %}
-    {{ aposArea({slug: slug + ':main', area: page.areas.main, edit: edit }) }}
-  {% endif %}
 {% endblock %}

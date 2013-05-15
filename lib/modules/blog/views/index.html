@@ -1,13 +1,15 @@
 {% extends "pageLayout.html" %}
 
-{% block bodyClass %}{{ super() }} home-page{% endblock %}
+{% include "blogMacros.html" %}
+
+{% block bodyClass %}{{ super() }} apos-blog-page{% endblock %}
 
 {# Output the current content of the page, with buttons to edit it #}
 
 
 
+{% block main %}
 
-{% block mainContent %}
   <div class="column">
 
     {% if page.children.length %}
@@ -16,7 +18,8 @@
         {% block subnav %}
           <div class="subnavigation">
             <h4>Subpages</h4>
-            <ol class="default-subpages">
+            <p>Blog posts have tags, and that means you can create a blog subpage that only shows a certain set of tags. Try it out!</p>
+            <ol class="children">
             {% for relative in page.children %}
               <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
             {% endfor %}
@@ -28,15 +31,15 @@
     {% endif %}
 
     <div class="column-element snippet-sidebar">
-      {{ aposArea({ slug: slug + ":content1", area: page.areas.content1, edit: edit }) }}
+      {{ aposArea({ slug: slug + ":sidebar", area: page.areas.sidebar, edit: edit }) }}
     </div>
 
   </div>
 
-
-  <div class="column-2 default-content-area apos-no-height">
-    {{ aposArea({ slug: slug + ':content2', area: page.areas.content2, edit:edit, slideshow: { extraFields: true } }) }}
-  </div>
+  <div class="column-2">
+    <div class="apos-blog-posts">
+      {{ renderBlogPostPreviews(items, page.url) }}
+    </div>
   </div>
 
 {% endblock %}

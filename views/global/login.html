@@ -1,0 +1,46 @@
+{% extends "pageLayout.html" %}
+
+{% block title %}
+Apostrophe Sandbox: Login
+{% endblock %}
+
+{% block bodyClass %}login-page{% endblock %}
+
+{% block headerNavigationBody %}
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block mainContentBody %}
+<div class="apos-login-container">
+
+  <div class="login-logo-container">
+    <a href="/"><div class="login-logo"></div></a>
+  </div>
+
+  <div class="apos-login">
+    <h4>LOGIN</h4>
+    <form action="/login" method="post">
+      <div class="login-inputs">
+        <div class="warning">{{ message }}</div>
+        <div class="login-username">
+          <label>Username (hint: it's 'admin')</label>
+          <input type="text" name="username" />
+        </div>
+        <div class="login-password">
+          <label>Password (hint: it's 'demo')</label>
+          <input type="password" name="password" />
+        </div>
+        <div class="login-submit clearfix">
+          <input type="submit" class="apos-button" value="Log In" />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footerBody %}
+{% endblock %}

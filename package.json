@@ -1,14 +1,15 @@
 {
-  "name": "apostrophe-sandbox",
+  "name": "the-new-sandbox",
   "version": "0.4.0",
   "description": "Sandbox site featuring typical Apostrophe features",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/punkave/apostrophe-sandbox.git"
+    "url": ""
+
   },
   "author": "P'unk Avenue",
   "license": "BSD",

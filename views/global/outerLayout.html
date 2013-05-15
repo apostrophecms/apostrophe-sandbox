@@ -21,13 +21,14 @@
           {{ aposSnippetMenu({ edit: editSnippet }) }}
           {{ aposBlogMenu({ edit: editBlogPost }) }}
           {{ aposMapMenu({ edit: editMapLocation }) }}
+          {% if user %}
+            <div class="apos-admin-bar-item apos-preview-toggle">
+              <i class="icon-eye"></i>
+              <i class="icon-wrench"></i>
+            </div>
+          {% endif %}
 
-          <div class="apos-admin-bar-item apos-preview-toggle">
-            <i class="icon-eye"></i>
-            <i class="icon-wrench"></i>
-          </div>
-
-          <div class="apos-admin-bar-item apos-search">
+          <!-- <div class="apos-admin-bar-item apos-search">
             <form action="/search">
               {# Please do not put back a default value here unless #}
               {# you have an implementation that really works for typical #}
@@ -35,14 +36,13 @@
               Search: <input type="text" name="q" value="" class="search-field" />
               <input type="submit" class="search-submit" value="Go" />
             </form>
-          </div>
+          </div> -->
 
           <div class="apos-admin-bar-item login-status">
             {% if user %}
-              <a class="apos-button" href="/logout">Log Out</a>
+              <a class="apos-button " href="/logout">Log Out</a>
             {% else %}
-              <a class="apos-button" href="/login">Log In to Edit</a>
-              <p>Username: admin<br />Password: demo</p>
+              <a class="apos-button " href="/login">Log In to Edit</a>
             {% endif %}
           </div>
         </div>

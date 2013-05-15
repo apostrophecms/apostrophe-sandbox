@@ -9,16 +9,14 @@ Apostrophe Sandbox: {{ page.title | e }}
 
 {% block bodyClass %}apos-page{% endblock %}
 
-{% block logo %}
-  <div class="logo-container">
-    <a class="drwc-logo" href="/"></a>
-  </div>
-{% endblock %}
-
 {% block mainNav %}
   <ul class="tabs clearfix">
     {% for tab in page.tabs %}
-      <li class="tab"><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
+      {% if tab.slug == page.slug %}
+        <li class="tab current-page"><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
+      {% else %}
+        <li class="tab"><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
+      {% endif %}
     {% endfor %}
   </ul>
 {% endblock %}
@@ -40,22 +38,26 @@ Apostrophe Sandbox: {{ page.title | e }}
 {% endblock %}
 
 {% block breadcrumbs %}
-  <ol class="breadcrumbs ancestors clearfix">
-    {% for relative in page.ancestors %}
-      <li><a href="{{ relative.url }}">{{ relative.title | e }} &raquo;&nbsp;</a></li>
-    {% endfor %}
+<div class="block breadcrumb-nav">
+  <div class="inner">
+    <ol class="breadcrumbs ancestors clearfix">
+      {% for relative in page.ancestors %}
+        <li><a href="{{ relative.url }}">{{ relative.title | e }}</a>&nbsp;/&nbsp;</li>
+      {% endfor %}
 
-    {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
-    {# will want to make the greedy page itself a link and add more li's #}
-    {% block extraBreadcrumbs %}
-    <li>{{ page.title | e }}</li>
-    {% endblock %}
-  </ol>
+      {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
+      {# will want to make the greedy page itself a link and add more li's #}
+      {% block extraBreadcrumbs %}
+      <li>{{ page.title | e }}</li>
+      {% endblock %}
+    </ol>
+  </div>
+</div>
 {% endblock %}
 
 {% block banner %}
   <div class="banner">
-    
+
   </div>
 {% endblock %}
 

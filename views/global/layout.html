@@ -4,84 +4,74 @@
 <!-- APOS-BODY-CLASS {% block bodyClass %}{% endblock %} -->
 <!-- APOS-TITLE {% block title %}{% endblock %} -->
 
-<div class="header">
-  <div class="inner">
-    {% block logo %}
-
-    {% endblock %}
-
-    {% block mainNav %}
-    {% endblock %}
-
-    {% block headerBody %}
-    {% endblock %}
+{% block headerNavigationBody %}
+  <div class="block header">
+    <div class="inner clearfix">
+      <a href="/"><div class="logo"></div></a>
+      <div class="main-navigation">
+        {% block mainNav %}
+        {% endblock %}
+      </div>
+      {% block headerBody %}
+      {% endblock %}
+    </div>
   </div>
-</div>
+{% endblock %}
 
-{% block before %}
+{% block hero %}
 {% endblock %}
 
 {% block breadcrumbs %}
 {% endblock %}
 
-
-<div class="marquee">
-
-  {% block marquee %}
-
-  {% endblock %}
-
-</div>
-
-<div class="page-wrapper">
-  {% block fullWidth %}
-  {% endblock %}
-  <div class="content">
-    <div class="banner">
-      {% block banner %}
-      {% endblock %}
-    </div>
-
-    {% block subnav %}
-      <div class="subnav">
-      </div>
-    {% endblock %}
-
-    <div class="main">
+{% block mainContentBody %}
+  <div class="block main-content">
+    <div class="inner clearfix">
       {% block main %}
+
+        {% block subNav %}
+        {% endblock %}
+
+      {% endblock %}
+      {% block mainContent %}
+
+        {% block before %}
+        {% endblock %}
+
       {% endblock %}
     </div>
-
-    <div class="sidebar">
-      {% block sidebar %}
-      {% endblock %}
-    </div>
   </div>
-</div>
+{% endblock %}
 
-
-<footer class="footer">
-  {% block footer %}
-  <div class="major">
-    <div class="inner">
-      <div class="tweets">
-        {% block footerTwitter %}
-          <h5>Recent Tweets</h5>
-          {{ aposSingleton({ slug: 'global:tweets', type: 'twitter', area: global.areas.tweets, edit: edit }) }}
-        {% endblock %}
+{% block footerBody %}
+  <footer class="block footer">
+    {% block footer %}
+    <div class="major">
+      <div class="inner clearfix">
+        <div class="column">
+          {{ aposArea({ slug: 'global:footerContent1', area: global.areas.footerContent1, edit: edit, controls: ['style', 'italic', 'createLink'] }) }}
+        </div>
+        <div class="column">
+          {{ aposArea({ slug: 'global:footerContent2', area: global.areas.footerContent2, edit: edit, controls: ['style', 'italic', 'createLink'] }) }}
+        </div>
+        <div class="column">
+          {{ aposArea({ slug: 'global:footerContent3', area: global.areas.footerContent3, edit: edit, controls: ['style', 'italic', 'createLink'] }) }}
+        </div>
       </div>
     </div>
-
-  </div>
-  <div class="minor">
-    <div class="inner">
-      <div class="copyright">
-        {% block footerCopyright %}
-          © 2012-2013 P'unk Avenue LLC
-        {% endblock %}
+    <div class="minor">
+      <div class="inner clearfix">
+        <div class="column footer-text">WEBSITES, NOT COFFEE</div>
+        <div class="column">
+          <div class="footer-logos">
+            <a href="http://twitter.com/punkave"><div class="twitter-logo"></div></a>
+            <a href="http://punkave.com"><div class="punk-logo"></div></a>
+            <a href="http://facebook.com/punkave"><div class="facebook-logo"></div></a>
+          </div>
+        </div>
+        <div class="column footer-text">COPYRIGHT &amp; PRIVACY POLICY</div>
       </div>
     </div>
-  </div>
-  {% endblock %}
-</footer>
-
+    {% endblock %}
+  </footer>
+{% endblock %}
