@@ -108,7 +108,8 @@ function initApos(callback) {
     pages = require('apostrophe-pages')({ apos: apos, app: app, types: [
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' },
-      { name: 'home', label: 'Home Page' }
+      { name: 'home', label: 'Home Page' },
+      { name: 'largeSlideshow', label: 'Large Slideshow' }
     ]}, callback);
   }
 
@@ -116,24 +117,22 @@ function initApos(callback) {
     snippets = require('apostrophe-snippets')({ apos: apos, pages: pages, app: app }, callback);
   }
 
-  // We are going to override the default blog templates for this project. If we weren't doing
-  // that, we would initialize the blog engine in this manner:
-  // function initAposBlog(callback) {
-  //   blog = require('apostrophe-blog')({ apos: apos, pages: pages, app: app }, callback);
-  // }
-
-  // We are subclassing the blog module in lib/modules/blog/index.js so that we can supply alternative templates.
   function initAposBlog(callback) {
-    blog = require('./lib/modules/blog/index.js')({
-      apos: apos,
-      pages: pages,
-      app: app,
-      widget: true,
-      browser: {
-        construct: 'MyBlog'
-      }
-    }, callback);
+    blog = require('apostrophe-blog')({ apos: apos, pages: pages, app: app }, callback);
   }
+
+  // We could subclass the blog module in lib/modules/blog/index.js so that we can supply alternative templates.
+  // function initAposBlog(callback) {
+  //   blog = require('./lib/modules/blog/index.js')({
+  //     apos: apos,
+  //     pages: pages,
+  //     app: app,
+  //     widget: true,
+  //     browser: {
+  //       construct: 'MyBlog'
+  //     }
+  //   }, callback);
+  // }
 
   function initAposMap(callback) {
     map = require('apostrophe-map')({ apos: apos, pages: pages, app: app, dirs: [ __dirname+'/overrides/apostrophe-map' ] }, callback);

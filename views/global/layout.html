@@ -1,16 +1,30 @@
-{# HTML with typical page structure, not necessarily an apostrophe-pages page document #}
+{# This serves as our base template; it is rendered inside of the 'apos-refreshable' class in outerLayout.html. #}
+{# This is where we declare the main blocks that our layout is composed of, e.g. header, main, footer, etc. #}
+{# Depending on your needs this is where you would create blocks that you can hook into from other templates, #}
+{# e.g. the extraBreadcrumbs block within the breadcrumbs block. #}
 
 {# DO NOT REMOVE. We pull these out for outerLayout and refresh operations #}
 <!-- APOS-BODY-CLASS {% block bodyClass %}{% endblock %} -->
 <!-- APOS-TITLE {% block title %}{% endblock %} -->
 
-{% block headerNavigationBody %}
+{% block header %}
   <div class="block header">
     <div class="inner clearfix">
       <a href="/"><div class="logo"></div></a>
       <div class="main-navigation">
+
         {% block mainNav %}
+          <ul class="tabs clearfix">
+            {% for tab in page.tabs %}
+              {% if tab.slug == page.slug %}
+                <li class="tab current-page"><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
+              {% else %}
+                <li class="tab"><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
         {% endblock %}
+
       </div>
       {% block headerBody %}
       {% endblock %}
@@ -22,27 +36,42 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-{% endblock %}
+  <div class="block breadcrumb-nav">
+    <div class="inner">
+      <ol class="breadcrumbs ancestors clearfix">
+        {% for relative in page.ancestors %}
+          <li><a href="{{ relative.url }}">{{ relative.title | e }}</a>&nbsp;/&nbsp;</li>
+        {% endfor %}
 
-{% block mainContentBody %}
-  <div class="block main-content">
-    <div class="inner clearfix">
-      {% block main %}
-
-        {% block subNav %}
+        {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
+        {# will want to make the greedy page itself a link and add more li's. #}
+        {# see the apostrophe-blog's show.html for an example of this. #}
+        {% block extraBreadcrumbs %}
+        <li>{{ page.title | e }}</li>
         {% endblock %}
-
-      {% endblock %}
-      {% block mainContent %}
-
-        {% block before %}
-        {% endblock %}
-
-      {% endblock %}
+      </ol>
     </div>
   </div>
 {% endblock %}
 
+{% block main %}
+  <div class="block main-content">
+    <div class="inner clearfix">
+
+      {# most content will be just fine sitting within our 'block' class, but we always #}
+      {# have the option to override the 'main' block if we want a little more control. #}
+      {% block mainContent %}
+      {% endblock %}
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block extraContent %}
+{% endblock %}
+
+{# notice that this footer uses global areas: if we want editable content to appear on every page #}
+{# that inherits this one we want to use the global.areas object instead of the page.areas object. #}
 {% block footerBody %}
   <footer class="block footer">
     {% block footer %}

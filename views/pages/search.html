@@ -1,4 +1,4 @@
-{% extends "pageLayout.html" %}
+{% extends "layout.html" %}
 
 {% block bodyClass %}{{ super() }} default-page{% endblock %}
 
@@ -16,7 +16,7 @@
 
 {% block breadcrumbs %}{% endblock %}
 {% block marquee %}
-  
+
     <ol class="breadcrumbs ancestors clearfix">
       {% for relative in page.ancestors %}
         <li><a href="{{ relative.url }}">{{ relative.title | e }} &raquo;&nbsp;</a></li>

@@ -1,35 +1,35 @@
-{% extends "pageLayout.html" %}
+{% extends "layout.html" %}
 
 {% block bodyClass %}{{ super() }} home-page{% endblock %}
 
 {% block mainContent %}
+
   <div class="column">
 
+    {# let's show a subnav, but only if this page has children #}
     {% if page.children.length %}
-      <div class="column-element">
-
-        {% block subnav %}
-          <div class="subnavigation">
-            <h4>Subpages</h4>
-            <ol class="default-subpages">
-            {% for relative in page.children %}
-              <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
-            {% endfor %}
-            </ol>
+        {% block subNav %}
+          <div class="column-element">
+            <div class="subnavigation">
+              <h4>Subpages</h4>
+              <ol class="default-subpages">
+              {% for relative in page.children %}
+                <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
+              {% endfor %}
+              </ol>
+            </div>
           </div>
         {% endblock %}
-
-      </div>
     {% endif %}
 
-    <div class="column-element snippet-sidebar">
+    <div class="column-element apos-area-sidebar">
       {{ aposArea({ slug: slug + ":content1", area: page.areas.content1, edit: edit }) }}
     </div>
 
   </div>
 
-
   <div class="column-2 default-content-area apos-no-height">
+    {# we're going to enable extraFields here so that an image within the area can have a title and a description. #}
     {{ aposArea({ slug: slug + ':content2', area: page.areas.content2, edit:edit, slideshow: { extraFields: true } }) }}
   </div>
   </div>

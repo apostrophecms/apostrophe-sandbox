@@ -1,22 +1,15 @@
-{% extends "pageLayout.html" %}
+{% extends "layout.html" %}
 
 {% block bodyClass %}{{ super() }} home-page{% endblock %}
 
-{# breadcrumb is excluded from the homepage #}
+{# breadcrumbs are excluded from the homepage #}
 {% block breadcrumbs %}
-{% endblock %}
-
-{# Output the current content of the page, with buttons to edit it #}
-
-{# subnav is excluded from the homepage, tabs suffice #}
-{% block subnav %}
 {% endblock %}
 
 {% block hero %}
   <div class="block hero">
     <div class="inner">
       <div class="hero-text">
-        {# {{ aposArea({ slug: slug + ":heroText", area: page.areas.heroText, edit: edit, controls: ['style', 'bold', 'italic'] }) }} #}
         <h3>APOSTROPHE</h3>
         <h4>This is the sandbox! Feel free to log in, play around, and see what it can do.</h4>
       </div>

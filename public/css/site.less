@@ -475,6 +475,12 @@ ol.children
   width: 65.462%;
 }
 
+.full-width-column
+{
+  float: left;
+  width: 100%;
+}
+
 .footer
 {
 
@@ -784,7 +790,7 @@ ol.children
   }
 }
 
-.snippet-sidebar
+.apos-area-sidebar
 {
   background: #f4f4f4;
 
@@ -1026,6 +1032,256 @@ ol.children
       display: block;
       margin-bottom: 3px;
       margin-top: 10px;
+    }
+  }
+}
+
+.large-slideshow
+{
+  height: 50%;
+  // overflow: hidden;
+
+  .apos-widget ul
+  {
+    display: block;
+    height: 50%;
+  }
+}
+
+.large-slideshow-content-area, .map-content-area
+{
+
+  .apos-area .apos-content, .apos-editable
+  {
+    background-color: #f4f4f4;
+    padding: 33px;
+
+    h3, h4, h5, h6
+    {
+      text-align: center;
+      font-family: Montserrat;
+      font-weight: 700;
+      // font-size: 200%;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+
+      a
+      {
+        text-decoration: none;
+      }
+    }
+
+    h3
+    {
+      font-size: 200%;
+    }
+
+    h6
+    {
+      text-align: center;
+      font-family: Chivo;
+      font-style: italic;
+      font-size: 75%;
+    }
+  }
+}
+
+.map-content-area
+{
+  margin-bottom: 33px;
+}
+
+// ----------------------------------MAP STUFF------------------------------------//
+
+.Montserrat-Title(@size: 100%)
+{
+  font-family: Montserrat;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: @size;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.map-locations
+{
+  list-style-type: none;
+
+  .map-location, li
+  {
+    position: relative;
+    background: #f4f4f4;
+    padding: 30px 30px 30px 80px;
+    margin-bottom: 10px;
+    &:not(.map-show-page)
+    {
+      cursor: pointer;
+      &:hover { background-color: #e4e4e4; }
+    }
+
+
+
+    .apos-location-list-title
+    {
+      .Montserrat-Title(125%);
+    }
+
+    .apos-location-list-description
+    {
+      padding: 20px 0;
+      color: #616161;
+    }
+
+    a
+    {
+      color: #212121;
+      text-decoration: none;
+
+      &:hover
+      {
+        color: lighten(#212121, 10%);
+      }
+    }
+
+    &:before
+    {
+      content: " ";
+      position: absolute;
+      z-index: auto;
+      top: 35px;
+      left: 30px;
+      width: 10px;
+      height: 10px;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      background: #fff;
+      border: solid 5px #212121;
+    }
+  }
+}
+
+.apos-map-page-title
+{
+  .Montserrat-Title(200%);
+  h3 { margin-bottom: 33px; }
+  a
+  {
+    text-decoration: none;
+    &:hover
+    {
+      color: lighten(#212121, 10%);
+    }
+  }
+}
+
+.apos-map-location-info-box
+{
+  background: #212121;
+  padding-bottom: 20px;
+  margin-left: 5px;
+  box-shadow: 5px 5px 5px rgba(33, 33, 33, 0.25);
+
+  .apos-location-image
+  {
+    display: none;
+  }
+
+  .apos-location-content
+  {
+    &:before
+    {
+      content: ' ';
+      position: absolute;
+      left: -15px;
+      top: 125px;
+      background: transparent;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent #212121 transparent transparent ;
+      border-width: 10px 10px 10px 10px;
+    }
+
+    color: #fff;
+    font-family: Montserrat;
+
+    h2
+    {
+      background-image: url('/images/map_infobox_bg_blur.png');
+      background-size: cover;
+      font-weight: 700;
+      font-size: 150%;
+      margin-bottom: 10px;
+      padding: 24px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    p, a
+    {
+      font-weight: 400;
+      font-size: 80%;
+      padding: 0 10px 0 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h5, .apos-infobox-description
+    {
+      display: none;
+    }
+
+    .apos-more-button
+    {
+      margin-left: 15px;
+      padding: 8px;
+      background: #f4f4f4;
+      text-transform: uppercase;
+      font-size: 50%;
+      color: #212121;
+      text-decoration: none;
+    }
+  }
+}
+
+.apos-map-marker
+{
+  position: absolute;
+  z-index: auto;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #fff;
+  border: solid 5px #212121;
+}
+
+.apos-pager
+{
+  float: left;
+  margin: 0;
+
+  .apos-pager-number
+  {
+    background: #f4f4f4;
+    padding: 10px;
+    .Montserrat-Title(100%);
+
+    a
+    {
+      text-decoration: none;
+      &:hover { color: lighten(#212121, 10%); }
+    }
+
+    &.apos-active
+    {
+      background: #fff;
     }
   }
 }
