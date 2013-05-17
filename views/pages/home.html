@@ -26,13 +26,28 @@
 
 {% block mainContent %}
   <div class="column main-content-column">
-    {{ aposArea({ slug: slug + ':content1', area: page.areas.content1, edit:edit, slideshow: { aspectRatio: [2, 1] } }) }}
+    <div class="column-element">
+      {{ aposSingleton({ slug: slug + ':image1', area: page.areas.image1, edit:edit, type: 'slideshow', aspectRatio: [2, 1] }) }}
+    </div>
+    <div class="column-element">
+      {{ aposArea({ slug: slug + ':content1', area: page.areas.content1, edit:edit, slideshow: { aspectRatio: [2, 1] } }) }}
+    </div>
   </div>
   <div class="column main-content-column">
-    {{ aposArea({ slug: slug + ':content2', area: page.areas.content2, edit:edit, slideshow: { aspectRatio: [2, 1] } }) }}
+    <div class="column-element">
+      {{ aposSingleton({ slug: slug + ':image2', area: page.areas.image2, edit:edit, type: 'slideshow', aspectRatio: [2, 1] }) }}
+    </div>
+    <div class="column-element">
+      {{ aposArea({ slug: slug + ':content2', area: page.areas.content2, edit:edit, slideshow: { aspectRatio: [2, 1] } }) }}
+    </div>
   </div>
   <div class="column main-content-column">
-    {{ aposArea({ slug: slug + ':content3', area: page.areas.content3, edit:edit, slideshow: { aspectRatio: [2, 1] } }) }}
+    <div class="column-element">
+      {{ aposSingleton({ slug: slug + ':image3', area: page.areas.image3, edit:edit, type: 'slideshow', aspectRatio: [2, 1] }) }}
+    </div>
+    <div class="column-element">
+      {{ aposArea({ slug: slug + ':content3', area: page.areas.content3, edit:edit, slideshow: { aspectRatio: [2, 1] } }) }}
+    </div>
   </div>
 
 {% endblock %}

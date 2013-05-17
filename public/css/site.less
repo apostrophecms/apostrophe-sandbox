@@ -337,9 +337,14 @@ ol.children
       margin-left: 20px;
       display: inline-block;
 
+      -moz-transition: background-color 0.3s ease;
+      -webkit-transition: background-color 0.3s ease;
+      -o-transition: background-color 0.3s ease;
+      // transition: background-color 0.3s ease;
+
       &:hover
       {
-        background: #f4f4f4;
+        background-color: #f4f4f4;
       }
 
       &.current-page
@@ -423,13 +428,26 @@ ol.children
       letter-spacing: 2px;
     }
 
-    pre
+    .apos-area .apos-content > div
     {
-      white-space: normal;
-      padding: 0 1em;
-      line-height: 2em;
+      padding: 0 1em 1em 1em;
+    }
+
+    .apos-singleton .apos-slideshow .apos-slideshow-items
+    {
+      display: block;
+    }
+
+    .column-element
+    {
+      margin-bottom: 0;
     }
   }
+}
+
+.apos-blog-post-page .apos-refreshable .main-content
+{
+  padding-bottom: 0;
 }
 
 .column
@@ -642,6 +660,8 @@ ol.children
     line-height: 2em;
   }
 
+
+
   .children
   {
     padding-bottom: 1em;
@@ -801,6 +821,16 @@ ol.children
       font-size: 80%;
       white-space: normal;
       padding: 0 1.5em 1em 1.5em;
+      line-height: 2em;
+    }
+
+    .apos-normal-view .apos-content > div:not(.apos-widget), .apos-editable
+    {
+      padding: 0 1em 1em 1em;
+      font-family: Chivo;
+      font-style: italic;
+      font-size: 14px;
+      white-space: normal;
       line-height: 2em;
     }
   }
