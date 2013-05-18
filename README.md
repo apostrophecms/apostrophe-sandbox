@@ -18,7 +18,7 @@ Mac developers can install imagemagick via MacPorts. Your production server will
 
 ## Configuration
 
-Create a `data` folder (this is ignored by git). Copy `local.example.js` to `data/local.js`. Edit the `uploadsUrl` setting if you will be configuring the site to respond somewhere other than `http://localhost:3000`. Note that this file should be excluded from your deployments so that your production server can have different settings. (There are other approaches to that problem of course, such as environment variables as popularly used on Heroku. We plan to migrate to a strategy that is more Heroku-friendly. You can do so yourself very easily by editing `app.js`.)
+Create a `data` folder (this is ignored by git). Copy `local.example.js` to `data/local.js`.  Note that this file should be excluded from your deployments so that your production server can have different settings. (There are other approaches to that problem of course, such as environment variables as popularly used on Heroku. We plan to migrate to a strategy that is more Heroku-friendly. You can do so yourself very easily by editing `app.js`.)
 
 ## Database Bootstrap
 
