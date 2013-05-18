@@ -14,6 +14,8 @@ var map;
 // See local.example.js
 var local = require('./data/local.js');
 
+local.db = local.db || {};
+
 var options = {
   // Don't bother with viewEngine, we'll use apos.partial() if we want to
   // render anything directly
