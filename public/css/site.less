@@ -1,15 +1,16 @@
 @import 'reset.less';
+@import 'responsive.less';
 
 .clearfix{zoom:1;}.clearfix:after,.clearfix:before{content:"\0020";display:block;height:0;visibility:hidden;}
 .clearfix:after{clear:both;}
 
-// google fonts!
+// normally we'd have font import statements here however it's
+// conflicting with our CSS minifier so they're in the <head> explicitly for now.
+
+// For reference, the following fonts are available:
 // Montserrat Regular (400) and Bold (700)
-@import url('http://fonts.googleapis.com/css?family=Montserrat:400,700');
 // Chivo Italic 400
-@import url('http://fonts.googleapis.com/css?family=Chivo:400italic');
-// Inika Regular 400
-@import url('http://fonts.googleapis.com/css?family=Inika');
+// Inika Regular (400) and Bold (700)
 
 
 body
@@ -1285,5 +1286,3 @@ ol.children
     }
   }
 }
-
-@import 'responsive.less';

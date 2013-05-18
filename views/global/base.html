@@ -10,6 +10,13 @@
         {%- endif -%}
       {%- endblock -%}
     </title>
+
+    {# this is a temporary solution to the problem of having #}
+    {# @import statements in the middle of minified CSS #}
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Chivo:400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Inika:400,700' rel='stylesheet' type='text/css'>
+
     {% block css %}
       {{ aposStylesheets() }}
     {% endblock %}
