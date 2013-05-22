@@ -1,5 +1,5 @@
 @import 'reset.less';
-@import 'responsive.less';
+
 
 .clearfix{zoom:1;}.clearfix:after,.clearfix:before{content:"\0020";display:block;height:0;visibility:hidden;}
 .clearfix:after{clear:both;}
@@ -1049,7 +1049,7 @@ ol.children
   }
 }
 
-.large-slideshow-content-area, .map-content-area
+.large-slideshow-content-area, .map-content-area, .onecolumn
 {
 
   .apos-area .apos-content, .apos-editable
@@ -1283,6 +1283,256 @@ ol.children
     &.apos-active
     {
       background: #fff;
+    }
+  }
+}
+
+// ==================================================================================
+// ==================================================================================
+// RESPONSIVE STYLES
+// ==================================================================================
+// ==================================================================================
+
+@media all and (max-width: 768px) and (min-width: 500px)
+{
+  .header
+  {
+    .logo
+    {
+      float: none;
+      margin: 0 auto;
+    }
+
+    .tabs
+    {
+      float: none;
+      margin: 0 auto;
+      text-align: center;
+      padding-bottom: 0;
+
+      li, .tab
+      {
+        // float: none;
+        margin: 0;
+      }
+    }
+  }
+
+  .hero
+  {
+    height: 400px;
+
+    .hero-text
+    {
+      max-width: 356px;
+      h3
+      {
+        font-size: 250%;
+      }
+      h4
+      {
+        font-size: 90%;
+      }
+    }
+  }
+  .footer
+  {
+    .footer-text
+    {
+      font-size: 50%;
+    }
+  }
+
+  .apos-blog-posts .apos-blog-post-preview .apos-blog-post .apos-blog-title
+  {
+    h4
+    {
+      font-size: 150%;
+    }
+  }
+
+  .default-content-area
+  {
+    .apos-content, .apos-editable
+    {
+      h3
+      {
+        font-size: 200%;
+        padding: 33px;
+        &:after
+        {
+          bottom: 15px;
+        }
+      }
+
+      .apos-right, .apos-left, .apos-one-half
+      {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 500px)
+{
+  .header
+  {
+    .logo
+    {
+      float: none;
+      margin: 0 auto;
+    }
+
+    .tabs
+    {
+      float: none;
+      display: block;
+      padding-bottom: 0;
+
+      li, .tab
+      {
+        display: block;
+        margin: 0;
+        text-align: center;
+        padding: 15px;
+        background-color: @blue;
+        margin-top: 2px;
+        a { color: #fff; }
+        a:hover { color: @blue; }
+        &:hover {
+          a { color: @blue; }
+        }
+
+        &.current-page
+        {
+          background: #f4f4f4;
+          a {
+            color: @blue;
+          }
+        }
+      }
+    }
+  }
+
+  .hero
+  {
+    height: 400px;
+
+    .hero-text
+    {
+      margin: 20% auto 0 auto;
+      max-width: 298px;
+
+      h3
+      {
+        font-size: 200%;
+      }
+      h4
+      {
+        font-size: 90%;
+      }
+    }
+  }
+
+  .breadcrumbs li
+  {
+    font-size: 10px;
+  }
+
+  .column, .column-2
+  {
+    width: 100%;
+    margin-bottom: 33px;
+    margin-right: 0;
+  }
+
+  .major
+  {
+    .column
+    {
+      text-align: center;
+    }
+  }
+
+  .minor
+  {
+    .inner
+    {
+      padding: 10px 0;
+    }
+    .footer-text
+    {
+      text-align: center;
+      font-size: 75%;
+
+      &:last-child
+      {
+        text-align: center;
+      }
+    }
+
+    .column
+    {
+      margin-bottom: 0;
+    }
+  }
+
+  .blog-posts .apos-blog-post
+  {
+    padding: 33px 15px;
+  }
+
+  .blog-posts .apos-blog-post .apos-blog-post-heading h4
+  {
+    font-size: 150%;
+  }
+
+  .apos-blog-post-body
+  {
+    padding-bottom: 33px;
+
+    .apos-content
+    {
+      font-size: 90%;
+    }
+  }
+
+  .apos-blog-posts .apos-blog-post-preview .apos-blog-post .apos-blog-title
+  {
+    h4
+    {
+      font-size: 125%;
+    }
+  }
+
+  .default-content-area
+  {
+    .apos-content, .apos-editable
+    {
+      h3
+      {
+        font-size: 200%;
+        padding: 33px;
+        &:after
+        {
+          bottom: 15px;
+        }
+      }
+
+      font-size: 90%;
+
+      .apos-right, .apos-left, .apos-one-half
+      {
+        width: 100%;
+      }
+    }
+  }
+
+  .login-inputs
+  {
+    label
+    {
+      font-size: 75%;
     }
   }
 }
