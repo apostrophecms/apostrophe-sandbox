@@ -9,6 +9,7 @@ var pages;
 var snippets;
 var blog;
 var map;
+var sections;
 
 // Server-specific settings to be merged with options
 // See local.example.js
@@ -91,7 +92,7 @@ function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap, initAposAppAssets], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap, initAposSections, initAposAppAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -110,6 +111,7 @@ function initApos(callback) {
     pages = require('apostrophe-pages')({ apos: apos, app: app, types: [
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' },
+      { name: 'sectioned', label: 'Sectioned' },
       { name: 'home', label: 'Home Page' },
       { name: 'largeSlideshow', label: 'Large Slideshow' }
     ]}, callback);
@@ -137,12 +139,16 @@ function initApos(callback) {
   // }
 
   function initAposMap(callback) {
-    map = require('apostrophe-map')({ apos: apos, pages: pages, app: app, dirs: [ __dirname+'/overrides/apostrophe-map' ] }, callback);
+    map = require('apostrophe-map')({ apos: apos, pages: pages, app: app }, callback);
     // Start the background geocoder.
     //
     // NOTE: if you are using multiple processes and/or servers,
     // call this from only ONE to avoid exceeding Google's rate limits
     map.startGeocoder();
+  }
+
+  function initAposSections(callback) {
+    sections = require('apostrophe-sections')({ apos: apos, app: app }, callback);
   }
 
   function initAposAppAssets(callback) {

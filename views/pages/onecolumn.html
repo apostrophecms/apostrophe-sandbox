@@ -5,9 +5,11 @@
 {# Output the current content of the page, with buttons to edit it #}
 
 {% block main %}
-  {# Demonstrate how to test for an empty area #}
-  {% if (not edit) and aposAreaIsEmpty({ area: page.areas.main }) %}
-    <p>No one has entered content here yet.</p>
-  {% endif %}
-  {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
+  <div class="column">
+    {# Demonstrate how to test for an empty area #}
+    {% if (not edit) and aposAreaIsEmpty({ area: page.areas.main }) %}
+      <p>No one has entered content here yet.</p>
+    {% endif %}
+    {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
+  </div>
 {% endblock %}
