@@ -9,6 +9,7 @@ var pages;
 var snippets;
 var blog;
 var map;
+var people;
 var sections;
 
 // Server-specific settings to be merged with options
@@ -28,12 +29,31 @@ var options = {
         admin: {
           username: 'admin',
           password: 'demo',
-          id: 'admin'
+          _id: 'admin',
+          // Without this login is forbidden
+          login: true
         }
       },
+      // A user is just a snippet page with username and password properties.
+      // (Yes, the password property is hashed and salted.)
+      collection: 'aposPages',
       template: function(data) {
         return pages.decoratePageContent({ content: apos.partial('login', data) });
       }
+    }
+  },
+
+  // Make sure we check the .login flag so people who have profiles but no
+  // login privileges are not allowed to log in
+  beforeSignin: function(user, callback) {
+    if (user.type !== 'person') {
+      // Whaaat the dickens this page is not even a person
+      return callback('error');
+    }
+    if (!user.login) {
+      return callback({ message: 'user does not have login privileges' });
+    } else {
+      return callback(null);
     }
   },
 
@@ -92,7 +112,7 @@ function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap, initAposSections, initAposAppAssets], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap, initAposPeople, initAposSections, initAposAppAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -112,6 +132,7 @@ function initApos(callback) {
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' },
       { name: 'sectioned', label: 'Sectioned' },
+      { name: 'people', label: 'People' },
       { name: 'home', label: 'Home Page' },
       { name: 'largeSlideshow', label: 'Large Slideshow' }
     ]}, callback);
@@ -147,6 +168,15 @@ function initApos(callback) {
     map.startGeocoder();
   }
 
+  function initAposPeople(callback) {
+    people = require('apostrophe-people')({
+      apos: apos,
+      pages: pages,
+      app: app,
+      widget: true
+    }, callback);
+  }
+
   function initAposSections(callback) {
     sections = require('apostrophe-sections')({ apos: apos, app: app }, callback);
   }
@@ -178,6 +208,7 @@ function setRoutes(callback) {
       snippets.loader,
       blog.loader,
       map.loader,
+      people.loader,
       pages.searchLoader
     ]
   }));

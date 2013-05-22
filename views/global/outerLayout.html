@@ -10,7 +10,7 @@
       </div>
     {% endif %}
     {# For the sandbox demo we show a login link all the time, but usually this whole bar is hidden #}
-    {# {% if edit or editSnippet or editBlogPost or editMapLocation %} #}
+    {# {% if edit or editSnippet or editBlogPost or editMapLocation or editPerson or editEvent %} #}
       <div class="apos-admin-bar">
         <div class="apos-admin-bar-inner">
           <div class="apos-logo-tiny">
@@ -21,6 +21,7 @@
           {{ aposSnippetMenu({ edit: editSnippet }) }}
           {{ aposBlogMenu({ edit: editBlogPost }) }}
           {{ aposMapMenu({ edit: editMapLocation }) }}
+          {{ aposPeopleMenu({ edit: editPerson }) }}
           {% if user %}
             <div class="apos-admin-bar-item apos-preview-toggle">
               <i class="icon-eye"></i>
