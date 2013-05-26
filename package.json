@@ -27,6 +27,7 @@
     "apostrophe-snippets": "0.x",
     "apostrophe-map": "0.x",
     "apostrophe-sections": "0.x",
+    "apostrophe-people": "0.x",
     "underscore": "~1.4.4"
   }
 }
