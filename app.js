@@ -193,16 +193,16 @@ function initApos(callback) {
     }, callback);
   }
 
-  function initAposGroups(callback) {
-    groups = require('apostrophe-groups')({
-      apos: apos,
-      pages: pages,
-      app: app,
-      people: people,
-      widget: true
-    }, callback);
-    people.setGroups(groups);
-  }
+  // function initAposGroups(callback) {
+  //   groups = require('apostrophe-groups')({
+  //     apos: apos,
+  //     pages: pages,
+  //     app: app,
+  //     people: people,
+  //     widget: true
+  //   }, callback);
+  //   people.setGroups(groups);
+  // }
 
   function initAposSections(callback) {
     sections = require('apostrophe-sections')({ apos: apos, app: app }, callback);

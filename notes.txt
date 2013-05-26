@@ -1,3 +1,0 @@
-This is where I sometimes take notes on things to be done in this project while working offline and unable to open github issues. -Tom
-
-* The hero text should be an editable area, constrained to appropriate controls. Otherwise there is no in-context editing above the fold on the home page. I tried making it one but there were z-index issues with the editing controls and the width. Assign to Kyle.

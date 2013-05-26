@@ -42,7 +42,7 @@ A stagecoach deployment recipe is also provided.
 
 Visit `http://localhost:3000` to feast your eyes on the sandbox site.
 
-*To log in, visit: `http://localhost:3000/login`*
+*To log in, visit: `http://localhost:3000/login`* or use the provided login button. *You can get rid of the login button and Apostrophe admin bar* for logged-out users by setting `loginButton: false` in `data/locals.js`.
 
 The test username is `admin` and the test password is `demo`.
 
