@@ -1,8 +1,10 @@
 # Apostrophe Sandbox
 
-Apostrophe Sandbox aims to be a complete starting point for developing content-managed websites with [Apostrophe](http://github.com/punkave/apostrophe). 
+Apostrophe Sandbox aims to be a complete starting point for developing content-managed websites with [Apostrophe](http://github.com/punkave/apostrophe).
 
-## This is an early alpha quality version of Apostrophe 2, for node.js developers. Most frontend design work has not happened yet. Page trees, blogs events, etc. are not part of Apostrophe 2 yet. See [Apostrophe 1.5](http://apostrophenow.org) for the current stable and mature release of Apostrophe for PHP and Symfony.
+## Current Stability: Beta
+
+Apostrophe 2 is our new implementation of Apostrophe for [node.js](http://nodejs.org/). Apostrophe 2 is in production use on some of our client sites, however the APIs are not frozen yet as we continue to refactor and improve the code. Not all modules have matured yet, and some modules we've released don't yet have representative stylesheets and templates in the sandbox. Apostrophe 2 should be considered beta quality at this point. See [Apostrophe 1.5](http://apostrophenow.org) for the current stable and mature release of Apostrophe for PHP and Symfony.
 
 ## Installation
 
@@ -10,11 +12,11 @@ Run `npm install` to install the required dependencies.
 
 In addition you must have:
 
-* `node`, of course
-* `mongodb`, on your local machine (or edit app.js to point somewhere else)
-* `imagemagick`, to resize uploaded images (specifically the `convert` command line tool)
+* [node](http://nodejs.org/), of course. You must have at least version `0.10`
+* [mongodb](http://www.mongodb.org/), on your local machine (or point to another database server)
+* imagemagick, to resize uploaded images (specifically the `convert` command line tool)
 
-Mac developers can install imagemagick via MacPorts. Your production server will need it too; it's probably a simple `apt-get install` or `yum` command away. Heroku includes imagemagick as standard equipment.
+Mac developers can install imagemagick via MacPorts. Your production server will need it too; it's probably a simple `apt-get install` or `yum` command away. Heroku includes imagemagick as standard equipment. MacPorts is also a great option for installing node and mongodb.
 
 ## Configuration
 
@@ -36,7 +38,7 @@ If you are developing offline, edit `data/local.js` and switch `offline: false` 
 
     node app.js
 
-A stagecoach deployment recipe is also provided.
+A [stagecoach](https://github.com/punkave/stagecoach) deployment recipe is also provided.
 
 ## Usage
 
@@ -83,3 +85,25 @@ The sandbox displays the "apostrophe bar" and the login button at all times. You
 ## Keep An Eye Out For Updates
 
 Apostrophe 2 is changing fast at this early stage. The `npm update` command will install new minor versions of the Apostrophe modules, but you will want to follow our repositories on github to keep up with the latest. At some point we'll release versions with different major or middle version numbers and you won't get those with `npm update` unless you edit `package.json` (and generally for good reason, if you're not prepared to make code changes).
+
+## More Modules, More Documentation
+
+See [apostrophe](http://github.com/punkave/apostrophe),
+[apostrophe-pages](http://github.com/punkave/apostrophe-pages),
+[apostrophe-snippets](http://github.com/punkave/apostrophe-snippets),
+[apostrophe-blog](http://github.com/punkave/apostrophe-blog),
+[apostrophe-events](http://github.com/punkave/apostrophe-events),
+[apostrophe-people](http://github.com/punkave/apostrophe-people),
+[apostrophe-rss](http://github.com/punkave/apostrophe-rss) and
+[apostrophe-twitter](http://github.com/punkave/apostrophe-twitter).
+
+Also browse the [`apostrophe` tag on npm](https://npmjs.org/browse/keyword/apostrophe).
+
+## Community
+
+You should join the [apostrophenow Google Group](https://groups.google.com/forum/?fromgroups#!forum/apostrophenow) for discussion of both Apostrophe 1.5 and Apostrophe 2.
+
+## Thanks for using Apostrophe!
+
+(http://punkave.com)[P'unk Avenue]
+
