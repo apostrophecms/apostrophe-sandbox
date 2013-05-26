@@ -150,7 +150,7 @@ function initApos(callback) {
     ];
     // This feature isn't styled adequately for the demo site yet
     if (!demo) {
-      pageTypes.push({ name: 'sectioned', label: 'Sectioned' });
+      pageTypes.push({ name: 'sectioned', label: 'Page With Sections' });
     }
     pages = require('apostrophe-pages')({ apos: apos, app: app, types: pageTypes }, callback);
   }
@@ -225,15 +225,21 @@ function initApos(callback) {
   // a widget to be inserted in other pages
 
   function initAposPageTypesMenu(callback) {
-    pages.setMenu([
+    var pageTypesMenu = [
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' },
       { name: 'home', label: 'Home Page' },
-      { name: 'largeSlideshow', label: 'Large Slideshow' },
+      { name: 'largeSlideshow', label: 'Large Slideshow' }
+    ];
+    if (!demo) {
+      pageTypesMenu.push({ name: 'sections', label: 'Page With Sections' });
+    }
+    pageTypesMenu = pageTypesMenu.concat([
       { name: 'blog', label: 'Blog' },
       { name: 'map', label: 'Map' },
       { name: 'people', label: 'People' }
     ]);
+    pages.setMenu(pageTypesMenu);
     return callback(null);
   }
 
