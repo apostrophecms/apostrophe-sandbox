@@ -28,6 +28,10 @@ You'll need a homepage in your database in order to get started. Just run:
 
 This will create (or recreate) the apostrophe-sandbox database in your local mongodb database and insert a valid home page so that you have a starting point for edits. Take a peek at this one-line script if you're curious about what a valid home page looks like in MongoDB.
 
+## If You Are Working Offline
+
+If you are developing offline, edit `data/local.js` and switch `offline: false` to `offline: true`. This will make sure the sandbox doesn't try to load Google Fonts or the Google Maps API. Of course those features will not work until you remove this option.
+
 ## Launch
 
     node app.js
@@ -38,13 +42,15 @@ A stagecoach deployment recipe is also provided.
 
 Visit `http://localhost:3000` to feast your eyes on the sandbox site.
 
+*To log in, visit: `http://localhost:3000/login`*
+
 The test username is `admin` and the test password is `demo`.
 
-You can create and remove pages in addition to editing their content.
+You can create and remove pages in addition to editing their content and managing blog articles, people and snippets.
 
 ## Creating Your Own Apostrophe Project: The Easy Way
 
-You can easily create your own open source or private Apostrophe project using apostrophe-sandbox as a starting point. Here's how I do it:
+You can easily create your own open source or private Apostrophe project using apostrophe-sandbox as a starting point. Here's how we do it:
 
 1. Go to github.com and create a new, empty repository called `myproject`, or whatever suits you. Do not add any files to it yet. If you want a private, non-open-source project, make sure you select that option.
 2. Clone the `apostrophe-sandbox` repository to your computer, naming the resulting folder `myproject` (just for example):
@@ -69,6 +75,10 @@ You can easily create your own open source or private Apostrophe project using a
 Boom! You're done. You now have your own Apostrophe project in github, based on `apostrophe-sandbox` as a starting point.
 
 (Note that you don't actually have to use github for this technique to work. You can do exactly the same thing with Beanstalk and other git hosting providers.)
+
+## Hiding the Login Prompt ##
+
+The sandbox displays the "apostrophe bar" and the login button at all times. You can undo that by changing `loginButton: true` to `loginButton: false` in local.js. Then you can make your own links to `/login` or just tell appropriate users about that URL as needed.
 
 ## Keep An Eye Out For Updates
 

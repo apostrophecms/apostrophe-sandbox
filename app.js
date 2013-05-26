@@ -5,9 +5,11 @@ var fs = require('fs');
 var apos = require('apostrophe')();
 var _ = require('underscore');
 var app, db;
+var demo;
 var pages;
 var snippets;
 var blog;
+var events;
 var map;
 var people;
 var sections;
@@ -27,11 +29,13 @@ var options = {
     options: {
       users: {
         admin: {
+          type: 'person',
           username: 'admin',
           password: 'demo',
           _id: 'admin',
           // Without this login is forbidden
-          login: true
+          login: true,
+          permissions: [ 'admin' ]
         }
       },
       // A user is just a snippet page with username and password properties.
@@ -60,7 +64,9 @@ var options = {
   sessionSecret: 'whatever',
 
   db: {
-    host: local.db.host || 'localhost',
+    // 127.0.0.1 connects much faster than localhost when offline on macs,
+    // goes to the same place
+    host: local.db.host || '127.0.0.1',
     port: local.db.port || 27017,
     name: local.db.name || 'apostrophe-sandbox',
     collections: [
@@ -94,6 +100,7 @@ var options = {
   }
 };
 
+var demo = options.locals && options.locals.demo;
 appy.bootstrap(options);
 
 function createTemp(callback) {
@@ -112,7 +119,7 @@ function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap, initAposPeople, initAposSections, initAposAppAssets], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposSections, initAposAppAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -146,6 +153,15 @@ function initApos(callback) {
     blog = require('apostrophe-blog')({ apos: apos, pages: pages, app: app }, callback);
   }
 
+  function initAposEvents(callback) {
+    // This feature hasn't been styled adequately for
+    // the official demo site yet
+    if (demo) {
+      return callback(null);
+    }
+    events = require('apostrophe-events')({ apos: apos, pages: pages, app: app }, callback);
+  }
+
   // We could subclass the blog module in lib/modules/blog/index.js so that we can supply alternative templates.
   // function initAposBlog(callback) {
   //   blog = require('./lib/modules/blog/index.js')({
@@ -175,6 +191,17 @@ function initApos(callback) {
       app: app,
       widget: true
     }, callback);
+  }
+
+  function initAposGroups(callback) {
+    groups = require('apostrophe-groups')({
+      apos: apos,
+      pages: pages,
+      app: app,
+      people: people,
+      widget: true
+    }, callback);
+    people.setGroups(groups);
   }
 
   function initAposSections(callback) {
@@ -207,6 +234,7 @@ function setRoutes(callback) {
       'global',
       snippets.loader,
       blog.loader,
+      events.loader,
       map.loader,
       people.loader,
       pages.searchLoader
