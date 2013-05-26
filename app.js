@@ -4,6 +4,7 @@ var uploadfs = require('uploadfs')();
 var fs = require('fs');
 var apos = require('apostrophe')();
 var _ = require('underscore');
+var extend = require('extend');
 var app, db;
 var demo;
 var pages;
@@ -100,7 +101,13 @@ var options = {
   }
 };
 
-var demo = options.locals && options.locals.demo;
+// Allow Express locals to come from the options object above or
+// from data/local.js
+
+var locals = options.locals || {};
+extend(true, locals, local.locals || {});
+
+var demo = locals.demo;
 appy.bootstrap(options);
 
 function createTemp(callback) {
@@ -119,7 +126,7 @@ function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposSections, initAposAppAssets], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposSections, initAposPageTypesMenu, initAposAppAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -135,14 +142,17 @@ function initApos(callback) {
   }
 
   function initAposPages(callback) {
-    pages = require('apostrophe-pages')({ apos: apos, app: app, types: [
+    var pageTypes = [
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' },
-      { name: 'sectioned', label: 'Sectioned' },
-      { name: 'people', label: 'People' },
       { name: 'home', label: 'Home Page' },
       { name: 'largeSlideshow', label: 'Large Slideshow' }
-    ]}, callback);
+    ];
+    // This feature isn't styled adequately for the demo site yet
+    if (!demo) {
+      pageTypes.push({ name: 'sectioned', label: 'Sectioned' });
+    }
+    pages = require('apostrophe-pages')({ apos: apos, app: app, types: pageTypes }, callback);
   }
 
   function initAposSnippets(callback) {
@@ -208,6 +218,26 @@ function initApos(callback) {
     sections = require('apostrophe-sections')({ apos: apos, app: app }, callback);
   }
 
+  // Now that all of the types are set up, we can change our minds
+  // about which ones are actually on the dropdown for making a new
+  // page, or change the order. In this case we get rid of
+  // "Snippets" as a page type, because they are mostly useful as
+  // a widget to be inserted in other pages
+
+  function initAposPageTypesMenu(callback) {
+    pages.setMenu([
+      { name: 'default', label: 'Default (Two Column)' },
+      { name: 'onecolumn', label: 'One Column' },
+      { name: 'home', label: 'Home Page' },
+      { name: 'largeSlideshow', label: 'Large Slideshow' },
+      { name: 'blog', label: 'Blog' },
+      { name: 'map', label: 'Map' },
+      { name: 'people', label: 'People' }
+    ]);
+    return callback(null);
+  }
+
+
   function initAposAppAssets(callback) {
     pushAsset('stylesheet', 'site');
     pushAsset('script', 'site');
@@ -226,19 +256,25 @@ function setRoutes(callback) {
   // pages.serve does all the work. Just supply callbacks for some things
   // we'd like to do in addition.
 
+  var load = [
+    // Shared page with things like the footer
+    'global',
+    // Modules that introduce their own loaders
+    snippets.loader,
+    blog.loader,
+    map.loader,
+    people.loader,
+    pages.searchLoader
+  ];
+  // Add this one if it's enabled
+  if (events) {
+    load.push(events.loader);
+  }
+
   app.get('*', pages.serve({
     templatePath: __dirname + '/views/pages',
     tabOptions: { depth: 2 },
-    load: [
-      // Load the global virtual page with things like the shared footer
-      'global',
-      snippets.loader,
-      blog.loader,
-      events.loader,
-      map.loader,
-      people.loader,
-      pages.searchLoader
-    ]
+    load: load
   }));
 
   return callback(null);
