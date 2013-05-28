@@ -232,7 +232,7 @@ function initApos(callback) {
       { name: 'largeSlideshow', label: 'Large Slideshow' }
     ];
     if (!demo) {
-      pageTypesMenu.push({ name: 'sections', label: 'Page With Sections' });
+      pageTypesMenu.push({ name: 'sectioned', label: 'Page With Sections' });
     }
     pageTypesMenu = pageTypesMenu.concat([
       { name: 'blog', label: 'Blog' },
