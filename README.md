@@ -82,6 +82,52 @@ Boom! You're done. You now have your own Apostrophe project in github, based on 
 
 The sandbox displays the "apostrophe bar" and the login button at all times. You can undo that by changing `loginButton: true` to `loginButton: false` in local.js. Then you can make your own links to `/login` or just tell appropriate users about that URL as needed.
 
+## Editing Existing Page Templates ##
+
+Apostrophe's page templates are in the `views` subdirectory. These templates are written with [nunjucks](http://nunjucks.jlongster.com/), a template language based on the popular [jinja2](http://jinja.pocoo.org/docs/)] from the Python world, which also has a well-known port called [Twig](http://twig.sensiolabs.org/) in the PHP world. See the [jinja documentation](http://jinja.pocoo.org/docs/) for complete information about the template syntax. It's pretty simple.
+
+## Creating New Page Templates ##
+
+Apostrophe offers a choice of page templates to the user when adding a page via the "Pages" menu. Adding a new one is straightforward. Just copy the `default.html` template in the `views` folder. Let's assume you call your template `myPage.html`.
+
+Next edit `app.js` and introduce your template in two places:
+
+1. In the `initAposPages` function, where the simple page types found in the `views` folder are configured, add a new entry:
+
+        var pageTypes = [
+          { name: 'default', label: 'Default (Two Column)' },
+          { name: 'onecolumn', label: 'One Column' },
+          { name: 'home', label: 'Home Page' },
+          { name: 'largeSlideshow', label: 'Large Slideshow' },
+          { name: 'myPage', label: 'My Page' }
+        ];
+
+2. In the `initAposPagesMenu` function, where the final order of all of the available page types is decided. Here I've chosen to add it with the other simple page types at the top of the menu:
+
+        var pageTypesMenu = [
+          { name: 'default', label: 'Default (Two Column)' },
+          { name: 'onecolumn', label: 'One Column' },
+          { name: 'home', label: 'Home Page' },
+          { name: 'largeSlideshow', label: 'Large Slideshow' },
+          { name: 'myPage', label: 'My Page' }
+        ];
+
+3. Restart the app. Since each node app is its own webserver, you'll need to get used to that. Tools like `nodemon` and `always` are useful for automatically restarting apps. Just keep in mind that they only pay attention to changes in server-side `.js` files.
+
+For more advanced information about page types, including how to write page loader functions on the server side that summon custom data and create experiences like our blog and map pages, see the [apostrophe-pages module documentation](http://github.com/punkave/apostrophe-pages). If your needs are similar to our [apostrophe-blog](http://github.com/punkave/apostrophe-blog) or [apostrophe-map](http://github.com/punkave/apostrophe-map) modules, check out the [apostrophe-snippets](http://github.com/punkave/apostrophe-snippets) module to see how we've created a foundation for those modules that minimizes the amount of unique code needed in each one.
+
+## Adding Apostrophe Content Areas to Pages ##
+
+You'll notice that the various pages contain editable content areas. There are two basic types: regular areas and singletons. A regular area displays a rich text editor with buttons to insert some or all of Apostrophe's widgets, such as slideshows, videos, snippets and blog posts. A singleton displays just one widget of a fixed type at that particular point in the page.
+
+Here's an example of template code to insert a named area that lives in the current page:
+
+    {{ aposArea({ slug: slug + ":content1", area: page.areas.content1, edit: edit }) }}
+
+`slug`, `page` and `edit` are variables made available to page templates by Apostrophe. The `slug` variable refers to the path of this particular page within the site, while the `page` variable contains the current contents of the page in its `areas` property. The `edit` indicates whether the current user is allowed to edit the page or not. Adding ":content1" to the slug indicates that we are addressing a particular named content area within the page.
+
+For more advanced documentation, including how to add singletons or limit the controls displayed in an area, see the [apostrophe module documentation](http://github.com/punkave/apostrophe).
+
 ## Keep An Eye Out For Updates
 
 Apostrophe 2 is changing fast at this early stage. The `npm update` command will install new minor versions of the Apostrophe modules, but you will want to follow our repositories on github to keep up with the latest. At some point we'll release versions with different major or middle version numbers and you won't get those with `npm update` unless you edit `package.json` (and generally for good reason, if you're not prepared to make code changes).
