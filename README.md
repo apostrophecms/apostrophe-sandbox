@@ -26,7 +26,7 @@ Create a `data` folder (this is ignored by git). Copy `local.example.js` to `dat
 
 You'll need a homepage in your database in order to get started. Just run:
 
-    sh reset-db.sh
+    sh scripts/reset-db.sh
 
 This will create (or recreate) the apostrophe-sandbox database in your local mongodb database and insert a valid home page so that you have a starting point for edits. Take a peek at this one-line script if you're curious about what a valid home page looks like in MongoDB.
 
