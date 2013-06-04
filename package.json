@@ -28,6 +28,6 @@
     "apostrophe-sections": "0.x",
     "apostrophe-people": "0.x",
     "underscore": "~1.4.4",
-    "extend": "~1.1.3",
+    "extend": "~1.1.3"
   }
 }
