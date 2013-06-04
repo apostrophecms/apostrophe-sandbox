@@ -9,7 +9,6 @@
   "repository": {
     "type": "git",
     "url": ""
-
   },
   "author": "P'unk Avenue",
   "license": "BSD",
@@ -26,6 +25,9 @@
     "apostrophe-events": "0.x",
     "apostrophe-snippets": "0.x",
     "apostrophe-map": "0.x",
-    "underscore": "~1.4.4"
+    "apostrophe-sections": "0.x",
+    "apostrophe-people": "0.x",
+    "underscore": "~1.4.4",
+    "extend": "~1.1.3",
   }
 }

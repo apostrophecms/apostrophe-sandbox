@@ -4,11 +4,16 @@ var uploadfs = require('uploadfs')();
 var fs = require('fs');
 var apos = require('apostrophe')();
 var _ = require('underscore');
+var extend = require('extend');
 var app, db;
+var demo;
 var pages;
 var snippets;
 var blog;
+var events;
 var map;
+var people;
+var sections;
 
 // Server-specific settings to be merged with options
 // See local.example.js
@@ -25,21 +30,44 @@ var options = {
     options: {
       users: {
         admin: {
+          type: 'person',
           username: 'admin',
           password: 'demo',
-          id: 'admin'
+          _id: 'admin',
+          // Without this login is forbidden
+          login: true,
+          permissions: [ 'admin' ]
         }
       },
+      // A user is just a snippet page with username and password properties.
+      // (Yes, the password property is hashed and salted.)
+      collection: 'aposPages',
       template: function(data) {
         return pages.decoratePageContent({ content: apos.partial('login', data) });
       }
     }
   },
 
+  // Make sure we check the .login flag so people who have profiles but no
+  // login privileges are not allowed to log in
+  beforeSignin: function(user, callback) {
+    if (user.type !== 'person') {
+      // Whaaat the dickens this page is not even a person
+      return callback('error');
+    }
+    if (!user.login) {
+      return callback({ message: 'user does not have login privileges' });
+    } else {
+      return callback(null);
+    }
+  },
+
   sessionSecret: 'whatever',
 
   db: {
-    host: local.db.host || 'localhost',
+    // 127.0.0.1 connects much faster than localhost when offline on macs,
+    // goes to the same place
+    host: local.db.host || '127.0.0.1',
     port: local.db.port || 27017,
     name: local.db.name || 'apostrophe-sandbox',
     collections: [
@@ -73,6 +101,13 @@ var options = {
   }
 };
 
+// Allow Express locals to come from the options object above or
+// from data/local.js
+
+var locals = options.locals || {};
+extend(true, locals, local.locals || {});
+
+var demo = locals.demo;
 appy.bootstrap(options);
 
 function createTemp(callback) {
@@ -91,7 +126,7 @@ function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap, initAposAppAssets], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposSections, initAposPageTypesMenu, initAposAppAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -107,12 +142,17 @@ function initApos(callback) {
   }
 
   function initAposPages(callback) {
-    pages = require('apostrophe-pages')({ apos: apos, app: app, types: [
+    var pageTypes = [
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' },
       { name: 'home', label: 'Home Page' },
       { name: 'largeSlideshow', label: 'Large Slideshow' }
-    ]}, callback);
+    ];
+    // This feature isn't styled adequately for the demo site yet
+    if (!demo) {
+      pageTypes.push({ name: 'sectioned', label: 'Page With Sections' });
+    }
+    pages = require('apostrophe-pages')({ apos: apos, app: app, types: pageTypes }, callback);
   }
 
   function initAposSnippets(callback) {
@@ -121,6 +161,15 @@ function initApos(callback) {
 
   function initAposBlog(callback) {
     blog = require('apostrophe-blog')({ apos: apos, pages: pages, app: app }, callback);
+  }
+
+  function initAposEvents(callback) {
+    // This feature hasn't been styled adequately for
+    // the official demo site yet
+    if (demo) {
+      return callback(null);
+    }
+    events = require('apostrophe-events')({ apos: apos, pages: pages, app: app }, callback);
   }
 
   // We could subclass the blog module in lib/modules/blog/index.js so that we can supply alternative templates.
@@ -137,7 +186,7 @@ function initApos(callback) {
   // }
 
   function initAposMap(callback) {
-    map = require('apostrophe-map')({ apos: apos, pages: pages, app: app, dirs: [ __dirname+'/overrides/apostrophe-map' ] }, callback);
+    map = require('apostrophe-map')({ apos: apos, pages: pages, app: app }, callback);
     // Start the background geocoder.
     //
     // NOTE: if you are using multiple processes and/or servers,
@@ -145,12 +194,64 @@ function initApos(callback) {
     map.startGeocoder();
   }
 
+  function initAposPeople(callback) {
+    people = require('apostrophe-people')({
+      apos: apos,
+      pages: pages,
+      app: app,
+      widget: true
+    }, callback);
+  }
+
+  // function initAposGroups(callback) {
+  //   groups = require('apostrophe-groups')({
+  //     apos: apos,
+  //     pages: pages,
+  //     app: app,
+  //     people: people,
+  //     widget: true
+  //   }, callback);
+  //   people.setGroups(groups);
+  // }
+
+  function initAposSections(callback) {
+    sections = require('apostrophe-sections')({ apos: apos, app: app }, callback);
+  }
+
+  // Now that all of the types are set up, we can change our minds
+  // about which ones are actually on the dropdown for making a new
+  // page, or change the order. In this case we get rid of
+  // "Snippets" as a page type, because they are mostly useful as
+  // a widget to be inserted in other pages
+
+  function initAposPageTypesMenu(callback) {
+    var pageTypesMenu = [
+      { name: 'default', label: 'Default (Two Column)' },
+      { name: 'onecolumn', label: 'One Column' },
+      { name: 'home', label: 'Home Page' },
+      { name: 'largeSlideshow', label: 'Large Slideshow' }
+    ];
+    if (!demo) {
+      pageTypesMenu.push({ name: 'sectioned', label: 'Page With Sections' });
+    }
+    pageTypesMenu = pageTypesMenu.concat([
+      { name: 'blog', label: 'Blog' },
+      { name: 'map', label: 'Map' },
+      { name: 'people', label: 'People' }
+    ]);
+    pages.setMenu(pageTypesMenu);
+    return callback(null);
+  }
+
+
   function initAposAppAssets(callback) {
-    pushAsset('stylesheet', 'site');
-    pushAsset('script', 'site');
+    pushAsset('stylesheet', 'site', { when: 'always' });
+    pushAsset('script', 'site', { when: 'always' });
     return callback();
-    function pushAsset(type, name) {
-      return apos.pushAsset(type, name, __dirname, '');
+    function pushAsset(type, name, options) {
+      options.fs = __dirname;
+      options.web = '';
+      return apos.pushAsset(type, name, options);
     }
   }
 }
@@ -163,17 +264,25 @@ function setRoutes(callback) {
   // pages.serve does all the work. Just supply callbacks for some things
   // we'd like to do in addition.
 
+  var load = [
+    // Shared page with things like the footer
+    'global',
+    // Modules that introduce their own loaders
+    snippets.loader,
+    blog.loader,
+    map.loader,
+    people.loader,
+    pages.searchLoader
+  ];
+  // Add this one if it's enabled
+  if (events) {
+    load.push(events.loader);
+  }
+
   app.get('*', pages.serve({
     templatePath: __dirname + '/views/pages',
     tabOptions: { depth: 2 },
-    load: [
-      // Load the global virtual page with things like the shared footer
-      'global',
-      snippets.loader,
-      blog.loader,
-      map.loader,
-      pages.searchLoader
-    ]
+    load: load
   }));
 
   return callback(null);
