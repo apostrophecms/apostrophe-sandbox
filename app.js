@@ -245,11 +245,13 @@ function initApos(callback) {
 
 
   function initAposAppAssets(callback) {
-    pushAsset('stylesheet', 'site');
-    pushAsset('script', 'site');
+    pushAsset('stylesheet', 'site', { when: 'always' });
+    pushAsset('script', 'site', { when: 'always' });
     return callback();
-    function pushAsset(type, name) {
-      return apos.pushAsset(type, name, __dirname, '');
+    function pushAsset(type, name, options) {
+      options.fs = __dirname;
+      options.web = '';
+      return apos.pushAsset(type, name, options);
     }
   }
 }

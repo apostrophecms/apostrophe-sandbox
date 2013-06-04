@@ -20,10 +20,10 @@
     {% endif %}
 
     {% block css %}
-      {{ aposStylesheets() }}
+      {{ aposStylesheets(when) }}
     {% endblock %}
     {% block js %}
-      {{ aposScripts() }}
+      {{ aposScripts(when) }}
     {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     {% if not offline %}
@@ -49,11 +49,9 @@
         {{ data }}
         {# Invoke calls set up with apos.pushGlobalCall and req.pushCall #}
         {{ calls }}
-        apos.enableAreas();
-        apos.enablePlayers();
       });
     </script>
     {# Must be present in the page in order to use apos's widget editors, admin dialogs, etc. #}
-    {{ aposTemplates() }}
+    {{ aposTemplates(when) }}
   </body>
 </html>

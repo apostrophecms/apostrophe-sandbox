@@ -28,9 +28,9 @@
 
   </div>
 
-  <div class="column-2 default-content-area apos-no-height">
+  <div class="column-2 default-content-area">
     {# we're going to enable extraFields here so that an image within the area can have a title and a description. #}
-    {{ aposArea({ slug: slug + ':content2', area: page.areas.content2, edit:edit, slideshow: { extraFields: true } }) }}
+    {{ aposArea({ slug: slug + ':content2', area: page.areas.content2, edit:edit, slideshow: { extraFields: true, noHeight: true } }) }}
   </div>
   </div>
 
