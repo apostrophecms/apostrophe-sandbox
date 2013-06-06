@@ -25,7 +25,9 @@
           {% endif %}
           {{ aposMapMenu({ edit: editMapLocation }) }}
           {{ aposPeopleMenu({ edit: editPerson }) }}
-          {# {{ aposGroupsMenu({ edit: editGroup }) }} #}
+          {% if not demo %}
+            {{ aposGroupsMenu({ edit: editGroup }) }}
+          {% endif %}
           {% if user %}
             <div class="apos-admin-bar-item apos-preview-toggle">
               <i class="icon-eye"></i>

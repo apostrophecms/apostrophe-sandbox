@@ -127,7 +127,7 @@ function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposSections, initAposPageTypesMenu, initAposAppAssets], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposGroups,initAposSections, initAposPageTypesMenu, initAposAppAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -205,14 +205,20 @@ function initApos(callback) {
   }
 
   function initAposGroups(callback) {
-    groups = require('apostrophe-groups')({
-      apos: apos,
-      pages: pages,
-      app: app,
-      people: people,
-      widget: true
-    }, callback);
-    people.setGroups(groups);
+    if (!demo) {
+      groups = require('apostrophe-groups')({
+        apos: apos,
+        pages: pages,
+        app: app,
+        people: people,
+        widget: true
+      }, function(err) {
+        people.setGroups(groups);
+        return callback(err);
+      });
+    } else {
+      return callback(null);
+    }
   }
 
   function initAposSections(callback) {
@@ -239,8 +245,12 @@ function initApos(callback) {
       { name: 'blog', label: 'Blog' },
       { name: 'map', label: 'Map' },
       { name: 'people', label: 'People' }
-      // { name: 'groups', label: 'Groups' }
     ]);
+    if (!demo) {
+      pageTypesMenu = pageTypesMenu.concat([
+        { name: 'groups', label: 'Groups' }
+      ]);
+    }
     pages.setMenu(pageTypesMenu);
     return callback(null);
   }
@@ -274,12 +284,14 @@ function setRoutes(callback) {
     blog.loader,
     map.loader,
     people.loader,
-    // groups.loader,
     pages.searchLoader
   ];
   // Add this one if it's enabled
   if (events) {
     load.push(events.loader);
+  }
+  if (groups) {
+    load.push(groups.loader);
   }
 
   app.get('*', pages.serve({

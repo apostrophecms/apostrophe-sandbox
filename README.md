@@ -13,7 +13,7 @@ Run `npm install` to install the required dependencies.
 In addition you must have:
 
 * [node](http://nodejs.org/), of course. You must have at least version `0.10`
-* [mongodb](http://www.mongodb.org/), on your local machine (or point to another database server)
+* [mongodb](http://www.mongodb.org/) **version 2.2 or better**, on your local machine (or point to another database server)
 * imagemagick, to resize uploaded images (specifically the `convert` command line tool)
 
 Mac developers can install imagemagick via MacPorts. Your production server will need it too; it's probably a simple `apt-get install` or `yum` command away. Heroku includes imagemagick as standard equipment. MacPorts is also a great option for installing node and mongodb.
