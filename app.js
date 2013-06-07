@@ -243,12 +243,11 @@ function initApos(callback) {
     }
     pageTypesMenu = pageTypesMenu.concat([
       { name: 'blog', label: 'Blog' },
-      { name: 'map', label: 'Map' },
-      { name: 'people', label: 'People' }
+      { name: 'map', label: 'Map' }
     ]);
     if (!demo) {
       pageTypesMenu = pageTypesMenu.concat([
-        { name: 'groups', label: 'Groups' }
+        { name: 'groups', label: 'Directory' }
       ]);
     }
     pages.setMenu(pageTypesMenu);
