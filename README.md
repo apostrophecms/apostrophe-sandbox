@@ -86,7 +86,7 @@ The sandbox displays the "apostrophe bar" and the login button at all times. You
 
 ## Editing Existing Page Templates ##
 
-Apostrophe's page templates are in the `views` subdirectory. These templates are written with [nunjucks](http://nunjucks.jlongster.com/), a template language based on the popular [jinja2](http://jinja.pocoo.org/docs/)] from the Python world, which also has a well-known port called [Twig](http://twig.sensiolabs.org/) in the PHP world. See the [jinja documentation](http://jinja.pocoo.org/docs/) for complete information about the template syntax. It's pretty simple.
+Apostrophe's page templates are in the `views` subdirectory. These templates are written with [nunjucks](http://nunjucks.jlongster.com/), a template language based on the popular [jinja2](http://jinja.pocoo.org/docs/) from the Python world, which also has a well-known port called [Twig](http://twig.sensiolabs.org/) in the PHP world. See the [jinja documentation](http://jinja.pocoo.org/docs/) for complete information about the template syntax. It's pretty simple.
 
 ## Creating New Page Templates ##
 
