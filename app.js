@@ -23,45 +23,15 @@ var local = require('./data/local.js');
 local.db = local.db || {};
 
 var options = {
-  // Don't bother with viewEngine, we'll use apos.partial() if we want to
-  // render anything directly
 
-  auth: {
-    strategy: 'local',
-    options: {
-      users: {
-        admin: {
-          type: 'person',
-          username: 'admin',
-          password: 'demo',
-          _id: 'admin',
-          // Without this login is forbidden
-          login: true,
-          permissions: [ 'admin' ]
-        }
-      },
-      // A user is just a snippet page with username and password properties.
-      // (Yes, the password property is hashed and salted.)
-      collection: 'aposPages',
-      template: function(data) {
-        return pages.decoratePageContent({ content: apos.partial('login', data) });
-      }
-    }
-  },
+  auth: apos.appyAuth({
+    loginPage: function(data) {
+      return pages.decoratePageContent({ content: apos.partial('login', data) });
+    },
+    adminPassword: 'demo'
+  }),
 
-  // Make sure we check the .login flag so people who have profiles but no
-  // login privileges are not allowed to log in
-  beforeSignin: function(user, callback) {
-    if (user.type !== 'person') {
-      // Whaaat the dickens this page is not even a person
-      return callback('error');
-    }
-    if (!user.login) {
-      return callback({ message: 'user does not have login privileges' });
-    } else {
-      return callback(null);
-    }
-  },
+  beforeSignin: apos.appyBeforeSignin,
 
   sessionSecret: 'whatever',
 
@@ -134,7 +104,6 @@ function initApos(callback) {
       db: db,
       app: app,
       uploadfs: uploadfs,
-      permissions: aposPermissions,
       locals: local.locals,
       // Allows us to extend shared layouts
       partialPaths: [ __dirname + '/views/global' ],
@@ -205,20 +174,16 @@ function initApos(callback) {
   }
 
   function initAposGroups(callback) {
-    if (!demo) {
-      groups = require('apostrophe-groups')({
-        apos: apos,
-        pages: pages,
-        app: app,
-        people: people,
-        widget: true
-      }, function(err) {
-        people.setGroups(groups);
-        return callback(err);
-      });
-    } else {
-      return callback(null);
-    }
+    groups = require('apostrophe-groups')({
+      apos: apos,
+      pages: pages,
+      app: app,
+      people: people,
+      widget: true
+    }, function(err) {
+      people.setGroups(groups);
+      return callback(err);
+    });
   }
 
   function initAposSections(callback) {
@@ -243,13 +208,9 @@ function initApos(callback) {
     }
     pageTypesMenu = pageTypesMenu.concat([
       { name: 'blog', label: 'Blog' },
-      { name: 'map', label: 'Map' }
+      { name: 'map', label: 'Map' },
+      { name: 'groups', label: 'Directory' }
     ]);
-    if (!demo) {
-      pageTypesMenu = pageTypesMenu.concat([
-        { name: 'groups', label: 'Directory' }
-      ]);
-    }
     pages.setMenu(pageTypesMenu);
     return callback(null);
   }
@@ -314,16 +275,3 @@ function listen(err) {
   appy.listen();
 }
 
-// Allow only the admin user to edit anything with Apostrophe,
-// let everyone view anything
-
-function aposPermissions(req, action, object, callback) {
-  if (req.user && (req.user.username === 'admin')) {
-    // OK
-    return callback(null);
-  } else if (action.match(/^view/)) {
-    return callback(null);
-  } else {
-    return callback('Forbidden');
-  }
-}
