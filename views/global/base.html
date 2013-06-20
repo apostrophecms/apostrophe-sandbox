@@ -45,5 +45,13 @@
 
     {# Must be present in the page in order to use apos's widget editors, admin dialogs, etc. #}
     {{ aposTemplates(when) }}
+    <script type="text/javascript">
+      $(function() {
+        {# Set up apos.data properties pushed with apos.pushGlobalData and req.pushData #}
+        {{ data }}
+        {# Invoke calls set up with apos.pushGlobalCall and req.pushCall #}
+        {{ calls }}
+      });
+    </script>
   </body>
 </html>

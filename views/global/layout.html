@@ -105,13 +105,3 @@
   </footer>
 {% endblock %}
 
-{# These should fire both on initial page load and on content area #}
-{# refresh, so put them in this inner layout #}
-<script type="text/javascript">
-  $(function() {
-    {# Set up apos.data properties pushed with apos.pushGlobalData and req.pushData #}
-    {{ data }}
-    {# Invoke calls set up with apos.pushGlobalCall and req.pushCall #}
-    {{ calls }}
-  });
-</script>
