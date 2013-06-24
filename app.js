@@ -16,6 +16,14 @@ var people;
 var groups;
 var sections;
 
+// Handy for tracking down console.log calls in the source
+//
+// superLog = console.log;
+// console.log = function(e) {
+//   superLog(e);
+//   console.trace();
+// };
+
 // Server-specific settings to be merged with options
 // See local.example.js
 var local = require('./data/local.js');
@@ -26,7 +34,7 @@ var options = {
 
   auth: apos.appyAuth({
     loginPage: function(data) {
-      return pages.decoratePageContent({ content: apos.partial('login', data) });
+      return pages.decoratePageContent({ content: apos.partial('login', data), when: 'anon' });
     },
     adminPassword: 'demo'
   }),
@@ -97,7 +105,7 @@ function initApos(callback) {
   require('apostrophe-twitter')({ apos: apos, app: app });
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposGroups,initAposSections, initAposPageTypesMenu, initAposAppAssets], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposGroups,initAposSections, initAposPageTypesMenu, initAposAppAssets, apos.endAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
