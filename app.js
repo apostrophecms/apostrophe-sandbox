@@ -142,11 +142,6 @@ function initApos(callback) {
   }
 
   function initAposEvents(callback) {
-    // This feature hasn't been styled adequately for
-    // the official demo site yet
-    if (demo) {
-      return callback(null);
-    }
     events = require('apostrophe-events')({ apos: apos, pages: pages, app: app }, callback);
   }
 

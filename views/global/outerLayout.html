@@ -23,9 +23,7 @@
           {# permissions.edit === can edit, potentially, somewhere #}
           {{ aposSnippetMenu({ edit: permissions.edit }) }}
           {{ aposBlogMenu({ edit: permissions.edit }) }}
-          {% if not demo %}
-            {{ aposEventsMenu({ edit: permissions.edit }) }}
-          {% endif %}
+          {{ aposEventsMenu({ edit: permissions.edit }) }}
           {{ aposMapMenu({ edit: permissions.edit }) }}
 
           {# Granting these to non-admins allows them to admin-ify #}
