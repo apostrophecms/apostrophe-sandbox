@@ -216,6 +216,7 @@ function initApos(callback) {
     }
     pageTypesMenu = pageTypesMenu.concat([
       { name: 'blog', label: 'Blog' },
+      { name: 'events', label: 'Events' },
       { name: 'map', label: 'Map' },
       { name: 'groups', label: 'Directory' }
     ]);
