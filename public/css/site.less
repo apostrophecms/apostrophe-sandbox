@@ -798,35 +798,59 @@ ol.children
   }
 }
 
+// A div containing h2's which are distinct choices or filters for
+// displaying an index of snippets. For instance, an events page
+// has "Upcoming Events" and "Events by Month" which are mutually
+// exclusive choices, with an "active" class used to denote the
+// chosen one, and also "Filter" which filters by tag. Each of those
+// gets an h2. We also use this for toggling between "People" and
+// "Groups" on a directory page. Hopefully we'll follow a consistent
+// pattern elsewhere.
+
+.snippets-filter
+{
+  float: right;
+  background-color: #def;
+  padding: 10px;
+  margin-bottom: 20px;
+  h2
+  {
+    font-size: 20px;
+    padding: 0 10px 0 10px;
+    margin-bottom: 0;
+    float: left;
+    &.active
+    {
+      // Consistent with active color for tabs
+      background-color: @blue;
+      color: #fff;
+      a
+      {
+        color: #fff;
+      }
+    }
+  }
+}
+
+/* For some reason these force 100% and sit on top of the filters
+  at right in the directory pages if I don't set a width on them.
+  Feel free to improve on how I've handled this. -Tom */
+
+.apos-group .apos-thumbnail
+{
+  width: 300px;
+}
+
+.apos-person .apos-thumbnail
+{
+  width: 300px;
+}
+
 .apos-events-page
 {
   h6 date
   {
     font-size: 150%;
-  }
-  .events-filter
-  {
-    float: right;
-    background-color: #def;
-    padding: 10px;
-    margin-bottom: 20px;
-    h2
-    {
-      font-size: 20px;
-      padding: 0 10px 0 10px;
-      margin-bottom: 0;
-      float: left;
-      &.active
-      {
-        // Consistent with active color for tabs
-        background-color: @blue;
-        color: #fff;
-        a
-        {
-          color: #fff;
-        }
-      }
-    }
   }
   .apos-event
   {
