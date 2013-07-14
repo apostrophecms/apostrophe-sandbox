@@ -12,7 +12,6 @@
 // Chivo Italic 400
 // Inika Regular (400) and Bold (700)
 
-
 body
 {
   font-family: Inika, serif;
@@ -98,6 +97,58 @@ ul
 ::selection {
     background-color: #9FC1A5;
     color: #fff;
+}
+
+.apos-area-sidebar
+{
+  background: #f4f4f4;
+
+  h3, h4, h5, h6
+  {
+    font-family: Montserrat;
+    // font-weight: 700;
+    color: #fff;
+    background: #212121;
+    text-align: center;
+    padding: 1em 0.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .apos-area
+  {
+    text-align: left;
+
+    a
+    {
+      color: @blue;
+      text-decoration: none;
+      &:hover
+      {
+        color: lighten(@blue, 10%);
+      }
+    }
+
+    pre
+    {
+      font-family: Chivo;
+      font-style: italic;
+      font-size: 80%;
+      white-space: normal;
+      padding: 0 1.5em 1em 1.5em;
+      line-height: 2em;
+    }
+
+    .apos-normal-view .apos-content > div:not(.apos-widget), .apos-editable
+    {
+      padding: 0 1em 1em 1em;
+      font-family: Chivo;
+      font-style: italic;
+      font-size: 14px;
+      white-space: normal;
+      line-height: 2em;
+    }
+  }
 }
 
 .subnav
@@ -188,21 +239,6 @@ h1.logo
   width: 19%;
   /*margin: 0% 1% 1% 1%;*/
   background: rgb(24,58,64);
-}
-
-.posts
-{
-  padding-bottom: 20px;
-}
-
-.post
-{
-  padding: 20px;
-}
-
-.post-body
-{
-  border-bottom: 1px dotted white;
 }
 
 .sidebar .apos-area,
@@ -723,6 +759,21 @@ ol.children
 
 // ------- blog styles ------- //
 
+.posts
+{
+  padding-bottom: 20px;
+}
+
+.post
+{
+  padding: 20px;
+}
+
+.post-body
+{
+  border-bottom: 1px dotted white;
+}
+
 // preview boxes
 .apos-blog-posts
 {
@@ -798,6 +849,8 @@ ol.children
   }
 }
 
+/* SNIPPET STYLES */
+
 // A div containing h2's which are distinct choices or filters for
 // displaying an index of snippets. For instance, an events page
 // has "Upcoming Events" and "Events by Month" which are mutually
@@ -832,6 +885,22 @@ ol.children
   }
 }
 
+// For the snippet manage dialog
+
+.apos-snippet-filter-active
+{
+  background-color: white;
+}
+
+.apos-modal-filters
+{
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Directory (People and Groups) */
+
 /* For some reason these force 100% and sit on top of the filters
   at right in the directory pages if I don't set a width on them.
   Feel free to improve on how I've handled this. -Tom */
@@ -846,6 +915,17 @@ ol.children
   width: 300px;
 }
 
+.apos-suggested-password
+{
+  display: none;
+  .apos-suggestion
+  {
+    font-weight: bold;
+  }
+}
+
+/* Events */
+
 .apos-events-page
 {
   h6 date
@@ -856,58 +936,6 @@ ol.children
   {
     clear: right;
     margin-top: 40px;
-  }
-}
-
-.apos-area-sidebar
-{
-  background: #f4f4f4;
-
-  h3, h4, h5, h6
-  {
-    font-family: Montserrat;
-    // font-weight: 700;
-    color: #fff;
-    background: #212121;
-    text-align: center;
-    padding: 1em 0.5em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  .apos-area
-  {
-    text-align: left;
-
-    a
-    {
-      color: @blue;
-      text-decoration: none;
-      &:hover
-      {
-        color: lighten(@blue, 10%);
-      }
-    }
-
-    pre
-    {
-      font-family: Chivo;
-      font-style: italic;
-      font-size: 80%;
-      white-space: normal;
-      padding: 0 1.5em 1em 1.5em;
-      line-height: 2em;
-    }
-
-    .apos-normal-view .apos-content > div:not(.apos-widget), .apos-editable
-    {
-      padding: 0 1em 1em 1em;
-      font-family: Chivo;
-      font-style: italic;
-      font-size: 14px;
-      white-space: normal;
-      line-height: 2em;
-    }
   }
 }
 
@@ -1330,6 +1358,19 @@ ol.children
   background: #fff;
   border: solid 5px #212121;
 }
+
+.apos-map-canvas {
+  width: 100%;
+  height: 500px;
+  // -webkit-transform: none !important;
+  // z-index: auto !important;
+  // > div
+  // {
+  //   z-index: auto !important;
+  // }
+}
+
+/* PAGER STYLES */
 
 .apos-pager
 {
