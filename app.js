@@ -102,7 +102,11 @@ function initUploadfs(callback) {
 }
 
 function initApos(callback) {
-  require('apostrophe-twitter')({ apos: apos, app: app });
+  if (local.twitter) {
+    require('apostrophe-twitter')({ apos: apos, app: app, consumerKey: local.twitter.consumerKey, consumerSecret: local.twitter.consumerSecret });
+  } else {
+    console.log('Configure twitter { consumerKey:, consumerSecret: } in local.js if you want the twitter widget. If you do not want it you can remove this message from app.js.');
+  }
   require('apostrophe-rss')({ apos: apos, app: app });
 
   async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposGroups,initAposSections, initAposPageTypesMenu, initAposAppAssets, apos.endAssets], callback);

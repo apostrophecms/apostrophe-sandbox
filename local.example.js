@@ -23,6 +23,12 @@ module.exports = {
     // your own suitably styled links to `/login` if desired
     loginButton: true
   },
+  // Want Twitter widgets to work? Go to dev.twitter.com and create an "app", then
+  // pop the key and secret here.
+  twitter: {
+    consumerKey: 'xxxx',
+    consumerSecret: 'yyyy'
+  },
   // Set to true for full CSS and JS minify, on staging and production servers
   minify: false
   // If these are your db settings then you don't need to be explicit. If not
