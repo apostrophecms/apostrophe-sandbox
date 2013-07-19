@@ -610,11 +610,24 @@ ol.children
 .default-content-area
 {
   background: #f4f4f4;
-
   .apos-content, .apos-editable
   {
     padding: 33px;
 
+    table
+    {
+      border: 1px solid #ccc;
+      display: border-box;
+      width: 100%;
+      td
+      {
+        padding: 7px 10px;
+      }
+      tr:nth-child(odd)
+      {
+        background-color: #eee;
+      }
+    }
     h3, h4, h5, h6
     {
       background-image: url('/images/alps_crop.jpeg');
