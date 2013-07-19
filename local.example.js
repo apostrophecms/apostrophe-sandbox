@@ -27,7 +27,11 @@ module.exports = {
   // pop the key and secret here.
   twitter: {
     consumerKey: 'xxxx',
-    consumerSecret: 'yyyy'
+    consumerSecret: 'yyyy',
+    // Click "Create my access token" on dev.twitter.com to generate these.
+    // You may need to refresh the page before the token actually appears there.
+    accessToken: 'zzzz',
+    accessTokenSecret: 'aaaa'
   },
   // Set to true for full CSS and JS minify, on staging and production servers
   minify: false
