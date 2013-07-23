@@ -271,12 +271,24 @@ function setRoutes(callback) {
   return callback(null);
 }
 
+// Command line tasks, run like this: node app cards:shuffle
+var myTasks = {
+  // cards: {
+    // shuffle: function(apos, argv, callback) {
+    //   setTimeout(function() {
+    //     console.log('whee I shuffled the cards!');
+    //     return callback(null);
+    //   }, 1000);
+    // }
+  // }
+};
+
 function listen(err) {
   if (err) {
     throw err;
   }
   // Command line tasks
-  if (apos.startTask()) {
+  if (apos.startTask(myTasks)) {
     // Chill and let the task run until it's done, don't try to listen or exit
     return;
   }
