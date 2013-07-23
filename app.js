@@ -103,7 +103,7 @@ function initUploadfs(callback) {
 
 function initApos(callback) {
   if (local.twitter) {
-    require('apostrophe-twitter')({ apos: apos, app: app, consumerKey: local.twitter.consumerKey, consumerSecret: local.twitter.consumerSecret });
+    require('apostrophe-twitter')({ apos: apos, app: app, consumerKey: local.twitter.consumerKey, consumerSecret: local.twitter.consumerSecret, accessToken: local.twitter.accessToken, accessTokenSecret: local.twitter.accessTokenSecret });
   } else {
     console.log('Configure twitter { consumerKey:, consumerSecret: } in local.js if you want the twitter widget. If you do not want it you can remove this message from app.js.');
   }
@@ -271,12 +271,24 @@ function setRoutes(callback) {
   return callback(null);
 }
 
+// Command line tasks, run like this: node app cards:shuffle
+var myTasks = {
+  // cards: {
+    // shuffle: function(apos, argv, callback) {
+    //   setTimeout(function() {
+    //     console.log('whee I shuffled the cards!');
+    //     return callback(null);
+    //   }, 1000);
+    // }
+  // }
+};
+
 function listen(err) {
   if (err) {
     throw err;
   }
   // Command line tasks
-  if (apos.startTask()) {
+  if (apos.startTask(myTasks)) {
     // Chill and let the task run until it's done, don't try to listen or exit
     return;
   }
