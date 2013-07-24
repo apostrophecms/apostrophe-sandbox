@@ -15,7 +15,6 @@
   "dependencies": {
     "appy": "0.x",
     "uploadfs": "0.x",
-    "async": "0.1.x",
     "nunjucks": "0.1.x",
     "apostrophe": "0.x",
     "apostrophe-rss": "0.x",
@@ -30,6 +29,7 @@
     "underscore": "~1.4.4",
     "extend": "~1.1.3",
     "optimist": "~0.5.2",
-    "apostrophe-groups": "0.x"
+    "apostrophe-groups": "0.x",
+    "async": "~0.2.9"
   }
 }
