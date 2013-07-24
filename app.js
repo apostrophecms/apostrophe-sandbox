@@ -128,7 +128,7 @@ function initApos(callback) {
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' },
       { name: 'home', label: 'Home Page' },
-      { name: 'largeSlideshow', label: 'Large Slideshow' }
+      { name: 'marquee', label: 'Marquee' }
     ];
     // This feature isn't styled adequately for the demo site yet
     if (!demo) {
@@ -208,7 +208,7 @@ function initApos(callback) {
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' },
       { name: 'home', label: 'Home Page' },
-      { name: 'largeSlideshow', label: 'Large Slideshow' }
+      { name: 'marquee', label: 'Marquee' }
     ];
     if (!demo) {
       pageTypesMenu.push({ name: 'sectioned', label: 'Page With Sections' });
