@@ -49,6 +49,8 @@ var options = {
     host: local.db.host || '127.0.0.1',
     port: local.db.port || 27017,
     name: local.db.name || 'apostrophe-sandbox',
+    user: local.db.user || null,
+    password: local.db.password || null,
     collections: [
       // Handy way to get appy to create mongodb collection objects for you,
       // see the appy docs
