@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% include "pageMacros.html" %}
 
 {% block bodyClass %}{{ super() }} home-page{% endblock %}
 
@@ -14,7 +15,7 @@
               <h4>Subpages</h4>
               <ol class="default-subpages">
               {% for relative in page.children %}
-                <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
+                <li>{{ pageLink(relative) }}</li>
               {% endfor %}
               </ol>
             </div>

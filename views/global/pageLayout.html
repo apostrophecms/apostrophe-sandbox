@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% include "pageMacros.html" %}
 
 {% block title %}
 Apostrophe Sandbox: {{ page.title | e }}
@@ -13,9 +14,9 @@ Apostrophe Sandbox: {{ page.title | e }}
   <ul class="tabs clearfix">
     {% for tab in page.tabs %}
       {% if tab.slug == page.slug %}
-        <li class="tab current-page"><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
+        <li class="tab current-page">{{ pageLink(tab) }}</li>
       {% else %}
-        <li class="tab"><a href="{{ tab.url }}">{{ tab.title | e }}</a></li>
+        <li class="tab">{{ pageLink(tab) }}</li>
       {% endif %}
     {% endfor %}
   </ul>
@@ -25,7 +26,7 @@ Apostrophe Sandbox: {{ page.title | e }}
   <div class="subnav">
     <ol class="children">
     {% for relative in page.children %}
-      <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
+      <li>{{ pageLink(relative) }}</li>
     {% endfor %}
     </ol>
   </div>
@@ -36,13 +37,13 @@ Apostrophe Sandbox: {{ page.title | e }}
   <div class="inner">
     <ol class="breadcrumbs ancestors clearfix">
       {% for relative in page.ancestors %}
-        <li><a href="{{ relative.url }}">{{ relative.title | e }}</a>&nbsp;/&nbsp;</li>
+        <li>{{ pageLink(relative) }}&nbsp;/&nbsp;</li>
       {% endfor %}
 
       {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
       {# will want to make the greedy page itself a link and add more li's #}
       {% block extraBreadcrumbs %}
-      <li>{{ page.title | e }}</li>
+      <li>{{ pageLink(page, { span: true })</li>
       {% endblock %}
     </ol>
   </div>

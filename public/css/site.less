@@ -1654,3 +1654,11 @@ ol.children
   display: inline-block;
   margin-right: 40px;
 }
+
+// Use of !important seems truly necessary as there are
+// too often other text decoration styles on links
+
+.apos-page-link.apos-unpublished
+{
+  text-decoration: line-through !important;
+}
