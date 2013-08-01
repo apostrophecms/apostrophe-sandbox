@@ -2,8 +2,6 @@
 
 {% block bodyClass %}{{ super() }} onecolumn{% endblock %}
 
-{% block main %}
-  <div class="column">
+{% block mainContent %}
     {{ aposSectionGroup({ page: page, name: 'main', edit: edit }) }}
-  </div>
 {% endblock %}

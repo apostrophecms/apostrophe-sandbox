@@ -12,11 +12,11 @@
 {% block header %}
   <div class="block header">
     <div class="inner clearfix">
-      <a href="/"><div class="logo"></div></a>
-      <div class="main-navigation">
 
+      <div class="main-navigation">
+        <a href="/" class="logo-container"></a>
         {% block mainNav %}
-          <ul class="tabs clearfix">
+          <ul class="tabs">
             {% for tab in page.tabs %}
               {% if tab.slug == page.slug %}
                 <li class="tab current-page">{{ pageLink(tab) }}</li>

@@ -105,14 +105,11 @@ ul
 
   h3, h4, h5, h6
   {
-    font-family: Montserrat;
-    // font-weight: 700;
     color: #fff;
     background: #212121;
+    .montserrat;
     text-align: center;
-    padding: 1em 0.5em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-style: normal;
   }
 
   .apos-area
@@ -142,11 +139,9 @@ ul
     .apos-normal-view .apos-content > div:not(.apos-widget), .apos-editable
     {
       padding: 0 1em 1em 1em;
-      font-family: Chivo;
-      font-style: italic;
+      .chivo-italic;
       font-size: 14px;
       white-space: normal;
-      line-height: 2em;
     }
   }
 }
@@ -315,6 +310,31 @@ ol.children
 
 @blue: #02727F;
 
+.montserrat
+{
+  font-family: Montserrat;
+  padding: 1em 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+}
+
+.chivo-italic
+{
+  font-family: Chivo;
+  font-style: italic;
+  line-height: 2em;
+  letter-spacing: 0.075em;
+}
+
+.transition(@props)
+{
+  -moz-transition: @props;
+  -webkit-transition: @props;
+  -ms-transition: @props;
+  -o-transition: @props;
+  transition: @props;
+}
+
 .block
 {
   max-width: 1600px;
@@ -334,19 +354,21 @@ ol.children
   background: #fff;
   color: #000;
 
-  .logo
+  .logo-container
   {
-    float: left;
+    display: block;
     width: 151px;
     height: 151px;
+    margin: 0 auto;
     background-image: url('/images/logo-apos-login.png');
   }
 
   .tabs
   {
+    width: 100%;
+    margin-top: 24px;
+    text-align: center;
     list-style-type: none;
-    float: right;
-    padding: 43px 0;
     font-family: Montserrat;
     font-weight: 700;
     letter-spacing: 2px;
@@ -360,14 +382,11 @@ ol.children
 
     li, .tab
     {
-      padding: 20px 1%;
+      padding: 12px;
       margin-left: 5px;
       display: inline-block;
 
-      -moz-transition: background-color 0.3s ease;
-      -webkit-transition: background-color 0.3s ease;
-      -o-transition: background-color 0.3s ease;
-      // transition: background-color 0.3s ease;
+      .transition(background-color 0.3s ease);
 
       &:hover
       {
@@ -385,7 +404,7 @@ ol.children
 
 .hero
 {
-  height: 524px;
+  min-height: 525px;
   background: rgb(205, 219, 161);
   background-image: url('/images/alps.jpg');
   background-size: cover;
@@ -400,7 +419,7 @@ ol.children
     .apos-editor, .apos-editor .apos-editable
     {
       min-height: 200px;
-      max-height: 300px;
+      // max-height: 300px;
     }
 
     .apos-editable
@@ -411,20 +430,16 @@ ol.children
     h3
     {
       display: inline-block;
-      font-size: 450%;
-      font-family: 'Montserrat';
-      font-weight: 700;
-      letter-spacing: 8px;
+      .Montserrat-Title(450%);
       border-bottom: 10px solid #fff;
+      line-height: 1.25em;
       margin-bottom: 0.25em;
     }
 
     h4
     {
-      font-family: 'Chivo';
-      font-style: italic;
+      .chivo-italic;
       font-size: 160%;
-      letter-spacing: 2px;
     }
   }
 }
@@ -535,14 +550,11 @@ ol.children
   .major
   {
     background: #f4f4f4;
-    font-family: Chivo;
-    font-style: italic;
+    .chivo-italic;
 
     h3, h4, h5, h6
     {
-      font-family: Montserrat;
-      font-weight: 700;
-      font-style: normal;
+      .montserrat;
       color: #212121;
     }
 
@@ -632,7 +644,7 @@ ol.children
     {
       background-image: url('/images/alps_crop.jpeg');
       background-size: cover;
-      font-family: Montserrat;
+      .montserrat;
       font-weight: 700;
       color: #fff;
       background-color: #212121;
@@ -640,7 +652,7 @@ ol.children
       margin: -33px -33px 33px -33px;
       padding: 66px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      line-height: 66px;
     }
 
     h3
@@ -675,8 +687,7 @@ ol.children
       margin-top: -6px;
       padding: 15px;
       background-color: #fff;
-      font-family: Chivo;
-      font-style: italic;
+      .chivo-italic;
       font-size: 80%;
 
       p
@@ -694,23 +705,19 @@ ol.children
 
   h3, h4, h5, h6
   {
-    font-family: Montserrat;
-    // font-weight: 700;
+    .montserrat;
     color: #fff;
     background: #212121;
     text-align: center;
     padding: 1em 0.5em;
     text-transform: uppercase;
-    letter-spacing: 2px;
   }
 
   p
   {
-    font-family: Chivo;
-    font-style: italic;
+    .chivo-italic;
     font-size: 80%;
     padding: 0 1.5em 1em 1.5em;
-    line-height: 2em;
   }
 
 
@@ -1661,4 +1668,57 @@ ol.children
 .apos-page-link.apos-unpublished
 {
   text-decoration: line-through !important;
+}
+
+// sections
+
+.apos-section
+{
+  margin-bottom: 24px;
+}
+
+.apos-section-controls
+{
+  display: inline-block;
+  float: right;
+}
+
+.apos-section-links
+{
+  background-color: #f4f4f4;
+  padding: 12px;
+  margin-bottom: 24px;
+  text-align: center;
+
+  .apos-section-link
+  {
+    list-style-type: none;
+    display: inline-block;
+    padding: 12px;
+
+    a
+    {
+      .montserrat;
+      text-decoration: none;
+      color: #212121;
+      .transition(color 0.25s);
+      &:hover
+      {
+        color: white;
+      }
+
+    }
+
+    .transition(background-color 0.25s);
+    &:hover
+    {
+      background-color: @blue;
+    }
+  }
+}
+
+.apos-section-title
+{
+  .Montserrat-Title(150%);
+  display: inline-block;
 }

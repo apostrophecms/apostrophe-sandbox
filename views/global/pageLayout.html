@@ -43,7 +43,7 @@ Apostrophe Sandbox: {{ page.title | e }}
       {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
       {# will want to make the greedy page itself a link and add more li's #}
       {% block extraBreadcrumbs %}
-      <li>{{ pageLink(page, { span: true })</li>
+      <li>{{ pageLink(page, { span: true }) }}</li>
       {% endblock %}
     </ol>
   </div>
