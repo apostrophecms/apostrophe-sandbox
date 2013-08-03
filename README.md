@@ -1,6 +1,6 @@
-# Apostrophe Sandbox: blog-subclass fork
+# Apostrophe Sandbox: blog-subclass branch
 
-This is a fork of the Apostrophe Sandbox. The purpose of this fork is to demonstrate how to subclass the blog module in your project in the simplest possible way when all you need to do is override the templates and macros.
+This is a branch of the Apostrophe Sandbox. The purpose of this branch is to demonstrate how to subclass the blog module in your project in the simplest possible way when all you need to do is override the templates and macros.
 
 Look in `lib/modules/blog` to see how it was done.
 
