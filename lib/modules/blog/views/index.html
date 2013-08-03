@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% include "blogMacros.html" %}
+
+{% block bodyClass %}{{ super() }} apos-blog-page{% endblock %}
+
+{# 'here()' returns the URL of the page, with the year and month added if we are #}
+{# viewing by month, plus any query string based on active filters. You can pass #}
+{# 'changes' to override filters. Passing null for a filter removes it. #}
+
+{%- macro here(changes) -%}
+  {{ page.url | build([ 'year', 'month' ], { year: activeYear, month: activeMonth, tag: query.tag }, changes) }}
+{%- endmacro -%}
+
+{# Output the current content of the page, with buttons to edit it #}
+
+{% block mainContent %}
+
+  <h2>I subclassed the blog index.html template!</h2>
+  {# Borrowed from the events module. Let's try to keep styling and #}
+  {# markup consistent where they don't need to diverge. -Tom #}
+
+  <div class="snippets-filter clearfix">
+    {% if defaultView %}
+      {# Currently not filtering by date #}
+      <h2 class="month active">Recent Articles</h2>
+      <h2 class="month by-month-button"><a href="{{ here({ year: thisYear, month: thisMonth }) }}">Articles by Month</a></h2>
+    {% else %}
+      {# Currently showing a particular month of articles #}
+      <h2 class="month upcoming-button"><a href="{{ here({ year: null, month: null }) }}">Recent Articles</a></h2>
+      <h2 class="month browse-by-month active">
+        <a class="month-previous" {#class="button previous"#} href="{{ here({ year: prevYear, month: prevMonth }) }}">&laquo;</a>
+        <span class="month current">{{ (activeYear + '-' + activeMonth + '-01') | date('MMMM YYYY') }}</span>
+        <a class="month-next" {#class="button next"#} href="{{ here({ year: nextYear, month: nextMonth }) }}">&raquo;</a>
+      </h2>
+    {% endif %}
+    {# Do not show unusable filters #}
+    {% if allTags.length %}
+      <h2>
+        <label for="type-filter">Filter</label>
+        <select id="snippets-tag-filter" name="type-filter">
+          <option value="{{ here({ tag: null }) }}">All</option>
+          {%- for tag in allTags -%}
+            {%- if tag.length -%}
+              <option {% if query.tag == tag %}selected{%endif %} value="{{ here({ tag: tag }) }}">{{ tag }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </h2>
+    {% endif %}
+  </div>
+
+  <div class="column">
+
+    {% if page.children.length %}
+      <div class="column-element">
+
+        {% block subnav %}
+          <div class="subnavigation">
+            <h4>Subpages</h4>
+            <p>Blog posts have tags, and that means you can create a blog subpage that only shows a certain set of tags. Try it out!</p>
+            <ol class="children">
+            {% for relative in page.children %}
+              <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
+            {% endfor %}
+            </ol>
+          </div>
+        {% endblock %}
+
+      </div>
+    {% endif %}
+
+    <div class="column-element apos-area-sidebar">
+      {{ aposArea({ slug: slug + ":sidebar", area: page.areas.sidebar, edit: edit }) }}
+    </div>
+
+  </div>
+
+  <div class="column-2">
+    <div class="apos-blog-posts">
+      {{ renderBlogPostPreviews(items, page.url) }}
+    </div>
+  </div>
+
+  {# TODO: set up a here() macro like we have in DR to implement #}
+  {# combinations of filters once we have them #}
+
+  <div class="full-width-column">
+    {{ renderPager(pager, here({})) }}
+  </div>
+
+  <script type="text/javascript">
+    var $eventFilter = $('select#snippets-tag-filter');
+
+    $eventFilter.on('change', function(event) {
+      window.location.href = $eventFilter.val();
+    });
+  </script>
+
+  {# Just uncomment this script block to enable infinite scroll instead! #}
+
+  {#
+  <script type="text/javascript">
+    $(function() {
+      $('.apos-refreshable .apos-blog-posts').bottomless({
+        url: {{ page.url | json }}
+      });
+      // We don't need the pager if we can infinite scroll
+      // However we hide it with JavaScript so that
+      // Google still finds it otherwise we have serious SEO issues!
+      $('.apos-refreshable .apos-pager').hide();
+    });
+  </script>
+  #}
+
+{% endblock %}

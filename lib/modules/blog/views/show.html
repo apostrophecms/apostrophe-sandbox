@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% include "blogMacros.html" %}
+
+{% block bodyClass %}{{ super() }} apos-blog-post-page{% endblock %}
+
+{% block extraBreadcrumbs %}
+  <li><a href="{{ page.url }}">{{ page.title | e }}</a></li>
+  <li>&nbsp;/&nbsp;{{ item.title | e }}</li>
+{% endblock %}
+
+{% block mainContent %}
+  <h2>I subclassed the blog show.html template!</h2>
+  <div class="column apos-area-sidebar">
+    {{ aposArea({ slug: slug + ":sidebar", area: page.areas.sidebar, edit: edit }) }}
+  </div>
+
+  <div class="column-2 blog-posts">
+    {{ renderBlogPost(item, page.url) }}
+  </div>
+
+{% endblock %}

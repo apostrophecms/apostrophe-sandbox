@@ -144,7 +144,7 @@ function initApos(callback) {
   }
 
   function initAposBlog(callback) {
-    blog = require('apostrophe-blog')({ apos: apos, pages: pages, app: app }, callback);
+    blog = require('./lib/modules/blog')({ apos: apos, pages: pages, app: app }, callback);
   }
 
   function initAposEvents(callback) {
