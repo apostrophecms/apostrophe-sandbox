@@ -35,6 +35,27 @@
 //   });
 // });
 
+// Subclass the editor to add functionality
+
+var SuperEditor = apos.Editor;
+function MyEditor(options) {
+  apos.log('constructed');
+  var self = this;
+  SuperEditor.call(this, options);
+  var superEnableControls = self.enableControls;
+  self.enableControls = function() {
+    superEnableControls.call(this);
+    apos.log('enabling control');
+    self.enableControl('insertHorizontalRule', {
+      keys: ['meta+h', 'ctrl+h'],
+      callback: self.green
+    });
+  };
+}
+
+// Install our subclass as the official editor
+apos.Editor = MyEditor;
+
 $(function() {
   // Your code goes here
 });

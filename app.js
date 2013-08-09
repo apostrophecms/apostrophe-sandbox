@@ -111,7 +111,7 @@ function initApos(callback) {
   }
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposGroups,initAposSections, initAposPageTypesMenu, initAposAppAssets, apos.endAssets], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposGroups,initAposSections, initAposPageTypesMenu, initAposAppAssets, initAposAddControls, apos.endAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -235,6 +235,16 @@ function initApos(callback) {
       options.web = '';
       return apos.pushAsset(type, name, options);
     }
+  }
+
+  // See also site.js
+  function initAposAddControls(callback) {
+    apos.controlTypes.insertHorizontalRule = {
+      type: 'button',
+      label: 'HR'
+    };
+    apos.defaultControls.push('insertHorizontalRule');
+    return callback(null);
   }
 }
 
