@@ -1722,3 +1722,31 @@ ol.children
   .Montserrat-Title(150%);
   display: inline-block;
 }
+
+.apos-person-read-only-groups
+{
+  padding: 10px 0 10px 0;
+  margin-bottom: 10px;
+  background-color: #def;
+  p
+  {
+    padding-top: 10px;
+  }
+  .apos-person-groups
+  {
+    padding: 10px 0 10px 0;
+  }
+  .apos-person-group
+  {
+    padding-bottom: 8px;
+  }
+  .apos-person-job-title
+  {
+    &:before {
+      content: ' (';
+    }
+    &:after {
+      content: ')';
+    }
+  }
+}
