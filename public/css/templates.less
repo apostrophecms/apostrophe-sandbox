@@ -1,0 +1,44 @@
+// styles for default.html
+.default-content-area
+{
+  background-color: @gray;
+
+  h3
+  {
+    width: 100%;
+    position: relative;
+    background-image: url('/images/alps_crop.jpeg');
+    background-size: cover;
+    padding: 33px 33px 66px 33px;
+    font-size: 300%;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+
+    &:after
+    {
+      content: '_';
+      width: 50px;
+      // margin-left: -25px;
+      position: absolute;
+      bottom: 33px;
+      left: 47%;
+      text-align: center;
+    }
+  }
+}
+
+.apos-area-sidebar
+{
+  background-color: @gray;
+
+  .apos-content
+  {
+    .alternate-header-styles;
+  }
+}
+
+.marquee
+{
+  padding: 0;
+}
