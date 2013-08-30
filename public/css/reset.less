@@ -58,3 +58,9 @@ b {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
   margin: 0;
 }
+
+.clearfix() {
+  zoom: 1;
+  &:before { content: ''; display: block; }
+  &:after { content: ''; display: table; clear: both; }
+}

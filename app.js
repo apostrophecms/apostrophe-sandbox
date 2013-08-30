@@ -111,7 +111,7 @@ function initApos(callback) {
   }
   require('apostrophe-rss')({ apos: apos, app: app });
 
-  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposEvents, initAposMap, initAposPeople, initAposGroups,initAposSections, initAposPageTypesMenu, initAposAppAssets, apos.endAssets], callback);
+  async.series([initAposMain, initAposPages, initAposSnippets, initAposBlog, initAposMap, initAposSections, initAposPageTypesMenu, initAposAppAssets, apos.endAssets], callback);
 
   function initAposMain(callback) {
     return apos.init({
@@ -253,16 +253,16 @@ function setRoutes(callback) {
     snippets.loader,
     blog.loader,
     map.loader,
-    people.loader,
+    // people.loader,
     pages.searchLoader
   ];
   // Add this one if it's enabled
-  if (events) {
-    load.push(events.loader);
-  }
-  if (groups) {
-    load.push(groups.loader);
-  }
+  // if (events) {
+  //   load.push(events.loader);
+  // }
+  // if (groups) {
+  //   load.push(groups.loader);
+  // }
 
   app.get('*', pages.serve({
     templatePath: __dirname + '/views/pages',

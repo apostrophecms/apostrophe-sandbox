@@ -15,7 +15,7 @@
         {% if demo %}
           <h4><em>This demo resets at the top of the hour.</em></h4>
         {% endif %} #}
-        {{ aposArea({ slug: slug + ':hero', area: page.areas.hero, edit: edit, controls: [ 'style', 'bold', 'italic'] }) }}
+        {{ aposArea({ slug: slug + ':hero', area: page.areas.hero, edit: edit, controls: [ 'style', 'bold', 'italic'], styles: [ { value: 'div', label: 'Normal' }, { value: 'h3', label: 'Heading 3' }, { value: 'h4', label: 'Heading 4' } ] }) }}
       </div>
     </div>
   </div>

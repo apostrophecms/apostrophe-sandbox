@@ -75,7 +75,25 @@ p, span
   }
 }
 
-.apos-content > div:not(.apos-slideshow):not(.apos-widget), .apos-editable > div:not(.apos-slideshow):not(.apos-widget)
+.apos-content > div:not(.apos-slideshow):not(.apos-widget),
+.apos-editable > div:not(.apos-slideshow):not(.apos-widget),
 {
   padding: 1em;
+}
+
+.apos-content, .apos-editable
+{
+  & > ul
+  {
+    margin-left: 2em;
+    li {
+      list-style-type: square;
+    }
+  }
+
+  pre
+  {
+    font-family: "Courier New", monospace;
+    padding: 1em;
+  }
 }

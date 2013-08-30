@@ -1,13 +1,24 @@
 {% extends "layout.html" %}
 
-{% block bodyClass %}{{ super() }} onecolumn{% endblock %}
+{% block bodyClass %}{{ super() }} one-column{% endblock %}
 
 {# Output the current content of the page, with buttons to edit it #}
 
 {% block mainContent %}
+
   {# Demonstrate how to test for an empty area #}
   {% if (not edit) and aposAreaIsEmpty({ area: page.areas.main }) %}
     <p>No one has entered content here yet.</p>
   {% endif %}
-  {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
+
+  <div class="one-column-area">
+    {{ aposArea({
+      slug: slug + ':main',
+      area: page.areas.main,
+      edit: edit,
+      controls: [ 'style', 'bold', 'italic', 'createLink', 'unlink', 'insertUnorderedList', 'slideshow' ],
+      slideshow: { noHeight: true, extraFields: true }
+    }) }}
+  </div>
+
 {% endblock %}

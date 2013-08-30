@@ -23,13 +23,13 @@
           {# permissions.edit === can edit, potentially, somewhere #}
           {{ aposSnippetMenu({ edit: permissions.edit }) }}
           {{ aposBlogMenu({ edit: permissions.edit }) }}
-          {{ aposEventsMenu({ edit: permissions.edit }) }}
           {{ aposMapMenu({ edit: permissions.edit }) }}
 
           {# Granting these to non-admins allows them to admin-ify #}
           {# themselves and make more accounts, so don't do that. -Tom #}
-          {{ aposPeopleMenu({ edit: permissions.admin }) }}
-          {{ aposGroupsMenu({ edit: permissions.admin }) }}
+          {#{{ aposPeopleMenu({ edit: permissions.admin }) }}#}
+          {#{{ aposGroupsMenu({ edit: permissions.admin }) }}#}
+          {{ aposMediaMenu({ edit: permissions.edit })}}
 
           {% if user %}
             <div class="apos-admin-bar-item apos-preview-toggle">
