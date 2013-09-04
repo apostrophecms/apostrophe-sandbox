@@ -153,5 +153,5 @@ You should join the [apostrophenow Google Group](https://groups.google.com/forum
 
 ## Thanks for using Apostrophe!
 
-(http://punkave.com)[P'unk Avenue]
+[P'unk Avenue](http://punkave.com)
 
