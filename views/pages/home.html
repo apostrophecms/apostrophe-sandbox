@@ -27,7 +27,7 @@
       {{ aposSingleton({ slug: slug + ':image1', area: page.areas.image1, edit:edit, type: 'slideshow', aspectRatio: [2, 1], noHeight: true }) }}
     </div>
     <div class="column-element">
-      {{ aposArea({ slug: slug + ':content1', area: page.areas.content1, edit:edit, controls: ['style', 'bold', 'italic'] }) }}
+      {{ aposArea({ slug: slug + ':content1', area: page.areas.content1, edit:edit, controls: ['style', 'bold', 'italic'], styles: [ { value:'div', label: 'Normal' }, { value: 'h4', label: 'Heading' } ] }) }}
     </div>
   </div>
   <div class="column main-content-column">
@@ -35,7 +35,7 @@
       {{ aposSingleton({ slug: slug + ':image2', area: page.areas.image2, edit:edit, type: 'slideshow', aspectRatio: [2, 1], noHeight: true }) }}
     </div>
     <div class="column-element">
-      {{ aposArea({ slug: slug + ':content2', area: page.areas.content2, edit:edit, controls: ['style', 'bold', 'italic'] }) }}
+      {{ aposArea({ slug: slug + ':content2', area: page.areas.content2, edit:edit, controls: ['style', 'bold', 'italic'], styles: [ { value:'div', label: 'Normal' }, { value: 'h4', label: 'Heading' } ] }) }}
     </div>
   </div>
   <div class="column main-content-column">
@@ -43,7 +43,7 @@
       {{ aposSingleton({ slug: slug + ':image3', area: page.areas.image3, edit:edit, type: 'slideshow', aspectRatio: [2, 1], noHeight: true }) }}
     </div>
     <div class="column-element">
-      {{ aposArea({ slug: slug + ':content3', area: page.areas.content3, edit:edit, controls: ['style', 'bold', 'italic'] }) }}
+      {{ aposArea({ slug: slug + ':content3', area: page.areas.content3, edit:edit, controls: ['style', 'bold', 'italic'], styles: [ { value:'div', label: 'Normal' }, { value: 'h4', label: 'Heading' } ] }) }}
     </div>
   </div>
 

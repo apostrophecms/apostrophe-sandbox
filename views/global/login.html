@@ -24,7 +24,7 @@ Apostrophe Sandbox: Login
     <h4>LOGIN</h4>
     <form action="/login" method="post">
       <div class="login-inputs">
-        <div class="warning">{{ message }}</div>
+        {% if message %}<div class="warning">{{ message }}</div>{% endif %}
         <div class="login-username">
           <label>Username (hint: it's 'admin')</label>
           <input type="text" name="username" />

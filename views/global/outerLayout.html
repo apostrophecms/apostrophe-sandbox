@@ -19,16 +19,8 @@
 
           {# edit === can edit THIS page #}
           {{ aposPagesMenu({ page: page, edit: edit }) }}
-
-          {# permissions.edit === can edit, potentially, somewhere #}
-          {{ aposSnippetMenu({ edit: permissions.edit }) }}
           {{ aposBlogMenu({ edit: permissions.edit }) }}
           {{ aposMapMenu({ edit: permissions.edit }) }}
-
-          {# Granting these to non-admins allows them to admin-ify #}
-          {# themselves and make more accounts, so don't do that. -Tom #}
-          {#{{ aposPeopleMenu({ edit: permissions.admin }) }}#}
-          {#{{ aposGroupsMenu({ edit: permissions.admin }) }}#}
           {{ aposMediaMenu({ edit: permissions.edit })}}
 
           {% if user %}
@@ -38,20 +30,10 @@
             </div>
           {% endif %}
 
-          <!-- <div class="apos-admin-bar-item apos-search">
-            <form action="/search">
-              {# Please do not put back a default value here unless #}
-              {# you have an implementation that really works for typical #}
-              {# user interactions like selecting it or typing over it. -Tom #}
-              Search: <input type="text" name="q" value="" class="search-field" />
-              <input type="submit" class="search-submit" value="Go" />
-            </form>
-          </div> -->
-
           <div class="apos-admin-bar-item login-status">
             {% if user %}
               <a class="apos-button " href="/logout">
-                <span class="apos-who">{{ user.title }}</span>Log Out
+                <span class="apos-who">{{ user.title }}</span> Log Out
               </a>
             {% else %}
               <a class="apos-button " href="/login">Log In to Edit</a>

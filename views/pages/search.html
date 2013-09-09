@@ -1,41 +1,10 @@
 {% extends "layout.html" %}
-{% include "pageMacros.html" %}
 
-{% block bodyClass %}{{ super() }} default-page{% endblock %}
-
-{# Output the current content of the page, with buttons to edit it #}
-
-  {# Demonstrate how to test for an empty area #}
-  {% if (not edit) and aposAreaIsEmpty({ area: page.areas.main }) %}
-    <p>No one has entered content here yet.</p>
-  {% endif %}
+{% block bodyClass %}{{ super() }} search-page{% endblock %}
 
 
-{% block subnav %}
 
-{% endblock %}
-
-{% block breadcrumbs %}{% endblock %}
-{% block marquee %}
-
-    <ol class="breadcrumbs ancestors clearfix">
-      {% for relative in page.ancestors %}
-        <li>{{ pageLink(relative) }} &raquo;&nbsp;</a></li>
-      {% endfor %}
-
-      {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
-      {# will want to make the greedy page itself a link and add more li's #}
-      {% block extraBreadcrumbs %}
-      <li>{{ page.title | e }}</li>
-      {% endblock %}
-    </ol>
-  <h1 class="page-title">{{ page.title | e }}</h1>
-
-{% endblock %}
-
-{% block main %}
-
-  {{ aposArea({ slug: slug + ':main', area: page.areas.main, edit: edit }) }}
+{% block mainContent %}
 
   {# Form refers to self via "" #}
   <form class="apos-search-form" method="GET" action="">
@@ -43,35 +12,23 @@
   </form>
 
   {% if search %}
-    <h3>Search Results</h3>
-    <p>
+    <h3 class="search-results-header">Search Results</h3>
+    <p class="search-options">
       <input type="checkbox" name="page" checked class="apos-search-filter" /> Pages
       <input type="checkbox" name="mapLocation" checked class="apos-search-filter" /> Places
-      <input type="checkbox" name="event" checked class="apos-search-filter" /> Events
       <input type="checkbox" name="blogPost" checked class="apos-search-filter" /> Articles
     </p>
-    <ul>
+    <ul class="search-results">
       {% for result in search %}
-        <li data-type="{{ result.type }}" class="apos-result apos-result-{{ result.type }}">
-          <h4>
-            <a href="/apos-pages/search-result?slug={{ result.slug }}">{{ result.title | e }}</a></h4>
-          <p>{{ result.searchSummary | truncatePlaintext(1000) }}</p>
-        </li>
+        {% if result.type %}
+          <li data-type="{{ result.type }}" class="apos-result apos-result-{{ result.type }}">
+            <h4 class="search-result-title">
+              <a href="/apos-pages/search-result?slug={{ result.slug }}">{{ result.title | e }}</a></h4>
+            <p class="search-result-text">{{ result.searchSummary | truncate(400) }}</p>
+          </li>
+        {% endif %}
       {% endfor %}
     </ul>
-  {% else %}
-    <h4>No matches. Try a less specific search.</h4>
   {% endif %}
 
-{% endblock %}
-
-{% block sidebar %}
-  <div class="subnav">
-    <h2>Subnavigation</h2>
-    <ol class="children">
-    {% for relative in page.children %}
-      <li><a href="{{ relative.url }}">{{ relative.title | e }}</a></li>
-    {% endfor %}
-    </ol>
-  </div>
 {% endblock %}

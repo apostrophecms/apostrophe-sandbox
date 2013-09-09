@@ -4,8 +4,10 @@
 // deployments in our stagecoach recipe
 
 module.exports = {
+
   // Absolute URL is only necessary with s3
   uploadsUrl: '/uploads',
+
   // 'locals' are visible to nunjucks templates
   locals: {
     // Warning not to edit content with an expectation of keeping it on this server, for staging servers
@@ -23,9 +25,16 @@ module.exports = {
     // your own suitably styled links to `/login` if desired
     loginButton: true
   },
+
   // Want Twitter widgets to work? Go to dev.twitter.com and create an "app", then
   // pop the key and secret here.
-  twitter: {
+
+  // This follows the same format as the modules we declare in app.js. You would
+  // do it here in order to keep sensitive data like keys and secrets out of your git repo.
+  // Note: if you plan on using twitter, don't forget to include the apostrophe-twitter module
+  // in app.js!
+
+  'apostrophe-twitter': {
     consumerKey: 'xxxx',
     consumerSecret: 'yyyy',
     // Click "Create my access token" on dev.twitter.com to generate these.
@@ -33,6 +42,7 @@ module.exports = {
     accessToken: 'zzzz',
     accessTokenSecret: 'aaaa'
   },
+
   // Set to true for full CSS and JS minify, on staging and production servers
   minify: false
   // If these are your db settings then you don't need to be explicit. If not
