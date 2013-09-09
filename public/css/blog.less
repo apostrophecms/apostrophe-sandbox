@@ -1,0 +1,141 @@
+.apos-blog-page
+{
+  .blog-filter
+  {
+    width: 100%;
+    padding: 1em 0;
+
+    .filter-element
+    {
+      .column;
+
+      &.active-view, &.current-month
+      {
+        text-align: right;
+      }
+    }
+
+    h4, label
+    {
+      .Chivo-Italic;
+    }
+
+    // hide that nasty input
+    #snippets-tag-filter
+    {
+      width: 100px;
+      margin-left: 2px;
+      background: transparent;
+      .Chivo-Italic;
+      letter-spacing: 0.075em;
+      color: @blue;
+
+      border: 0;
+      -webkit-appearance: none;
+      cursor: pointer;
+
+      &:focus
+      {
+        background-color: @gray;
+        outline: none;
+      }
+    }
+  }
+
+  .apos-blog-post-preview
+  {
+    margin-bottom: 2em;
+    background-color: @gray;
+
+    .apos-blog-post
+    {
+      .clearfix;
+    }
+
+    .apos-blog-date
+    {
+      // display: inline-block;
+      float: left;
+      vertical-align: top;
+      width: 25%;
+      height: 100%;
+      padding: 2em;
+      background-color: @dark;
+      text-align: center;
+
+      h3
+      {
+        font-size: 200%;
+      }
+
+      a
+      {
+        text-transform: uppercase;
+        color: white;
+      }
+    }
+
+    .apos-blog-title
+    {
+      display: inline-block;
+      vertical-align: top;
+      width: 70%;
+      padding: 2em;
+
+      h4
+      {
+        font-size: 175%;
+        text-transform: uppercase;
+        a
+        {
+          .transition(color @transition-time);
+          color: @dark;
+          &:hover
+          {
+            color: @blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+.apos-blog-post-page
+{
+  .blog-posts
+  {
+    .default-content-area;
+    margin-bottom: 2em;
+
+    .apos-blog-post-heading
+    {
+      h4
+      {
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 200%;
+        padding: 1em;
+        &:after
+        {
+          content: '_';
+          width: 50px;
+          position: absolute;
+          bottom: 0.1em;
+          left: 47%;
+          text-align: center;
+        }
+      }
+
+      h6
+      {
+        text-align: center;
+      }
+    }
+
+    .apos-blog-tags
+    {
+      padding: 1em;
+    }
+  }
+}

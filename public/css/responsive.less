@@ -1,0 +1,57 @@
+@media all and (max-width: 1024px) and (min-width: 501px)
+{
+  .hero .hero-text h3
+  {
+    font-size: 300%;
+  }
+}
+
+// iPad Portrait and smaller (covers mobile)
+@media all and (max-width: 768px)
+{
+  .column
+  {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  .column-2
+  {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+}
+
+// mobile-specific
+@media all and (max-width: 500px)
+{
+  .block
+  {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero .hero-text h3
+  {
+    font-size: 200%;
+  }
+
+  .breadcrumbs
+  {
+    padding: 1em;
+  }
+
+  .main-navigation .tabs .tab
+  {
+    // make the nav elements full-width blocks
+    width: 100%;
+    padding: 24px;
+    background-color: @blue;
+    a { color: white; }
+    margin-bottom: 2px;
+    &:hover
+    {
+      background-color: @blue;
+    }
+  }
+}

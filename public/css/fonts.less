@@ -1,0 +1,71 @@
+.Montserrat(@size: 100%)
+{
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: @size;
+  letter-spacing: 0.075em;
+}
+
+.Montserrat-Bold(@size: 100%)
+{
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: @size;
+  letter-spacing: 0.075em;
+}
+
+.Chivo-Italic(@size: 100%)
+{
+  font-family: Chivo, Helvetica, sans-serif;
+  font-size: @size;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.Inika-Regular(@size: 100%)
+{
+  font-family: Inika, Georgia, serif;
+  font-size: @size;
+}
+
+.Inika-Italic(@size: 100%)
+{
+  font-family: Inika, Georgia, serif;
+  font-size: @size;
+  font-style: italic;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+  .Montserrat-Bold;
+  line-height: 1.25em;
+  color: @dark;
+}
+
+h1 { font-size: 200%; }
+h2 { font-size: 175%; }
+h3 { font-size: 150%; }
+h4 { font-size: 125%; }
+h5 { font-size: 100%; }
+h6 { font-size: 75%;  }
+
+body
+{
+  .Inika-Regular;
+  line-height: 1.5em;
+}
+
+// dark background with light text, full-width
+.alternate-header-styles()
+{
+  h3,h4
+  {
+    width: 100%;
+    padding: 24px;
+    background-color: @dark;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 400;
+  }
+}

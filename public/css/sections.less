@@ -1,0 +1,86 @@
+.sections-page .apos-section
+{
+  &.apos-section-collapse
+  {
+    max-height: 75px !important;
+  }
+}
+
+.apos-section-links-container
+{
+  .inner;
+  padding: 4em 0;
+  text-align: center;
+
+  ul
+  {
+    &::before
+    {
+      content: "Jump to: ";
+      margin-right: 4px;
+      .Chivo-Italic;
+    }
+  }
+  li
+  {
+    display: inline-block;
+    border: 2px solid lighten(@dark, 40%);
+    .transition(border-color @transition-time, color @transition-time;);
+    padding: 0.25em 0.75em;
+    margin-bottom: 0.5em;
+    margin-right: 0.3em;
+    a
+    {
+      color: lighten(@dark, 40%);
+      .Chivo-Italic;
+    }
+    &:hover
+    {
+      border-color: @dark;
+      a { color: @dark; }
+    }
+  }
+}
+
+.apos-section-inner
+{
+  .block;
+  padding: 0;
+  position: relative;
+
+  .apos-section-controls
+  {
+    position: absolute;
+    right: 0;
+  }
+
+  .apos-section-title
+  {
+    .inner;
+    font-size: 200%;
+    margin-bottom: 1em;
+    a span
+    {
+      color: @dark;
+      text-transform: uppercase;
+    }
+  }
+
+  .apos-area
+  {
+    background-color: @gray;
+    margin-bottom: 2em;
+
+    .apos-content, .apos-editor
+    {
+      .inner;
+      padding: 2rem 0;
+    }
+
+    .apos-area-controls
+    {
+      top: 0;
+      left: 0;
+    }
+  }
+}

@@ -3,15 +3,16 @@
 {% block main %}
   <div class="block marquee">
 
-{{ aposSingleton({ slug: slug + ":marquee", area: page.areas.marquee, edit:edit, type: "marquee", aspectRatio: [2, 1], widgetClass: 'my-fancy-marquee' , extraFields: {credit: false, altTag: false} }) }}
+    {{ aposSingleton({ slug: slug + ":marquee", area: page.areas.marquee, edit:edit, type: "marquee", aspectRatio: [2, 1], widgetClass: 'my-fancy-marquee' , extraFields: {credit: false, altTag: false} }) }}
 
   </div>
   <div class="block large-slideshow-content-area">
-    <div class="inner">
+    <div class="inner one-column-area">
       {{ aposArea({
         slug: slug + ":content",
         area: page.areas.content,
         edit:edit,
+        controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'insertUnorderedList' ],
         slideshow:{
           userOptions:{
             orientation:{

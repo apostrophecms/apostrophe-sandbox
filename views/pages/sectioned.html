@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
-{% block bodyClass %}{{ super() }} onecolumn{% endblock %}
+{% block bodyClass %}{{ super() }} sections-page{% endblock %}
 
-{% block mainContent %}
+{% block main %}
     {{ aposSectionGroup({ page: page, name: 'main', edit: edit }) }}
 {% endblock %}

@@ -11,10 +11,10 @@
 
 {% block header %}
   <div class="block header">
-    <div class="inner clearfix">
+    <div class="inner">
 
       <div class="main-navigation">
-        <a href="/" class="logo-container"></a>
+        <a href="/" class="logo"></a>
         {% block mainNav %}
           <ul class="tabs">
             {% for tab in page.tabs %}
@@ -75,9 +75,9 @@
 {# notice that this footer uses global areas: if we want editable content to appear on every page #}
 {# that inherits this one we want to use the global.areas object instead of the page.areas object. #}
 {% block footerBody %}
-  <footer class="block footer">
+  <footer class="footer">
     {% block footer %}
-    <div class="major">
+    <div class="major block">
       <div class="inner clearfix">
         <div class="column">
           {{ aposArea({ slug: 'global:footerContent1', area: global.areas.footerContent1, edit: edit, controls: ['style', 'italic', 'createLink'] }) }}
@@ -90,17 +90,17 @@
         </div>
       </div>
     </div>
-    <div class="minor">
+    <div class="minor block">
       <div class="inner clearfix">
         <div class="column footer-text">WEBSITES, NOT COFFEE</div>
         <div class="column">
           <div class="footer-logos">
-            <a href="http://twitter.com/punkave"><div class="twitter-logo"></div></a>
-            <a href="http://punkave.com"><div class="punk-logo"></div></a>
-            <a href="http://facebook.com/punkave"><div class="facebook-logo"></div></a>
+            <a class="twitter-logo footer-logo" href="http://twitter.com/punkave"></a>
+            <a class="punk-logo footer-logo" href="http://punkave.com"></a>
+            <a class="facebook-logo footer-logo" href="http://facebook.com/punkave"></a>
           </div>
         </div>
-        <div class="column footer-text">COPYRIGHT &amp; PRIVACY POLICY</div>
+        <div class="column footer-text right-align">COPYRIGHT &amp; PRIVACY POLICY</div>
       </div>
     </div>
     {% endblock %}

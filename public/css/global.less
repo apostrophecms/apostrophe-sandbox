@@ -1,0 +1,141 @@
+// Global styles that will (more or less) be present on all pages.
+// This should correspond with layout.html or whatever your base layout is called
+// (main navigation, global footer, etc.)
+
+.main-navigation
+{
+  .logo
+  {
+    display: block;
+    width: 151px;
+    height: 151px;
+    margin: 0 auto;
+    background-image: url('/images/logo-apos-login.png');
+  }
+
+  .tabs
+  {
+    margin-top: 33px;
+    text-align: center;
+
+    .tab
+    {
+      padding: 12px;
+      margin-left: 5px;
+      display: inline-block;
+      .Montserrat-Bold(100%);
+      text-transform: uppercase;
+
+      &.current-page
+      {
+        background-color: @blue;
+        a { color: white; }
+        &:hover
+        {
+          background-color: @blue;
+        }
+      }
+
+      .transition(background-color @transition-time, padding @transition-time;);
+      &:hover
+      {
+        background-color: #eee;
+      }
+    }
+  }
+}
+
+.breadcrumb-nav
+{
+  background-color: @gray;
+
+  .breadcrumbs
+  {
+    li
+    {
+      display: inline-block;
+      .Montserrat-Bold(75%);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+// footer
+
+.footer
+{
+  .apos-content > div:not(.apos-slideshow):not(.apos-widget), .apos-editable > div:not(.apos-slideshow):not(.apos-widget)
+  {
+    padding: 0;
+  }
+  .major
+  {
+    background-color: @gray;
+
+    h3,h4,h5,h6
+    {
+      text-transform: uppercase;
+      margin-bottom: 1em;
+      font-style: normal;
+    }
+
+    div, span, p
+    {
+      .Chivo-Italic;
+    }
+  }
+
+  .minor
+  {
+    background-color: @gray-darker;
+
+    .footer-text
+    {
+      .Montserrat-Bold(75%);
+      margin-top: 1.75em;
+
+      &.right-align
+      {
+        text-align: right;
+      }
+    }
+
+    .footer-logos
+    {
+      text-align: center;
+      .footer-logo
+      {
+        display: inline-block;
+        vertical-align: middle;
+        &:hover
+        {
+          opacity: 0.75;
+        }
+      }
+
+      .twitter-logo
+      {
+        width: 31px;
+        height: 31px;
+        background-image: url('/images/icon-twitter.png');
+        margin-right: 24px;
+      }
+
+      .punk-logo
+      {
+        width: 64px;
+        height: 66px;
+        background-image: url('/images/logo-punkglyph.png');
+      }
+
+      .facebook-logo
+      {
+        width: 31px;
+        height: 31px;
+        background-image: url('/images/icon-fb.png');
+        margin-left: 24px;
+      }
+    }
+  }
+}

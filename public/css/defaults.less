@@ -1,0 +1,99 @@
+// structural defaults
+
+.block
+{
+  width: 100%;
+  padding: 40px;
+}
+
+.inner
+{
+  max-width: 970px;
+  margin: 0 auto;
+}
+
+.column
+{
+  float: left;
+  width: 32%;
+  margin-right: 2%;
+  vertical-align: top;
+  &:nth-child(3)
+  {
+    margin-right: 0;
+  }
+}
+
+.column-2
+{
+  float: left;
+  width: 66%;
+}
+
+// colors and color-y things
+
+@blue: #02727F;
+@dark: #212121;
+@gray: #f4f4f4;
+@gray-darker: #e2e2e2;
+
+@transition-time: 0.3s;
+
+a
+{
+  text-decoration: none;
+  color: @blue;
+  .transition(color @transition-time);
+
+  &:hover
+  {
+    color: darken(@blue, 10%);
+  }
+}
+
+p, span
+{
+  line-height: 1.5em;
+}
+
+// -------------------- DEFAULT APOSTROPHE STYLES ---------------------- //
+
+.apos-slideshow-image
+{
+  opacity: 0;
+  width: 100%;
+}
+
+.apos-slideshow .apos-slideshow-items
+{
+  width: 100%;
+  display: block;
+
+  .apos-slideshow-item
+  {
+    background-size: cover;
+  }
+}
+
+.apos-content > div:not(.apos-slideshow):not(.apos-widget),
+.apos-editable > div:not(.apos-slideshow):not(.apos-widget),
+{
+  padding: 1em;
+}
+
+.apos-content, .apos-editable
+{
+  & > ul
+  {
+    margin-left: 2em;
+    li {
+      list-style-type: square;
+    }
+  }
+
+  pre
+  {
+    font-family: "Courier New", monospace;
+    padding: 1em;
+  }
+}

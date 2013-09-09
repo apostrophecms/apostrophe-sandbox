@@ -1,0 +1,113 @@
+// These are styles specific to the template files. One might also break each one out
+// into a different lESS file in a more complex project.
+
+.default-content-area
+{
+  // our wacky H3
+  h3
+  {
+    width: 100%;
+    position: relative;
+    background-image: url('/images/alps_crop.jpeg');
+    background-size: cover;
+    padding: 33px 33px 66px 33px;
+    font-size: 300%;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+
+    &:after
+    {
+      content: ' ';
+      width: 40px;
+      border-bottom: 7px solid white;
+      margin-left: -20px;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+    }
+  }
+
+  .default-content-styles;
+}
+
+.one-column-area
+{
+  h3
+  {
+    width: 100%;
+    position: relative;
+    padding: 33px 33px 66px 33px;
+    font-size: 300%;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid @dark;
+
+    &:after
+    {
+      content: ' ';
+      width: 40px;
+      border-bottom: 7px solid @dark;
+      margin-left: -20px;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+    }
+  }
+
+  .default-content-styles;
+}
+
+.default-content-styles
+{
+  background-color: @gray;
+
+  // Headings are part of normal text flow this time around.
+  h4,h5,h6
+  {
+    padding: 1rem;
+  }
+
+  // Image descriptions should be beauteous.
+  .apos-slideshow-description-container
+  {
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.65);
+    h1
+    {
+      text-transform: uppercase;
+    }
+    p
+    {
+      .Chivo-Italic;
+    }
+  }
+}
+
+.subnavigation
+{
+  margin-bottom: 24px;
+
+  .alternate-header-styles;
+  .default-subpages, .children, p
+  {
+    padding: 1em;
+    background-color: @gray;
+    .Chivo-Italic;
+  }
+}
+
+.apos-area-sidebar
+{
+  background-color: @gray;
+
+  .apos-content, .apos-editable
+  {
+    .alternate-header-styles;
+  }
+}
+
+.marquee
+{
+  padding: 0;
+}
