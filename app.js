@@ -41,5 +41,4 @@ var site = require('apostrophe-site')({
     scripts: ['site'],
     stylesheets: ['site']
   }
-
 });
