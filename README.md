@@ -92,7 +92,7 @@ Apostrophe's page templates are in the `views` subdirectory. These templates are
 
 Apostrophe offers a choice of page templates to the user when adding a page via the "Pages" menu. Adding a new one is straightforward. Just copy the `default.html` template in the `views` folder. Let's assume you call your template `myPage.html`.
 
-Next edit `app.js`. This file consists mostly of options to be passed to `apostrophe-site` that configures your site. Look for the `pages` option, and the `types` option nested within that:
+Next edit `app.js`. This file consists mostly of options to be passed to `apostrophe-site`, a convenient way of configuring an Apostrophe-powered website. Look for the `pages` option, and the `types` option nested within that:
 
     pages: {
       types: [
