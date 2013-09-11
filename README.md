@@ -92,29 +92,40 @@ Apostrophe's page templates are in the `views` subdirectory. These templates are
 
 Apostrophe offers a choice of page templates to the user when adding a page via the "Pages" menu. Adding a new one is straightforward. Just copy the `default.html` template in the `views` folder. Let's assume you call your template `myPage.html`.
 
-Next edit `app.js` and introduce your template in two places:
+Next edit `app.js`. This file consists mostly of options to be passed to `apostrophe-site` that configures your site. Look for the `pages` option, and the `types` option nested within that:
 
-1. In the `initAposPages` function, where the simple page types found in the `views` folder are configured, add a new entry:
+    pages: {
+      types: [
+        { name: 'default', label: 'Default (Two Column)' },
+        { name: 'onecolumn', label: 'One Column' },
+        { name: 'marquee', label: 'Marquee' },
+        { name: 'home', label: 'Home Page' },
+        { name: 'blog', label: 'Blog' },
+        { name: 'map', label: 'Map' },
+        { name: 'sections', label: 'Sections' }
+      ]
+    },
 
-        var pageTypes = [
-          { name: 'default', label: 'Default (Two Column)' },
-          { name: 'onecolumn', label: 'One Column' },
-          { name: 'home', label: 'Home Page' },
-          { name: 'largeSlideshow', label: 'Large Slideshow' },
-          { name: 'myPage', label: 'My Page' }
-        ];
+You can add a new entry:
 
-2. In the `initAposPagesMenu` function, where the final order of all of the available page types is decided. Here I've chosen to add it with the other simple page types at the top of the menu:
+    pages: {
+      types: [
+        { name: 'default', label: 'Default (Two Column)' },
+        { name: 'onecolumn', label: 'One Column' },
+        { name: 'marquee', label: 'Marquee' },
+        { name: 'home', label: 'Home Page' },
+        { name: 'blog', label: 'Blog' },
+        { name: 'map', label: 'Map' },
+        { name: 'sections', label: 'Sections' },
+        { name: 'myPage', label: 'My Page' }
+      ]
+    },
 
-        var pageTypesMenu = [
-          { name: 'default', label: 'Default (Two Column)' },
-          { name: 'onecolumn', label: 'One Column' },
-          { name: 'home', label: 'Home Page' },
-          { name: 'largeSlideshow', label: 'Large Slideshow' },
-          { name: 'myPage', label: 'My Page' }
-        ];
+Now restart the app. Since each node app is its own webserver, you'll need to get used to that. Tools like `nodemon` and `always` are useful for automatically restarting apps. Just keep in mind that they only pay attention to changes in server-side `.js` files.
 
-3. Restart the app. Since each node app is its own webserver, you'll need to get used to that. Tools like `nodemon` and `always` are useful for automatically restarting apps. Just keep in mind that they only pay attention to changes in server-side `.js` files.
+## Advanced Configuration ##
+
+Check out the [apostrophe-site module documentation](http://github.com/punkave/apostrophe-site) for more information about other configuration options for your site, including adding additional Apostrophe modules like the blog, the events module and more.
 
 For more advanced information about page types, including how to write page loader functions on the server side that summon custom data and create experiences like our blog and map pages, see the [apostrophe-pages module documentation](http://github.com/punkave/apostrophe-pages). If your needs are similar to our [apostrophe-blog](http://github.com/punkave/apostrophe-blog) or [apostrophe-map](http://github.com/punkave/apostrophe-map) modules, check out the [apostrophe-snippets](http://github.com/punkave/apostrophe-snippets) module to see how we've created a foundation for those modules that minimizes the amount of unique code needed in each one.
 
@@ -137,6 +148,7 @@ Apostrophe 2 is changing fast at this early stage. The `npm update` command will
 ## More Modules, More Documentation
 
 See [apostrophe](http://github.com/punkave/apostrophe),
+[apostrophe-site](http://github.com/punkave/apostrophe-site),
 [apostrophe-pages](http://github.com/punkave/apostrophe-pages),
 [apostrophe-snippets](http://github.com/punkave/apostrophe-snippets),
 [apostrophe-blog](http://github.com/punkave/apostrophe-blog),
