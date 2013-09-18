@@ -4,10 +4,12 @@
     <title>
       {%- block title -%}
         {%- if title -%}
-          {{ title }}
-        {%- else -%}
+          Apostrophe &ndash; {{ title }}
+        {%- elif page -%}
+          Apostrophe &ndash; {{ page.title | e }}
+        {% else %}
           Apostrophe
-        {%- endif -%}
+        {% endif %}
       {%- endblock -%}
     </title>
 
