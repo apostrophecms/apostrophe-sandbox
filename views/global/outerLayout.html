@@ -22,6 +22,7 @@
           {{ aposBlogMenu({ edit: permissions.edit }) }}
           {{ aposMapMenu({ edit: permissions.edit }) }}
           {{ aposMediaMenu({ edit: permissions.edit })}}
+          {{ aposTagsMenu({ edit: permissions.admin }) }}
 
           {% if user %}
             <div class="apos-admin-bar-item apos-preview-toggle">
