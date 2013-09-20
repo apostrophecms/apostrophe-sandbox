@@ -4,6 +4,7 @@ var site = require('apostrophe-site')({
   root: module,
   shortName: 'apostrophe-sandbox',
   hostName: 'apostrophe-sandbox',
+  title: 'Apostrophe Sandbox',
   sessionSecret: 'apostrophe sandbox demo party',
   adminPassword: 'demo',
 

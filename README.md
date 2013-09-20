@@ -135,9 +135,9 @@ You'll notice that the various pages contain editable content areas. There are t
 
 Here's an example of template code to insert a named area that lives in the current page:
 
-    {{ aposArea({ slug: slug + ":content1", area: page.areas.content1, edit: edit }) }}
+    {{ aposArea(page, 'content1') }}
 
-`slug`, `page` and `edit` are variables made available to page templates by Apostrophe. The `slug` variable refers to the path of this particular page within the site, while the `page` variable contains the current contents of the page in its `areas` property. The `edit` indicates whether the current user is allowed to edit the page or not. Adding ":content1" to the slug indicates that we are addressing a particular named content area within the page.
+The `page` object is made available to your page templates by Apostrophe. The name `content1 indicates that we are addressing a particular named content area within the page.
 
 For more advanced documentation, including how to add singletons or limit the controls displayed in an area, see the [apostrophe module documentation](http://github.com/punkave/apostrophe).
 

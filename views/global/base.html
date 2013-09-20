@@ -3,13 +3,11 @@
   <head>
     <title>
       {%- block title -%}
-        {%- if title -%}
-          Apostrophe &ndash; {{ title }}
-        {%- elif page -%}
-          Apostrophe &ndash; {{ page.title | e }}
-        {% else %}
-          Apostrophe
-        {% endif %}
+        {%- if page -%}
+          {{ siteTitle | e }} &ndash; {{ page.title | e }}
+        {%- else -%}
+          {{ siteTitle | e }}
+        {%- endif -%}
       {%- endblock -%}
     </title>
 
@@ -27,7 +25,12 @@
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
-    
+
+    {# Passes through whatever was found in the APOS-EXTRA-HEAD comment in the page #}
+    {% if extraHead %}
+      {{ extraHead }}
+    {% endif %}
+
     {% block css %}
       {{ aposStylesheets(when) }}
     {% endblock %}
