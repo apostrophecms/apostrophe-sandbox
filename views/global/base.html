@@ -3,10 +3,13 @@
   <head>
     <title>
       {%- block title -%}
-        {%- if page -%}
-          {{ siteTitle | e }} &ndash; {{ page.title | e }}
+        {%- if title -%}
+          {# Given to us by the inner layout #}
+          {{ title }}
+        {%- elif page -%}
+          {{ siteTitle }} &ndash; {{ page.title | e }}
         {%- else -%}
-          {{ siteTitle | e }}
+          {{ siteTitle }}
         {%- endif -%}
       {%- endblock -%}
     </title>
