@@ -61,9 +61,12 @@
     {# Must be present in the page in order to use apos's widget editors, admin dialogs, etc. #}
     {{ aposTemplates(when) }}
     <script type="text/javascript">
+      {# Set up apos.data properties pushed with apos.pushGlobalData and req.pushData #}
+      {# Do not wait around for DOMready as it may be too late for code already waiting #}
+      {# for DOMready to see the data #}
+      {{ data }}
+
       $(function() {
-        {# Set up apos.data properties pushed with apos.pushGlobalData and req.pushData #}
-        {{ data }}
         {# Invoke calls set up with apos.pushGlobalCall and req.pushCall #}
         {{ calls }}
       });
