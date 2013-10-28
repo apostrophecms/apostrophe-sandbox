@@ -36,8 +36,5 @@
 // });
 
 $(function() {
-  // Your code goes here
-  // Switching to our new work-in-progress alternative editor...
-  // apos.AreaEditor = AposAreaEditor;
 });
 
