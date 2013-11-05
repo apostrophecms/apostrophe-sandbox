@@ -67,5 +67,13 @@ var site = require('apostrophe-site')({
   assets: {
     scripts: ['site'],
     stylesheets: ['site']
-  }
+  },
+
+  // beforeEndAssets: function(callback) {
+  //   // Apostrophe already loads these for logged-out users, but we
+  //   // want them all the time in this project.
+  //   site.apos.pushAsset('script', { name: 'vendor/blueimp-iframe-transport', when: 'always' });
+  //   site.apos.pushAsset('script', { name: 'vendor/blueimp-fileupload', when: 'always' });
+  //   return callback(null);
+  // }
 });
