@@ -9,6 +9,7 @@
 <!-- APOS-BODY-CLASS {% block bodyClass %}{% endblock %} -->
 <!-- APOS-TITLE {% block title %}{% endblock %} -->
 <!-- APOS-EXTRA-HEAD {% block extraHead %}{% endblock %} -->
+<!-- APOS-SEO-DESCRIPTION {% block seoDescription %}{% endblock %} -->
 
 {% block header %}
   <div class="block header">
@@ -81,13 +82,13 @@
     <div class="major block">
       <div class="inner clearfix">
         <div class="column">
-          {{ aposArea({ slug: 'global:footerContent1', area: global.areas.footerContent1, edit: edit, controls: ['style', 'italic', 'createLink'] }) }}
+          {{ aposArea(global, 'footerContent1', { textOnly: true, controls: ['style', 'italic', 'createLink'] }) }}
         </div>
         <div class="column">
-          {{ aposArea({ slug: 'global:footerContent2', area: global.areas.footerContent2, edit: edit, controls: ['style', 'italic', 'createLink'] }) }}
+          {{ aposArea(global, 'footerContent2', { textOnly: true, controls: ['style', 'italic', 'createLink'] }) }}
         </div>
         <div class="column">
-          {{ aposArea({ slug: 'global:footerContent3', area: global.areas.footerContent3, edit: edit, controls: ['style', 'italic', 'createLink'] }) }}
+          {{ aposArea(global, 'footerContent3', { textOnly: true, controls: ['style', 'italic', 'createLink'] }) }}
         </div>
       </div>
     </div>
