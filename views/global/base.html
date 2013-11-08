@@ -13,6 +13,11 @@
         {%- endif -%}
       {%- endblock -%}
     </title>
+    {% if seoDescription %}
+      <meta name="description" content="{{ seoDescription | e }}" />
+    {% elif page and page.seoDescription %}
+      <meta name="description" content="{{ page.seoDescription | e }}" />
+    {% endif %}
 
     {# this is a temporary solution to the problem of having #}
     {# @import statements in the middle of minified CSS #}
