@@ -56,7 +56,8 @@ var site = require('apostrophe-site')({
     'apostrophe-blog':     { },
     'apostrophe-map':      { },
     'apostrophe-sections': { },
-    'apostrophe-editor-2': { },
+    // Our experimental but rapidly maturing new editor
+    // 'apostrophe-editor-2': { },
     'apostrophe-people': { },
     'apostrophe-groups': { }
   },
