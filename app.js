@@ -8,6 +8,29 @@ var site = require('apostrophe-site')({
   sessionSecret: 'apostrophe sandbox demo party',
   adminPassword: 'demo',
 
+  lockups: {
+    left: {
+      label: 'Left',
+      icon: 'left',
+      // Only allows one type of widget
+      widgets: [ 'slideshow' ],
+      // Override the options for slideshows when they are inside the lockup to get the size right
+      slideshow: {
+        size: 'one-third'
+      }
+    },
+    right: {
+      label: 'Right',
+      icon: 'right',
+      widgets: [ 'slideshow', 'video' ],
+      slideshow: {
+        size: 'one-half'
+      },
+      video: {
+        size: 'one-half'
+      }
+    }
+  },
 
   // Here we define what page templates we have and what they will be called in the Page Types menu.
 
@@ -32,7 +55,11 @@ var site = require('apostrophe-site')({
   modules: {
     'apostrophe-blog':     { },
     'apostrophe-map':      { },
-    'apostrophe-sections': { }
+    'apostrophe-sections': { },
+    // Our experimental but rapidly maturing new editor
+    // 'apostrophe-editor-2': { },
+    'apostrophe-people': { },
+    'apostrophe-groups': { }
   },
 
   // These are assets we want to push to the browser.
@@ -41,5 +68,13 @@ var site = require('apostrophe-site')({
   assets: {
     scripts: ['site'],
     stylesheets: ['site']
-  }
+  },
+
+  // beforeEndAssets: function(callback) {
+  //   // Apostrophe already loads these for logged-out users, but we
+  //   // want them all the time in this project.
+  //   site.apos.pushAsset('script', { name: 'vendor/blueimp-iframe-transport', when: 'always' });
+  //   site.apos.pushAsset('script', { name: 'vendor/blueimp-fileupload', when: 'always' });
+  //   return callback(null);
+  // }
 });

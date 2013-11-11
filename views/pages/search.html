@@ -22,8 +22,13 @@
       {% for result in search %}
         {% if result.type %}
           <li data-type="{{ result.type }}" class="apos-result apos-result-{{ result.type }}">
-            <h4 class="search-result-title">
-              <a href="/apos-pages/search-result?slug={{ result.slug }}">{{ result.title | e }}</a></h4>
+            <h4>
+              <a href="/apos-pages/search-result?slug={{ result.slug }}">{{ result.title | e }}
+                {% if result.startDate %}
+                  <span class="apos-search-date">{{ formatDateRange(result) }}</span>
+                {% endif %}
+              </a>
+            </h4>
             <p class="search-result-text">{{ result.searchSummary | truncate(400) }}</p>
           </li>
         {% endif %}
