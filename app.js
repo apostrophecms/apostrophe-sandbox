@@ -56,10 +56,12 @@ var site = require('apostrophe-site')({
     'apostrophe-blog':     { },
     'apostrophe-map':      { },
     'apostrophe-sections': { },
-    // Our experimental but rapidly maturing new editor
-    // 'apostrophe-editor-2': { },
     'apostrophe-people': { },
-    'apostrophe-groups': { }
+    'apostrophe-groups': { },
+    // Styles required by the new editor, must go BEFORE the editor
+    // 'apostrophe-ui-2': { },
+    // Our experimental but rapidly maturing new editor
+    // 'apostrophe-editor-2': { }
   },
 
   // These are assets we want to push to the browser.
