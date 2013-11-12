@@ -53,13 +53,13 @@ var site = require('apostrophe-site')({
 
   // These are the modules we want to bring into the project.
   modules: {
+    // Experimental styles required by the new editor, must go FIRST
+    // 'apostrophe-ui-2': { },
     'apostrophe-blog':     { },
     'apostrophe-map':      { },
     'apostrophe-sections': { },
     'apostrophe-people': { },
     'apostrophe-groups': { },
-    // Styles required by the new editor, must go BEFORE the editor
-    // 'apostrophe-ui-2': { },
     // Our experimental but rapidly maturing new editor
     // 'apostrophe-editor-2': { }
   },
