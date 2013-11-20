@@ -23,25 +23,34 @@
           {{ aposMapMenu({ edit: permissions.edit }) }}
           {{ aposPeopleMenu({ edit: permissions.admin }) }}
           {{ aposGroupsMenu({ edit: permissions.admin }) }}
-          {{ aposMediaMenu({ edit: permissions.edit })}}
+          {{ aposMediaMenu({ edit: permissions.guest })}}
           {{ aposTagsMenu({ edit: permissions.admin }) }}
 
-          {% if user %}
+          {% if edit %}
             <div class="apos-admin-bar-item apos-preview-toggle">
               <i class="icon-eye"></i>
               <i class="icon-wrench"></i>
             </div>
           {% endif %}
 
-          <div class="apos-admin-bar-item login-status">
-            {% if user %}
-              <a class="apos-button " href="/logout">
-                <span class="apos-who">{{ user.title }}</span> Log Out
-              </a>
-            {% else %}
+          {% if user %}
+            <ul class="apos-admin-bar-item apos-accordion-menu apos-my-account">
+              <li class="apos-accordion-title"><i class="person"></i> My Account</li>
+              <li class="apos-accordion-items">
+                <ul class="apos-page-bar">
+                  {# Doesn't appear for hardcoded accounts that cannot be edited #}
+                  {% if user._mongodb and permissions.guest %}
+                    <li href="#" class="apos-control apos-accordion-item apos-button" data-edit-profile>My Profile</li>
+                  {% endif %}
+                  <li href="#" class="apos-control apos-accordion-item apos-button"><a href="/logout">Log Out</a></li>
+                </ul>
+              </li>
+            </ul>
+          {% else %}
+            <div class="apos-admin-bar-item login-status">
               <a class="apos-button " href="/login">Log In to Edit</a>
-            {% endif %}
-          </div>
+            </div>
+          {% endif %}
         </div>
       </div>
     {% endif %}
