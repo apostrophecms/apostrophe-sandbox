@@ -8,6 +8,10 @@ var site = require('apostrophe-site')({
   sessionSecret: 'apostrophe sandbox demo party',
   adminPassword: 'demo',
 
+  locals: {
+    loginButton: true
+  },
+
   lockups: {
     left: {
       label: 'Left',
