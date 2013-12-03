@@ -8,15 +8,17 @@ Apostrophe 2 is our new implementation of Apostrophe for [node.js](http://nodejs
 
 ## Installation
 
+We've been using Homebrew to install the Apostrophe dev environment. Here's a how to on installing the bare minimum: [Homebrew Apostrophe Install](https://gist.github.com/kylestetz/7771127)
+
 Run `npm install` to install the required dependencies.
 
-In addition you must have:
+If you're not using Homebrew or you already have a dev environment, just make sure you have:
 
 * [node](http://nodejs.org/), of course. You must have at least version `0.10`
 * [mongodb](http://www.mongodb.org/) **version 2.2 or better**, on your local machine (or point to another database server)
 * imagemagick, to resize uploaded images (specifically the `convert` and `identify` command line tools)
 
-Mac developers can install imagemagick via MacPorts. Your production server will need it too; it's probably a simple `apt-get install` or `yum` command away. Heroku includes imagemagick as standard equipment. MacPorts is also a great option for installing node and mongodb. Also consider Homebrew.
+Mac developers can install imagemagick via Homebrew or MacPorts. Your production server will need it too; it's probably a simple `apt-get install` or `yum` command away. Heroku includes imagemagick as standard equipment.
 
 ## Configuration
 
