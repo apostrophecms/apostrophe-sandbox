@@ -8,6 +8,8 @@ var site = require('apostrophe-site')({
   sessionSecret: 'apostrophe sandbox demo party',
   adminPassword: 'demo',
 
+  // For use with apostrophe-editor-2, ignored with the old editor
+
   lockups: {
     left: {
       label: 'Left',
@@ -45,23 +47,51 @@ var site = require('apostrophe-site')({
       { name: 'onecolumn', label: 'One Column' },
       { name: 'marquee', label: 'Marquee' },
       { name: 'home', label: 'Home Page' },
+      { name: 'snippets', label: 'Snippets' },
       { name: 'blog', label: 'Blog' },
+      { name: 'events', label: 'Events' },
       { name: 'map', label: 'Map' },
-      { name: 'sections', label: 'Sections' }
+      { name: 'sections', label: 'Sections' },
+      { name: 'stories', label: 'Stories' },
+      { name: 'groups', label: 'Directory' }
     ]
   },
 
   // These are the modules we want to bring into the project.
   modules: {
     // Experimental styles required by the new editor, must go FIRST
-    // 'apostrophe-ui-2': { },
+    'apostrophe-ui-2': { },
+    'apostrophe-snippets': { },
     'apostrophe-blog':     { },
+    'apostrophe-events':     { },
     'apostrophe-map':      { },
     'apostrophe-sections': { },
     'apostrophe-people': { },
     'apostrophe-groups': { },
-    // Our experimental but rapidly maturing new editor
-    // 'apostrophe-editor-2': { }
+    'apostrophe-editor-2': { },
+    'stories': {
+      extend: 'apostrophe-snippets',
+      name: 'stories',
+      label: 'Stories',
+      instance: 'story',
+      instanceLabel: 'Story',
+      addFields: [
+        {
+          name: 'year',
+          type: 'integer',
+          label: 'Year',
+          def: '2013'
+        },
+        {
+          name: '_authors',
+          type: 'joinByArray',
+          idsField: 'authorIds',
+          withType: 'person',
+          label: 'Authors',
+          placeholder: 'Type author name here'
+        }
+      ]
+    }
   },
 
   // These are assets we want to push to the browser.

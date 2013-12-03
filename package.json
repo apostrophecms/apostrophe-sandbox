@@ -13,10 +13,9 @@
   "author": "P'unk Avenue",
   "license": "BSD",
   "dependencies": {
-    "appy": "0.x",
-    "uploadfs": "0.x",
-    "nunjucks": "0.1.x",
     "apostrophe": "0.x",
+    "apostrophe-ui": "0.x",
+    "apostrophe-editor-2": "0.x",
     "apostrophe-rss": "0.x",
     "apostrophe-twitter": "0.x",
     "apostrophe-pages": "0.x",

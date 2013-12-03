@@ -1,0 +1,8 @@
+{% for item in items %}
+  <h4>{{ item.title | e }}</h4>
+  <h4>Authors:
+    {% for author in item._authors %}
+      {{ author.title | e }}
+    {% endfor %}
+  </h4>
+{% endfor %}
