@@ -1,0 +1,44 @@
+{% include 'snippetMacros.html' %}
+{% include 'moderator:moderatorMacros.html' %}
+
+<div class="apos-modal apos-template {{ manageClass }}">
+  <h3>{% block action %}Manage {{ label | e }}{% endblock %}</h3>
+  <div class="apos-modal-body">
+    <a href="#" class="apos-control apos-button apos-new-button apos-new-snippet-button" {{ newButtonData }}>New {{ instanceLabel | e }}</a>
+    <div class="apos-modal-filters">
+      {{ snippetTrashFilter() }}
+      {{ snippetPublishedFilter() }}
+      {{ snippetDateFilter() }}
+      {{ snippetModerationFilter() }}
+      {{ snippetSearchFilter() }}
+    </div>
+
+    <table data-items class="apos-manage-table">
+      <tr>
+        <th class="apos-manage-events-date">Date</th>
+        <th class="apos-manage-events-title">Title</th>
+        <th class="apos-manage-events-author">Author</th>
+        <th class="apos-manage-events-status">Status</th>
+      </tr>
+      <tr class="apos-template" data-item>
+        <td>
+          <span data-date></span>
+        </td>
+        <td>
+          <span><a href="#" {{ editButtonData }} data-title>Sample Title</a></span>
+        </td>
+        <td></td>
+        <td>
+          <span data-status></span>
+        </td>
+      </tr>
+    </table>
+
+    {# Container for pager, which gets rendered here by js #}
+    <div data-pager-box></div>
+  </div>
+  <div class="apos-modal-footer">
+    <a href="#" data-action="dismiss" class="apos-control apos-button apos-cancel">Done</a>
+  </div>
+</div>
+

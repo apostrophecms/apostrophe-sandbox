@@ -1,0 +1,78 @@
+{% extends "pageLayout.html" %}
+
+{% include "eventMacros.html" %}
+
+{# Keep class names in the modules prefixed and consistent. #}
+{# The blog has apos-blog-page, so this should be apos-events-page. -Tom #}
+
+{% block bodyClass %}{{ super() }} apos-events-page{% endblock %}
+
+{# 'here()' returns the URL of the page, with the year and month added if we are #}
+{# viewing by month, plus any query string based on active filters. You can pass #}
+{# 'changes' to override filters. Passing null for a filter removes it. #}
+
+{%- macro here(changes) -%}
+  {{ page.url | build([ 'year', 'month' ], { year: activeYear, month: activeMonth, tag: query.tag }, changes) }}
+{%- endmacro -%}
+
+{% block mainContent %}
+
+  <h4><a href="#" data-moderator-submit-button="event">Submit Your Event</a></h4>
+  <div class="snippets-filter clearfix">
+    {% if defaultView %}
+      {# Currently showing upcoming events #}
+      <h2 class="month active">Upcoming Events</h2>
+      <h2 class="month by-month-button"><a href="{{ here({ year: thisYear, month: thisMonth }) }}">Events by Month</a></h2>
+    {% else %}
+      {# Currently showing a particular month of events #}
+      <h2 class="month upcoming-button"><a href="{{ here({ year: null, month: null }) }}">Upcoming Events</a></h2>
+      <h2 class="month browse-by-month active">
+        <a class="month-previous" {#class="button previous"#} href="{{ here({ year: prevYear, month: prevMonth }) }}">&laquo;</a>
+        <span class="month current">{{ (activeYear + '-' + activeMonth + '-01') | date('MMMM YYYY') }}</span>
+        <a class="month-next" {#class="button next"#} href="{{ here({ year: nextYear, month: nextMonth }) }}">&raquo;</a>
+      </h2>
+    {% endif %}
+    {# Do not show unusable filters #}
+    {% if allTags.length %}
+      <h2>
+        <label for="type-filter">Filter</label>
+        <select id="snippets-tag-filter" name="type-filter">
+          <option value="{{ here({ tag: null }) }}">All</option>
+          {%- for tag in allTags -%}
+            {%- if tag.length -%}
+              <option {% if query.tag == tag %}selected{%endif %} value="{{ here({ tag: tag }) }}">{{ tag }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </h2>
+    {% endif %}
+  </div>
+
+  <div class="column-element filter-links">
+    {% set filteredFeed = here({ 'feed': 'rss' }) %}
+    {% set fullFeed = page.url | build({ 'feed': 'rss' }) %}
+
+    {# RSS auto discovery #}
+    {% block extraHead %}
+      <link rel="alternate" type="application/rss+xml" title="{{ page.title | e }}" href="{{ filteredFeed or fullFeed }}" />
+    {% endblock %}
+
+    {% if filteredFeed != fullFeed %}
+      <h4><a href="{{ filteredFeed }}"><img src="/apos-snippets/images/feed-icon-16x16.png" /> Filtered RSS Feed</a></h4>
+    {% endif %}
+    <h4><a href="{{ fullFeed }}"><img src="/apos-snippets/images/feed-icon-16x16.png" /> Full RSS Feed</a></h4>
+  </div>
+
+  {{ renderEventPreviews(items, page.url) }}
+
+  {{ renderPager(pager, here({})) }}
+
+  <script type="text/javascript">
+    var $eventFilter = $('select#snippets-tag-filter');
+
+    $eventFilter.on('change', function(event) {
+      window.location.href = $eventFilter.val();
+    });
+  </script>
+
+{% endblock %}

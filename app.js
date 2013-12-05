@@ -91,6 +91,23 @@ var site = require('apostrophe-site')({
           placeholder: 'Type author name here'
         }
       ]
+    },
+    'apostrophe-moderator': {
+      types: {
+        'event': {
+          removeFields: [ 'thumbnail' ],
+          addFields: [
+            {
+              name: 'body',
+              label: 'Body',
+              type: 'area',
+              options: {
+                textOnly: true
+              }
+            }
+          ]
+        }
+      }
     }
   },
 
