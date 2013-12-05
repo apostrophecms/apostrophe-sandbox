@@ -95,17 +95,18 @@ var site = require('apostrophe-site')({
     'apostrophe-moderator': {
       types: {
         'event': {
-          removeFields: [ 'thumbnail' ],
-          addFields: [
-            {
-              name: 'body',
-              label: 'Body',
-              type: 'area',
-              options: {
-                textOnly: true
-              }
-            }
-          ]
+          // You can restrict the feature set for public submissions if you wish
+          // removeFields: [ 'thumbnail' ],
+          // addFields: [
+          //   {
+          //     name: 'body',
+          //     label: 'Body',
+          //     type: 'area',
+          //     options: {
+          //       textOnly: true
+          //     }
+          //   }
+          // ]
         }
       }
     }
