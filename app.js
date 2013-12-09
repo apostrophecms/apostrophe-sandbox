@@ -15,7 +15,8 @@ var site = require('apostrophe-site')({
   lockups: {
     left: {
       label: 'Left',
-      icon: 'left',
+      tooltip: 'Float Small',
+      icon: 'icon-arrow-left',
       // Only allows one type of widget
       widgets: [ 'slideshow' ],
       // Override the options for slideshows when they are inside the lockup to get the size right
@@ -28,7 +29,8 @@ var site = require('apostrophe-site')({
     },
     right: {
       label: 'Right',
-      icon: 'right',
+      tooltip: 'Float Right',
+      icon: 'icon-arrow-right',
       widgets: [ 'slideshow', 'video' ],
       slideshow: {
         size: 'one-half'
