@@ -21,6 +21,9 @@ var site = require('apostrophe-site')({
       // Override the options for slideshows when they are inside the lockup to get the size right
       slideshow: {
         size: 'one-third'
+      },
+      video: {
+        size: 'one-half'
       }
     },
     right: {
@@ -57,15 +60,15 @@ var site = require('apostrophe-site')({
 
   // These are the modules we want to bring into the project.
   modules: {
-    // Experimental styles required by the new editor, must go FIRST
-    // 'apostrophe-ui-2': { },
+    // Styles required by the new editor, must go FIRST
+    'apostrophe-ui-2': { },
     'apostrophe-blog':     { },
     'apostrophe-map':      { },
     'apostrophe-sections': { },
     'apostrophe-people': { },
     'apostrophe-groups': { },
-    // Our experimental but rapidly maturing new editor
-    // 'apostrophe-editor-2': { }
+    // The new editor
+    'apostrophe-editor-2': { }
   },
 
   // These are assets we want to push to the browser.
