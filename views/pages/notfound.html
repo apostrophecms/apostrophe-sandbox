@@ -2,6 +2,15 @@
 
 {% block mainContent %}
   <div class="inner">
-    <h3>What! We don't have whatever you are looking for.</h3>
+    {{ aposArea(global, 'notfound-text', {
+
+
+textOnly: true,
+edit: edit,
+controls: [ 'style', 'bold', 'italic' ],
+styles: [
+{ element: 'h3', label: 'Heading 3' }
+]
+}) }}
   </div>
 {% endblock %}

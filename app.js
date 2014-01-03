@@ -53,7 +53,9 @@ var site = require('apostrophe-site')({
       { name: 'map', label: 'Map' },
       { name: 'sections', label: 'Sections' },
       { name: 'stories', label: 'Stories' },
-      { name: 'groups', label: 'Directory' }
+      { name: 'groups', label: 'Directory' },
+      { name: 'company', label: 'Company' },
+      { name: 'employee', label: 'Employee' }
     ]
   },
 
@@ -89,6 +91,56 @@ var site = require('apostrophe-site')({
           withType: 'person',
           label: 'Authors',
           placeholder: 'Type author name here'
+        }
+      ],
+      indexSchema: {
+        addFields: [
+          {
+            name: '_events',
+            type: 'joinByArray',
+            idsField: 'eventIds',
+            withType: 'event',
+            label: 'Events',
+            placeholder: 'Type event title here'
+          }
+        ]
+      }
+    },
+    'company': {
+      extend: 'apostrophe-fancy-page',
+      name: 'company',
+      label: 'Company',
+      addFields: [
+        {
+          name: 'incorporated',
+          label: 'Incorporated',
+          type: 'integer'
+        },
+        {
+          name: '_events',
+          label: 'Events',
+          type: 'joinByArray',
+          idsField: 'eventIds',
+          withType: 'event'
+        },
+        {
+          name: '_employees',
+          label: 'Employees',
+          type: 'joinByArray',
+          idsField: 'employeeIds',
+          withType: 'employee'
+        }
+      ]
+    },
+    'employee': {
+      extend: 'apostrophe-fancy-page',
+      name: 'employee',
+      label: 'Employee',
+      addFields: [
+        {
+          name: 'hired',
+          label: 'Hired',
+          type: 'integer'
         }
       ]
     },
