@@ -18,13 +18,13 @@
           </div>
 
           {{ aposPagesMenu({ page: page, edit: edit }) }}
-          {{ aposSnippetMenu({ edit: permissions.edit }) }}
-          {{ aposBlogMenu({ edit: permissions.edit }) }}
-          {{ aposEventsMenu({ edit: permissions.edit }) }}
-          {{ aposMapMenu({ edit: permissions.edit }) }}
-          {{ aposPeopleMenu({ edit: permissions.admin }) }}
-          {{ aposGroupsMenu({ edit: permissions.admin }) }}
-          {{ aposStoryMenu({ edit: permissions.admin }) }}
+          {{ aposSnippetMenu( permissions ) }}
+          {{ aposBlogMenu( permissions ) }}
+          {{ aposEventsMenu( permissions ) }}
+          {{ aposMapMenu( permissions ) }}
+          {{ aposPeopleMenu( permissions ) }}
+          {{ aposGroupsMenu( permissions ) }}
+          {{ aposStoryMenu( permissions ) }}
           {# Guests can edit their own media, they have profiles and contribute content #}
           {{ aposMediaMenu({ edit: permissions.guest })}}
           {{ aposTagsMenu({ edit: permissions.admin }) }}
