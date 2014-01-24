@@ -14,7 +14,7 @@ mkdir -p ${HOME}/src || exit 1
 # 1. Clone the modules that aren't already out there
 
 if [[ -z "$APOS_GIT" ]]; then
-  $APOS_GIT = "punkave"
+  APOS_GIT="punkave"
 fi
 
 echo "Cloning modules not already present from http://github.com/${APOS_GIT}"
