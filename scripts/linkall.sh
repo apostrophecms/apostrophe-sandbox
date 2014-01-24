@@ -13,6 +13,9 @@ mkdir -p ${HOME}/src || exit 1
 
 # 1. Clone the modules that aren't already out there
 
+# You can set this script up to clone repositories from an account different than punkave by doing:
+# export APOS_GIT=yourgitaccount
+
 if [[ -z "$APOS_GIT" ]]; then
   APOS_GIT="punkave"
 fi
