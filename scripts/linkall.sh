@@ -13,12 +13,16 @@ mkdir -p ${HOME}/src || exit 1
 
 # 1. Clone the modules that aren't already out there
 
-echo "Cloning modules not already present"
+if [[ -z "$APOS_GIT" ]]; then
+  $APOS_GIT = "punkave"
+fi
+
+echo "Cloning modules not already present from http://github.com/${APOS_GIT}"
 
 for module in "${modules[@]}"
   do
     if [ ! -d "${HOME}/src/${module}" ]; then
-      ( echo "Checking out ${module} and registering it for npm link" && cd ${HOME}/src && git clone "http://github.com/punkave/${module}" && cd ${module} && npm install && npm link ) || exit 1
+      ( echo "Checking out ${module} and registering it for npm link" && cd ${HOME}/src && git clone "http://github.com/${APOS_GIT}/${module}" && cd ${module} && npm install && npm link ) || exit 1
     fi
   done
 
@@ -48,5 +52,3 @@ for module in "${modules[@]}"
       ( echo "Linking ${module}" && npm link ${module} ) || exit 1
     fi
   done
-
-
