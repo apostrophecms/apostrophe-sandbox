@@ -8,6 +8,7 @@ npm owner add jsumnersmith $1
 npm owner add alexgilbert $1
 npm owner add gsf $1
 npm owner add stuartromanek $1
+npm owner add livhaas $1
 # Have not created npm accounts
 # npm owner add geoffdimasi $1
 # npm owner add livhaas $1
