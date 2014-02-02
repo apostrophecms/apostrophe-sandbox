@@ -63,7 +63,17 @@ var site = require('apostrophe-site')({
   modules: {
     // Styles required by the new editor, must go FIRST
     'apostrophe-ui-2': { },
-    'apostrophe-blog':     { },
+    'apostrophe-blog':     {
+      addFields: [
+        {
+          type: 'area',
+          name: 'body',
+          options: {
+            controls: [ 'bold', 'italic' ]
+          }
+        }
+      ]
+    },
     'apostrophe-map':      { },
     'apostrophe-people': { },
     'apostrophe-groups': { },
