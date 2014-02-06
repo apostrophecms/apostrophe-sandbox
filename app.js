@@ -52,6 +52,7 @@ var site = require('apostrophe-site')({
     types: [
       { name: 'default', label: 'Default (Two Column)' },
       { name: 'onecolumn', label: 'One Column' },
+      { name: 'blocks', label: 'Blocks' },
       { name: 'marquee', label: 'Marquee' },
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' },
@@ -78,7 +79,19 @@ var site = require('apostrophe-site')({
     'apostrophe-people': { },
     'apostrophe-groups': { },
     // The new editor
-    'apostrophe-editor-2': { }
+    'apostrophe-editor-2': { },
+    'apostrophe-blocks': {
+      types: [
+        {
+          name: 'one',
+          label: 'One Column'
+        },
+        {
+          name: 'two',
+          label: 'Two Column'
+        }
+      ]
+    }
   },
 
   // These are assets we want to push to the browser.

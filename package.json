@@ -1,6 +1,6 @@
 {
   "name": "the-new-sandbox",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Sandbox site featuring typical Apostrophe features",
   "main": "app.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "apostrophe-people": "0.5.x",
     "apostrophe-site": "0.5.x",
     "apostrophe-groups": "0.5.x",
+    "apostrophe-blocks": "0.5.x"
     "optimist": "~0.6.0"
   }
 }
