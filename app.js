@@ -68,15 +68,20 @@ var site = require('apostrophe-site')({
         {
           type: 'area',
           name: 'body',
-          options: {
-            controls: [ 'bold', 'italic' ]
-          }
+          required: true
+          // options: {
+            // Pass options to the area
+          // }
         }
       ]
     },
+    'apostrophe-people': {
+      email: {
+        from: 'Tommy Boutell <tom@example.com>'
+      }
+    },
+    'apostrophe-groups': {},
     'apostrophe-map':      { },
-    'apostrophe-people': { },
-    'apostrophe-groups': { },
     // The new editor
     'apostrophe-editor-2': { }
   },
