@@ -19,10 +19,10 @@
 
           {# edit === can edit THIS page #}
           {{ aposPagesMenu({ page: page, edit: edit }) }}
-          {{ aposBlogMenu({ edit: permissions.edit }) }}
-          {{ aposMapMenu({ edit: permissions.edit }) }}
-          {{ aposPeopleMenu({ edit: permissions.admin }) }}
-          {{ aposGroupsMenu({ edit: permissions.admin }) }}
+          {{ aposBlogMenu(permissions) }}
+          {{ aposMapMenu(permissions) }}
+          {{ aposPeopleMenu(permissions) }}
+          {{ aposGroupsMenu(permissions) }}
           {{ aposMediaMenu({ edit: permissions.guest })}}
           {{ aposTagsMenu({ edit: permissions.admin }) }}
 
@@ -41,6 +41,9 @@
                   {# Doesn't appear for hardcoded accounts that cannot be edited #}
                   {% if user._mongodb and permissions.guest %}
                     <li href="#" class="apos-control apos-accordion-item apos-button" data-edit-profile>My Profile</li>
+                    {% if user.email %}
+                      <li href="#" class="apos-control apos-accordion-item apos-button"><a href="/apos-people/reset-request">Reset Password</a></li>
+                    {% endif %}
                   {% endif %}
                   <li href="#" class="apos-control apos-accordion-item apos-button"><a href="/logout">Log Out</a></li>
                 </ul>
