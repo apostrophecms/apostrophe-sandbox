@@ -56,7 +56,7 @@
   {# bodyClass should be a block but nunjucks doesn't have conditional extends yet, #}
   {# so we're rendering an inner layout then passing the results to an outer one. #}
   {# We also pull out bodyClass as a special case and pass it in here. #}
-  <body class="{{ bodyClass }} {% if edit %}logged-in{% else %}logged-out{% endif %}">
+  <body class="{{ bodyClass }} {% if user %}logged-in{% else %}logged-out{% endif %}">
     {% block beforeBody %}
     {% endblock %}
 
