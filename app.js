@@ -69,10 +69,10 @@ var site = require('apostrophe-site')({
         {
           type: 'area',
           name: 'body',
-          required: true
-          // options: {
-            // Pass options to the area
-          // }
+          required: true,
+          options: {
+            textOnly: true
+          }
         }
       ]
     },
