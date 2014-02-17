@@ -96,6 +96,8 @@ var site = require('apostrophe-site')({
           label: 'Two Column'
         }
       ]
+    },
+    'dashboard': {
     }
   },
 
