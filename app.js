@@ -56,7 +56,8 @@ var site = require('apostrophe-site')({
       { name: 'marquee', label: 'Marquee' },
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' },
-      { name: 'map', label: 'Map' }
+      { name: 'map', label: 'Map' },
+      { name: 'projects', label: 'Projects' }
     ]
   },
 
@@ -98,6 +99,14 @@ var site = require('apostrophe-site')({
       ]
     },
     'dashboard': {
+    },
+    'projects': {
+            extend: 'apostrophe-snippets',
+            name: 'projects',
+            label: 'Projects',
+            instance: 'project',
+            instanceLabel: 'Project',
+            perPage: 3 // optional - still fails without it
     }
   },
 
