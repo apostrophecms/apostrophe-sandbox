@@ -65,16 +65,6 @@ var site = require('apostrophe-site')({
     // Styles required by the new editor, must go FIRST
     'apostrophe-ui-2': { },
     'apostrophe-blog':     {
-      addFields: [
-        {
-          type: 'area',
-          name: 'body',
-          required: true,
-          options: {
-            textOnly: true
-          }
-        }
-      ]
     },
     'apostrophe-people': {
       email: {
