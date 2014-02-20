@@ -56,8 +56,7 @@ var site = require('apostrophe-site')({
       { name: 'marquee', label: 'Marquee' },
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' },
-      { name: 'map', label: 'Map' },
-      { name: 'projects', label: 'Projects' }
+      { name: 'map', label: 'Map' }
     ]
   },
 
