@@ -13,12 +13,13 @@
 
   {% if search %}
     <h3 class="search-results-header">Search Results</h3>
-    <p class="search-options">
-      {# If you have more snippet subclasses, just add them (name=instance name) #}
-      <input type="checkbox" name="page" checked class="apos-search-filter" /> Pages
-      <input type="checkbox" name="mapLocation" checked class="apos-search-filter" /> Places
-      <input type="checkbox" name="blogPost" checked class="apos-search-filter" /> Articles
-    </p>
+    {% if searchFilters %}
+      <p class="search-options">
+        {% for filter in searchFilters %}
+          <input type="checkbox" name="{{ filter.name }}" checked class="apos-search-filter" /> {{ filter.label }}
+        {% endfor %}
+      </p>
+    {% endif %}
     <ul class="search-results">
       {% for result in search %}
         {% if result.type %}
@@ -35,6 +36,54 @@
         {% endif %}
       {% endfor %}
     </ul>
+
+    {# JavaScript to show and hide results based on filter checkboxes by type #}
+    {% if searchFilters %}
+      <script type="text/javascript">
+        // This is a hack to figure out what *isn't* a page based on
+        // the available checkboxes
+        var typeNames = [];
+        $('.apos-search-filter').each(function() {
+          typeNames.push($(this).attr('name'));
+        });
+
+        // Show and hide search results by type
+        $('body').on('click', '.apos-search-filter', function() {
+          update();
+        });
+
+        // So it works if we click the back button and had filters on
+        // (this is quite common)
+        update();
+
+        function update() {
+          var checked = {};
+          var count = 0;
+          $('.apos-search-filter').each(function() {
+            checked[$(this).attr('name')] = $(this).prop('checked');
+            count++;
+          });
+          if (!count) {
+            // If filters are not in the template but this
+            // js is still around, don't hide everything
+            return;
+          }
+          $('.apos-result').each(function() {
+            var $result = $(this);
+            var type = $result.data('type');
+            if (!_.contains(typeNames, $result.data('type'))) {
+              type = 'page';
+            }
+            if (checked[type]) {
+              $result.show();
+            } else {
+              $result.hide();
+            }
+          });
+        }
+      </script>
+    {% endif %}
+
   {% endif %}
 
 {% endblock %}

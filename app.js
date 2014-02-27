@@ -86,16 +86,6 @@ var site = require('apostrophe-site')({
           label: 'Two Column'
         }
       ]
-    },
-    'dashboard': {
-    },
-    'projects': {
-            extend: 'apostrophe-snippets',
-            name: 'projects',
-            label: 'Projects',
-            instance: 'project',
-            instanceLabel: 'Project',
-            perPage: 3 // optional - still fails without it
     }
   },
 
