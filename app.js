@@ -56,7 +56,9 @@ var site = require('apostrophe-site')({
       { name: 'marquee', label: 'Marquee' },
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' },
-      { name: 'map', label: 'Map' }
+      { name: 'map', label: 'Map' },
+      { name: 'groups', label: 'Directory' },
+      { name: 'company', label: 'Company' }
     ]
   },
 
@@ -84,6 +86,18 @@ var site = require('apostrophe-site')({
         {
           name: 'two',
           label: 'Two Column'
+        }
+      ]
+    },
+    company: {
+      extend: 'apostrophe-fancy-page',
+      name: 'company',
+      label: 'Company',
+      addFields: [
+        {
+          name: 'incorporated',
+          label: 'Incorporated',
+          type: 'integer'
         }
       ]
     }
