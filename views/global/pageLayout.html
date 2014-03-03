@@ -52,6 +52,6 @@ Apostrophe Sandbox: {{ page.title | e }}
 
 {% block footer %}
   {# Shared footer, no page URL in the slug #}
-  {#{{ aposArea({ slug: 'global:footer', area: global.areas.footer, edit: edit }) }}#}
+  {#{{ aposArea(global, 'footer') }}#}
   {{ super() }}
 {% endblock %}

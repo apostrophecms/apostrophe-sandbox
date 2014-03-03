@@ -7,18 +7,18 @@
 {% block mainContent %}
 
   {# Demonstrate how to test for an empty area #}
-  {% if (not edit) and aposAreaIsEmpty({ area: page.areas.main }) %}
+  {% if (not edit) and aposAreaIsEmpty({ area: page.main }) %}
     <p>No one has entered content here yet.</p>
   {% endif %}
 
   <div class="one-column-area">
-    {{ aposArea({
-      slug: slug + ':main',
-      area: page.areas.main,
-      edit: edit,
-      controls: [ 'style', 'bold', 'italic', 'createLink', 'unlink', 'insertUnorderedList', 'slideshow' ],
-      slideshow: { noHeight: true, extraFields: true }
-    }) }}
+    {{ aposArea(
+      page,
+      'main',
+      {
+        controls: [ 'style', 'bold', 'italic', 'createLink', 'unlink', 'insertUnorderedList', 'slideshow' ],
+        slideshow: { noHeight: true, extraFields: true }
+      }) }}
   </div>
 
 {% endblock %}

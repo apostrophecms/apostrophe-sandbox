@@ -80,8 +80,9 @@
 {% block extraContent %}
 {% endblock %}
 
-{# notice that this footer uses global areas: if we want editable content to appear on every page #}
-{# that inherits this one we want to use the global.areas object instead of the page.areas object. #}
+{# notice that this footer uses global areas: if we want editable content to appear #}
+{# on every page that inherits this one we want to use the global object instead of #}
+{# the page object. #}
 {% block footerBody %}
   <footer class="footer">
     {% block footer %}
