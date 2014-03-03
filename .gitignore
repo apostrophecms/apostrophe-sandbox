@@ -4,6 +4,8 @@ public/uploads
 temp/uploadfs
 node_modules
 
+locales/
+
 public/css/reset.css
 public/css/site.css
 
