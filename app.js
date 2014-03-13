@@ -88,18 +88,6 @@ var site = require('apostrophe-site')({
           label: 'Two Column'
         }
       ]
-    },
-    company: {
-      extend: 'apostrophe-fancy-page',
-      name: 'company',
-      label: 'Company',
-      addFields: [
-        {
-          name: 'incorporated',
-          label: 'Incorporated',
-          type: 'integer'
-        }
-      ]
     }
   },
 
