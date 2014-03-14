@@ -5,6 +5,7 @@
 data
 temp
 public/uploads
+public/modules
 .git
 .gitignore
 # We don't deploy these anymore, instead we always 'npm install' to ensure

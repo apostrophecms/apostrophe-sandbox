@@ -65,18 +65,17 @@ var site = require('apostrophe-site')({
   // These are the modules we want to bring into the project.
   modules: {
     // Styles required by the new editor, must go FIRST
-    'apostrophe-ui-2': { },
-    'apostrophe-blog':     {
-    },
+    'apostrophe-ui-2': {},
+    'apostrophe-blog': {},
     'apostrophe-people': {
       email: {
         from: 'Tommy Boutell <tom@example.com>'
       }
     },
     'apostrophe-groups': {},
-    'apostrophe-map':      { },
+    'apostrophe-map':      {},
     // The new editor
-    'apostrophe-editor-2': { },
+    'apostrophe-editor-2': {},
     'apostrophe-blocks': {
       types: [
         {
