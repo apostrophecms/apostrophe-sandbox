@@ -56,31 +56,33 @@ You can create and remove pages in addition to editing their content and managin
 
 ## Creating Your Own Apostrophe Project: The Easy Way
 
-You can easily create your own open source or private Apostrophe project using apostrophe-sandbox as a starting point. Here's how we do it:
+You can easily create your own open source or private Apostrophe project using apostrophe-sandbox as a starting point. Here's how we do it (supposing the project name is `myproject`):
 
-1. Go to github.com and create a new, empty repository called `myproject`, or whatever suits you. Do not add any files to it yet. If you want a private, non-open-source project, make sure you select that option.
+1. Go to github.com (or any other provider of your choice) and create a new, empty repository called `myproject`, or whatever suits you. Do not add any files to it yet. If you want a private, non-open-source project, make sure you select that option. For this example we'll assume to be working on github (`myaccount/myproject.git`).
 2. Clone the `apostrophe-sandbox` repository to your computer, naming the resulting folder `myproject` (just for example):
     
-        git clone git@github.com:punkave/apostrophe-sandbox.git myproject
+        git clone https://github.com/punkave/apostrophe-sandbox.git myproject
 
-3. `cd` to that folder and edit the `.git/config` file. Change the `remote "origin"` URL setting to your new repository's URL as found on github:
+3. Update the remote origin (to be able to push your future work to **your** repository):
     
-        url = git@github.com:myaccount/myproject.git
+        git remote set-url origin git@github.com:myaccount/myproject.git
+
+   You can then check the remote has been properly set by issuing `git remote -v` and look at the output.
 
 4. Edit the `package.json` file to reflect your project a little better. This is less important for node apps than it is for reusable modules, but you may as well be thorough. Make sure you keep the `dependencies` section.
  
 5. Commit your changes to `package.json`:
     
-        git add -A .
+        git add package.json
         git commit
 
-6. Push your work to github:
+6. Push your work to github (to our new origin `myaccount/myproject.git`):
     
         git push origin master
     
 Boom! You're done. You now have your own Apostrophe project in github, based on `apostrophe-sandbox` as a starting point.
 
-(Note that you don't actually have to use github for this technique to work. You can do exactly the same thing with Beanstalk and other git hosting providers.)
+(Remember that you don't actually have to use github to perform these steps. You can do exactly the same thing with Beanstalk and other git hosting providers.)
 
 ## Hiding the Login Prompt ##
 
