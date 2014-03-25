@@ -40,7 +40,8 @@ for module in "${modules[@]}"
         mdir="${HOME}/src/${module}"
         # If the module is currently a subdir of another module make it a link instead
         if [ -d "${mdir}/node_modules/${submodule}" ]; then
-          ( echo "Sub-linking ${submodule} for ${module}" && cd $mdir && npm link ${submodule} ) || exit 1
+          echo "Cross-linking $submodule in $module"
+          ( cd $mdir && npm link $submodule )
         fi
       done
   done
