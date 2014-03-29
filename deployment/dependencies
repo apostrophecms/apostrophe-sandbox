@@ -16,7 +16,7 @@ mkdir -p node_modules
 if [ -f './package.json' ]; then
   # Install npm modules
   # Use a suitable version of Python
-  export PYTHON=/usr/bin/python26
+  # export PYTHON=/usr/bin/python26
   npm install
   if [ $? -ne 0 ]; then
     echo "Error during npm install!"
