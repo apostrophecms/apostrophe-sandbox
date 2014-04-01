@@ -4,7 +4,8 @@
 # npm update to stay up to date with our modules. We use this script
 # to "npm link" all of the modules that we maintain so we can do
 # active development on them. You must have a ${HOME}/src folder in which
-# they may be `git clone`d.
+# they may be `git clone`d. You may set the APOS_GIT environment variable
+# to your own github username if you have forked all of our modules.
 
 # Load the official list of modules we're maintaining
 source scripts/our-modules.source
@@ -29,30 +30,5 @@ for module in "${modules[@]}"
     fi
   done
 
-# 2. Establish npm links *between* modules that depend on each other
-
-echo "Establishing npm links *between* modules"
-
-for module in "${modules[@]}"
-  do
-    for submodule in "${modules[@]}"
-      do
-        mdir="${HOME}/src/${module}"
-        # If the module is currently a subdir of another module make it a link instead
-        if [ -d "${mdir}/node_modules/${submodule}" ]; then
-          echo "Cross-linking $submodule in $module"
-          ( cd $mdir && npm link $submodule )
-        fi
-      done
-  done
-
-# 3. npm link from the project
-
-echo "Establishing npm links in the *project*"
-
-for module in "${modules[@]}"
-  do
-    if [ ! -h "node_modules/${module}" ]; then
-      ( echo "Linking ${module}" && npm link ${module} ) || exit 1
-    fi
-  done
+echo "Running npm update with --link"
+npm update --link
