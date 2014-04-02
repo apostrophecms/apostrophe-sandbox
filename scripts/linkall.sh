@@ -24,9 +24,11 @@ echo "Cloning modules not already present from http://github.com/${APOS_GIT}"
 
 for module in "${modules[@]}"
   do
+    echo ${module}
     if [ ! -d "${HOME}/src/${module}" ]; then
-      ( echo "Checking out ${module} and registering it for npm link" && cd ${HOME}/src && git clone "http://github.com/${APOS_GIT}/${module}" && cd ${module} && npm install && npm link ) || exit 1
+      ( echo "Checking out ${module} and registering it for npm link" && cd ${HOME}/src && git clone "http://github.com/${APOS_GIT}/${module}" && cd ${module} && npm install ) || exit 1
     fi
+    ( cd "${HOME}/src/${module}" && npm link ) || exit 1
   done
 
 # 2. Establish npm links *between* modules that depend on each other
@@ -40,8 +42,7 @@ for module in "${modules[@]}"
         mdir="${HOME}/src/${module}"
         # If the module is currently a subdir of another module make it a link instead
         if [ -d "${mdir}/node_modules/${submodule}" ]; then
-          echo "Cross-linking $submodule in $module"
-          ( cd $mdir && npm link $submodule )
+          ( echo "Sub-linking ${submodule} for ${module}" && cd $mdir && npm link ${submodule} ) || exit 1
         fi
       done
   done
