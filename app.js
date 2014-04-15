@@ -1,3 +1,7 @@
+// You will almost certainly use these two in your callbacks
+var _ = require('lodash');
+var async = require('async');
+var local = require('./data/local.js');
 var site = require('apostrophe-site')({
 
   // This line is required and allows apostrophe-site to use require() and manage our NPM modules for us.
@@ -56,6 +60,7 @@ var site = require('apostrophe-site')({
       { name: 'marquee', label: 'Marquee' },
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' },
+      { name: 'events', label: 'events' },
       { name: 'map', label: 'Map' },
       { name: 'groups', label: 'Directory' },
       { name: 'company', label: 'Company' }
@@ -66,13 +71,33 @@ var site = require('apostrophe-site')({
   modules: {
     // Styles required by the new editor, must go FIRST
     'apostrophe-ui-2': {},
-    'apostrophe-blog': {},
+    'apostrophe-blog-2': {},
     'apostrophe-people': {
       email: {
         from: 'Tommy Boutell <tom@example.com>'
       }
     },
-    'apostrophe-groups': {},
+    'apostrophe-groups': {
+      indexSchema: {
+        addFields: [
+          {
+            type: 'select',
+            label: 'Flavor',
+            name: 'flavor',
+            choices: [
+              {
+                label: 'One',
+                value: 'one'
+              },
+              {
+                label: 'Two',
+                value: 'two'
+              }
+            ]
+          }
+        ]
+      }
+    },
     'apostrophe-map':      {},
     // The new editor
     'apostrophe-editor-2': {},
@@ -87,7 +112,22 @@ var site = require('apostrophe-site')({
           label: 'Two Column'
         }
       ]
-    }
+    },
+    'apostrophe-events': {
+      widget: true,
+      groupFields: [
+        {
+          name: 'content',
+          fields: [ 'body' ]
+        },
+        {
+          name: 'details',
+          fields: [ 'tags' ]
+        }
+      ]
+    },
+    'apostrophe-rss': {},
+    'apostrophe-twitter': local.twitter,
   },
 
   // These are assets we want to push to the browser.
