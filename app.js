@@ -87,7 +87,8 @@ var site = require('apostrophe-site')({
           label: 'Two Column'
         }
       ]
-    }
+    },
+    'apostrophe-redirects': {}
   },
 
   // These are assets we want to push to the browser.

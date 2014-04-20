@@ -28,6 +28,7 @@
     "apostrophe-groups": "0.5.x",
     "apostrophe-blocks": "0.5.x",
     "apostrophe-fancy-page": "0.5.x",
-    "optimist": "~0.6.0"
+    "optimist": "~0.6.0",
+    "apostrophe-redirects": "~0.5.1"
   }
 }

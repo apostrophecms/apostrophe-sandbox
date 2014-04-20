@@ -24,6 +24,7 @@
           {{ aposGroupsMenu(permissions) }}
           {{ aposMediaMenu({ edit: permissions.guest })}}
           {{ aposTagsMenu({ edit: permissions.admin }) }}
+          {{ aposRedirectsMenu({ edit: permissions.admin }) }}
 
           {% if edit %}
             <div class="apos-admin-bar-item apos-preview-toggle">
