@@ -77,27 +77,7 @@ var site = require('apostrophe-site')({
         from: 'Tommy Boutell <tom@example.com>'
       }
     },
-    'apostrophe-groups': {
-      indexSchema: {
-        addFields: [
-          {
-            type: 'select',
-            label: 'Flavor',
-            name: 'flavor',
-            choices: [
-              {
-                label: 'One',
-                value: 'one'
-              },
-              {
-                label: 'Two',
-                value: 'two'
-              }
-            ]
-          }
-        ]
-      }
-    },
+    'apostrophe-groups': {},
     'apostrophe-map':      {},
     // The new editor
     'apostrophe-editor-2': {},
