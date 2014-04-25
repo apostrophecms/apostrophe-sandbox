@@ -29,7 +29,7 @@ version = versions.join('.');
 console.log(version);
 package.version = version;
 fs.writeFileSync(modulePackageFilename, JSON.stringify(package, undefined, 2));
-exec('cd node_modules/' + module + ' && git add -A . && git commit -m ' + version + ' && git pull && git push && npm publish --tag beta', function(err, stdout, stderr) {
+exec('cd node_modules/' + module + ' && git add -A . && git commit -m ' + version + ' && git pull && git push && npm publish', function(err, stdout, stderr) {
   if (err) {
     console.error(err);
     console.error(stderr);
