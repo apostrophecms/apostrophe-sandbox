@@ -234,7 +234,7 @@ var site = require('apostrophe-site')({
       ]
     },
     'apostrophe-rss': {},
-    'apostrophe-twitter': local.twitter,
+    'apostrophe-twitter': {},
   },
 
   // These are assets we want to push to the browser.
