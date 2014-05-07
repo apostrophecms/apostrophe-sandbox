@@ -28,7 +28,7 @@
     "apostrophe-groups": "0.5.x",
     "apostrophe-blocks": "0.5.x",
     "apostrophe-fancy-page": "0.5.x",
-    "apostrophe-schema-widget": "0.5.x",
+    "apostrophe-schema-widgets": "0.5.x",
     "optimist": "~0.6.0",
     "lodash": "^2.4.1",
     "async": "^0.7.0"
