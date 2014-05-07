@@ -1,0 +1,16 @@
+<style type="text/css">
+  ul li {
+    font-size: 125%;
+    line-height: 1.5;
+  }
+  ul.pretty-links {
+    list-style-type: circle;
+    margin-left: 40px;
+  }
+</style>
+
+<ul class="pretty-links">
+  {% for link in item.links %}
+    <li><a href="{{ link.url | e }}">{{ link.label | e }}</a></li>
+  {% endfor %}
+</ul>

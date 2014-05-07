@@ -63,12 +63,139 @@ var site = require('apostrophe-site')({
       { name: 'events', label: 'events' },
       { name: 'map', label: 'Map' },
       { name: 'groups', label: 'Directory' },
-      { name: 'company', label: 'Company' }
+      { name: 'companies', label: 'Companies' }
     ]
   },
 
   // These are the modules we want to bring into the project.
   modules: {
+    'apostrophe-schema-widgets': {
+      widgets: [
+        {
+          name: 'prettyLink',
+          label: 'Pretty Link',
+          instructions: 'Enter a label and paste a URL to create a link.',
+          schema: [
+            {
+              name: 'label',
+              type: 'string',
+              label: 'Label',
+              required: true
+            },
+            {
+              name: 'url',
+              type: 'url',
+              label: 'URL',
+              required: true
+            }
+          ]
+        },
+        {
+          name: 'prettyLinks',
+          label: 'Pretty Links',
+          instructions: 'Click "add" to add your first link. Enter a label and paste a URL for each link.',
+          schema: [
+            {
+              name: 'links',
+              type: 'array',
+              schema: [
+                {
+                  name: 'label',
+                  type: 'string',
+                  label: 'Label',
+                  required: true
+                },
+                {
+                  name: 'url',
+                  type: 'url',
+                  label: 'URL',
+                  required: true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    'companies': {
+      name: 'companies',
+      instance: 'company',
+      label: 'Companies',
+      instanceLabel: 'Company',
+      menuName: 'aposCompaniesMenu',
+      extend: 'apostrophe-snippets',
+      addFields: [
+        {
+          name: 'slogan',
+          label: 'Slogan',
+          type: 'string'
+        },
+        {
+          name: 'offices',
+          label: 'Offices',
+          type: 'array',
+          schema: [
+            {
+              name: 'street',
+              label: 'Street',
+              type: 'string'
+            },
+            {
+              name: 'city',
+              label: 'City',
+              type: 'string'
+            },
+            {
+              name: 'state',
+              label: 'State',
+              type: 'string'
+            },
+            {
+              name: 'zip',
+              label: 'Zip',
+              type: 'string',
+              def: '19147'
+            },
+            {
+              name: 'open',
+              label: 'Open',
+              type: 'boolean'
+            },
+            {
+              name: 'thumbnail',
+              label: 'Thumbnail',
+              type: 'singleton',
+              widgetType: 'slideshow',
+              options: {
+                limit: 1
+              }
+            },
+            {
+              name: 'body',
+              label: 'Description',
+              type: 'area'
+            },
+            {
+              name: 'rooms',
+              label: 'Rooms',
+              type: 'array',
+              schema: [
+                {
+                  name: 'name',
+                  label: 'Name',
+                  type: 'string'
+                },
+                {
+                  name: 'number',
+                  label: 'Number',
+                  type: 'integer'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     // Styles required by the new editor, must go FIRST
     'apostrophe-ui-2': {},
     'apostrophe-blog-2': {},

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{# Company specific title tag, for Facebook, SEO, etc. #}
+{%- block title -%}
+  {{ siteTitle }} &ndash; {{ item.title | e }}
+{%- endblock -%}
+
+{# Facebook image, so it doesn't hoover up images from the dropdown menus #}
+{# Works only if you specify an absolute URL for uploadsUrl in data/local.js #}
+
+{% set firstImage = aposAreaImage(item, 'thumbnail') or aposAreaImage(item, 'body') %}
+
+{% block extraHead %}
+  {% if firstImage %}
+    <meta property="og:image" content="{{ aposFilePath(firstImage) }}" />
+  {% endif %}
+{% endblock %}
+
+{% block extraBreadcrumbs %}
+  <li><a href="{{ page.url }}">{{ page.title | e }}</a></li>
+  <li>&nbsp;/&nbsp;{{ item.title | e }}</li>
+{% endblock %}
+
+{% block mainContent %}
+  <div class="column apos-area-sidebar">
+    {{ aposArea(page, 'sidebar') }}
+  </div>
+
+  <h4>Company Offices</h4>
+  <ul class="offices">
+    {% for office in item.offices %}
+      <li>{{ office.city }}, {{ office.zip }}
+          {{ aposSingleton({ area: office.thumbnail, type: 'slideshow' }) }}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="column-2 blog-posts">
+    {{ aposArea(item, 'body') }}
+  </div>
+
+{% endblock %}
