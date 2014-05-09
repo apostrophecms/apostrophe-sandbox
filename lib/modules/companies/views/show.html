@@ -26,10 +26,18 @@
     {{ aposArea(page, 'sidebar') }}
   </div>
 
+  <h4>Employees</h4>
+  <ul class="employees">
+    {% for employee in item._employees %}
+      <li>{{ employee.title | e }}</li>
+    {% endfor %}
+  </ul>
+
   <h4>Company Offices</h4>
   <ul class="offices">
     {% for office in item.offices %}
       <li>{{ office.city }}, {{ office.zip }}
+          Supervisor: {{ office._supervisor.title | e }}
           {{ aposSingleton({ area: office.thumbnail, type: 'slideshow' }) }}
       </li>
     {% endfor %}

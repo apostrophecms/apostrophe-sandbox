@@ -102,14 +102,19 @@ var site = require('apostrophe-site')({
                 {
                   name: 'label',
                   type: 'string',
-                  label: 'Label',
-                  required: true
+                  label: 'Label'
                 },
                 {
                   name: 'url',
                   type: 'url',
-                  label: 'URL',
-                  required: true
+                  label: 'URL'
+                },
+                {
+                  name: '_location',
+                  type: 'joinByOne',
+                  label: 'Location',
+                  idField: 'locationId',
+                  withType: 'mapLocation'
                 }
               ]
             }
@@ -125,6 +130,13 @@ var site = require('apostrophe-site')({
       menuName: 'aposCompaniesMenu',
       extend: 'apostrophe-snippets',
       addFields: [
+        {
+          name: '_employees',
+          label: 'Employees',
+          type: 'joinByArray',
+          idsField: 'employeeIds',
+          withType: 'person'
+        },
         {
           name: 'slogan',
           label: 'Slogan',
@@ -160,6 +172,13 @@ var site = require('apostrophe-site')({
               name: 'open',
               label: 'Open',
               type: 'boolean'
+            },
+            {
+              name: '_supervisor',
+              label: 'Supervisor',
+              type: 'joinByOne',
+              idField: 'supervisorId',
+              withType: 'person'
             },
             {
               name: 'thumbnail',
