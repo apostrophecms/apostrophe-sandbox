@@ -1,0 +1,17 @@
+{% include 'schemas:schemaMacros.html' %}
+<div class="apos-modal apos-template">
+  <h3>My Location</h3>
+  {% block topButtons %}
+  {% endblock %}
+  <div class="apos-modal-body">
+    <form>
+      {{ schemaFields(fields) }}
+    </form>
+  </div>
+  <div class="apos-modal-footer">
+    <div class="apos-modal-footer-buttons">
+      <a href="#" data-action="dismiss" class="apos-control apos-button apos-cancel">Cancel</a>
+      <a href="#" class="apos-control apos-button apos-save">Submit My Location</a>
+    </div>
+  </div>
+</div>

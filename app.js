@@ -254,6 +254,11 @@ var site = require('apostrophe-site')({
     },
     'apostrophe-rss': {},
     'apostrophe-twitter': {},
+    'apostrophe-moderator': {
+      types: {
+        mapLocation: {}
+      }
+    }
   },
 
   // These are assets we want to push to the browser.
