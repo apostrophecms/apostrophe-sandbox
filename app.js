@@ -87,6 +87,36 @@ var site = require('apostrophe-site')({
               type: 'url',
               label: 'URL',
               required: true
+            },
+            {
+              label: "test",
+              type: "select",
+              name: "testSelect",
+              choices: [{
+                value: "1",
+                label: "1"
+              }, {
+                value: "2",
+                label: "2"
+              }, {
+                value: "3",
+                label: "3"
+              }]
+            },
+            {
+              name: '_pages',
+              type: 'joinByArray',
+              label: 'Pages',
+              idsField: 'pageIds',
+              withType: 'page',
+              relationshipField: 'pageRelationships',
+              relationship: [
+                {
+                  name: 'vintage',
+                  type: 'string',
+                  label: 'Vintage'
+                }
+              ]
             }
           ]
         },
@@ -110,11 +140,11 @@ var site = require('apostrophe-site')({
                   label: 'URL'
                 },
                 {
-                  name: '_location',
+                  name: '_page',
                   type: 'joinByOne',
-                  label: 'Location',
-                  idField: 'locationId',
-                  withType: 'mapLocation'
+                  label: 'Page',
+                  idField: 'pageId',
+                  withType: 'page'
                 }
               ]
             }
@@ -129,6 +159,37 @@ var site = require('apostrophe-site')({
       instanceLabel: 'Company',
       menuName: 'aposCompaniesMenu',
       extend: 'apostrophe-snippets',
+      indexSchema: {
+        addFields: [
+          {
+            label: "test",
+            type: "select",
+            name: "testSelect",
+            choices: [{
+              value: "1",
+              label: "1"
+            }, {
+              value: "2",
+              label: "2"
+            }, {
+              value: "3",
+              label: "3"
+            }]
+          },
+          {
+            label: 'foo',
+            type: 'string',
+            name: 'foo'
+          },
+          {
+            label: 'People',
+            name: '_people',
+            type: 'joinByArray',
+            idsField: 'peopleIds',
+            withType: 'person'
+          }
+        ]
+      },
       addFields: [
         {
           name: '_employees',
@@ -138,6 +199,21 @@ var site = require('apostrophe-site')({
           withType: 'person'
         },
         {
+          label: "test",
+          type: "select",
+          name: "testSelect",
+          choices: [{
+            value: "1",
+            label: "1"
+          }, {
+            value: "2",
+            label: "2"
+          }, {
+            value: "3",
+            label: "3"
+          }]
+       },
+       {
           name: 'slogan',
           label: 'Slogan',
           type: 'string'

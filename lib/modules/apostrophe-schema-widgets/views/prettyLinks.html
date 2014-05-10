@@ -11,6 +11,6 @@
 
 <ul class="pretty-links">
   {% for link in item.links %}
-    <li><a href="{{ link.url | e }}">{{ link.label | e }}</a> Location: {{ link._location.title }}</li>
+    <li><a href="{{ link.url | e }}">{{ link.label | e }}</a> Location: {{ link._location.title }} Page: {{ link._page.title }}</li>
   {% endfor %}
 </ul>

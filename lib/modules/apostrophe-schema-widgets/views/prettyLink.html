@@ -12,4 +12,7 @@
 </style>
 <div class="so-pretty">
   <a href="{{ item.url | e }}">{{ item.label | e }}</a>
+  {% for page in item._pages %}
+    <h4>Page: <a href="{{ page.url | e }}">{{ page.title | e }}</a></h4>
+  {% endfor %}
 </div>
