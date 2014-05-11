@@ -212,8 +212,8 @@ var site = require('apostrophe-site')({
             value: "3",
             label: "3"
           }]
-       },
-       {
+        },
+        {
           name: 'slogan',
           label: 'Slogan',
           type: 'string'
