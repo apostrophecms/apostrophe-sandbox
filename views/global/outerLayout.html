@@ -39,7 +39,7 @@
                 <ul class="apos-page-bar">
                   {# Doesn't appear for hardcoded accounts that cannot be edited #}
                   {% if user._mongodb and permissions.guest %}
-                    <li href="#" class="apos-control apos-accordion-item apos-button" data-edit-profile>My Profile</li>
+                    <li href="#" class="apos-control apos-accordion-item apos-button" data-profile-edit>My Profile</li>
                     {% if user.email %}
                       <li href="#" class="apos-control apos-accordion-item apos-button"><a href="/apos-people/reset-request">Reset Password</a></li>
                     {% endif %}
