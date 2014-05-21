@@ -334,6 +334,8 @@ var site = require('apostrophe-site')({
       types: {
         mapLocation: {}
       }
+    },
+    'apostrophe-search': {
     }
   },
 

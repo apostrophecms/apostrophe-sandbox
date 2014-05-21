@@ -46,6 +46,7 @@
 
 .apos-result
 {
+  overflow: auto;
   padding-bottom: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid lighten(@dark, 70%);
@@ -55,6 +56,14 @@
     text-transform: uppercase;
     margin-bottom: 0.5em;
   }
+  .search-result-thumbnail {
+    width: 100px;
+    margin: 10px;
+    float: left;
+  }
+  .apos-slideshow-title {
+    display: none;
+  }
 }
 
 .apos-mini-search-form
@@ -62,3 +71,16 @@
   font-size: 85%;
   float: right;
 }
+
+.apos-search-filter {
+  margin-right: 20px;
+}
+
+.apos-search-filter::before {
+  content: '○ ';
+}
+
+.apos-search-filter.apos-current::before {
+  content: '● ';
+}
+

@@ -15,11 +15,7 @@
   <div class="block header">
     <div class="inner">
 
-      <form class="apos-search-form apos-mini-search-form" action="/search">
-        Search: <input type="text" name="q" value="" class="search-field" />
-        <input type="submit" class="search-submit" value="Go" />
-      </form>
-
+      {% include "search:miniForm.html" %}
 
       <div class="main-navigation">
         <a href="/" class="logo"></a>
@@ -68,7 +64,7 @@
   <div class="block main-content">
     <div class="inner clearfix">
 
-      <p><a href="#" data-moderator-submit-button="mapLocation">Submit Your Location</a></p>
+      {# <p><a href="#" data-moderator-submit-button="mapLocation">Submit Your Location</a></p> #}
 
       {# most content will be just fine sitting within our 'block' class, but we always #}
       {# have the option to override the 'main' block if we want a little more control. #}
