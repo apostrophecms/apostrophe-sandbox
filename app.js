@@ -330,11 +330,11 @@ var site = require('apostrophe-site')({
     },
     'apostrophe-rss': {},
     'apostrophe-twitter': {},
-    'apostrophe-moderator': {
-      types: {
-        mapLocation: {}
-      }
-    },
+    // 'apostrophe-moderator': {
+    //   types: {
+    //     mapLocation: {}
+    //   }
+    // },
     'apostrophe-search': {
     }
   },
