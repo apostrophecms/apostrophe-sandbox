@@ -59,6 +59,9 @@
       </div>
       {{ aposPagesMenu({ contextMenu: contextMenu, page: page, bottom: true }) }}
       {# Show only on pages we can edit #}
+      {% if contextMenu %}
+        {{ aposWorkflowMenu({}) }}
+      {% endif %}
     {% endif %}
   {% endblock %}
 
