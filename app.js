@@ -8,6 +8,8 @@ var site = require('apostrophe-site')({
   sessionSecret: 'apostrophe sandbox demo party',
   adminPassword: 'demo',
 
+  workflow: true,
+
   // Give users a chance to log in if they attempt to visit a page
   // which requires login
   secondChanceLogin: true,
@@ -68,10 +70,19 @@ var site = require('apostrophe-site')({
 
   // These are the modules we want to bring into the project.
   modules: {
+    'apostrophe-workflow': {},
     // Styles required by the new editor, must go FIRST
     'apostrophe-ui-2': {},
     'apostrophe-blog-2': {},
     'apostrophe-people': {
+      addFields: [
+        {
+          name: 'slideshow',
+          type: 'singleton',
+          widgetType: 'slideshow',
+          label: 'Slideshow'
+        }
+      ],
       email: {
         from: 'Tommy Boutell <tom@example.com>'
       }
@@ -92,7 +103,8 @@ var site = require('apostrophe-site')({
         }
       ]
     },
-    'apostrophe-redirects': {}
+    'apostrophe-redirects': {},
+    'apostrophe-events': {}
   },
 
   // These are assets we want to push to the browser.

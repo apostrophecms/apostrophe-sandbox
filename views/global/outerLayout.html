@@ -19,11 +19,13 @@
 
           {# edit === can edit THIS page #}
           {{ aposMapMenu(permissions) }}
+          {{ aposEventsMenu(permissions) }}
           {{ aposPeopleMenu(permissions) }}
           {{ aposGroupsMenu(permissions) }}
           {{ aposMediaMenu({ edit: permissions.guest })}}
           {{ aposTagsMenu({ edit: permissions.admin }) }}
           {{ aposRedirectsMenu({ edit: permissions.admin }) }}
+          {{ aposWorkflowManagerMenu(permissions) }}
 
           {% if edit %}
             <div class="apos-admin-bar-item apos-preview-toggle">
@@ -56,6 +58,7 @@
         </div>
       </div>
       {{ aposPagesMenu({ contextMenu: contextMenu, page: page, bottom: true }) }}
+      {# Show only on pages we can edit #}
     {% endif %}
   {% endblock %}
 
