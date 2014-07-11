@@ -8,6 +8,11 @@ var site = require('apostrophe-site')({
   sessionSecret: 'apostrophe sandbox demo party',
   adminPassword: 'demo',
 
+  // If true, new tags can only be added by admins accessing
+  // the tag editor modal via the admin bar. Sometimes useful
+  // if your folksonomy has gotten completely out of hand
+  lockTags: false,
+
   // Give users a chance to log in if they attempt to visit a page
   // which requires login
   secondChanceLogin: true,
@@ -61,8 +66,7 @@ var site = require('apostrophe-site')({
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' },
       { name: 'map', label: 'Map' },
-      { name: 'groups', label: 'Directory' },
-      { name: 'company', label: 'Company' }
+      { name: 'groups', label: 'Directory' }
     ]
   },
 
