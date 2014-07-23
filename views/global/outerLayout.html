@@ -24,6 +24,7 @@
           {{ aposMediaMenu({ edit: permissions.guest })}}
           {{ aposTagsMenu({ edit: permissions.admin }) }}
           {{ aposRedirectsMenu({ edit: permissions.admin }) }}
+          {{ aposWorkflowManagerMenu(permissions) }}
 
           {% if edit %}
             <div class="apos-admin-bar-item apos-preview-toggle">
@@ -50,12 +51,16 @@
             </ul>
           {% else %}
               <div class="apos-admin-bar-item login-status">
-              <a class="apos-button " href="/login">Log In to `</a>
+              <a class="apos-button " href="/login">Log In</a>
             </div>
           {% endif %}
         </div>
       </div>
+      <div class="apos-notification-container" data-notification-container></div>
       {{ aposPagesMenu({ contextMenu: contextMenu, page: page, bottom: true }) }}
+      {% if contextMenu %}
+        {{ aposWorkflowMenu({}) }}
+      {% endif %}
     {% endif %}
   {% endblock %}
 
