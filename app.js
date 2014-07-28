@@ -65,6 +65,7 @@ var site = require('apostrophe-site')({
       { name: 'marquee', label: 'Marquee' },
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' },
+      { name: 'events', label: 'Events' },
       { name: 'map', label: 'Map' },
       { name: 'groups', label: 'Directory' }
     ]
@@ -75,6 +76,7 @@ var site = require('apostrophe-site')({
     // Styles required by the new editor, must go FIRST
     'apostrophe-ui-2': {},
     'apostrophe-blog-2': {},
+    'apostrophe-events': {},
     'apostrophe-people': {
       email: {
         from: 'Tommy Boutell <tom@example.com>'
