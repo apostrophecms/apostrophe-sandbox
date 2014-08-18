@@ -8,6 +8,14 @@ var site = require('apostrophe-site')({
   sessionSecret: 'apostrophe sandbox demo party',
   adminPassword: 'demo',
 
+  // Force a2 to prefix all of its URLs. It still
+  // listens on its own port, but you can configure
+  // your reverse proxy to send it traffic only
+  // for URLs with this prefix. With this option
+  // "/" becomes a 404, which is supposed to happen!
+
+  // prefix: '/test',
+
   // If true, new tags can only be added by admins accessing
   // the tag editor modal via the admin bar. Sometimes useful
   // if your folksonomy has gotten completely out of hand

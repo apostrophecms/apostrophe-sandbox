@@ -6,7 +6,7 @@
 module.exports = {
 
   // Absolute URL is only necessary with s3
-  uploadsUrl: '/uploads',
+  // uploadsUrl: '/uploads',
 
   // 'locals' are visible to nunjucks templates
   locals: {
