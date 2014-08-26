@@ -13,12 +13,10 @@
   "author": "P'unk Avenue",
   "license": "BSD",
   "dependencies": {
-    "apostrophe": "0.5.x",
     "apostrophe-ui-2": "0.5.x",
     "apostrophe-editor-2": "0.5.x",
     "apostrophe-rss": "0.5.x",
     "apostrophe-twitter": "0.5.x",
-    "apostrophe-pages": "0.5.x",
     "apostrophe-blog-2": "0.5.x",
     "apostrophe-events": "0.5.x",
     "apostrophe-snippets": "0.5.x",
