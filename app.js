@@ -106,6 +106,7 @@ var site = require('apostrophe-site')({
         }
       ]
     },
+    'apostrophe-search': {},
     'apostrophe-redirects': {}
   },
 
