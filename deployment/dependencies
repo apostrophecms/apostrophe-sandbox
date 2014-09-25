@@ -23,3 +23,7 @@ if [ -f './package.json' ]; then
     exit 1
   fi
 fi
+
+# Generate new static asset files for this
+# deployment of the app without shutting down
+node app apostrophe:generation
