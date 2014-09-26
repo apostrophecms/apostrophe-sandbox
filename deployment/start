@@ -36,9 +36,17 @@ else
 fi
 
 # Run the app via 'forever' so that it restarts automatically if it fails
-# Use `pwd` to make sure we have a full path, forever is otherwise easily confused 
+# Use `pwd` to make sure we have a full path, forever is otherwise easily confused
 # and will stop every server with the same filename
-forever --minUptime=1000 --spinSleepTime=10000 -o data/console.log -e data/error.log start `pwd`/app.js && echo "Site started"
+
+# Use a "for" loop. A classic single-port file will do the
+# right thing, but so will a file with multiple port numbers
+# for load balancing across multiple cores
+for port in $PORT
+do
+  export PORT=$port
+  forever --minUptime=1000 --spinSleepTime=10000 -o data/console.log -e data/error.log start `pwd`/app.js && echo "Site started"
+done
 
 # Run the app without 'forever'. Record the process id so 'stop' can kill it later.
 # We recommend installing 'forever' instead for node apps. For non-node apps this code
