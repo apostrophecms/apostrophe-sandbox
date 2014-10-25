@@ -1,3 +1,5 @@
+/* jshint node:true */
+
 var site = require('apostrophe-site')({
 
   // This line is required and allows apostrophe-site to use require() and manage our NPM modules for us.
