@@ -13,5 +13,3 @@ npm owner add mcoppola $1
 npm owner add jimmyh $1
 # Have not created npm accounts
 # npm owner add geoffdimasi $1
-# npm owner add tquirino $1
-# npm owner add ahoefinger $1
