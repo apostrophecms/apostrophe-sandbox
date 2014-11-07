@@ -14,11 +14,12 @@ rm -rf ./public/modules/*
 rm -f ./uploads/files/*
 
 # clear out views
-grepstring=""
+grepstring="${KEEP_PAGES[0]}"
+KEEP_PAGES=("${KEEP_PAGES[@]:1}") 
 for page in "${KEEP_PAGES[@]}"; do
-  grepstring="${grepstring}\\|${page}"
-  echo $grepstring
+  grepstring="${grepstring}\|${page}"
 done
+rm -f $(find ./views/pages -type f | grep -v $grepstring)
 
 # remove unnecessary npm modules
 for module in "${REMOVE_MODULES[@]}"; do
