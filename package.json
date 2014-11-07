@@ -28,6 +28,7 @@
     "apostrophe-snippets": "0.5.x",
     "apostrophe-twitter": "0.5.x",
     "apostrophe-ui-2": "0.5.x",
-    "optimist": "~0.6.0"
+    "optimist": "~0.6.0",
+    "watchify": "0.10.2"
   }
 }

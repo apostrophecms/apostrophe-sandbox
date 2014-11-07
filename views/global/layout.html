@@ -12,64 +12,16 @@
 <!-- APOS-SEO-DESCRIPTION {% block seoDescription %}{% endblock %} -->
 
 {% block header %}
-  <div class="block header">
-    <div class="inner">
-      {% include "search:miniForm.html" %}
-
-      <div class="main-navigation">
-        <a href="/" class="logo"></a>
-        {% block mainNav %}
-          <ul class="tabs">
-            {% for tab in page.tabs %}
-              {% if tab.slug == page.slug %}
-                <li class="tab current-page">{{ pageLink(tab) }}</li>
-              {% else %}
-                <li class="tab">{{ pageLink(tab) }}</li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        {% endblock %}
-
-      </div>
-      {% block headerBody %}
-      {% endblock %}
-    </div>
-  </div>
-{% endblock %}
-
-{% block hero %}
-{% endblock %}
-
-{% block breadcrumbs %}
-  <div class="block breadcrumb-nav">
-    <div class="inner">
-      <ol class="breadcrumbs ancestors clearfix">
-        {% for relative in page.ancestors %}
-          <li>{{ pageLink(relative) }}&nbsp;/&nbsp;</li>
-        {% endfor %}
-
-        {# Templates for extended URLs of greedy pages (like blog post permalink pages #}
-        {# will want to make the greedy page itself a link and add more li's. #}
-        {# see the apostrophe-blog's show.html for an example of this. #}
-        {% block extraBreadcrumbs %}
-        <li>{{ pageLink(page, { span: true }) }}</li>
-        {% endblock %}
-      </ol>
-    </div>
-  </div>
+  {% block headerBody %}
+  {% endblock %}
 {% endblock %}
 
 {% block main %}
-  <div class="block main-content">
-    <div class="inner clearfix">
+  {# most content will be just fine sitting within our 'block' class, but we always #}
+  {# have the option to override the 'main' block if we want a little more control. #}
 
-      {# most content will be just fine sitting within our 'block' class, but we always #}
-      {# have the option to override the 'main' block if we want a little more control. #}
-      {% block mainContent %}
-      {% endblock %}
-
-    </div>
-  </div>
+  {% block mainContent %}
+  {% endblock %}
 {% endblock %}
 
 {% block extraContent %}
@@ -78,36 +30,10 @@
 {# notice that this footer uses global areas: if we want editable content to appear #}
 {# on every page that inherits this one we want to use the global object instead of #}
 {# the page object. #}
+
 {% block footerBody %}
-  <footer class="footer">
+  <footer>
     {% block footer %}
-    <div class="major block">
-      <div class="inner clearfix">
-        <div class="column">
-          {{ aposArea(global, 'footerContent1', { textOnly: true, controls: ['style', 'italic', 'createLink'] }) }}
-        </div>
-        <div class="column">
-          {{ aposArea(global, 'footerContent2', { textOnly: true, controls: ['style', 'italic', 'createLink'] }) }}
-        </div>
-        <div class="column">
-          {{ aposArea(global, 'footerContent3', { textOnly: true, controls: ['style', 'italic', 'createLink'] }) }}
-        </div>
-      </div>
-    </div>
-    <div class="minor block">
-      <div class="inner clearfix">
-        <div class="column footer-text">WEBSITES, NOT COFFEE</div>
-        <div class="column">
-          <div class="footer-logos">
-            <a class="twitter-logo footer-logo" href="http://twitter.com/punkave"></a>
-            <a class="punk-logo footer-logo" href="http://punkave.com"></a>
-            <a class="facebook-logo footer-logo" href="http://facebook.com/punkave"></a>
-          </div>
-        </div>
-        <div class="column footer-text right-align">COPYRIGHT &amp; PRIVACY POLICY</div>
-      </div>
-    </div>
     {% endblock %}
   </footer>
 {% endblock %}
-

@@ -1,4 +1,6 @@
 /* jshint node:true */
+var watchify = require('watchify');
+var fs = require('fs');
 
 var site = require('apostrophe-site')({
 
@@ -27,38 +29,10 @@ var site = require('apostrophe-site')({
   // which requires login
   secondChanceLogin: true,
 
-  locals: {
-    loginButton: true
-  },
+  locals:  require('./lib/locals.js'),
 
-  lockups: {
-    left: {
-      label: 'Left',
-      tooltip: 'Float Small',
-      icon: 'icon-arrow-left',
-      // Only allows one type of widget
-      widgets: [ 'slideshow' ],
-      // Override the options for slideshows when they are inside the lockup to get the size right
-      slideshow: {
-        size: 'one-third'
-      },
-      video: {
-        size: 'one-half'
-      }
-    },
-    right: {
-      label: 'Right',
-      tooltip: 'Float Right',
-      icon: 'icon-arrow-right',
-      widgets: [ 'slideshow', 'video' ],
-      slideshow: {
-        size: 'one-half'
-      },
-      video: {
-        size: 'one-half'
-      }
-    }
-  },
+  // you can define lockups for areas here
+  // lockups: {},
 
   // Here we define what page templates we have and what they will be called in the Page Types menu.
 
@@ -69,62 +43,126 @@ var site = require('apostrophe-site')({
 
   pages: {
     types: [
-      { name: 'default', label: 'Default (Two Column)' },
-      { name: 'onecolumn', label: 'One Column' },
-      { name: 'blocks', label: 'Blocks' },
-      { name: 'marquee', label: 'Marquee' },
+      { name: 'default', label: 'Default' },
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' },
       { name: 'events', label: 'Events' },
-      { name: 'map', label: 'Map' },
-      { name: 'groups', label: 'Directory' }
+      { name: 'groups', label: 'Editors' }
     ]
   },
 
   // These are the modules we want to bring into the project.
   modules: {
     // Styles required by the new editor, must go FIRST
+    'apostrophe-editor-2': {},
     'apostrophe-ui-2': {},
-    'apostrophe-blog-2': {},
-    'apostrophe-events': {},
-    'apostrophe-people': {
-      email: {
-        from: 'Tommy Boutell <tom@example.com>'
+    'apostrophe-blog-2': {
+      perPage: 5,
+      pieces: {
+        addFields: [
+          {
+            name: '_editor',
+            type: 'joinByOne',
+            withType: 'person',
+            idField: 'editorId',
+            label: 'Featured Editor'
+          }
+        ]
       }
     },
-    'apostrophe-groups': {},
-    'apostrophe-map':      {},
-    // The new editor
-    'apostrophe-editor-2': {},
-    'apostrophe-blocks': {
-      types: [
+    'apostrophe-events': {
+      addFields: [
         {
-          name: 'one',
-          label: 'One Column'
-        },
-        {
-          name: 'two',
-          label: 'Two Column'
+          name: '_location',
+          type: 'joinByOne',
+          withType: 'mapLocation',
+          idField: 'locationId',
+          label: 'Location'
         }
       ]
     },
-    'apostrophe-search': {},
-    'apostrophe-redirects': {}
+    'apostrophe-people': {
+      addFields: [
+        {
+          name: '_blogPosts',
+          type: 'joinByOneReverse',
+          withType: 'blogPost',
+          idField: 'editorId',
+          label: 'Features',
+          withJoins: [ '_editor' ]
+        }
+      ]
+    },
+    'apostrophe-groups': {},
+    'apostrophe-map':      {},
+
+    'apostrophe-blocks': {
+      types: [
+      ]
+    }
   },
 
   // These are assets we want to push to the browser.
   // The scripts array contains the names of JS files in /public/js,
   // while stylesheets contains the names of LESS files in /public/css
   assets: {
-    scripts: ['site'],
     stylesheets: ['site']
   },
 
-  // beforeEndAssets: function(callback) {
-  //   // Apostrophe already loads these for logged-out users, but we
-  //   // want them all the time in this project.
-  //   site.apos.pushAsset('script', { name: 'vendor/blueimp-iframe-transport', when: 'always' });
-  //   site.apos.pushAsset('script', { name: 'vendor/blueimp-fileupload', when: 'always' });
-  //   return callback(null);
-  // }
+  // ==================================================================
+  //                       ASSETS (BROWSERIFY)
+  // ==================================================================
+
+  beforeEndAssets: function(callback) {
+    // browserify time
+    // make a new watchify (browserify) instance and set the base directory so
+    // that require() statements resolve to local files (instead of node modules)
+    var w = watchify({ 'opts.basedir': './public/js/modules/' });
+    // add our master _site file
+    w.add('./public/js/modules/_site.js');
+    // create the bundled file
+
+    function bundleAssets(cb) {
+      w.bundle({}, function(err, output) {
+        if(err) {
+          console.error('There was an issue running browserify!');
+          console.error(err);
+          return callback(err);
+        }
+
+        // write our new file to the public/js folder
+        fs.writeFile('./public/js/site-compiled.js', output, function (err) {
+          if(err) {
+            console.error('There was an error saving the freshly-bundled front end code.');
+            console.error(err);
+            return callback(err);
+          }
+          return cb(null);
+        });
+      });
+    }
+
+    w.on('update', function(ids) {
+      process.stdout.write('detected a change in frontend assets. bundling...   ');
+      bundleAssets(function() {
+        console.log('finished bundling.'.red.bold);
+      });
+    });
+
+    bundleAssets(callback);
+  },
+
+  afterInit: function(callback) {
+    // We're going to do a special console log now that the
+    // server has started. Are we in development or production?
+    var locals = require('./data/local');
+    if(locals.development || !locals.minify) {
+      console.log('Apostrophe Sandbox is running in development.');
+    } else {
+      console.log('Apostrophe Sandbox is running in production.');
+    }
+
+    callback(null);
+  }
+
 });
