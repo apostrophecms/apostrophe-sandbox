@@ -10,6 +10,10 @@ var site = require('apostrophe-site')({
   sessionSecret: 'apostrophe sandbox demo party',
   adminPassword: 'demo',
 
+  // If there are over 4,095 CSS rules automatically split
+  // into multiple CSS files via Bless: http://blesscss.com/
+  bless: true,
+
   // Force a2 to prefix all of its URLs. It still
   // listens on its own port, but you can configure
   // your reverse proxy to send it traffic only
