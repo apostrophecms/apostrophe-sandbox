@@ -8,8 +8,8 @@ pushd $PROJECT_DIR
 
 # clear out public assets
 rm -rf ./.git
-rm -f ./public/images/*
 rm -f $(find ./public/css/ -type f | grep -v site.less)
+rm -f ./public/images/*
 rm -rf ./public/modules/*
 rm -f ./uploads/files/*
 
@@ -25,5 +25,10 @@ rm -f $(find ./views/pages -type f | grep -v $grepstring)
 for module in "${REMOVE_MODULES[@]}"; do
   npm uninstall --save $module
 done
+
+# prep it
+# mkdir -p ./public/css/style/
+# echo "// Override and add styles here" > ./public/css/style/content.less
+# echo "@import 'utilities/reset.less;'\n@import 'style/content.less;'" > ./public/css/site.less
 
 popd $PROJECT_DIR

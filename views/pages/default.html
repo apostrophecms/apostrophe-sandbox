@@ -5,6 +5,6 @@
 {# be sure to call super() so that any pages inheriting this one will be appending classes, not overriding them. #}
 {% block bodyClass %}{{ super() }} default-page{% endblock %}
 
-{% block mainContent %}
-  <h1>This is a default page</h1>
+{% block main %}
+  {{ aposArea(page, 'body') }}
 {% endblock %}

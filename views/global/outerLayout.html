@@ -18,12 +18,7 @@
           </div>
 
           {# edit === can edit THIS page #}
-          {{ aposEventsMenu(permissions) }}
-          {{ aposMapMenu(permissions) }}
-          {{ aposPeopleMenu(permissions) }}
-          {{ aposGroupsMenu(permissions) }}
           {{ aposMediaMenu({ edit: permissions.guest })}}
-          {{ aposTagsMenu({ edit: permissions.admin }) }}
 
           {% if edit %}
             <div class="apos-admin-bar-item apos-preview-toggle">

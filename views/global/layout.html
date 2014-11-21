@@ -12,28 +12,10 @@
 <!-- APOS-SEO-DESCRIPTION {% block seoDescription %}{% endblock %} -->
 
 {% block header %}
-  {% block headerBody %}
-  {% endblock %}
 {% endblock %}
 
 {% block main %}
-  {# most content will be just fine sitting within our 'block' class, but we always #}
-  {# have the option to override the 'main' block if we want a little more control. #}
-
-  {% block mainContent %}
-  {% endblock %}
 {% endblock %}
 
-{% block extraContent %}
-{% endblock %}
-
-{# notice that this footer uses global areas: if we want editable content to appear #}
-{# on every page that inherits this one we want to use the global object instead of #}
-{# the page object. #}
-
-{% block footerBody %}
-  <footer>
-    {% block footer %}
-    {% endblock %}
-  </footer>
+{% block footer %}
 {% endblock %}
