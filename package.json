@@ -15,6 +15,7 @@
   "dependencies": {
     "apostrophe-editor-2": "0.5.x",
     "apostrophe-site": "0.5.x",
-    "apostrophe-ui-2": "0.5.x"
+    "apostrophe-ui-2": "0.5.x",
+    "glob": "^4.2.1"
   }
 }
