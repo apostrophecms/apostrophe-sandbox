@@ -54,19 +54,5 @@ var site = require('apostrophe-site')({
   // while stylesheets contains the names of LESS files in /public/css
   assets: {
     stylesheets: ['site']
-  },
-
-  afterInit: function(callback) {
-    // We're going to do a special console log now that the
-    // server has started. Are we in development or production?
-    var locals = require('./data/local');
-    if(locals.development || !locals.minify) {
-      console.log('Apostrophe Boilerplate is running in development.');
-    } else {
-      console.log('Apostrophe Boilerplate is running in production.');
-    }
-
-    callback(null);
   }
-
 });
