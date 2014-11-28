@@ -46,8 +46,6 @@ var site = require('apostrophe-site')({
       { name: 'default', label: 'Default' },
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' },
-      { name: 'events', label: 'Events' },
-      { name: 'groups', label: 'Editors' }
     ]
   },
 
@@ -70,17 +68,6 @@ var site = require('apostrophe-site')({
         ]
       }
     },
-    'apostrophe-events': {
-      addFields: [
-        {
-          name: '_location',
-          type: 'joinByOne',
-          withType: 'mapLocation',
-          idField: 'locationId',
-          label: 'Location'
-        }
-      ]
-    },
     'apostrophe-people': {
       addFields: [
         {
@@ -94,12 +81,6 @@ var site = require('apostrophe-site')({
       ]
     },
     'apostrophe-groups': {},
-    'apostrophe-map':      {},
-
-    'apostrophe-blocks': {
-      types: [
-      ]
-    }
   },
 
   // These are assets we want to push to the browser.
@@ -107,49 +88,6 @@ var site = require('apostrophe-site')({
   // while stylesheets contains the names of LESS files in /public/css
   assets: {
     stylesheets: ['site']
-  },
-
-  // ==================================================================
-  //                       ASSETS (BROWSERIFY)
-  // ==================================================================
-
-  beforeEndAssets: function(callback) {
-    // browserify time
-    // make a new watchify (browserify) instance and set the base directory so
-    // that require() statements resolve to local files (instead of node modules)
-    var w = watchify({ 'opts.basedir': './public/js/modules/' });
-    // add our master _site file
-    w.add('./public/js/modules/_site.js');
-    // create the bundled file
-
-    function bundleAssets(cb) {
-      w.bundle({}, function(err, output) {
-        if(err) {
-          console.error('There was an issue running browserify!');
-          console.error(err);
-          return callback(err);
-        }
-
-        // write our new file to the public/js folder
-        fs.writeFile('./public/js/site-compiled.js', output, function (err) {
-          if(err) {
-            console.error('There was an error saving the freshly-bundled front end code.');
-            console.error(err);
-            return callback(err);
-          }
-          return cb(null);
-        });
-      });
-    }
-
-    w.on('update', function(ids) {
-      process.stdout.write('detected a change in frontend assets. bundling...   ');
-      bundleAssets(function() {
-        console.log('finished bundling.'.red.bold);
-      });
-    });
-
-    bundleAssets(callback);
   },
 
   afterInit: function(callback) {

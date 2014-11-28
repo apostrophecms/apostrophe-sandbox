@@ -1,0 +1,43 @@
+@root-font-size: 18px;
+
+// factors of the root font size.
+// only use these! e.g `.Karla(@text-small);`
+@text-micro:  0.65;
+@text-tiny:   0.8;
+@text-small:  1;
+@text-medium: 1.5;
+@text-large:  2;
+@text-huge:   2.5;
+@text-insane: 2.75;
+
+body, html {
+  font-size: @root-font-size;
+  color: @dark;
+}
+
+p,
+body { .Karla(@text-small);      }
+h1   { .KarlaBold(@text-insane); }
+h2   { .KarlaBold(@text-huge);   }
+h3   { .KarlaBold(@text-huge);   }
+h4   { .KarlaBold(@text-large);  }
+h5   { .KarlaBold(@text-medium); }
+h6   { .KarlaBold(@text-small);  }
+
+h1,h2,h3,h4,h5,h6, body
+{
+  .line-height(1.5);
+}
+
+p
+{
+  .line-height(2);
+  strong { .KarlaBold();   }
+  em     { .KarlaItalic(); }
+}
+
+// hotfixies
+.apos-rich-text em
+{
+  font-style: normal;
+}
