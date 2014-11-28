@@ -12,14 +12,13 @@
 <!-- APOS-SEO-DESCRIPTION {% block seoDescription %}{% endblock %} -->
 
 {% block header %}
-  {% block headerBody %}
+  {% block headerContent %}
   {% endblock %}
 {% endblock %}
 
 {% block main %}
   {# most content will be just fine sitting within our 'block' class, but we always #}
   {# have the option to override the 'main' block if we want a little more control. #}
-
   {% block mainContent %}
   {% endblock %}
 {% endblock %}
@@ -31,9 +30,9 @@
 {# on every page that inherits this one we want to use the global object instead of #}
 {# the page object. #}
 
-{% block footerBody %}
+{% block footer %}
   <footer>
-    {% block footer %}
+    {% block footerContent %}
     {% endblock %}
   </footer>
 {% endblock %}
