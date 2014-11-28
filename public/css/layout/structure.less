@@ -40,6 +40,23 @@
   .inline-block(top);
 }
 
+.column--vertical-center
+{
+  vertical-align: middle;
+}
+
 .align-right  { text-align: right;  }
 .align-left   { text-align: left;   }
 .align-center { text-align: center; }
+
+
+.vertical-align-outer
+{
+  display: table;
+
+  .vertical-align-inner
+  {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
