@@ -5,6 +5,8 @@
 {# be sure to call super() so that any pages inheriting this one will be appending classes, not overriding them. #}
 {% block bodyClass %}{{ super() }} default-page{% endblock %}
 
+{% block headerMessage %}You are on the "Default Page" template of the Apostrophe demo site.{% endblock %}
+
 {% block upperClass %}bg-gold{% endblock %}
 
 {% block headerContent %}
@@ -13,7 +15,7 @@
       {{ aposArea(page, 'pageheader', {
         textOnly: true,
         styles: [
-          { value: 'h2', label: 'Title'    },
+          { value: 'h3', label: 'Title'    },
           { value: 'h4', label: 'Subtitle' }
         ]
       }) }}
@@ -33,17 +35,16 @@
   <div class="block content">
     <div class="inner">
       <div class="demo-subnav inline-top width-25">
+        {% if page.parent.type == 'default' %}
+          <a class="subnav-parent" href="{{ page.parent.url }}">← {{ page.parent.title }}</a>
+        {% endif %}
         <div class="subnav-page-title">{{ page.title }}</div>
         <ul class="subnav-items">
-          <li class="subnav-item">
-            <a href="/page/subpage">Subpage 1</a>
-          </li>
-          <li class="subnav-item">
-            <a href="/page/subpage">Subpage 2</a>
-          </li>
-          <li class="subnav-item">
-            <a href="/page/subpage">Subpage 3</a>
-          </li>
+          {% for child in page.children %}
+            <li class="subnav-item">
+              <a href="{{ child.url }}">{{ child.title }}</a>
+            </li>
+          {% endfor %}
         </ul>
       </div>{#
     #}<div class="demo-main inline-top width-75">

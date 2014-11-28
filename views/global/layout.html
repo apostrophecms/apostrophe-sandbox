@@ -16,17 +16,19 @@
     <div class="inner demo-inner">
         <header>
           <div class="demo-header bg-red">
-            {% block headerMessage %}<h5>You are using the Apostrophe demo site.</h5>{% endblock %}
-            <p>So feel free to poke around. Content can be edited in context by clicking on the pencil of each content type. Feel free to mess anything up, this page will automatically refresh every 20 minutes restoring the original content. If anything seems strange, someone else using the demo site has likely made a change. Questions? webmaster@apostrophe.com</p>
+            <h5>{% block headerMessage %}You are using the Apostrophe demo site.{% endblock %}</h5>
+            <p>So feel free to poke around. Content can be edited in context by clicking on the pencil of each content type. Feel free to mess anything up, this page will automatically refresh every 20 minutes restoring the original content. If anything seems strange, someone else using the demo site has likely made a change. Questions? <a href="">link.</a></p>
           </div>
           <nav class="demo-nav">
             <ul>
               <li class="nav-item">
-                <a href="/">Home</a>
+                <a href="/" {% if page.slug == '/' %}class="active"{% endif %}>Home</a>
               </li>
-              <li class="nav-item">
-                <a href="/about">About</a>
-              </li>
+              {% for item in page.tabs %}
+                <li class="nav-item">
+                  <a href="{{ item.url }}" {% if page.slug == item.slug %}class="active"{% endif %}>{{ item.title }}</a>
+                </li>
+              {% endfor %}
             </ul>
           </nav>
         </header>
