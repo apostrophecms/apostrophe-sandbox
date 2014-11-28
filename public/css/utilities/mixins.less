@@ -12,3 +12,19 @@
   display: inline-block;
   vertical-align: @valign;
 }
+
+.matt-shadow
+{
+  &::after
+  {
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+
+    display: block;
+    content: '';
+    height: 8px;
+
+    background-color: fade(@dark, 20%);
+  }
+}
