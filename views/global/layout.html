@@ -51,8 +51,18 @@
 {# the page object. #}
 
 {% block footer %}
-  <footer>
-    {% block footerContent %}
-    {% endblock %}
+  <footer class="block footer">
+    <div class="inner">
+      {% block footerContent %}
+        <div class="inline-middle width-50">
+          Apostrophe is led by <a href="http://punkave.com">P'unk Avenue</a> in Philadelphia, PA.
+        </div>{#
+      #}<div class="inline-middle width-50 align-right">
+          <a class="inline-top" href="http://punkave.com">
+            <img src="/images/demo_logo_punk.png" class="" alt="P'unk Avenue" width="150" height="32" />
+          </a>
+        </div>
+      {% endblock %}
+    </div>
   </footer>
 {% endblock %}
