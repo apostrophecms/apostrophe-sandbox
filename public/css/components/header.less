@@ -44,13 +44,19 @@
   .nav-item
   {
     .inline-block(top);
+    padding: 0.4em 1em;
 
     & > a
     {
       .inline-block(top);
-      padding: 0.5em 0.75em;
-      .KarlaBold(@text-medium);
+      padding: 0.1em 0;
+      .KarlaBold(@text-small);
       color: @red;
+
+      &.active
+      {
+        border-bottom: 1px solid @red;
+      }
     }
   }
 }
