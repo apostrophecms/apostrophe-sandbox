@@ -2,7 +2,55 @@
 {
   position: relative;
 
-  padding: 1rem;
+  padding: 2rem 2.5rem;
 
   color: @white;
+
+  &::before
+  {
+    position: absolute;
+    left: 1rem;
+    top: 2.5rem;
+
+    display: block;
+    content: "!";
+    width: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid @white;
+
+    .KarlaBold(@text-medium);
+    text-align: center;
+  }
+}
+
+.demo-nav
+{
+  position: relative;
+  background-color: @white;
+
+  &::after
+  {
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+
+    display: block;
+    content: '';
+    height: 8px;
+
+    background-color: fade(@dark, 20%);
+  }
+
+  .nav-item
+  {
+    .inline-block(top);
+
+    & > a
+    {
+      .inline-block(top);
+      padding: 0.5em 0.75em;
+      .KarlaBold(@text-medium);
+      color: @red;
+    }
+  }
 }

@@ -5,7 +5,7 @@
 @text-micro:  0.65;
 @text-tiny:   0.8;
 @text-small:  1;
-@text-medium: 1.5;
+@text-medium: 1.33333;
 @text-large:  2;
 @text-huge:   2.5;
 @text-insane: 2.75;
@@ -31,14 +31,22 @@ h1,h2,h3,h4,h5,h6
 }
 body
 {
-  line-height: 1em;
+  line-height: 1.25em;
 }
 
 p
 {
-  line-height: 1.5em;
+  line-height: 1.25em;
+  .Karla(@text-small);
   strong { .KarlaBold();   }
   em     { .KarlaItalic(); }
+}
+
+a
+{
+  .KarlaBold();
+  color: @red;
+  text-decoration: none;
 }
 
 // hotfixies

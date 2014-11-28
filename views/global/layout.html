@@ -15,12 +15,23 @@
   <div class="block">
     <div class="inner">
       {% block headerContent %}
-        <header class="demo-header bg-red">
-          <div class="demo-warning">
+        <header>
+          <div class="demo-header bg-red">
             {% block headerMessage %}<h5>You are using the Apostrophe demo site.</h5>{% endblock %}
             <p>So feel free to poke around. Content can be edited in context by clicking on the pencil of each content type. Feel free to mess anything up, this page will automatically refresh every 20 minutes restoring the original content. If anything seems strange, someone else using the demo site has likely made a change. Questions? webmaster@apostrophe.com</p>
           </div>
+          <nav class="demo-nav">
+            <ul>
+              <li class="nav-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="/about">About</a>
+              </li>
+            </ul>
+          </nav>
         </header>
+
       {% endblock %}
     </div>
   </div>
