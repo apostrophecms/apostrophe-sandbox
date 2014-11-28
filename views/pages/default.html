@@ -5,8 +5,10 @@
 {# be sure to call super() so that any pages inheriting this one will be appending classes, not overriding them. #}
 {% block bodyClass %}{{ super() }} default-page{% endblock %}
 
+{% block upperClass %}bg-gold{% endblock %}
+
 {% block mainContent %}
-  <div class="block">
+  <div class="block content">
     <div class="inner">
       <div class="demo-subnav inline-top width-25">
         <div class="subnav-page-title">{{ page.title }}</div>
