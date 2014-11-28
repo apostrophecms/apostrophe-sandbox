@@ -6,5 +6,27 @@
 {% block bodyClass %}{{ super() }} default-page{% endblock %}
 
 {% block mainContent %}
-  <h1>This is a default page</h1>
+  <div class="block">
+    <div class="inner">
+      <div class="demo-subnav inline-top width-25">
+        <div class="subnav-page-title">{{ page.title }}</div>
+        <ul class="subnav-items">
+          <li class="subnav-item">
+            <a href="/page/subpage">Subpage 1</a>
+          </li>
+          <li class="subnav-item">
+            <a href="/page/subpage">Subpage 2</a>
+          </li>
+          <li class="subnav-item">
+            <a href="/page/subpage">Subpage 3</a>
+          </li>
+        </ul>
+      </div>{#
+    #}<div class="demo-main inline-top width-75">
+        {{ aposArea(page, 'main', {
+          controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video']
+        }) }}
+      </div>
+    </div>
+  </div>
 {% endblock %}
