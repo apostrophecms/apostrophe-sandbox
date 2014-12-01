@@ -3,6 +3,9 @@
   position: relative;
   width: 100%;
   margin-bottom: 3rem;
+
+  text-align: left;
+
   border-radius: 2px;
   overflow: hidden;
 
@@ -29,33 +32,50 @@
   {
     position: absolute;
     bottom: 0;
-    padding: 1.3rem;
+    padding: 1rem;
     z-index: 2;
   }
 
   .blog-card-author
   {
-    .font-size(@text-tiny);
+    .KarlaBold(@text-tiny);
   }
 
   .blog-card-title
   {
     margin-bottom: 0.5rem;
     line-height: 1.2em;
+    color: @white;
   }
 
   .blog-card-excerpt-container
   {
-    padding: 1.3rem;
+    padding: 1rem;
     background-color: @white;
     border-radius: 0 0 2px 2px;
   }
 
   .blog-card-excerpt
   {
+    position: relative;
+    overflow: hidden;
+
+    height: 6em;
     margin-bottom: 1rem;
+
     .font-size(@text-tiny);
     line-height: 1.2em;
+
+    &::after
+    {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+
+      display: block;
+      content: '';
+
+      .gradient(70%);
+    }
   }
 
 }
@@ -64,8 +84,14 @@
 {
     position: absolute;
     top: -1em;
-    left: 30%;
+    left: 50%;
+
+    .inline-block(middle);
+
+    width: 60%;
     padding: 0.5rem 1rem;
     color: @white;
     background-color: @red;
+
+    .transform( translateX(-50%) );
 }

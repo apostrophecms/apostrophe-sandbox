@@ -1,0 +1,6 @@
+{% extends 'layout.html' %}
+
+{% block mainContent %}
+  {{ aposSingleton(page, 'image', 'slideshow', { limit: 1 }) }}
+  {{ aposArea(page, 'body', {  }) }}
+{% endblock %}
