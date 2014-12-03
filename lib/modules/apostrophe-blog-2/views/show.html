@@ -36,10 +36,26 @@
   <div class="block">
     <div class="inner">
       <div class="demo-blog-gutter">
-        image
+        <div class="demo-blog-author">
+          <div class="demo-blog-author-image">
+            {{ aposSingleton(page, 'thumbnail', 'slideshow', { noHeight: true, edit: false }) }}
+          </div>
+          <div class="demo-blog-author-bio">
+            {{ aposAreaPlaintext(page, 'body', { truncate: 100 }) }}
+          </div>
+        </div>
       </div>
       <div class="demo-blog-content">
         {{ aposArea(page, 'body', {  }) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="block bg-gray">
+    <div class="inner">
+      {{ aposSingleton(page, 'blogWidget', 'blog', { limit: 3 }) }}
+      <div class="demo-blog-see-all">
+        <a href="{{ page.parent.url }}">See All Blog Posts</a>
       </div>
     </div>
   </div>
