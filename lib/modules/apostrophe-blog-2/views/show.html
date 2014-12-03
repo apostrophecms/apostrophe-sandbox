@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% block bodyClass %}{{ super() }} apos-blog-post-page{% endblock %}
+{% block bodyClass %}{{ super() }} demo-blog-show-page{% endblock %}
 
 {# Article specific title tag, for Facebook, SEO, etc. #}
 {%- block title -%}
@@ -18,7 +18,7 @@
   <div class="demo-blog-header">
     <div class="sticker-red">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
     <h3>{{ page.title }}</h3>
-    <h5>By Author Name</h5>
+    <h5>by Author Name</h5>
   </div>
 {% endblock %}
 
@@ -35,7 +35,12 @@
 {% block mainContent %}
   <div class="block">
     <div class="inner">
-      {{ aposArea(page, 'body', {  }) }}
+      <div class="demo-blog-gutter">
+        image
+      </div>
+      <div class="demo-blog-content">
+        {{ aposArea(page, 'body', {  }) }}
+      </div>
     </div>
   </div>
 {% endblock %}
