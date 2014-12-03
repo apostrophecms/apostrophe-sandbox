@@ -1,5 +1,6 @@
 {% include 'pageMacros.html' %}
 {% include 'components/_index.html' %}
+{% include 'svg/_index.html' %}
 
 {# This serves as our base template; it is rendered inside of the 'apos-refreshable' class in outerLayout.html. #}
 {# This is where we declare the main blocks that our layout is composed of, e.g. header, main, footer, etc. #}
@@ -27,6 +28,13 @@
             <p>So feel free to poke around. Content can be edited in context by clicking on the pencil of each content type. Feel free to mess anything up, this page will automatically refresh every 20 minutes restoring the original content. If anything seems strange, someone else using the demo site has likely made a change. Questions? <a href="">link.</a></p>
           </div>
           {{ nav(page, {classes: 'hide-mobile'}) }}
+
+          <a href="#" class="off-canvas-trigger hide-desktop">
+            <svg class="a-toolbox">
+              <use xlink:href="#a-toolbox" />
+            </svg>
+          </a>
+
         </header>
       {% block headerContent %}
       {% endblock %}
