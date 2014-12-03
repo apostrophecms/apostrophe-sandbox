@@ -18,8 +18,8 @@
         {%- if image -%}
           <img src="{{ aposFilePath(image, { size: 'one-half' }) }}">
         {%- endif -%}
-        <span class="sticker-red sticker-red--overlap">{{ piece.publishedAt | date('MMM DD, YYYY' ) }}</span>
       </div>
+      <span class="sticker-red sticker-red--overlap">{{ piece.publishedAt | date('MMM DD, YYYY' ) }}</span>
     </div>{#
       #}<div class="column width-66 blog-listing-info">
       <h5 class="blog-listing-title">{{ piece.tile | e }}</h5>
