@@ -1,18 +1,5 @@
-{%- for post in item._pieces -%}
-  <div class="column width-30">
-    <div class="demo-blog-card">
-      <div class="blog-card-head">
-        {{ aposSingleton(post, 'image', 'slideshow', { limit: 1, aspectRatio: [324, 162], noHeight: true, edit: false }) }}
-        <div class="blog-card-title-container">
-          <a href="{{ post.url }}"><h6 class="blog-card-title">{{ post.title }}</h6></a>
-          <span class="blog-card-author">by Author</span>
-        </div>
-      </div>
-      <div class="blog-card-excerpt-container">
-        <p class="blog-card-excerpt">{{ aposAreaPlaintext(post, 'body', { truncate: 300 }) }}</p>
-        <a href="{{ post.url }}">Read More</a>
-      </div>
-    </div>
-    <span class="sticker-red sticker-red--overlap">{{ post.publishedAt | date('MMM Do, YYYY') }}</span>
-  </div>
+{%- include 'blogMacros.html' -%}
+
+{%- for piece in item._pieces -%}
+  {{ blogCard(piece) }}
 {%- endfor -%}

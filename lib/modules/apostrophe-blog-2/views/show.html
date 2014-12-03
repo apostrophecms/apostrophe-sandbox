@@ -1,4 +1,5 @@
-{% extends 'layout.html' %}
+{%- extends 'layout.html' -%}
+{%- include 'blogMacros.html' -%}
 
 {% block bodyClass %}{{ super() }} demo-blog-show-page{% endblock %}
 
@@ -36,11 +37,19 @@
   <div class="block">
     <div class="inner">
       <div class="demo-blog-gutter">
-        image
+        <div class="demo-blog-author">
+          <div class="demo-blog-author-image">
+            {{ aposSingleton(page, 'thumbnail', 'slideshow', { noHeight: true, edit: false }) }}
+          </div>
+          <div class="demo-blog-author-bio">
+            {{ aposAreaPlaintext(page, 'body', { truncate: 100 }) }}
+          </div>
+        </div>
       </div>
       <div class="demo-blog-content">
         {{ aposArea(page, 'body', {  }) }}
       </div>
     </div>
+
   </div>
 {% endblock %}

@@ -1,9 +1,12 @@
+// LAYOUT
+
 .demo-blog-content
 {
   position: relative;
 
   .inline-block(top);
   width: 66.66666%;
+  padding-top: 2rem;
 }
 
 .demo-blog-gutter
@@ -11,5 +14,43 @@
   position: relative;
 
   .inline-block(top);
-  width: 17.5%;
+  width: 17%;
+}
+
+// AUTHOR in the GUTTER
+
+.demo-blog-author
+{
+  margin-top: -53px;
+}
+
+.demo-blog-author-image
+{
+  width: 100px;
+  height: 100px;
+
+  background-color: @gray;
+  border: 4px solid @light-gold;
+  border-radius: 2px;
+
+  background-image: url('/images/demo_author_placeholder.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60px 65px;
+}
+
+.demo-blog-author-bio
+{
+  width: 75%;
+  margin-top: 0.5em;
+
+  .font-size(@text-tiny);
+  line-height: 1.25em;
+}
+
+// BLOG WIDGET at the BOTTOM
+
+.demo-blog-see-all
+{
+  text-align: right;
 }
