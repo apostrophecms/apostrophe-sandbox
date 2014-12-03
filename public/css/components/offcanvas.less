@@ -1,8 +1,13 @@
+
 .off-canvas-container
 {
 	position: absolute;
 	transform: translate3d(100%, 0, 0);
 	width: 100%;
+	-webkit-transition: all, 0.4s, ease-in-out;
+	transition: all, 0.4s, ease-in-out;
+	z-index: 10;
+	height: 100%;
 }
 
 .off-canvas-trigger
@@ -28,5 +33,15 @@
 	path, g
 	{
 		fill: @red;
+	}
+}
+
+
+// Show
+.show-off-canvas
+{
+	.off-canvas-container
+	{
+		transform: translate3d(0,0,0);
 	}
 }

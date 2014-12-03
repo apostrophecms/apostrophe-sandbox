@@ -22,8 +22,10 @@
       <span class="sticker-red sticker-red--overlap">{{ piece.publishedAt | date('MMM DD, YYYY' ) }}</span>
     </div>{#
       #}<div class="column width-66 blog-listing-info">
-      <h5 class="blog-listing-title">{{ piece.tile | e }}</h5>
-      <h6 class="blog-listing-author">by Nips Smith</h6>
+      <h5 class="blog-listing-title"><a href="{{ piece.url }}">{{ piece.title | e }}</a></h5>
+      {% if piece.authorId %}
+        <h6 class="blog-listing-author">by {{ piece._author.title }}</h6>
+      {% endif %}
       <div class="blog-listing-excerpt">{{ aposAreaPlaintext({ area: piece.body, truncate: 200 }) }}</div>
       <a href="{{ piece.slug }}" alt="Read More">Read More</a>
     </div>
