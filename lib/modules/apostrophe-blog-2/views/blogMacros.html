@@ -39,7 +39,9 @@
         {{ aposSingleton(piece, 'image', 'slideshow', { limit: 1, aspectRatio: [324, 162], noHeight: true, edit: false }) }}
         <div class="blog-card-title-container">
           <a href="{{ piece.url }}"><h6 class="blog-card-title">{{ piece.title }}</h6></a>
-          <span class="blog-card-author">by Author</span>
+          {% if piece.authorId %}
+            <span class="blog-card-author">by {{ piece._author.title }}</span>
+          {% endif %}
         </div>
       </div>
       <div class="blog-card-excerpt-container">
