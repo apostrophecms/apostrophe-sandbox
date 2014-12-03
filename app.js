@@ -60,11 +60,11 @@ var site = require('apostrophe-site')({
       pieces: {
         addFields: [
           {
-            name: '_editor',
+            name: '_author',
             type: 'joinByOne',
             withType: 'person',
-            idField: 'editorId',
-            label: 'Featured Editor'
+            idField: 'authorId',
+            label: 'Author'
           }
         ]
       }
@@ -75,8 +75,8 @@ var site = require('apostrophe-site')({
           name: '_blogPosts',
           type: 'joinByOneReverse',
           withType: 'blogPost',
-          idField: 'editorId',
-          label: 'Features',
+          idField: 'authorId',
+          label: 'Author',
           withJoins: [ '_editor' ]
         }
       ]

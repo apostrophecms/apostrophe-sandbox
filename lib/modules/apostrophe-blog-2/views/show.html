@@ -19,7 +19,9 @@
   <div class="demo-blog-header">
     <div class="sticker-red">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
     <h3>{{ page.title }}</h3>
-    <h5>by Author Name</h5>
+    {% if page.authorId %}
+      <h5>by {{ page._author.title }}</h5>
+    {% endif %}
   </div>
 {% endblock %}
 
@@ -39,15 +41,23 @@
       <div class="demo-blog-gutter">
         <div class="demo-blog-author">
           <div class="demo-blog-author-image">
-            {{ aposSingleton(page, 'thumbnail', 'slideshow', { noHeight: true, edit: false }) }}
+            {{ aposSingleton(page._author, 'thumbnail', 'slideshow', { noHeight: true, edit: false }) }}
           </div>
           <div class="demo-blog-author-bio">
-            {{ aposAreaPlaintext(page, 'body', { truncate: 100 }) }}
+            {{ aposAreaPlaintext(page._author, 'body', { truncate: 100 }) }}
           </div>
         </div>
       </div>
       <div class="demo-blog-content">
-        {{ aposArea(page, 'body', {  }) }}
+        {{ aposArea(page, 'body', {
+          controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video'],
+          styles: [
+            { value: 'p', label: 'Text' },
+            { value: 'h3', label: 'Heading' },
+            { value: 'h5', label: 'Subheading' },
+            { value: 'code', label: 'Code' }
+          ]
+        }) }}
       </div>
     </div>
 
