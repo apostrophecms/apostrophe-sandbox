@@ -44,7 +44,9 @@
             {{ aposSingleton(page._author, 'thumbnail', 'slideshow', { noHeight: true, edit: false }) }}
           </div>
           <div class="demo-blog-author-bio">
-            {{ aposAreaPlaintext(page._author, 'body', { truncate: 100 }) }}
+            {% if page.authorId %}
+              {{ aposAreaPlaintext(page._author, 'body', { truncate: 100 }) }}
+            {% endif %}
           </div>
         </div>
       </div>
