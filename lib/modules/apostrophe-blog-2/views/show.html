@@ -1,4 +1,5 @@
-{% extends 'layout.html' %}
+{%- extends 'layout.html' -%}
+{%- include 'blogMacros.html' -%}
 
 {% block bodyClass %}{{ super() }} demo-blog-show-page{% endblock %}
 
@@ -49,14 +50,6 @@
         {{ aposArea(page, 'body', {  }) }}
       </div>
     </div>
-  </div>
 
-  <div class="block bg-gray">
-    <div class="inner">
-      {{ aposSingleton(page, 'blogWidget', 'blog', { limit: 3 }) }}
-      <div class="demo-blog-see-all">
-        <a href="{{ page.parent.url }}">See All Blog Posts</a>
-      </div>
-    </div>
   </div>
 {% endblock %}
