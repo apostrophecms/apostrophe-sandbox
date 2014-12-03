@@ -10,7 +10,7 @@
 
     <div class="demo-pager">
       {% if pager.page != 1 %}
-        <a  class="pager-prev" data-page="{{ page -1 }}" href="{{ url | build(query, { page: pager.page -1 }) }}">Previous</a>
+        <a  class="pager-arrow pager-prev" data-page="{{ page -1 }}" href="{{ url | build(query, { page: pager.page -1 }) }}">Previous</a>
       {% endif %}
 
       {{ pagerPage(1, options, url) }}
@@ -28,7 +28,7 @@
       {{ pagerPage(options.total, options, url) }}
 
       {% if pager.page != -1 %}
-      <a  class="pager-prev" data-page="{{ page +1 }}" href="{{ url | build(query, { page: pager.page +1 }) }}">Next</a>
+      <a  class="pager-arrow pager-next" data-page="{{ page +1 }}" href="{{ url | build(query, { page: pager.page +1 }) }}">Next</a>
       {% endif %}
 
     </div>
@@ -44,7 +44,7 @@
 
 {% macro pagerPage(page, options, url) %}
   {% if (page <= options.total) %}
-    <span class="apos-pager-number {% if page == 1 %}apos-first{% endif %} {% if page == options.total %}apos-last{% endif %} {% if page == options.page %}apos-active{% endif %}">
+    <span class="pager-number {% if page == 1 %}pager-first{% endif %} {% if page == options.total %}pager-last{% endif %} {% if page == options.page %}pager-active{% endif %}">
       {%- if (options.page != page) -%}
       {# Dual markup for javascript applicatons and plain old links #}
       <a data-page="{{ page }}" href="{{ url | build({ page: page }) }}">
