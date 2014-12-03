@@ -1,4 +1,5 @@
 {% include 'pageMacros.html' %}
+{% include 'components/_index.html' %}
 
 {# This serves as our base template; it is rendered inside of the 'apos-refreshable' class in outerLayout.html. #}
 {# This is where we declare the main blocks that our layout is composed of, e.g. header, main, footer, etc. #}
@@ -11,6 +12,11 @@
 <!-- APOS-EXTRA-HEAD {% block extraHead %}{% endblock %} -->
 <!-- APOS-SEO-DESCRIPTION {% block seoDescription %}{% endblock %} -->
 
+{% block outer %}
+  <div class="off-canvas-container">
+    {{ nav(page, {classes: 'off-canvas-nav'}) }}
+  </div>
+{% endblock%}
 {% block header %}
   <div class="block header {% block upperClass %}{% endblock %}">
     {% block headerBackground %}{% endblock %}
@@ -20,18 +26,7 @@
             <h5>{% block headerMessage %}You are using the Apostrophe demo site.{% endblock %}</h5>
             <p>So feel free to poke around. Content can be edited in context by clicking on the pencil of each content type. Feel free to mess anything up, this page will automatically refresh every 20 minutes restoring the original content. If anything seems strange, someone else using the demo site has likely made a change. Questions? <a href="">link.</a></p>
           </div>
-          <nav class="demo-nav">
-            <ul>
-              <li class="nav-item">
-                <a href="/" {% if page.slug == '/' %}class="active"{% endif %}>Home</a>
-              </li>
-              {% for item in page.tabs %}
-                <li class="nav-item">
-                  <a href="{{ item.url }}" {% if page.slug == item.slug %}class="active"{% endif %}>{{ item.title }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </nav>
+          {{ nav(page, {classes: 'hide-mobile'}) }}
         </header>
       {% block headerContent %}
       {% endblock %}

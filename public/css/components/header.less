@@ -54,13 +54,11 @@
 .collapse-header .demo-header
 {
   padding: 1rem 2.5rem;
+  padding-right: 0;
 
   &:before
   {
     top: 1.3rem;
-    font-family: FontAwesome;
-    content: "";
-    font-size: 13px;
   }
   &:hover:before
   {
@@ -69,6 +67,18 @@
   }
   p { display: none; }
 
+  @media screen and @narrow
+  {
+    &:before
+    {
+      top: 0.6rem;
+    }
+    h5
+    {
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+    }
+  }
 }
 
 .demo-nav
