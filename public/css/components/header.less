@@ -1,6 +1,12 @@
 .demo-inner
 {
+  max-width: 1160px;
+}
+
+.demo-header, .demo-nav
+{
   max-width: 1060px;
+  margin: 0 auto;
 }
 
 .demo-header
@@ -11,6 +17,11 @@
 
   line-height: 1.25em;
   color: @white;
+
+  // @media screen and @narrow
+  // {
+
+  // }
 
   &::before
   {
@@ -27,6 +38,37 @@
     .KarlaBold(@text-medium);
     text-align: center;
   }
+
+  &:hover
+  {
+    &:before
+    {
+      font-family: FontAwesome;
+      content: "";
+      font-size: 13px;
+    }
+  }
+}
+
+// collapsing the demo header
+.collapse-header .demo-header
+{
+  padding: 1rem 2.5rem;
+
+  &:before
+  {
+    top: 1.3rem;
+    font-family: FontAwesome;
+    content: "";
+    font-size: 13px;
+  }
+  &:hover:before
+  {
+    content: "!";
+    .KarlaBold(@text-medium);
+  }
+  p { display: none; }
+
 }
 
 .demo-nav

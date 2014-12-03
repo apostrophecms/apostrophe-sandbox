@@ -1,1 +1,3 @@
-console.log('hi');
+$(function() {
+  require('./demoHeader.js');
+});
