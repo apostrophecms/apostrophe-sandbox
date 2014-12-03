@@ -10,6 +10,12 @@ header { position: relative; }
   margin: 0 auto;
 }
 
+.demo-nav-logo
+{
+  text-align: center;
+  padding: 2rem 0;
+}
+
 .demo-header
 {
   position: relative;
@@ -19,10 +25,11 @@ header { position: relative; }
   line-height: 1.25em;
   color: @white;
 
-  // @media screen and @narrow
-  // {
-
-  // }
+  &:hover
+  {
+    background-color: darken(@red, 10%);
+    cursor: pointer;
+  }
 
   &::before
   {

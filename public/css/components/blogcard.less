@@ -9,6 +9,11 @@
   border-radius: 2px;
   overflow: hidden;
 
+  @media screen and @narrow
+  {
+    background: @white;
+  }
+
   .blog-card-title-container
   {
     position: absolute;
@@ -34,6 +39,12 @@
     padding: 1rem;
     background-color: @white;
     border-radius: 0 0 2px 2px;
+
+    @media screen and @narrow
+    {
+      width: 50%;
+      margin-left: 50%;
+    } 
   }
 
   .blog-card-excerpt
@@ -46,7 +57,11 @@
 
     .font-size(@text-tiny);
     line-height: 1.2em;
-
+    
+    @media screen and @narrow
+    {
+      height: 6rem;
+    }
     &::after
     {
       position: absolute;
@@ -85,6 +100,9 @@
   {
     width: 50%;
     float: left;
+
+    .apos-slideshow-item {background-size: cover; background-position: center; }
+    img{ opacity: 0; height: 162px;}
   }
 }
 
@@ -106,5 +124,13 @@
 
     width: 50%;
     .transform( translateX(-50%) );
+
+    @media screen and @narrow
+    {
+      width: 40%;
+      // -webkit-transform: translateX(-25%);
+      // transform: translateX(-25%);
+      left: 25%;
+    }
   }
 }
