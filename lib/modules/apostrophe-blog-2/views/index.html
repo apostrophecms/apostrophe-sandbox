@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% include "pageMacros.html" %}
+
+{# the bodyClass block allows us to attach a classname to the body tag for easy style-scoping. #}
+{# be sure to call super() so that any pages inheriting this one will be appending classes, not overriding them. #}
+{% block bodyClass %} demo-blog-index-page{% endblock %}
+
+{% block headerMessage %}You are on the "Blog Index" template of the Apostrophe demo site.{% endblock %}
+
+{% block upperClass %}bg-gold{% endblock %}
+
+{% block headerContent %}
+<div class="demo-pageheader">
+  <div class="column column--vertical-center width-50">
+    {{ aposArea(page, 'pageheader', {
+      textOnly: true,
+      styles: [
+      { value: 'h3', label: 'Title'    },
+      { value: 'h4', label: 'Subtitle' }
+      ]
+    }) }}
+  </div>{#
+    #}<div class="column column--vertical-center width-50 align-right">
+    <div class="demo-image-sticker">
+      {{ aposSingleton(page, 'sticker', 'slideshow', { filter: false, limit: 1, aspectRatio: [1, 1] }) }}
+      <img class="demo-apos-shadow image-sticker" src="/images/demo_logo_apos_shadow.png" alt="Apostrophe">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block mainContent %}
+
+<div class="block content">
+  <div class="inner">
+    <ul class="demo-blog-listings">
+      <li class="column width-100 demo-blog-listing">
+        <div class="column width-33">
+          <div class="blog-card-head">
+            {{ aposSingleton(page, 'blogCard', 'slideshow', { limit: 1, aspectRatio: [324, 162], noHeight: true }) }}
+          </div>
+          <span class="sticker-red sticker-red--overlap">Nov 28th, 2014</span>
+        </div>{#
+      #}<div class="column width-66">
+          <h5 class="blog-listing-title">Here Is a Title</h5>
+          <h6 class="blog-listing-author">by Nips Smith</h6>
+          <p class="blog-listing-excerpt">Lucas ipsum dolor sit amet ben yoda hutt hutt mothma darth jabba calrissian sebulba mara. Binks boba moff boba solo yavin coruscant wampa greedo. Anakin r2-d2 ahsoka hutt kit. Hutt wedge biggs coruscant. Kenobi luke skywalker fisto maul antilles sidious chewbacca. Maul mon antilles ventress skywalker c-3po. Grievous vader twi'lek droid coruscant twi'lek cade antilles. Watto jabba leia solo qui-gonn jawa sebulba. Mandalore tatooine sidious hutt naboo grievous palpatine. Hutt calrissian grievous skywalker.</p>
+          <a href="/">Read More</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
