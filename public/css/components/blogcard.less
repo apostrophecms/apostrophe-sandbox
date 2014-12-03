@@ -82,16 +82,20 @@
 
 .sticker-red
 {
+  .inline-block(middle);
+  padding: 0.3rem 1rem;
+
+  color: @white;
+  background-color: @red;
+  border-radius: 2px;
+
+  &.sticker-red--overlap
+  {
     position: absolute;
     top: -1em;
     left: 50%;
 
-    .inline-block(middle);
-
-    width: 60%;
-    padding: 0.5rem 1rem;
-    color: @white;
-    background-color: @red;
-
+    width: 50%;
     .transform( translateX(-50%) );
+  }
 }

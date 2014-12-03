@@ -1,0 +1,56 @@
+.demo-blog-header
+{
+  position: absolute;
+  bottom: 0;
+
+  padding-bottom: 2rem;
+
+  color: @white;
+}
+
+.demo-blog-header-background
+{
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+}
+
+.demo-blog-header-background-slideshow
+{
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+
+  .apos-singleton, .apos-normal-view, .apos-content, .apos-slideshow
+  {
+    height: 100%;
+  }
+
+  .apos-slideshow-items
+  {
+    display: block;
+    height: 100%;
+
+    .apos-slideshow-item
+    {
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .apos-slideshow-image
+    {
+      opacity: 0;
+    }
+  }
+
+  &::after
+  {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+    display: block;
+    content: '';
+
+    background-color: fade(@dark, 30%);
+  }
+}
