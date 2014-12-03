@@ -1,6 +1,46 @@
 {% extends 'layout.html' %}
 
+{% block bodyClass %}{{ super() }} demo-blog-show-page{% endblock %}
+
+{# Article specific title tag, for Facebook, SEO, etc. #}
+{%- block title -%}
+  {{ siteTitle }} &ndash; {{ page.title | e }}
+{%- endblock -%}
+
+{% block upperClass %}demo-blog-header-background{% endblock %}
+{% block headerBackground %}
+  <div class="demo-blog-header-background-slideshow">
+    {{ aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) }}
+  </div>
+{% endblock %}
+
+{% block headerContent %}
+  <div class="demo-blog-header">
+    <div class="sticker-red">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
+    <h3>{{ page.title }}</h3>
+    <h5>by Author Name</h5>
+  </div>
+{% endblock %}
+
+{# Facebook image, so it doesn't hoover up images from the dropdown menus #}
+{# Works only if you specify an absolute URL for uploadsUrl in data/local.js #}
+{% set firstImage = aposAreaImage(page, 'image') %}
+
+{% block extraHead %}
+  {% if firstImage %}
+    <meta property="og:image" content="{{ aposFilePath(firstImage) }}" />
+  {% endif %}
+{% endblock %}
+
 {% block mainContent %}
-  {{ aposSingleton(page, 'image', 'slideshow', { limit: 1 }) }}
-  {{ aposArea(page, 'body', {  }) }}
+  <div class="block">
+    <div class="inner">
+      <div class="demo-blog-gutter">
+        image
+      </div>
+      <div class="demo-blog-content">
+        {{ aposArea(page, 'body', {  }) }}
+      </div>
+    </div>
+  </div>
 {% endblock %}

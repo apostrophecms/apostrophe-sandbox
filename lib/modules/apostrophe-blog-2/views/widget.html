@@ -1,5 +1,5 @@
 {%- for post in item._pieces -%}
-  <div class="column width-33">
+  <div class="column width-30">
     <div class="demo-blog-card">
       <div class="blog-card-head">
         {{ aposSingleton(post, 'image', 'slideshow', { limit: 1, aspectRatio: [324, 162], noHeight: true, edit: false }) }}
@@ -13,6 +13,6 @@
         <a href="{{ post.url }}">Read More</a>
       </div>
     </div>
-    <span class="sticker-red">{{ post.publishedAt | date('MMMM Do, YYYY') }}</span>
+    <span class="sticker-red sticker-red--overlap">{{ post.publishedAt | date('MMM Do, YYYY') }}</span>
   </div>
 {%- endfor -%}
