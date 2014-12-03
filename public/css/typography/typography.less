@@ -49,6 +49,37 @@ a
   text-decoration: none;
 }
 
+code
+{
+  display: block;
+  padding: 1em;
+  overflow-x: scroll;
+
+  color: @blue;
+
+  background-color: @white;
+
+  a, strong, em, &
+  {
+    font-family: 'Andale Mono', 'Courier', monospace;
+  }
+
+  a
+  {
+    color: @green;
+  }
+
+  strong
+  {
+    font-weight: bold;
+  }
+  em
+  {
+    font-weight: normal;
+    font-style: italic !important;
+  }
+}
+
 // hotfixies
 .apos-rich-text em
 {
