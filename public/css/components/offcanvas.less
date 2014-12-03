@@ -2,5 +2,32 @@
 {
 	position: absolute;
 	transform: translate3d(100%, 0, 0);
-	width: 100%:
+	width: 100%;
+}
+
+.off-canvas-trigger
+{
+	position: absolute;
+	right: 4rem;
+	width: 3.5rem;
+	height: 2rem;
+	top: ~"calc(100% + 1rem)";
+	&:after
+	{
+		position: absolute;
+		left: ~"calc(100% + 0.3rem)";
+		top: 0.6rem;
+		content: "Menu";
+		.KarlaBold(@text-small);
+	}
+}
+
+#a-toolbox
+{
+	position: relative;
+	path, g
+	{
+		fill: @red;
+	}
+
 }
