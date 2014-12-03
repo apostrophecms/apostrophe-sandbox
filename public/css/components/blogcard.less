@@ -9,27 +9,6 @@
   border-radius: 2px;
   overflow: hidden;
 
-  .blog-card-head
-  {
-    position: relative;
-    height: 162px;
-    color: @white;
-    overflow: hidden;
-
-    img { width: 100%; }
-
-    &::after
-    {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: fade(@dark, 20%);
-      content: '';
-    }
-  }
-
   .blog-card-title-container
   {
     position: absolute;
@@ -80,6 +59,27 @@
     }
   }
 
+}
+
+.blog-card-head
+{
+  position: relative;
+  height: 162px;
+  color: @white;
+  overflow: hidden;
+
+  img { width: 100%; }
+
+  &::after
+  {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: fade(@dark, 20%);
+    content: '';
+  }
 }
 
 .sticker-red
