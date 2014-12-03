@@ -1,5 +1,7 @@
-{% extends "layout.html" %}
-{% include "pageMacros.html" %}
+{% extends 'layout.html' %}
+{% include 'pageMacros.html' %}
+{% include 'blogMacros.html' %}
+{% include 'pagerMacros.html' %}
 
 {# the bodyClass block allows us to attach a classname to the body tag for easy style-scoping. #}
 {# be sure to call super() so that any pages inheriting this one will be appending classes, not overriding them. #}
@@ -34,7 +36,11 @@
 
 <div class="block content">
   <div class="inner">
-    <ul class="demo-blog-listings">
+    {{ renderBlogListings(pieces) }}
+    {%- if ((pager.page > 1) or (pager.total > 1)) -%}
+      <div class="demo-pager align-right">{{ renderPager(pager, page.slug) }}</div>
+    {%- endif -%}
+    {#}<ul class="demo-blog-listings">
       <li class="column width-100 demo-blog-listing">
         <div class="column width-33 blog-listing-image">
           <div class="blog-card-head">
@@ -42,14 +48,14 @@
             <span class="sticker-red sticker-red--overlap">Nov 28th, 2014</span>
           </div>
         </div>{#
-      #}<div class="column width-66 blog-listing-info">
+      #}{#}<div class="column width-66 blog-listing-info">
           <h5 class="blog-listing-title">Here Is a Title</h5>
           <h6 class="blog-listing-author">by Nips Smith</h6>
           <p class="blog-listing-excerpt">Lucas ipsum dolor sit amet ben yoda hutt hutt mothma darth jabba calrissian sebulba mara. Binks boba moff boba solo yavin coruscant wampa greedo. Anakin r2-d2 ahsoka hutt kit. Hutt wedge biggs coruscant. Kenobi luke skywalker fisto maul antilles sidious chewbacca. Maul mon antilles ventress skywalker c-3po. Grievous vader twi'lek droid coruscant twi'lek cade antilles. Watto jabba leia solo qui-gonn jawa sebulba. Mandalore tatooine sidious hutt naboo grievous palpatine. Hutt calrissian grievous skywalker.</p>
           <a href="/">Read More</a>
         </div>
       </li>
-    </ul>
+    </ul>#}
   </div>
 </div>
 
