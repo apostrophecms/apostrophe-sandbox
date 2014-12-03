@@ -13,6 +13,6 @@
         <a href="{{ post.url }}">Read More</a>
       </div>
     </div>
-    <span class="sticker-red">{{ post.publishedAt | date('MMMM Do, YYYY') }}</span>
+    <span class="sticker-red sticker-red--overlap">{{ post.publishedAt | date('MMM Do, YYYY') }}</span>
   </div>
 {%- endfor -%}
