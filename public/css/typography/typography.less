@@ -13,6 +13,11 @@
 body, html {
   font-size: @root-font-size;
   color: @dark;
+
+  @media screen and @iphone
+  {
+    font-size: 14px;
+  }
 }
 
 p,
@@ -28,6 +33,10 @@ h1,h2,h3,h4,h5,h6
 {
   position: relative;
   line-height: 1.5em;
+  @media screen and @iphone
+  {
+    line-height: 0.3em;
+  }
 }
 body
 {

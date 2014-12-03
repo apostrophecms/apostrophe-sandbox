@@ -2,6 +2,7 @@
 .off-canvas-container
 {
 	position: absolute;
+	-webkit-transform: translate3d(100%, 0, 0);
 	transform: translate3d(100%, 0, 0);
 	width: 100%;
 	-webkit-transition: all, 0.4s, ease-in-out;
@@ -16,7 +17,7 @@
 	right: 4rem;
 	width: 3.5rem;
 	height: 2rem;
-	top: ~"calc(100% + 1rem)";
+	top: ~"calc(100% + 2.6rem)";
 	&:after
 	{
 		position: absolute;
@@ -42,6 +43,7 @@
 {
 	.off-canvas-container
 	{
+		-webkit-transform: translate3d(0,0,0);
 		transform: translate3d(0,0,0);
 	}
 }
