@@ -12,6 +12,14 @@
 {% block headerContent %}
   <div class="demo-pageheader">
     <div class="column column--vertical-center width-50">
+      <h3 class="hide-desktop page-title">{{page.title}}</h3>
+      <ul class="subnav-items hide-desktop">
+        {% for child in page.children %}
+          <li class="subnav-item">
+            <a href="{{ child.url }}">{{ child.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
       {{ aposArea(page, 'pageheader', {
         textOnly: true,
         styles: [
@@ -38,8 +46,8 @@
         {% if page.parent.type == 'default' %}
           <a class="subnav-parent" href="{{ page.parent.url }}">← {{ page.parent.title }}</a>
         {% endif %}
-        <div class="subnav-page-title">{{ page.title }}</div>
-        <ul class="subnav-items">
+        <div class="subnav-page-title hide-mobile">{{ page.title }}</div>
+        <ul class="subnav-items hide-mobile">
           {% for child in page.children %}
             <li class="subnav-item">
               <a href="{{ child.url }}">{{ child.title }}</a>

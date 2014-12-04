@@ -12,7 +12,7 @@
 {% block headerBackground %}
   <div class="demo-blog-header-background-slideshow" style="background-image:url({{ aposFilePath(page.image.items[0]._items[0], { size: size }) }})">
     <div class="demo-blog-header">
-      <div class="sticker-red">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
+      <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
       <h3>{{ page.title }}</h3>
       {% if page.authorId %}
         <h5>by {{ page._author.title }}</h5>

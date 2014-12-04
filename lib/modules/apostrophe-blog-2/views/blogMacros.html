@@ -19,7 +19,7 @@
           <img src="{{ aposFilePath(image, { size: 'one-half' }) }}">
         {%- endif -%}
       </div>
-      <span class="sticker-red sticker-red--overlap">{{ piece.publishedAt | date('MMM DD, YYYY' ) }}</span>
+      <span class="sticker sticker--overlap">{{ piece.publishedAt | date('MMM DD, YYYY' ) }}</span>
     </div>{#
       #}<div class="column width-66 blog-listing-info">
       <h5 class="blog-listing-title"><a href="{{ piece.url }}">{{ piece.title | e }}</a></h5>
@@ -49,6 +49,6 @@
         <a href="{{ piece.url }}">Read More</a>
       </div>
     </div>
-    <span class="sticker-red sticker-red--overlap">{{ piece.publishedAt | date('MMM Do, YYYY') }}</span>
+    <span class="sticker sticker--overlap">{{ piece.publishedAt | date('MMM Do, YYYY') }}</span>
   </div>
 {%- endmacro -%}

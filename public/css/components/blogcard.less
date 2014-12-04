@@ -127,33 +127,34 @@
   }
 }
 
-.sticker-red
+.sticker
 {
   .inline-block(middle);
   padding: 0.3rem 1rem;
-
+  background-color: @dark;
   color: @white;
   text-align: center;
-  background-color: @red;
   border-radius: 2px;
+}
 
-  &.sticker-red--overlap
+.sticker--red
+{
+  background-color: @red;
+}
+
+.sticker--overlap
+{
+  position: absolute;
+  top: -1em;
+  right: 0;
+  left: 0;
+  margin: auto;
+  height: 30px;
+  width: 50%;
+  // .transform( translateX(-50%) );
+
+  @media screen and @iphone
   {
-    position: absolute;
-    top: -1em;
-    right: 0;
-    // bottom: 0;
-    left: 0;
-    margin: auto;
-    height: 30px;
-    // left: 50%;
-  
-    width: 50%;
-    // .transform( translateX(-50%) );
-
-    @media screen and @iphone
-    {
-      height: 25px;
-    } 
-  }
+    height: 25px;
+  } 
 }
