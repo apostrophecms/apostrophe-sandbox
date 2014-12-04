@@ -2,6 +2,11 @@ header { position: relative; }
 .demo-inner
 {
   max-width: 1160px;
+  @media screen and @narrow 
+  {
+    width: ~"calc(100% + 2rem)";
+    margin-left: -1rem;
+  } 
 }
 
 .demo-header, .demo-nav

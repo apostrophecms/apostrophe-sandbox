@@ -14,7 +14,7 @@
   {% set image = aposAreaImage(piece, 'image') %}
   <li class="column width-100 demo-blog-listing">
     <div class="column width-33 blog-listing-image">
-      <div class="blog-card-head">
+      <div class="blog-card-head" style="background-image:url({{ aposFilePath(image, { size: 'one-half' }) }})">
         {%- if image -%}
           <img src="{{ aposFilePath(image, { size: 'one-half' }) }}">
         {%- endif -%}
