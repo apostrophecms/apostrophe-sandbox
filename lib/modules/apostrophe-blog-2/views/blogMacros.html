@@ -14,7 +14,7 @@
   {% set image = aposAreaImage(piece, 'image') %}
   <li class="column width-100 demo-blog-listing">
     <div class="column width-33 blog-listing-image">
-      <div class="blog-card-head" style="background-image:url({{ aposFilePath(image, { size: 'one-half' }) }})">
+      <div class="blog-card-head" {% if image %}style="background-image:url({{ aposFilePath(image, { size: 'one-half' }) }})"{% endif %}>
         {%- if image -%}
           <img src="{{ aposFilePath(image, { size: 'one-half' }) }}">
         {%- endif -%}
@@ -26,7 +26,7 @@
       {% if piece.authorId %}
         <h6 class="blog-listing-author">by {{ piece._author.title }}</h6>
       {% endif %}
-      <div class="blog-listing-excerpt">{{ aposAreaPlaintext({ area: piece.body, truncate: 200 }) }}</div>
+      <div class="blog-listing-excerpt">{{ aposAreaPlaintext(piece, 'body', { truncate: 200 }) }}</div>
       <a href="{{ piece.slug }}" alt="Read More">Read More</a>
     </div>
   </li>

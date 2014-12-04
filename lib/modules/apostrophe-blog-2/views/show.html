@@ -10,7 +10,8 @@
 
 {% block upperClass %}demo-blog-header-background{% endblock %}
 {% block headerBackground %}
-  <div class="demo-blog-header-background-slideshow" style="background-image:url({{ aposFilePath(page.image.items[0]._items[0], { size: size }) }})">
+{% set image = page.image.items[0]._items[0] %}
+  <div class="demo-blog-header-background-slideshow" {% if image %}style="background-image:url({{ aposFilePath(image) }})" {% endif %}>
     <div class="demo-blog-header">
       <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
       <h3>{{ page.title }}</h3>
