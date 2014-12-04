@@ -10,20 +10,19 @@
 
 {% block upperClass %}demo-blog-header-background{% endblock %}
 {% block headerBackground %}
-  <div class="demo-blog-header-background-slideshow">
-    {{ aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) }}
+  <div class="demo-blog-header-background-slideshow" style="background-image:url({{ aposFilePath(page.image.items[0]._items[0], { size: size }) }})">
+    <div class="demo-blog-header">
+      <div class="sticker-red">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
+      <h3>{{ page.title }}</h3>
+      {% if page.authorId %}
+        <h5>by {{ page._author.title }}</h5>
+      {% endif %}
+    </div>
+    {# aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) #}
   </div>
 {% endblock %}
 
-{% block headerContent %}
-  <div class="demo-blog-header">
-    <div class="sticker-red">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
-    <h3>{{ page.title }}</h3>
-    {% if page.authorId %}
-      <h5>by {{ page._author.title }}</h5>
-    {% endif %}
-  </div>
-{% endblock %}
+{% block headerContent %}{% endblock %}
 
 {# Facebook image, so it doesn't hoover up images from the dropdown menus #}
 {# Works only if you specify an absolute URL for uploadsUrl in data/local.js #}
@@ -41,7 +40,7 @@
       <div class="demo-blog-gutter">
         <div class="demo-blog-author">
           <div class="demo-blog-author-image">
-            {{ aposSingleton(page._author, 'thumbnail', 'slideshow', { noHeight: true, edit: false }) }}
+            {{ aposSingleton(page._author, 'thumbnail', 'slideshow', { noHeight: true, edit: false}) }}
           </div>
           <div class="demo-blog-author-bio">
             {% if page.authorId %}

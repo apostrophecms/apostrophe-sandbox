@@ -18,10 +18,10 @@
     {{ nav(page, {classes: 'off-canvas-nav hide-desktop', logo: true}) }}
   </div>
 {% endblock%}
+
 {% block header %}
-  <div class="block header {% block upperClass %}{% endblock %}">
-    {% block headerBackground %}{% endblock %}
-    <div class="inner demo-inner">
+  <div class="block">
+      <div class="inner demo-inner">
         <header>
           <div class="demo-header bg-red">
             <h5>{% block headerMessage %}You are using the Apostrophe demo site.{% endblock %}</h5>
@@ -38,6 +38,10 @@
       {% block headerContent %}
       {% endblock %}
     </div>
+  </div>
+  <div class="block header {% block upperClass %}{% endblock %}">
+    {% block headerBackground %}{% endblock %}
+
   </div>
 {% endblock %}
 

@@ -11,4 +11,10 @@ $(function(){
 		$body.addClass('collapse-header');
 	}
 
+	$window.on('resize', function() {
+		if (!$body.hasClass('collapse-header')) {
+			$body.addClass('collapse-header');
+		}
+	});
+
 })

@@ -7,6 +7,11 @@
   .inline-block(top);
   width: 66.66666%;
   padding-top: 2rem;
+
+  @media screen and @narrow
+  {
+    width: 100%;
+  }
 }
 
 .demo-blog-gutter
@@ -15,6 +20,7 @@
 
   .inline-block(top);
   width: 17%;
+  @media screen and @iphone { float: right; width: auto; }
 }
 
 // AUTHOR in the GUTTER
@@ -22,6 +28,8 @@
 .demo-blog-author
 {
   margin-top: -53px;
+  @media screen and @narrow{ margin-top: -75px/2; }
+  // @media screen and @iphone{ margin-right: 0rem; }
 }
 
 .demo-blog-author-image
@@ -36,7 +44,16 @@
   background-image: url('/images/demo_author_placeholder.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 60px 65px;
+  background-size: cover;
+
+  @media screen and @narrow{
+    width: 75px; height: 75px;
+  }
+
+  @media screen and @iphone{
+    // width: 50px; height: 50px;
+    img {opacity: 0;}
+  }
 }
 
 .demo-blog-author-bio

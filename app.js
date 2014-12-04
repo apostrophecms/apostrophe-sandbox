@@ -78,6 +78,15 @@ var site = require('apostrophe-site')({
           idField: 'authorId',
           label: 'Author',
           withJoins: [ '_editor' ]
+        },
+        {
+          name: 'thumbnail',
+          type: 'singleton',
+          widgetType: 'slideshow',
+          label: 'Picture',
+          options: {
+            aspectRatio: [100,100]
+          }
         }
       ]
     },

@@ -16,8 +16,7 @@ body, html {
 
   @media screen and @iphone
   {
-    font-size: 14px;
-    line-height: 1px;
+    font-size: 15px;
   }
 }
 
@@ -29,6 +28,11 @@ h3   { .KarlaBold(@text-huge);   }
 h4   { .KarlaBold(@text-large);  }
 h5   { .KarlaBold(@text-medium); }
 h6   { .KarlaBold(@text-small);  }
+
+@media screen and @iphone
+{
+  h3 { .KarlaBold(@text-large); }
+}
 
 h1,h2,h3,h4,h5,h6
 {

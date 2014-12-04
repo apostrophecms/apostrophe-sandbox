@@ -8,11 +8,17 @@
 {
   position: absolute;
   left: 17%;
-  bottom: 0;
-
+  bottom: 1rem;
   width: 75%;
-
   color: @white;
+  z-index: 1;
+
+  @media screen and @iphone
+  {
+    left: 5%;
+    width: 70%;
+    
+  }
 }
 
 .demo-blog-header-background
@@ -20,12 +26,26 @@
   position: relative;
   height: 560px;
   overflow: hidden;
+  padding: 0;
+
+  @media screen and @narrow
+  {
+    height: 400px;
+  }
+  @media screen and @iphone
+  {
+    // padding-top: 2rem;
+    height: 300px;
+  }
 }
 
 .demo-blog-header-background-slideshow
 {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  height: 100%;
+  background-size: cover;
+  position: relative;
+  // position: absolute;
+  // top: 0; right: 0; bottom: 0; left: 0;
 
   .apos-singleton, .apos-normal-view, .apos-content, .apos-slideshow
   {
