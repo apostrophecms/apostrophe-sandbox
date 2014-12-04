@@ -8,6 +8,10 @@
 .block
 {
   width: 100%;
+  @media screen and @narrow
+  {
+    padding: 0 1rem;
+  }
 }
 
 .block.header
@@ -22,10 +26,7 @@
 .block.content
 {
   padding-top: 2rem;
-  @media screen and @narrow
-  {
-    padding: 0 1rem;
-  }
+
 }
 
 .inner
@@ -72,6 +73,15 @@
     }
 
 
+  }
+}
+
+.width-50
+{
+  @media screen and @narrow
+  {
+    width: 100%;
+    float: none;
   }
 }
 

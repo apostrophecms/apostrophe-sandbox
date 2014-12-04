@@ -14,11 +14,33 @@
 
   .matt-shadow;
 
+  @media screen and @narrow
+  {
+    max-width: none;
+
+    margin-top: 2rem;
+    &:after {display: none;}
+    img
+    {
+      max-height: 300px;
+      opacity: 0;
+    }
+    .apos-slideshow-item
+    {
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
   .image-sticker
   {
     position: absolute;
-    top: -26px;
-    left: 40%;
+    top: -1.5rem;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 3rem;
+    width: 3rem;
   }
 
   .apos-singleton
