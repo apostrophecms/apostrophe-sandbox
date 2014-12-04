@@ -11,16 +11,27 @@
 {% block upperClass %}demo-blog-header-background{% endblock %}
 {% block headerBackground %}
 {% set image = page.image.items[0]._items[0] %}
-  <div class="demo-blog-header-background-slideshow" {% if image %}style="background-image:url({{ aposFilePath(image) }})" {% endif %}>
-    <div class="demo-blog-header">
-      <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
-      <h3>{{ page.title }}</h3>
-      {% if page.authorId %}
-        <h5>by {{ page._author.title }}</h5>
-      {% endif %}
-    </div>
-    {# aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) #}
+  <div class="block demo-blog-header-block">
+<!--   <div class="block demo-blog-header-block" {% if image %}style="background-image:url({{ aposFilePath(image) }})" {% endif %}>
+ -->  {{ aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) }} 
+    <div class="demo-blog-header-background-slideshow" >
+      <div class="demo-blog-header inner">
+        <div class="demo-blog-header-wrapper">
+          <div class="sticker">{{ page.publishedAt | date('MMM Do, YYYY') }}</div>
+          <h3>{{ page.title }}</h3>
+          {% if page.authorId %}
+            <h5>by {{ page._author.title }}</h5>
+          {% endif %}
+        </div>
+
+      </div>
+      <div class="demo-blog-header-slideshow-control">
+         
+      </div>
+      
+    </div>    
   </div>
+
 {% endblock %}
 
 {% block headerContent %}{% endblock %}
