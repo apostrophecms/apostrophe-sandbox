@@ -114,7 +114,7 @@ var site = require('apostrophe-site')({
     'apostrophe-browserify': {
       files: ["./public/js/modules/_site.js"]
     },
-    // 'apostrophe-demo-login': {}
+    'apostrophe-demo-login': {}
   },
 
   // These are assets we want to push to the browser.
