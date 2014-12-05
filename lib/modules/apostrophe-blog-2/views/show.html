@@ -13,7 +13,7 @@
 {% set image = page.image.items[0]._items[0] %}
   <div class="block demo-blog-header-block">
 <!--   <div class="block demo-blog-header-block" {% if image %}style="background-image:url({{ aposFilePath(image) }})" {% endif %}>
- -->  {{ aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) }} 
+ -->  {{ aposSingleton(page, 'image', 'slideshow', { limit: 1, noHeight: true }) }}
     <div class="demo-blog-header-background-slideshow" >
       <div class="demo-blog-header inner">
         <div class="demo-blog-header-wrapper">
@@ -26,10 +26,10 @@
 
       </div>
       <div class="demo-blog-header-slideshow-control">
-         
+
       </div>
-      
-    </div>    
+
+    </div>
   </div>
 
 {% endblock %}
@@ -69,7 +69,8 @@
             { value: 'h3', label: 'Heading' },
             { value: 'h5', label: 'Subheading' },
             { value: 'code', label: 'Code' }
-          ]
+          ],
+          lockups: ['left', 'right']
         }) }}
       </div>
     </div>
