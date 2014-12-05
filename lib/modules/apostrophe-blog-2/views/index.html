@@ -36,6 +36,13 @@
 
 <div class="block content">
   <div class="inner">
+    {% if page._edit %}
+      <div data-new-blog-post>
+        <div class="apos-ui-container">
+          <a class="apos-control apos-button" href="#"><i class="icon-plus"></i> New Blog Post</a>
+      </div>
+      </div>
+    {% endif %}
     {{ renderBlogListings(pieces) }}
     {%- if ((pager.page > 1) or (pager.total > 1)) -%}
       <div class="demo-pager align-right">{{ renderPager(pager, page.slug) }}</div>
