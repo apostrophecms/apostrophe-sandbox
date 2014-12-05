@@ -45,8 +45,7 @@ var site = require('apostrophe-site')({
     types: [
       { name: 'default', label: 'Default' },
       { name: 'home', label: 'Home Page' },
-      { name: 'blog', label: 'Blog' },
-      { name: 'styleguide', label: 'Styleguide' }
+      { name: 'blog', label: 'Blog' }
     ]
   },
 

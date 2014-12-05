@@ -2,7 +2,7 @@
 	<nav class="demo-nav{% if options.classes%} {{options.classes}}{% endif%}">
 		{% if options.logo %}
 			<div class="demo-nav-logo">
-				<img class="demo-apos-lockup" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">	
+				<img class="demo-apos-lockup" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">
 			</div>
 			<a href="#" class="demo-nav-close">
 				<i class="icon icon-remove"></i>
@@ -10,7 +10,11 @@
 		{% endif %}
 	  <ul>
 	    <li class="nav-item">
-	      <a href="/" {% if page.slug == '/' %}class="active"{% endif %}>Home</a>
+	    	{% if not page.ancestors.length %}
+	    		<a href="/" class="active">{{ page.title }}</a>
+	    	{% else %}
+	      	<a href="{{ page.ancestors[0].url }}" {% if page.slug == '/' %}class="active"{% endif %}>{{ page.ancestors[0].title }}</a>
+	      {% endif %}
 	    </li>
 	    {% for item in page.tabs %}
 	      <li class="nav-item">
