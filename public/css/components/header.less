@@ -2,11 +2,11 @@ header { position: relative; }
 .demo-inner
 {
   max-width: 1160px;
-  @media screen and @narrow 
+  @media screen and @narrow
   {
     width: ~"calc(100% + 2rem)";
     margin-left: -1rem;
-  } 
+  }
 }
 
 .demo-header, .demo-nav
@@ -25,7 +25,7 @@ header { position: relative; }
 {
   position: relative;
 
-  padding: 2rem 2.5rem;
+  padding: 1rem 2.5rem 2rem;
 
   line-height: 1.25em;
   color: @white;
@@ -40,7 +40,7 @@ header { position: relative; }
   {
     position: absolute;
     left: 1rem;
-    top: 2.4rem;
+    top: 1.3rem;
 
     display: block;
     content: "!";
@@ -60,6 +60,12 @@ header { position: relative; }
       content: "";
       font-size: 13px;
     }
+  }
+  a
+  {
+    color: white;
+    font-weight: normal;
+    text-decoration: underline;
   }
 }
 
