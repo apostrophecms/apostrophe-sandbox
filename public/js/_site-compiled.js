@@ -8,8 +8,11 @@ $(function(){
 	var $header = $('.demo-header');
 	var $body = $('body');
 	var $window = $(window);
-	
-	$header.on('click', function(){
+
+	$header.on('click', function(e){
+		if($(e.target).is('a')) {
+			return;
+		}
 		$body.toggleClass('collapse-header');
 	});
 
