@@ -21,6 +21,19 @@
       </div>
     </div>
     <div class="demo-workspaces-marquee"></div>
+    <div class="block content--bottom">
+      <div class="inner demo-pageheader">
+        {{ aposArea(page, 'main', {
+          controls: ['style', 'bold', 'italic', 'createLink', 'unlink', 'slideshow', 'video'],
+          styles: [
+            { value: 'p', label: 'Text' },
+            { value: 'h3', label: 'Title' },
+            { value: 'h5', label: 'Subtitle' }
+          ],
+          lockups: ['left', 'right']
+        }) }}
+      </div>
+    </div>
   </div>
 
   <div class="block bg-gray block--5">

@@ -43,10 +43,31 @@ var site = require('apostrophe-site')({
 
   pages: {
     types: [
-      { name: 'default', label: 'Default' },
+      { name: 'default', label: 'Default Page' },
       { name: 'home', label: 'Home Page' },
       { name: 'blog', label: 'Blog' }
     ]
+  },
+
+  lockups: {
+    left: {
+      label: 'Left',
+      tooltip: 'Inset Left',
+      icon: 'icon-arrow-left',
+      widgets: [ 'slideshow', 'video' ],
+      slideshow: {
+        size: 'one-half'
+      }
+    },
+    right: {
+      label: 'Right',
+      tooltip: 'Inset Right',
+      icon: 'icon-arrow-right',
+      widgets: [ 'slideshow', 'video' ],
+      slideshow: {
+        size: 'one-half'
+      }
+    }
   },
 
   // These are the modules we want to bring into the project.
