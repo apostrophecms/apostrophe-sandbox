@@ -1,3 +1,3 @@
 # Apostrophe Sandbox
 
-The Apostrophe Sandbox is a complete starting point for developing content-managed websites with Apostrophe. Please see the [Apostrophe documentation](http://apostrophenow.org) for a tutorial that begins with setting up this sandbox project.
+The Apostrophe Sandbox is a complete starting point for developing content-managed websites with Apostrophe. Please see the [Getting Started with Apostrophe](http://apostrophenow.org/tutorials/getting-started/getting-started.html) tutorial for setting up the sandbox. 
