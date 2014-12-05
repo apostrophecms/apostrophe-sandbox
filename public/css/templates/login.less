@@ -1,0 +1,49 @@
+.login-page
+{
+  background: @red;
+}
+
+//Hide the default header
+.login-page .apos-login h4
+{
+  display: none;
+}
+
+//Hide the footer
+.login-page .footer
+{
+  display: none;
+}
+
+.login-page .apos-login-container .apos-login
+{
+  box-shadow: 0px 0px 30px rgba(33,33,33,0.25);
+}
+
+.login-page .login-inputs label
+{
+  font-size: .8rem;
+}
+
+.login-page .login-inputs input[type="text"],
+.login-page .login-inputs input[type="password"]
+{
+  font-size: 1.5rem;
+}
+
+//Gross over-scope default login styles. Kill 'em all. -j
+.login-page .login-inputs input[type="submit"]
+{
+  font-size: 1rem !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+  float: none !important;
+  width: 100% !important;
+  background: @red !important;
+  color: @white !important;
+  &:hover
+  {
+    background: darken(@red, 5%) !important;
+  }
+
+}
