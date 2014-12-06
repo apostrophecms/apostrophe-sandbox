@@ -1,41 +1,36 @@
 #!/bin/sh
 
-# Update the project. If we have no npm linked modules then this is simple. If we are using npm link, then
-# we have extra logic to update those modules without triggering bugs in npm that cause failures when
-# modules have been npm linked to each other. -Tom
+# LOOKS SIMPLER DOESN'T IT? UNFORTUNATELY, npm install --link will
+# globally install and link modules you never wanted globally installed.
+# Holding onto this code in case a way is found to do this with only
+# the modules you explicitly npm linked. -Tom
 
-WAS_LINKED=`find node_modules -depth 1 -type l | wc -l`
 
-if [ $WAS_LINKED -ne 0 ]; then
-  echo "This project has npm links, taking extra precautions."
-  echo "Breaking any nested npm links so that npm update doesn't fail (I will put them back later)"
-  for MODULE in $(find node_modules -depth 1 -type l)
-  do
-    MODULE=`basename $MODULE`
-    for LINK in $(find ~/src/$MODULE/node_modules -depth 1 -type l)
-    do
-      (echo "Removing nested link $LINK" && rm $LINK) || exit 1
-    done
-  done
 
-  echo "Updating any top-level npm linked modules"
-  for LINK in $(find node_modules -depth 1 -type l)
-  do
-    (echo "Updating top-level npm linked module $LINK" && cd $LINK && git pull && npm update) || exit 1
-  done
 
-  echo "Breaking top-level npm links so that npm update doesn't fail (I will put them back later)"
-  for LINK in $(find node_modules -depth 1 -type l)
-  do
-    (echo $LINK && rm $LINK) || exit 1
-  done
-fi
 
-echo "Updating main project"
+# You probably don't want this! Just use npm install, and later
+# npm update to stay up to date with our modules. We use this script
+# to update all of the modules we have "npm link"ed in the project
+# because we are actively developing them.
+
+# Update main project so we know about any changes to dependencies
 git pull
-npm update
 
-if [ $WAS_LINKED -ne 0 ]; then
-  echo "Restoring links"
-  sh scripts/linkall.sh
-fi
+# Link everything, in case there are new modules to link. Also does a
+# fresh npm install of everything else, which turns out to be faster
+# than our old piecemal approach
+sh scripts/linkall.sh
+
+# Load the official list of modules we're maintaining
+source scripts/our-modules.source
+
+echo "git pulling modules"
+
+for module in "${modules[@]}"
+  do
+    echo ${module}
+    if [ ! -d "${HOME}/src/${module}" ]; then
+      ( echo "git pulling ${module}" && cd ${HOME}/src/${module} && git pull && npm install ) || exit 1
+    fi
+  done

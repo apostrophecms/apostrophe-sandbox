@@ -1,5 +1,15 @@
 #!/bin/sh
 
+# LOOKS SIMPLER DOESN'T IT? UNFORTUNATELY, npm install --link will
+# globally install and link modules you never wanted globally installed.
+# Holding onto this code in case a way is found to do this with only
+# the modules you explicitly npm linked. -Tom
+
+
+
+
+
+
 # You probably don't want this! Just use npm install, and later
 # npm update to stay up to date with our modules. We use this script
 # to "npm link" all of the modules that we maintain so we can do
@@ -31,29 +41,7 @@ for module in "${modules[@]}"
     ( cd "${HOME}/src/${module}" && npm link ) || exit 1
   done
 
-# 2. Establish npm links *between* modules that depend on each other
-
-echo "Establishing npm links *between* modules"
-
-for module in "${modules[@]}"
-  do
-    for submodule in "${modules[@]}"
-      do
-        mdir="${HOME}/src/${module}"
-        # If the module is currently a subdir of another module make it a link instead
-        if [ -d "${mdir}/node_modules/${submodule}" ]; then
-          ( echo "Sub-linking ${submodule} for ${module}" && cd $mdir && npm link ${submodule} ) || exit 1
-        fi
-      done
-  done
-
-# 3. npm link from the project
-
-echo "Establishing npm links in the *project*"
-
-for module in "${modules[@]}"
-  do
-    if [ ! -h "node_modules/${module}" ]; then
-      ( echo "Linking ${module}" && npm link ${module} ) || exit 1
-    fi
-  done
+echo "Cleaning out node_modules"
+rm -rf node_modules
+echo "Running npm install --link"
+npm install --link
