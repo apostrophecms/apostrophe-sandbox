@@ -36,7 +36,7 @@
   <div class="column width-30">
     <div class="demo-blog-card">
       <div class="blog-card-head">
-        {{ aposSingleton(piece, 'image', 'slideshow', { limit: 1, aspectRatio: [324, 162], noHeight: true, edit: false }) }}
+        {{ aposSingleton(piece, 'image', 'slideshow', { limit: 1, aspectRatio: [324, 162], noHeight: true, edit: false, size: 'one-third' }) }}
         <div class="blog-card-title-container">
           <a href="{{ piece.url }}"><h6 class="blog-card-title">{{ piece.title }}</h6></a>
           {% if piece.authorId %}
