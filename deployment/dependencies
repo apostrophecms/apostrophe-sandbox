@@ -44,4 +44,9 @@ fi
 
 # Generate new static asset files for this
 # deployment of the app without shutting down
-node app apostrophe:generation
+node app apostrophe:generation &&
+
+# Run migrations that are safe for execution
+# while the previous deployment is still live
+node app apostrophe:migrate --safe
+
