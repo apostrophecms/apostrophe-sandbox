@@ -12,4 +12,5 @@ $(function(){
 		$body.toggleClass('show-off-canvas');
 		return false;
 	});
-})
+});
+

@@ -7,6 +7,7 @@ temp
 public/uploads
 public/modules
 public/apos-minified
+public/js/_site-compiled.js
 .git
 .gitignore
 # We don't deploy these anymore, instead we always 'npm install' to ensure
