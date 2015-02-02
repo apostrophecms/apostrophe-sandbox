@@ -1,5 +1,6 @@
 #!/bin/sh
 
+npm owner add joshuatrii $1
 npm owner add benirose $1
 npm owner add kylestetz $1
 npm owner add boutell $1
@@ -11,7 +12,3 @@ npm owner add livhaas $1
 npm owner add mcoppola $1
 npm owner add suhmantha1 $1
 npm owner add jimmyh $1
-# Have not created npm accounts
-# npm owner add geoffdimasi $1
-# npm owner add tquirino $1
-# npm owner add ahoefinger $1
