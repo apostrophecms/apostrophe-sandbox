@@ -1,0 +1,17 @@
+{
+  "name": "sandbox-06",
+  "version": "0.6.0",
+  "description": "Sandbox project for Apostrophe 2 0.6",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "P'unk Avenue LLC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/punkave/apostrophe-sandbox"
+  },
+  "dependencies": {
+  }
+}
