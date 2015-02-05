@@ -1,5 +1,4 @@
 /* jshint node:true */
-var watchify = require('watchify');
 var fs = require('fs');
 
 var site = require('apostrophe-site')({
@@ -112,7 +111,8 @@ var site = require('apostrophe-site')({
     },
     'apostrophe-groups': {},
     'apostrophe-browserify': {
-      files: ["./public/js/modules/_site.js"]
+      files: ["./public/js/modules/_site.js"],
+      development: true
     },
     'apostrophe-demo-login': {}
   },
