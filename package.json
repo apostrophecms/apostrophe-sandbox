@@ -13,5 +13,6 @@
     "url": "https://github.com/punkave/apostrophe-sandbox"
   },
   "dependencies": {
+    "lodash": "^3.1.0"
   }
 }

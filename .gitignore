@@ -1,6 +1,6 @@
 locales
 npm-debug.log
-data
+data/*
 public/uploads
 public/apos-minified
 public/js/_site-compiled.js
