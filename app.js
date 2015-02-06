@@ -1,5 +1,4 @@
 /* jshint node:true */
-var watchify = require('watchify');
 var fs = require('fs');
 
 var site = require('apostrophe-site')({
