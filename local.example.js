@@ -34,14 +34,14 @@ module.exports = {
   // in app.js!
 
   modules: {
-    'apostrophe-twitter': {
-      consumerKey: 'xxxx',
-      consumerSecret: 'yyyy',
-      // Click "Create my access token" on dev.twitter.com to generate these.
-      // You may need to refresh the page before the token actually appears there.
-      accessToken: 'zzzz',
-      accessTokenSecret: 'aaaa'
-    },
+    // 'apostrophe-twitter': {
+    //   consumerKey: 'xxxx',
+    //   consumerSecret: 'yyyy',
+    //   // Click "Create my access token" on dev.twitter.com to generate these.
+    //   // You may need to refresh the page before the token actually appears there.
+    //   accessToken: 'zzzz',
+    //   accessTokenSecret: 'aaaa'
+    // },
   },
 
   // Set to true for full CSS and JS minify, on staging and production servers
