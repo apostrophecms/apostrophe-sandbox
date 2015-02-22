@@ -17,11 +17,13 @@
     "apostrophe-browserify": "0.5.x",
     "apostrophe-demo-login": "0.5.x",
     "apostrophe-editor-2": "0.5.x",
+    "apostrophe-events": "^0.5.18",
     "apostrophe-groups": "0.5.x",
     "apostrophe-people": "0.5.x",
     "apostrophe-redirects": "0.5.x",
     "apostrophe-search": "0.5.x",
     "apostrophe-site": "0.5.x",
+    "apostrophe-snippets": "^0.5.79",
     "apostrophe-ui-2": "0.5.x",
     "optimist": "~0.6.0"
   }
