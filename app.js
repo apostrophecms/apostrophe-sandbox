@@ -74,41 +74,6 @@ var site = require('apostrophe-site')({
     // Styles required by the new editor, must go FIRST
     'apostrophe-editor-2': {},
     'apostrophe-ui-2': {},
-    'apostrophe-blog-2': {
-      perPage: 5,
-      pieces: {
-        addFields: [
-          {
-            name: '_author',
-            type: 'joinByOne',
-            withType: 'person',
-            idField: 'authorId',
-            label: 'Author'
-          }
-        ]
-      }
-    },
-    'apostrophe-people': {
-      addFields: [
-        {
-          name: '_blogPosts',
-          type: 'joinByOneReverse',
-          withType: 'blogPost',
-          idField: 'authorId',
-          label: 'Author',
-          withJoins: [ '_editor' ]
-        },
-        {
-          name: 'thumbnail',
-          type: 'singleton',
-          widgetType: 'slideshow',
-          label: 'Picture',
-          options: {
-            aspectRatio: [100,100]
-          }
-        }
-      ]
-    },
     'apostrophe-groups': {},
     'apostrophe-browserify': {
       files: ["./public/js/modules/_site.js"]
