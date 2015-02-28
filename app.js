@@ -126,13 +126,13 @@ var site = require('apostrophe-site')({
   },
 
   afterInit: function(callback) {
-    // We're going to do a special console log now that the
+    // We're going to do a special console message now that the
     // server has started. Are we in development or production?
     var locals = require('./data/local');
     if(locals.development || !locals.minify) {
-      console.log('Apostrophe Sandbox is running in development.');
+      console.error('Apostrophe Sandbox is running in development.');
     } else {
-      console.log('Apostrophe Sandbox is running in production.');
+      console.error('Apostrophe Sandbox is running in production.');
     }
 
     callback(null);
