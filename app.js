@@ -1,7 +1,9 @@
 /* jshint node:true */
 var fs = require('fs');
 
-var site = require('apostrophe-site')({
+var site = require('apostrophe-site')();
+
+site.init({
 
   // This line is required and allows apostrophe-site to use require() and manage our NPM modules for us.
   root: module,
