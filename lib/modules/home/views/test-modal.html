@@ -1,0 +1,15 @@
+{% extends "apostrophe-modal:baseModal.html" %}
+{% include "apostrophe-modal:modalMacros.html" %}
+
+{% block controls %}
+  <div class="apos-modal-controls">
+    {{ modalButton({dataAttrs: 'data-save data-next', float: 'right', color: 'base', label: __('Add Next')}) }}
+    {{ modalButton({dataAttrs: 'data-save', float: 'right', color: 'base', label: __('Add')}) }}
+    {{ modalButton({dataAttrs: 'data-cancel', float: 'left', arrow: 'left', label: __('Cancel')}) }}
+  </div>
+{% endblock %}
+
+{% block body %}
+<p>A lovely day in June.</p>
+<a href="#" data-launch-submodal>Open Another Modal</a>
+{% endblock %}
