@@ -13,6 +13,7 @@
     "url": "https://github.com/punkave/apostrophe-sandbox"
   },
   "dependencies": {
+    "async": "^0.9.0",
     "lodash": "^3.1.0"
   }
 }

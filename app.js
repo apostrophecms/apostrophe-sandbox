@@ -4,6 +4,7 @@ var apos = require('apostrophe')({
 
   modules: {
     home: {},
+    'link-widget-definition': {},
     'apostrophe-express': {
       middleware: [
         function(req, res, next) {
