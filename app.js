@@ -1,3 +1,8 @@
+// Find stray console.log calls
+// console.log = function(s) {
+//   console.trace(s);
+// }
+
 var apos = require('apostrophe')({
   shortName: 'sandbox',
   hostName: 'sandbox',
