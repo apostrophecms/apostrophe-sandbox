@@ -9,4 +9,13 @@
 {{ apos.singleton(data.page, 'cool', 'link') }}
 
 {{ apos.singleton(data.page, 'footer', 'apostrophe-rich-text') }}
+
+{{
+  apos.area(data.page, 'body', {
+    widgets: {
+      'link': {}
+    }
+  })
+}}
+
 {% endblock %}
