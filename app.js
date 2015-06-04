@@ -18,14 +18,27 @@ var apos = require('apostrophe')({
         function(req, res, next) {
           req.user = {
             _id: 'admin',
+            username: 'admin',
             permissions: {
-              admin: true
+              admin: true,
+              // we have to spell this out because the
+              // auth module isn't here to automate this
+              // for us
+              edit: true,
+              'admin-grommet': true,
+              'edit-grommet': true
             }
           };
 
           return next();
         }
       ]
+    },
+    'grommets': {
+      extend: 'apostrophe-pieces',
+      name: 'grommet',
+      label: 'Grommet',
+      pluralLabel: 'Grommets'
     }
   }
   // afterInit: function(callback) {
