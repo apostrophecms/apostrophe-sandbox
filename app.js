@@ -38,7 +38,27 @@ var apos = require('apostrophe')({
       extend: 'apostrophe-pieces',
       name: 'grommet',
       label: 'Grommet',
-      pluralLabel: 'Grommets'
+      pluralLabel: 'Grommets',
+      addFields: [
+        {
+          type: 'string',
+          name: 'inventor',
+          label: 'Inventor'
+        },
+        {
+          type: 'area',
+          name: 'body',
+          label: 'Description',
+          options: {
+            widgets: {
+              'link': {},
+              'apostrophe-rich-text': {
+                toolbar: [ 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink' ]
+              }
+            }
+          }
+        }
+      ]
     }
   }
   // afterInit: function(callback) {
