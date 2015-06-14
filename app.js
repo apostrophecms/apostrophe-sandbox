@@ -35,6 +35,7 @@ var apos = require('apostrophe')({
       ]
     },
     'grommets': {
+      alias: 'grommets',
       extend: 'apostrophe-pieces',
       name: 'grommet',
       label: 'Grommet',
