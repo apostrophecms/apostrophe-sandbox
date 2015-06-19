@@ -71,7 +71,17 @@ var apos = require('apostrophe')({
     },
     'events-pages': {
       extend: 'apostrophe-pieces-pages'
-    }
+    },
+    'apostrophe-pages': {
+      park: [
+        {
+          title: 'Events',
+          type: 'events',
+          slug: '/events',
+          published: true
+        }
+      ]
+    }    
   }
   // afterInit: function(callback) {
   //   return setImmediate(callback);
