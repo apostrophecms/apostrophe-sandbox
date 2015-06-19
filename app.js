@@ -8,7 +8,6 @@ var apos = require('apostrophe')({
   hostName: 'sandbox',
 
   modules: {
-    home: {},
     'link-widgets': {},
     'apostrophe-express': {
       middleware: [
@@ -60,6 +59,18 @@ var apos = require('apostrophe')({
           }
         }
       ]
+    },
+    events: {
+      extend: 'apostrophe-pieces',
+      name: 'event',
+      label: 'Event',
+      alias: 'events'
+    },
+    'events-widgets': {
+      extend: 'apostrophe-pieces-widgets',
+    },
+    'events-pages': {
+      extend: 'apostrophe-pieces-pages'
     }
   }
   // afterInit: function(callback) {
