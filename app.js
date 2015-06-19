@@ -64,7 +64,14 @@ var apos = require('apostrophe')({
       extend: 'apostrophe-pieces',
       name: 'event',
       label: 'Event',
-      alias: 'events'
+      alias: 'events',
+      addFields: [
+        {
+          type: 'tags',
+          name: 'tags',
+          label: 'Tags'
+        }
+      ]
     },
     'events-widgets': {
       extend: 'apostrophe-pieces-widgets',
