@@ -88,7 +88,7 @@ var apos = require('apostrophe')({
           published: true
         }
       ]
-    }    
+    }
   }
   // afterInit: function(callback) {
   //   return setImmediate(callback);
