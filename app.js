@@ -88,6 +88,22 @@ var apos = require('apostrophe')({
           published: true
         }
       ]
+    },
+    'apostrophe-users': {
+      groups: [
+        {
+          title: 'Guest',
+          permissions: [ ]
+        },
+        {
+          title: 'Editor',
+          permissions: [ 'edit' ]
+        },
+        {
+          title: 'Admin',
+          permissions: [ 'admin' ]
+        }
+      ]
     }
   }
   // afterInit: function(callback) {
