@@ -115,8 +115,9 @@ var apos = require('apostrophe')({
         }
       ]
     }
+  },
+  afterInit: function(callback) {
+    console.log('initialized');
+    return setImmediate(callback);
   }
-  // afterInit: function(callback) {
-  //   return setImmediate(callback);
-  // }
 });
