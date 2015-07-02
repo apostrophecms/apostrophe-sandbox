@@ -87,8 +87,18 @@ var apos = require('apostrophe')({
           slug: '/events',
           published: true
         }
+      ],
+      types: [
+        {
+          name: 'home',
+          label: 'Home'
+        },
+        {
+          name: 'default',
+          label: 'Default'
+        }
       ]
-    }    
+    }
   }
   // afterInit: function(callback) {
   //   return setImmediate(callback);
