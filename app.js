@@ -10,28 +10,7 @@ var apos = require('apostrophe')({
   modules: {
     'link-widgets': {},
     'apostrophe-express': {
-      middleware: [
-        // for now, always log the user in as admin.
-        // We'll remove this when the apostrophe-auth module
-        // is ready.
-        function(req, res, next) {
-          req.user = {
-            _id: 'admin',
-            username: 'admin',
-            permissions: {
-              admin: true,
-              // we have to spell this out because the
-              // auth module isn't here to automate this
-              // for us
-              edit: true,
-              'admin-grommet': true,
-              'edit-grommet': true
-            }
-          };
-
-          return next();
-        }
-      ]
+      middleware: []
     },
     'grommets': {
       alias: 'grommets',
