@@ -90,12 +90,12 @@ var apos = require('apostrophe')({
       ],
       types: [
         {
-          name: 'home',
-          label: 'Home'
-        },
-        {
           name: 'default',
           label: 'Default'
+        },
+        {
+          name: 'home',
+          label: 'Home'
         }
       ]
     },

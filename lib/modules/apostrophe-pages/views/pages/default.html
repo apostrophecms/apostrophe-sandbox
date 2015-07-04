@@ -1,0 +1,19 @@
+{% extends data.outerLayout %}
+{% block title %}{{ page.title }}{% endblock %}
+{% block main %}
+<p>Default Page Templates Are Nice</p>
+
+{{
+  apos.area(data.page, 'body', {
+    widgets: {
+      'link': {},
+      'apostrophe-rich-text': {
+        toolbar: [ 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink' ]
+      },
+      'events': {}
+    }
+  })
+}}
+
+
+{% endblock %}
