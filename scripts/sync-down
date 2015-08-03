@@ -25,5 +25,4 @@ rsync -av $remoteSSH:/tmp/mongodump.$dbName/ /tmp/mongodump.$dbName  &&
 mongorestore --drop -d $dbName /tmp/mongodump.$dbName/$dbName &&
 echo "Syncing Files" &&
 rsync -av --delete $remoteSSH:/opt/stagecoach/apps/$projectName/uploads/ ./public/uploads  &&
-rsync -av --delete $remoteSSH:/opt/stagecoach/apps/$projectName/oembed/ ./public/oembed  &&
 echo "Synced down from $TARGET"
