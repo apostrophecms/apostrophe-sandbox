@@ -46,6 +46,11 @@ var apos = require('apostrophe')({
       alias: 'events',
       addFields: [
         {
+          type: 'attachment',
+          name: 'attachment',
+          label: 'Attachment'
+        },
+        {
           type: 'tags',
           name: 'tags',
           label: 'Tags'
