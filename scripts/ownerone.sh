@@ -12,3 +12,5 @@ npm owner add livhaas $1
 npm owner add mcoppola $1
 npm owner add suhmantha1 $1
 npm owner add jimmyh $1
+npm owner add kyjoya $1
+npm owner add dkh202 $1
