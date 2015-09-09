@@ -1,6 +1,12 @@
+{% extends data.outerLayout %}
+{% block title %}Events{% endblock %}
+{% block main %}
+
 <h1>Events: </h1>
 <ul>
   {%- for event in data.pieces -%}
   <li><a href="{{ event._url}} ">{{ event.title }}</a></li>
   {%- endfor -%}
 </ul>
+
+{% endblock %}

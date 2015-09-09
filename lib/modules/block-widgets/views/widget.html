@@ -1,0 +1,12 @@
+<a name="{{ data.widget.title | css }}" href="#{{ data.widget.title | css }}">{{ data.widget.title }}</a>
+{{ apos.log(data.widget) }}
+{{
+  apos.area(data.widget, 'body', {
+    widgets: {
+      'link': {},
+      'apostrophe-rich-text': {
+        toolbar: [ 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink' ]
+      }
+    }
+  })
+}}

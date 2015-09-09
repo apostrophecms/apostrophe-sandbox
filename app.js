@@ -3,6 +3,8 @@
 //   console.trace(s);
 // }
 
+var _ = require('lodash');
+
 var apos = require('apostrophe')({
   shortName: 'sandbox',
   hostName: 'sandbox',
@@ -36,6 +38,18 @@ var apos = require('apostrophe')({
               }
             }
           }
+        },
+        {
+          type: 'array',
+          name: 'addresses',
+          label: 'Addresses',
+          schema: [
+            {
+              name: 'address',
+              type: 'string',
+              label: 'Address'
+            }
+          ]
         }
       ]
     },
@@ -61,7 +75,23 @@ var apos = require('apostrophe')({
       extend: 'apostrophe-pieces-widgets',
     },
     'events-pages': {
-      extend: 'apostrophe-pieces-pages'
+      extend: 'apostrophe-pieces-pages',
+      groupFields: [
+        {
+          name: 'basics',
+          label: 'Basics',
+          fields: [
+            'title', 'type', 'published'
+          ]
+        },
+        {
+          name: 'fancy',
+          label: 'Fancy',
+          fields: [
+            'slug', 'orphan', 'withTags'
+          ]
+        }
+      ]
     },
     'apostrophe-pages': {
       park: [
@@ -80,6 +110,10 @@ var apos = require('apostrophe')({
         {
           name: 'home',
           label: 'Home'
+        },
+        {
+          name: 'events',
+          label: 'Events'
         }
       ]
     },
@@ -98,7 +132,8 @@ var apos = require('apostrophe')({
           permissions: [ 'admin' ]
         }
       ]
-    }
+    },
+    'view-test': {}
   },
   afterInit: function(callback) {
     console.log('initialized');

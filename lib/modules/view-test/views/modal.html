@@ -1,0 +1,19 @@
+{% extends "apostrophe-modal:base.html" %}
+{% include "apostrophe-modal:macros.html" %}
+
+{% block controls %}
+  <div class='apos-modal-controls'>
+    {{ modalButton({dataAttrs: 'data-save', float: 'right', color: 'base', label: __('Save')}) }}
+    {{ modalButton({dataAttrs: 'data-cancel', float: 'left', arrow: 'left', label: __('Cancel')}) }}
+  </div>
+{% endblock %}
+
+{% block label %}
+{{ label }}
+{% endblock %}
+
+{% block body %}
+  <h3>Before the view</h3>
+  <div data-test-view></div>
+  <h3>After the view</h3>
+{% endblock %}
