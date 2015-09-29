@@ -18,6 +18,7 @@
     "apostrophe-demo-login": "0.5.x",
     "apostrophe-editor-2": "0.5.x",
     "apostrophe-events": "^0.5.18",
+    "apostrophe-forms": "0.5.x",
     "apostrophe-groups": "0.5.x",
     "apostrophe-people": "0.5.x",
     "apostrophe-redirects": "0.5.x",
