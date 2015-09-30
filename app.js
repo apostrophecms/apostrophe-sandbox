@@ -116,8 +116,7 @@ site.init({
       files: ["./public/js/modules/_site.js"]
     },
     'apostrophe-demo-login': {
-    },
-    'apostrophe-forms': {}
+    }
   },
 
   // These are assets we want to push to the browser.
