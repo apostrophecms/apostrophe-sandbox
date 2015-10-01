@@ -33,6 +33,7 @@ remoteSSH=$USER@$SERVER
 echo "Syncing MongoDB"
 mongodump -d $dbName -o /tmp/mongodump.$dbName &&
 rsync -av  /tmp/mongodump.$dbName/ $remoteSSH:/tmp/mongodump.$dbName  &&
+rm -rf /tmp/mongodump.$dbName &&
 ssh $remoteSSH mongorestore --drop -d $dbName /tmp/mongodump.$dbName/$dbName &&
 echo "Syncing Files" &&
 rsync -av --delete ./public/uploads/ $remoteSSH:/opt/stagecoach/apps/$projectName/uploads &&
