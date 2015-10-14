@@ -1,7 +1,46 @@
 {% extends data.outerLayout %}
 
+{% block bodyClass %}apos-sg-page{% endblock %}
+
 {% block main %}
-  <div class="apos-sg-page-container">
-    styleguide stuff goes in here.
+  <div class="apos-sg-outer">
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-1"></div>
+      <div class="apos-sg-col-7"></div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-2"></div>
+      <div class="apos-sg-col-6"></div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3"></div>
+      <div class="apos-sg-col-5"></div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-4">this is a component</div>
+      <div class="apos-sg-col-4">
+        <p>This is some information about the component:</p>
+
+        <code>
+          {{ '<div class="apos-whatever"></div>' }}
+
+          {% raw %}
+            {{ myAposMacro('test') }}
+          {% endraw %}
+        </code>
+
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-2"></div>
+      <div class="apos-sg-col-2"></div>
+      <div class="apos-sg-col-2"></div>
+      <div class="apos-sg-col-2"></div>      
+    </div>    
   </div>
+
 {% endblock %}
