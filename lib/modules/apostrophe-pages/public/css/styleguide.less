@@ -40,7 +40,7 @@
   font-size: 16px;
   width: (@colWidth * @n) + (@gutterWidth * (@n - 1));
   margin-right: @gutterWidth;
-  
+
   &:last-of-type { margin-right: 0px; }
 
   background-color: #fff;
@@ -67,4 +67,24 @@
 .apos-sg-col-7 { .apos-sg-col(7); }
 .apos-sg-col-8 { .apos-sg-col(8); }
 
-
+.apos-sg-color
+{
+  .apos-sg-col-2;
+  height: 100px;
+  color: @apos-white;
+  &--green { background: @apos-green; }
+  &--red { background: @apos-red; }
+  &--blue { background: @apos-blue; }
+  &--purple { background: @apos-purple; }
+  &--gold { background: @apos-gold; }
+  &--black { background: @apos-black; }
+  &--dark { background: @apos-dark }
+  &--mid { background: @apos-mid }
+  &--white
+  {
+    background: @apos-white;
+    border: 1px solid @apos-mid;
+  }
+  &--mid,
+  &--white { color: @apos-dark;}
+}
