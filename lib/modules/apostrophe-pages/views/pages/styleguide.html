@@ -3,7 +3,7 @@
 {% block bodyClass %}apos-sg-page{% endblock %}
 
 {% block main %}
-  <div class="apos-sg-outer">
+  {% import 'apostrophe-ui:components/buttons.html' as buttons with context %}  <div class="apos-sg-outer">
     <div class="apos-sg-row">
       <div class="apos-sg-col-1"></div>
       <div class="apos-sg-col-7"></div>
@@ -49,5 +49,7 @@
       <div class="apos-sg-col-2"></div>      
     </div>    
   </div>
+
+  {{ buttons.base() }}
 
 {% endblock %}
