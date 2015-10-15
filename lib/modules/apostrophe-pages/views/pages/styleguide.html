@@ -246,5 +246,28 @@
         </code>
       </div>
     </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-5">
+        {{ fields.select('category', 'Category', [
+          { label: 'Red', value: 'red' },
+          { label: 'Green', value: 'green' },
+          { label: 'Blue', value: 'blue' }
+        ]) }}
+      </div>
+      <div class="apos-sg-col-3">
+        <h3>.apos-field.apos-field-text</h3>
+        <p>This is the default single select fieldset.</p>
+        <code>
+          {% raw %}
+            {{ fields.select('category', 'Category', [
+              { label: 'Red', value: 'red' },
+              { label: 'Green', value: 'green' },
+              { label: 'Blue', value: 'blue' }
+            ]) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
   </div>
 {% endblock %}
