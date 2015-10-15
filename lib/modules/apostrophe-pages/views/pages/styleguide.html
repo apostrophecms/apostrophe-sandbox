@@ -4,7 +4,8 @@
 
 {% block main %}
   {% import 'apostrophe-ui:components/buttons.html' as buttons with context %}
-  {% import 'apostrophe-ui:components/dropdown.html' as dropdown with context %}
+  {% import 'apostrophe-ui:components/dropdowns.html' as dropdowns with context %}
+  {% import 'apostrophe-ui:components/pills.html' as pills with context %}
   {% import 'apostrophe-ui:components/fields.html' as fields with context %}
 
   <div class="apos-sg-row">
@@ -109,7 +110,8 @@
 
     <div class="apos-sg-row">
       <div class="apos-sg-col-3">
-        {{ buttons.normal('I am a button', 'hello') }}
+        {{ buttons.normal('Create Grommet', 'create-grommet') }}
+        {{ buttons.normal('Manage Grommets', 'manage-grommet') }}
       </div>
       <div class="apos-sg-col-5">
         <h3>.apos-button</h3>
@@ -117,6 +119,21 @@
         <code>
           {% raw %}
             {{ buttons.normal('I am a button', 'hello') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.disabled('You can\'t click me', '') }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button</h3>
+        <p>This is the base button class. To render it, use the following macro:</p>
+        <code>
+          {% raw %}
+            {{ buttons.disabled('You can\'t click me', '') }}
           {% endraw %}
         </code>
       </div>
@@ -213,8 +230,63 @@
     </div>
 
     <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Pills</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
       <div class="apos-sg-col-3">
-        {{ dropdown.base({
+        {{ pills.base([
+          {
+            label: 'Published',
+            action: 'toggle-published',
+            default: true
+          },
+          {
+            label: 'Draft',
+            action: 'toggle-draft'
+          },
+          {
+            label: 'Both',
+            action: 'toggle-both'
+          }
+        ]) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-pill</h3>
+        <p>Use these doodads when you have a set of controls that are grouped together.</p>
+        <code>
+          {% raw %}
+            {{ pills.base([
+              {
+                label: 'Published',
+                action: 'toggle-published',
+                default: true
+              },
+              {
+                label: 'Draft',
+                action: 'toggle-draft'
+              },
+              {
+                label: 'Both',
+                action: 'toggle-both'
+              }
+            ]) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Menus</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ dropdowns.base({
         label: 'A Fine Dropdown',
         items: [
           {label: 'One of the things', link: '#', action: 'data-something'},
@@ -228,7 +300,7 @@
         <p>Drop downs for Add Content buttons, Page Settings, and Apos Menu</p>
         <code>
           {% raw %}
-            {{ dropdown.base({
+            {{ dropdowns.base({
             label: 'A Fine Dropdown',
             items: [
               {label: 'One of the things', link: '#', action: 'data-something'},
@@ -243,7 +315,7 @@
 
     <div class="apos-sg-row">
       <div class="apos-sg-col-8">
-        <h2>Fields</h2>
+        <h2>Form Fields</h2>
       </div>
     </div>
 
@@ -267,11 +339,34 @@
         {{ fields.textarea('description', 'Description') }}
       </div>
       <div class="apos-sg-col-3">
-        <h3>.apos-field.apos-field-text</h3>
+        <h3>.apos-field.apos-field-textarea</h3>
         <p>This is the default text area fieldset.</p>
         <code>
           {% raw %}
             {{ fields.textarea('description', 'Description') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-5">
+        {{ fields.select('category', 'Category', [
+          { label: 'Red', value: 'red' },
+          { label: 'Green', value: 'green' },
+          { label: 'Blue', value: 'blue' }
+        ]) }}
+      </div>
+      <div class="apos-sg-col-3">
+        <h3>.apos-field.apos-field-select</h3>
+        <p>This is the default single select fieldset.</p>
+        <code>
+          {% raw %}
+            {{ fields.select('category', 'Category', [
+              { label: 'Red', value: 'red' },
+              { label: 'Green', value: 'green' },
+              { label: 'Blue', value: 'blue' }
+            ]) }}
           {% endraw %}
         </code>
       </div>
@@ -328,6 +423,5 @@
         </table>
       </div>
     </div>
-
   </div>
 {% endblock %}
