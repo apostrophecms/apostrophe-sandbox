@@ -4,7 +4,11 @@
 
 {% block main %}
   {% import 'apostrophe-ui:components/buttons.html' as buttons with context %}
+<<<<<<< HEAD
   {% import 'apostrophe-ui:components/dropdown.html' as dropdown with context %}
+=======
+  {% import 'apostrophe-ui:components/fields.html' as fields with context %}
+>>>>>>> 87a14a399eb81de31a43a94827ed83d5e713e19f
 
   <div class="apos-sg-row">
     <div class="apos-sg-col-8">
@@ -235,6 +239,43 @@
               {label: 'OKAY', link: '#', action: 'data-something'}
             ]}, 'button'
             ) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+    
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Fields</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-5">
+        {{ fields.string('title', 'Title') }}
+      </div>
+      <div class="apos-sg-col-3">
+        <h3>.apos-field.apos-field-text</h3>
+        <p>This is the default text input fieldset.</p>
+        <code>
+          {% raw %}
+            {{ fields.string('title', 'Title') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-5">
+        {{ fields.textarea('description', 'Description') }}
+      </div>
+      <div class="apos-sg-col-3">
+        <h3>.apos-field.apos-field-text</h3>
+        <p>This is the default text area fieldset.</p>
+        <code>
+          {% raw %}
+            {{ fields.textarea('description', 'Description') }}
+>>>>>>> 87a14a399eb81de31a43a94827ed83d5e713e19f
           {% endraw %}
         </code>
       </div>
