@@ -49,12 +49,20 @@
   p, h2, h3
   {
     font-family: 'Karla', sans-serif;
+    color: #333;
+    margin-bottom: 12px;
   }
 
   code
   {
-    display: block;
+    display: inline-block;
     font-family: 'Inconsolata', 'Courier New', Courier, monospace;
+    color: #666;
+    background: #efefef;
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 3px;
   }
 }
 
@@ -80,11 +88,13 @@
   &--black { background: @apos-black; }
   &--dark { background: @apos-dark }
   &--mid { background: @apos-mid }
-  &--white
+  &--white 
   {
     background: @apos-white;
     border: 1px solid @apos-mid;
   }
-  &--mid,
-  &--white { color: @apos-dark;}
+
+  code { color: @apos-white; background: transparent; border: none; }
+  &--mid code ,
+  &--white code  { color: @apos-dark;}
 }

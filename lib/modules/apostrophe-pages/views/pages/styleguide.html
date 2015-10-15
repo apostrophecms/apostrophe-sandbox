@@ -3,37 +3,22 @@
 {% block bodyClass %}apos-sg-page{% endblock %}
 
 {% block main %}
-  {% import 'apostrophe-ui:components/buttons.html' as buttons with context %}  <div class="apos-sg-outer">
-    <div class="apos-sg-row">
-      <div class="apos-sg-col-1"></div>
-      <div class="apos-sg-col-7"></div>
-    </div>
+  {% import 'apostrophe-ui:components/buttons.html' as buttons with context %}  
 
-    <div class="apos-sg-row">
-      <div class="apos-sg-col-2"></div>
-      <div class="apos-sg-col-6"></div>
-    </div>
-
-    <div class="apos-sg-row">
-      <div class="apos-sg-col-3"></div>
-      <div class="apos-sg-col-5"></div>
-    </div>
-
+  <div class="apos-sg-outer">
     <div class="apos-sg-row">
       <div class="apos-sg-col-8">
-        <h2>Using the styleguide</h2>
+        <h2>Using this styleguide</h2>
       </div>
     </div>
 
     <div class="apos-sg-row">
-      <div class="apos-sg-col-4">this is a component</div>
+      <div class="apos-sg-col-4">This should be a component</div>
       <div class="apos-sg-col-4">
         <h3>My component</h3>
         <p>This is some information about the component:</p>
 
         <code>
-          {{ '<div class="apos-whatever"></div>' }}
-
           {% raw %}
             {{ myAposMacro('test') }}
           {% endraw %}
@@ -41,14 +26,13 @@
 
       </div>
     </div>
-
-    <div class="apos-sg-row">
-      <div class="apos-sg-col-2"></div>
-      <div class="apos-sg-col-2"></div>
-      <div class="apos-sg-col-2"></div>
-      <div class="apos-sg-col-2"></div>
-    </div>
   </div>
+
+  <div class="apos-sg-row">
+    <div class="apos-sg-col-8">
+      <h2>Colors</h2>
+    </div>
+  </div>  
 
   <div class="apos-sg-outer">
     <div class="apos-sg-row">
@@ -66,9 +50,27 @@
     <div class="apos-sg-row">
       <div class="apos-sg-color apos-sg-color--white"><code>@apos-white</code></div>
     </div>
-  </div>
 
-  {{ buttons.normal('Hello', 'hello') }}
-  {{ buttons.inContext('Hello', 'hello') }}
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Buttons</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.normal('I am a button', 'hello') }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h2>.apos-button</h2>
+        <p>This is the base button class. To render it, use the following macro:</p>
+        <code>
+          {% raw %}
+            {{ buttons.normal('I am a button', 'hello') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
