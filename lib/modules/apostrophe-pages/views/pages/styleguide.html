@@ -150,7 +150,7 @@
           {% endraw %}
         </code>
       </div>
-    </div>    
+    </div>
 
     <div class="apos-sg-row">
       <div class="apos-sg-col-3">
@@ -276,5 +276,58 @@
         </code>
       </div>
     </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Tables &amp; Tabular Data</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h3>.apos-button</h3>
+        <p>This is the base button class. To render it, use the following macro:</p>
+        <code>
+          {% raw %}
+            {{ buttons.normal('I am a button', 'hello') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <table class="apos-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox"></th>
+              <th>Name</th>
+              <th>Updated</th>
+              <th>Author</th>
+              <th>Tags</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><input type="checkbox"></th>
+              <th>My Office</th>
+              <th>Oct. 15, 2015</th>
+              <th>Gerald Butterworth</th>
+              <th>butter, money, polo, bow-ties, vacation</th>
+              <th>Move to Trash</th>
+            </tr>
+            <tr>
+              <th><input type="checkbox"></th>
+              <th>My Office</th>
+              <th>Oct. 15, 2015</th>
+              <th>Gerald Butterworth</th>
+              <th>butter, money, polo, bow-ties, vacation</th>
+              <th>Move to Trash</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 {% endblock %}
