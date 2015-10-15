@@ -218,15 +218,30 @@
     </div>
 
     <div class="apos-sg-row">
-      <div class="apos-sg-col-3">
+      <div class="apos-sg-col-5">
         {{ fields.string('title', 'Title') }}
       </div>
-      <div class="apos-sg-col-5">
-        <h3>.apos-field</h3>
+      <div class="apos-sg-col-3">
+        <h3>.apos-field.apos-field-text</h3>
         <p>This is the default text input fieldset.</p>
         <code>
           {% raw %}
             {{ fields.string('title', 'Title') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-5">
+        {{ fields.textarea('description', 'Description') }}
+      </div>
+      <div class="apos-sg-col-3">
+        <h3>.apos-field.apos-field-text</h3>
+        <p>This is the default text area fieldset.</p>
+        <code>
+          {% raw %}
+            {{ fields.textarea('description', 'Description') }}
           {% endraw %}
         </code>
       </div>
