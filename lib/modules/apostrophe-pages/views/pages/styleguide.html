@@ -4,6 +4,7 @@
 
 {% block main %}
   {% import 'apostrophe-ui:components/buttons.html' as buttons with context %}
+  {% import 'apostrophe-ui:components/fields.html' as fields with context %}
 
   <div class="apos-sg-outer">
     <div class="apos-sg-row">
@@ -231,6 +232,27 @@
           {% endraw %}
         </code>
       </div>
-    </div>    
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Fields</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ fields.string('title', 'Title') }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-field</h3>
+        <p>This is the default text input fieldset.</p>
+        <code>
+          {% raw %}
+            {{ fields.string('title', 'Title') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
   </div>
 {% endblock %}
