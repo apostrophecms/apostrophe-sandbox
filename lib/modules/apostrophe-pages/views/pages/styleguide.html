@@ -4,6 +4,7 @@
 
 {% block main %}
   {% import 'apostrophe-ui:components/buttons.html' as buttons with context %}
+  {% import 'apostrophe-ui:components/dropdown.html' as dropdown with context %}
   {% import 'apostrophe-ui:components/fields.html' as fields with context %}
 
   <div class="apos-sg-row">
@@ -206,6 +207,35 @@
         <code>
           {% raw %}
             {{ buttons.danger('Delete User', 'delete-user') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ dropdown.base({
+        label: 'A Fine Dropdown',
+        items: [
+          {label: 'One of the things', link: '#', action: 'data-something'},
+          {label: 'Another Stuff', link: '#', action: 'data-something'},
+          {label: 'OKAY', link: '#', action: 'data-something'}
+        ]}, 'button'
+        ) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-dropdown</h3>
+        <p>Drop downs for Add Content buttons, Page Settings, and Apos Menu</p>
+        <code>
+          {% raw %}
+            {{ dropdown.base({
+            label: 'A Fine Dropdown',
+            items: [
+              {label: 'One of the things', link: '#', action: 'data-something'},
+              {label: 'Another Stuff', link: '#', action: 'data-something'},
+              {label: 'OKAY', link: '#', action: 'data-something'}
+            ]}, 'button'
+            ) }}
           {% endraw %}
         </code>
       </div>
