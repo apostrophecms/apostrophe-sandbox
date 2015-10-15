@@ -133,7 +133,7 @@
         {{ buttons.normal('I am a button', 'hello') }}
       </div>
       <div class="apos-sg-col-5">
-        <h2>.apos-button</h2>
+        <h3>.apos-button</h3>
         <p>This is the base button class. To render it, use the following macro:</p>
         <code>
           {% raw %}
@@ -142,6 +142,95 @@
         </code>
       </div>
     </div>
-  </div>
 
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.inContext('Button on a page', 'hi') }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--in-context</h3>
+        <p>Use this type of button ONLY when it appears "in context", on a page.</p>
+        <code>
+          {% raw %}
+            {{ buttons.inContext('Button on a page', 'hi') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.more('Edit Staff Members', 'edit-pets') }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--more</h3>
+        <p>Use this button in modals when "digging" into an array or in any context that implies forward motion.</p>
+        <code>
+          {% raw %}
+            {{ buttons.more('Edit Staff Members', 'edit-staff-members') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>    
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.global('Page', 'page-settings') }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--global</h3>
+        <p>Use this button for the page menu or any other global, high level action.</p>
+        <code>
+          {% raw %}
+            {{ buttons.global('Page', 'page-settings') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.major('Save', 'save') }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--major</h3>
+        <p>Use this button for positive actions. Saving, confirming etc.</p>
+        <code>
+          {% raw %}
+            {{ buttons.major('Save', 'save') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.minor('Cancel', 'cancel') }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--minor</h3>
+        <p>Use this button for neutral actions. Cancelling is the best example of this.</p>
+        <code>
+          {% raw %}
+            {{ buttons.minor('Cancel', 'cancel') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.danger('Delete User', 'delete-user') }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--danger</h3>
+        <p>Use this button for negative actions. Deleting, moving to trash, etc.</p>
+        <code>
+          {% raw %}
+            {{ buttons.danger('Delete User', 'delete-user') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>    
+  </div>
 {% endblock %}
