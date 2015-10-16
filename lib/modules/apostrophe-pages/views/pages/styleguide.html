@@ -1,30 +1,82 @@
 {% extends data.outerLayout %}
 
-{% block bodyClass %}apos-sg-page{% endblock %}
+{% block bodyClass %}apos-ui apos-sg-page{% endblock %}
 
 {% block main %}
-  {% import 'apostrophe-ui:components/buttons.html' as buttons with context %}  
+  {% import 'apostrophe-ui:components/buttons.html' as buttons with context %}
+  {% import 'apostrophe-ui:components/links.html' as links with context %}
+  {% import 'apostrophe-ui:components/dropdowns.html' as dropdowns with context %}
+  {% import 'apostrophe-ui:components/pills.html' as pills with context %}
+  {% import 'apostrophe-ui:components/fields.html' as fields with context %}
 
-  <div class="apos-sg-outer">
-    <div class="apos-sg-row">
-      <div class="apos-sg-col-8">
-        <h2>Using this styleguide</h2>
-      </div>
+  <div class="apos-sg-row">
+    <div class="apos-sg-col-8">
+      <h2>Typography</h2>
     </div>
+  </div>
 
-    <div class="apos-sg-row">
-      <div class="apos-sg-col-4">This should be a component</div>
-      <div class="apos-sg-col-4">
-        <h3>My component</h3>
-        <p>This is some information about the component:</p>
+  <div class="apos-sg-row">
+    <div class="apos-sg-col-3">
+      <span class="apos-text-title">In modern times podgy oboes show us how waterfalls can be beginners.</span>
+    </div>
+    <div class="apos-sg-col-5">
+      <h3>.apos-text-title</h3>
+      <p>This is a text style to be used for <strong>modal titles</strong>.</p>
+      <code>
+        {{'<span class="apos-text-title"> . . . </span>'}}
+      </code>
+    </div>
+  </div>
 
-        <code>
-          {% raw %}
-            {{ myAposMacro('test') }}
-          {% endraw %}
-        </code>
+  <div class="apos-sg-row">
+    <div class="apos-sg-col-3">
+      <span class="apos-text-instruction">Framed in a different way, velvets are chin junes. The literature would have us believe that an aloof name is not but a layer.</span>
+    </div>
+    <div class="apos-sg-col-5">
+      <h3>.apos-text-instruction</h3>
+      <p>This is a text style to be used for <strong>modal instructions</strong>.</p>
+      <code>
+        {{'<span class="apos-text-instruction"> . . . </span>'}}
+      </code>
+    </div>
+  </div>
 
-      </div>
+  <div class="apos-sg-row">
+    <div class="apos-sg-col-3">
+      <span class="apos-text-normal">The dance of a pheasant becomes a diverse invention. The bausond skirt comes from an ersatz weeder.</span>
+    </div>
+    <div class="apos-sg-col-5">
+      <h3>.apos-text-normal</h3>
+      <p>This is a text style to be used for <strong>all basic UI text</strong> including <strong>inputs, textareas and selects</strong>.</p>
+      <code>
+        {{'<span class="apos-text-normal"> . . . </span>'}}
+      </code>
+    </div>
+  </div>
+
+  <div class="apos-sg-row">
+    <div class="apos-sg-col-3">
+      <span class="apos-text-small">The zeitgeist contends that a destined thumb's catamaran comes with it the thought that the cadent rabbi is a mail. The ellipses could be said to resemble dormy parsnips. Some posit the cracking medicine to be less than rufous.</span>
+    </div>
+    <div class="apos-sg-col-5">
+      <h3>.apos-text-small</h3>
+      <p>This is a text style to be used for some UI text including <strong>dropdowns, buttons and tables</strong>.</p>
+      <code>
+        {{'<span class="apos-text-small"> . . . </span>'}}
+      </code>
+    </div>
+  </div>
+
+  <div class="apos-sg-row">
+    <div class="apos-sg-col-3">
+      <span class="apos-text-meta">It's an undeniable fact, really; one cannot separate insurances from basest agendas. Some deformed watches are thought of simply as triangles.</span>
+    </div>
+    <div class="apos-sg-col-5">
+      <h3>.apos-text-meta</h3>
+      <p>This is a text style to be used for <strong>all meta UI text</strong> including <strong>label meta, breadcrumbs, tab labels, admin bar, and table headers</strong>.</p>
+      <code>
+        {{'<span class="apos-text-meta"> . . . </span>'}}
+      </code>
     </div>
   </div>
 
@@ -32,7 +84,7 @@
     <div class="apos-sg-col-8">
       <h2>Colors</h2>
     </div>
-  </div>  
+  </div>
 
   <div class="apos-sg-outer">
     <div class="apos-sg-row">
@@ -53,16 +105,334 @@
 
     <div class="apos-sg-row">
       <div class="apos-sg-col-8">
+        <h2>Modals</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.normal('Create Grommet', { action: 'create-grommet' }) }}
+        {{ buttons.normal('Manage Grommets', { action: 'manage-grommet' }) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-modal</h3>
+        <p>These buttons open up modals.</p>
+        <code>
+          {% raw %}
+            {{ buttons.normal('Create Grommet', { action: 'create-grommet' }) }}
+            {{ buttons.normal('Manage Grommets', { action: 'manage-grommet' }) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
         <h2>Buttons</h2>
       </div>
     </div>
 
     <div class="apos-sg-row">
       <div class="apos-sg-col-3">
-        {{ buttons.normal('I am a button', 'hello') }}
+        {{ buttons.base('I am a button', { action: 'hello' }) }}
       </div>
       <div class="apos-sg-col-5">
-        <h2>.apos-button</h2>
+        <h3>.apos-button</h3>
+        <p>This is the base button class. To render it, use the following macro:</p>
+        <code>
+          {% raw %}
+            {{ buttons.base('I am a button', { action: 'hello' }) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.disabled("You can't click me", { action: '' }) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button</h3>
+        <p>This is the base button class. To render it, use the following macro:</p>
+        <code>
+          {% raw %}
+            {{ buttons.disabled("You can't click me", { action: '' }) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.inContext('Button on a page', { action: 'hi' }) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--in-context</h3>
+        <p>Use this type of button ONLY when it appears "in context", on a page.</p>
+        <code>
+          {% raw %}
+            {{ buttons.inContext('Button on a page', { action: 'hi' }) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.more('Edit Staff Members', { action: 'edit-pets' }) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--more</h3>
+        <p>Use this button in modals when "digging" into an array or in any context that implies forward motion.</p>
+        <code>
+          {% raw %}
+            {{ buttons.more('Edit Staff Members', { action: 'edit-pets' }) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.global('Page', { action: 'page-settings'}) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--global</h3>
+        <p>Use this button for the page menu or any other global, high level action.</p>
+        <code>
+          {% raw %}
+            {{ buttons.global('Page', { action: 'page-settings'}) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.major('Save', { action: 'save' }) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--major</h3>
+        <p>Use this button for positive actions. Saving, confirming etc.</p>
+        <code>
+          {% raw %}
+            {{ buttons.major('Save', { action: 'save' }) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.minor('Cancel', { action: 'cancel' }) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--minor</h3>
+        <p>Use this button for neutral actions. Cancelling is the best example of this.</p>
+        <code>
+          {% raw %}
+            {{ buttons.minor('Cancel', { action: 'cancel' }) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ buttons.danger('Delete User', { action: 'delete-user' }) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-button--danger</h3>
+        <p>Use this button for negative actions. Deleting, moving to trash, etc.</p>
+        <code>
+          {% raw %}
+            {{ buttons.danger('Delete User', { action: 'delete-user' }) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Simple Links</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ links.major('Yooo', { url: '/test' }) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <code>
+          {% raw %}{{ links.major('Yooo', { url: '/test' }) }}{% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ links.danger('Nooo', { url: '/test' }) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <code>
+          {% raw %}{{ links.danger('Nooo', { url: '/test' }) }}{% endraw %}
+        </code>
+      </div>
+    </div>
+
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Pills</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ pills.base([
+          {
+            label: 'Published',
+            action: 'toggle-published',
+            default: true
+          },
+          {
+            label: 'Draft',
+            action: 'toggle-draft'
+          },
+          {
+            label: 'Both',
+            action: 'toggle-both'
+          }
+        ]) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-pill</h3>
+        <p>Use these doodads when you have a set of controls that are grouped together.</p>
+        <code>
+          {% raw %}
+            {{ pills.base([
+              {
+                label: 'Published',
+                action: 'toggle-published',
+                default: true
+              },
+              {
+                label: 'Draft',
+                action: 'toggle-draft'
+              },
+              {
+                label: 'Both',
+                action: 'toggle-both'
+              }
+            ]) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Menus</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-3">
+        {{ dropdowns.base({
+        label: 'A Fine Dropdown',
+        items: [
+          {label: 'One of the things', link: '#', action: 'data-something'},
+          {label: 'Another Stuff', link: '#', action: 'data-something'},
+          {label: 'OKAY', link: '#', action: 'data-something'}
+        ]}, 'button'
+        ) }}
+      </div>
+      <div class="apos-sg-col-5">
+        <h3>.apos-dropdown</h3>
+        <p>Drop downs for Add Content buttons, Page Settings, and Apos Menu</p>
+        <code>
+          {% raw %}
+            {{ dropdowns.base({
+            label: 'A Fine Dropdown',
+            items: [
+              {label: 'One of the things', link: '#', action: 'data-something'},
+              {label: 'Another Stuff', link: '#', action: 'data-something'},
+              {label: 'OKAY', link: '#', action: 'data-something'}
+            ]}, 'button'
+            ) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Form Fields</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-5">
+        {{ fields.string('title', 'Title') }}
+      </div>
+      <div class="apos-sg-col-3">
+        <h3>.apos-field.apos-field-text</h3>
+        <p>This is the default text input fieldset.</p>
+        <code>
+          {% raw %}
+            {{ fields.string('title', 'Title') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-5">
+        {{ fields.textarea('description', 'Description') }}
+      </div>
+      <div class="apos-sg-col-3">
+        <h3>.apos-field.apos-field-textarea</h3>
+        <p>This is the default text area fieldset.</p>
+        <code>
+          {% raw %}
+            {{ fields.textarea('description', 'Description') }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-5">
+        {{ fields.select('category', [
+          { label: 'Red', value: 'red' },
+          { label: 'Green', value: 'green' },
+          { label: 'Blue', value: 'blue' }
+        ]) }}
+      </div>
+      <div class="apos-sg-col-3">
+        <h3>.apos-field.apos-field-select</h3>
+        <p>This is the default single select fieldset.</p>
+        <code>
+          {% raw %}
+            {{ fields.select('category', [
+              { label: 'Red', value: 'red' },
+              { label: 'Green', value: 'green' },
+              { label: 'Blue', value: 'blue' }
+            ]) }}
+          {% endraw %}
+        </code>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h2>Tables &amp; Tabular Data</h2>
+      </div>
+    </div>
+
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <h3>.apos-button</h3>
         <p>This is the base button class. To render it, use the following macro:</p>
         <code>
           {% raw %}
@@ -71,6 +441,41 @@
         </code>
       </div>
     </div>
+    <div class="apos-sg-row">
+      <div class="apos-sg-col-8">
+        <div class="apos-table">
+          <table>
+            <thead>
+              <tr>
+                <th>{{ fields.checkbox('all') }}</th>
+                <th>Name</th>
+                <th>Updated</th>
+                <th>Author</th>
+                <th>Tags</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>{{ fields.checkbox('first') }}</th>
+                <th>My Office</th>
+                <th>Oct. 15, 2015</th>
+                <th>Gerald Butterworth</th>
+                <th>butter, money, polo, bow-ties, vacation</th>
+                <th>{{ links.danger('Move to Trash', { url: '#' }) }}</th>
+              </tr>
+              <tr>
+                <th>{{ fields.checkbox('second') }}</th>
+                <th>My Office</th>
+                <th>Oct. 15, 2015</th>
+                <th>Gerald Butterworth</th>
+                <th>butter, money, polo, bow-ties, vacation, butter, money, polo, bow-ties, vacation, butter, money, polo, bow-ties, vacation</th>
+                <th>{{ links.danger('Move to Trash', { url: '#' }) }}</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
-
 {% endblock %}

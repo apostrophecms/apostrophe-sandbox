@@ -1,7 +1,9 @@
 {% extends "outerLayoutBase.html" %}
 
 {% block apostropheMenuBody %}
-  {{ apos.users.menu() }}
-  {{ apos.grommets.menu() }}
-  {{ apos.events.menu() }}
+	<div class="apos-admin-bar-items" data-apos-admin-bar-items>
+	  {{ apos.users.menu() }}
+	  {{ apos.grommets.menu() }}
+	  {{ apos.events.menu() }}
+	</div>
 {% endblock %}
