@@ -4,7 +4,7 @@
 
 .apos-sg-page
 {
-  background-color: #efefef; 
+  background-color: #efefef;
 }
 
 .apos-ui
@@ -21,7 +21,7 @@
   {
     position: relative;
     margin: 0 auto;
-    width: @innerWidth;
+    max-width: @innerWidth;
     font-size: 0px;
     margin: @gutterWidth auto;
     &.centered { text-align: center; }
@@ -35,6 +35,7 @@
     text-align: left;
     font-size: 16px;
     width: (@colWidth * @n) + (@gutterWidth * (@n - 1));
+    max-width: 100%;
     margin-right: @gutterWidth;
 
     &:last-of-type { margin-right: 0px; }
@@ -88,7 +89,7 @@
     &--black { background: @apos-black; }
     &--dark { background: @apos-dark }
     &--mid { background: @apos-mid }
-    &--white 
+    &--white
     {
       background: @apos-white;
       border: 1px solid @apos-mid;

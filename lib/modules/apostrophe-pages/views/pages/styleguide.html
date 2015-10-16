@@ -391,36 +391,38 @@
     </div>
     <div class="apos-sg-row">
       <div class="apos-sg-col-8">
-        <table class="apos-table">
-          <thead>
-            <tr>
-              <th><input type="checkbox"></th>
-              <th>Name</th>
-              <th>Updated</th>
-              <th>Author</th>
-              <th>Tags</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th><input type="checkbox"></th>
-              <th>My Office</th>
-              <th>Oct. 15, 2015</th>
-              <th>Gerald Butterworth</th>
-              <th>butter, money, polo, bow-ties, vacation</th>
-              <th>Move to Trash</th>
-            </tr>
-            <tr>
-              <th><input type="checkbox"></th>
-              <th>My Office</th>
-              <th>Oct. 15, 2015</th>
-              <th>Gerald Butterworth</th>
-              <th>butter, money, polo, bow-ties, vacation</th>
-              <th>Move to Trash</th>
-            </tr>
-          </tbody>
-        </table>
+        <div class="apos-table">
+          <table>
+            <thead>
+              <tr>
+                <th>{{fields.checkboxInput('all')}}</th>
+                <th>Name</th>
+                <th>Updated</th>
+                <th>Author</th>
+                <th>Tags</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>{{fields.checkboxInput('first')}}</th>
+                <th>My Office</th>
+                <th>Oct. 15, 2015</th>
+                <th>Gerald Butterworth</th>
+                <th>butter, money, polo, bow-ties, vacation</th>
+                <th>Move to Trash</th>
+              </tr>
+              <tr>
+                <th>{{fields.checkboxInput('second')}}</th>
+                <th>My Office</th>
+                <th>Oct. 15, 2015</th>
+                <th>Gerald Butterworth</th>
+                <th>butter, money, polo, bow-ties, vacation, butter, money, polo, bow-ties, vacation, butter, money, polo, bow-ties, vacation</th>
+                <th>Move to Trash</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
