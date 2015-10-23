@@ -50,6 +50,13 @@ var apos = require('apostrophe')({
               label: 'Address'
             }
           ]
+        },
+        {
+          type: 'joinByArray',
+          name: '_events',
+          label: 'Events',
+          withType: 'event',
+          idsField: 'eventIds'
         }
       ]
     },
@@ -108,6 +115,10 @@ var apos = require('apostrophe')({
           label: 'Default'
         },
         {
+          name: 'blocks',
+          label: 'Blocks'
+        },
+        {
           name: 'home',
           label: 'Home'
         },
@@ -133,7 +144,8 @@ var apos = require('apostrophe')({
         }
       ]
     },
-    'view-test': {}
+    'view-test': {},
+    'block-widgets': {}
   },
   afterInit: function(callback) {
     console.log('initialized');
