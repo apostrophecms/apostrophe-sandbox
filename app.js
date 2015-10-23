@@ -107,6 +107,12 @@ var apos = require('apostrophe')({
           type: 'events',
           slug: '/events',
           published: true
+        },
+        {
+          title: 'Styleguide',
+          type: 'styleguide',
+          slug: '/styleguide',
+          published: true
         }
       ],
       types: [
