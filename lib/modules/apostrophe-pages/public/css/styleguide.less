@@ -81,8 +81,13 @@
     &--purple { background: @apos-purple; }
     &--gold { background: @apos-gold; }
     &--black { background: @apos-black; }
-    &--dark { background: @apos-dark }
-    &--mid { background: @apos-mid }
+    &--dark { background: @apos-dark; }
+    &--mid { background: @apos-mid; }
+    &--light
+    {
+      background: @apos-light;
+      border: 1px solid @apos-mid;
+    }
     &--white
     {
       background: @apos-white;
@@ -91,7 +96,8 @@
 
     code { color: @apos-white; background: transparent; border: none; }
     &--mid code ,
-    &--white code  { color: @apos-dark;}
+    &--white code,
+    &--light code  { color: @apos-dark;}
   }
 
 }
