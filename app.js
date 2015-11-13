@@ -139,7 +139,8 @@ var apos = require('apostrophe')({
         }
       ]
     },
-    'view-test': {}
+    'view-test': {},
+    'block-widgets': {}
   },
   afterInit: function(callback) {
     console.log('initialized');
