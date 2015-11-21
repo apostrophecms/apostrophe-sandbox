@@ -1,0 +1,19 @@
+{% extends data.outerLayout %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block main %}
+
+<h3>With Blocks</h3>
+
+{{
+  apos.area(data.page, 'body', {
+    widgets: {
+      'link': {},
+      'block': {}
+    }
+  })
+}}
+
+
+{% endblock %}
