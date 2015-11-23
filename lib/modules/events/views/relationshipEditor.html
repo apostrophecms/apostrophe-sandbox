@@ -1,0 +1,26 @@
+{%- extends "apostrophe-modal:baseSlideable.html" -%}
+{%- import 'apostrophe-ui:components/buttons.html' as buttons with context -%}
+{%- import "apostrophe-schemas:macros.html" as schemas -%}
+
+{%- block modalClass -%}
+  apos-docs-relationship-editor apos-ui-modal-no-sidebar apos-ui-modal-has-tabs apos-modal-slideable
+{%- endblock -%}
+
+{%- block controls -%}
+  {{ buttons.minor('Cancel', { action: 'cancel' }) }}
+  {{ buttons.major('Save Relationship', { action: 'save' }) }}
+{%- endblock -%}
+
+{%- block label -%}
+  {{ __('Edit Relationship With Events') }}
+{%- endblock -%}
+
+{%- block body -%}
+  <form class="apos-form" data-form>
+    <h3>Customized form for this relationship</h3>
+    {{ schemas.fields(data.field.relationship) }}
+  </form>
+{%- endblock -%}
+
+{%- block instructions -%}
+{%- endblock -%}
