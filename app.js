@@ -22,6 +22,11 @@ var apos = require('apostrophe')({
       pluralLabel: 'Grommets',
       addFields: [
         {
+          name: "tags",
+          label: "Tags",
+          type: "tags"
+        },
+        {
           type: 'string',
           name: 'inventor',
           label: 'Inventor'
@@ -56,7 +61,18 @@ var apos = require('apostrophe')({
           name: '_events',
           label: 'Events',
           withType: 'event',
-          idsField: 'eventIds'
+          choiceTemplate: 'events:chooserChoice.html',
+          idsField: 'eventIds',
+          relationship: [
+            {
+              type: 'string',
+              name: 'feature',
+              label: 'Feature Under Discussion'
+            }
+          ],
+          relationshipsField: 'relationship',
+          relationshipTemplate: 'events:relationshipEditor.html',
+          // relationshipEditor: 'apostrophe-grommet-events-relationship'
         }
       ]
     },
@@ -75,6 +91,11 @@ var apos = require('apostrophe')({
           type: 'tags',
           name: 'tags',
           label: 'Tags'
+        },
+        {
+          type: 'date',
+          name: 'date',
+          label: 'Date'
         }
       ]
     },
