@@ -1,11 +1,13 @@
-<a name="{{ data.widget.title | css }}" href="#{{ data.widget.title | css }}">{{ data.widget.title }}</a>
-{{
-  apos.area(data.widget, 'body', {
-    widgets: {
-      'link': {},
-      'apostrophe-rich-text': {
-        toolbar: [ 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink' ]
+<div class="blocks">
+  <h3>{{ data.widget.title }}</h3>
+  {{
+    apos.area(data.widget, 'body', {
+      widgets: {
+        'link': {},
+        'apostrophe-rich-text': {
+          toolbar: [ 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink' ]
+        }
       }
-    }
-  })
-}}
+    })
+  }}
+</div>
