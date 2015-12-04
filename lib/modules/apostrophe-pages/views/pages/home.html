@@ -8,14 +8,26 @@
 <h4>Slugify test:</h4>
 {{ apos.utils.slugify('<h1>So cool.</h1>') }}
 
-<h4>We think this is cool:</h4>
+<h4>Singleton</h4>
 {{ apos.singleton(data.page, 'cool', 'link') }}
 
-<h4>Rich text singleton:</h4>
-{{ apos.singleton(data.page, 'footer', 'apostrophe-rich-text', { toolbar: [ 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink' ] } ) }}
-
+<h4>Area</h4>
 {{
-  apos.area(data.page, 'body', {
+  apos.area(data.page, 'new', {
+    widgets: {
+      'link': {},
+      'apostrophe-rich-text': {
+        toolbar: [ 'Bold', 'Italic', 'Link', 'Anchor', 'Unlink' ]
+      },
+      'block': {}
+    }
+  })
+}}
+
+<h4>Limit 1 Area</h4>
+{{
+  apos.area(data.page, 'limitOne', {
+    limit: 1,
     widgets: {
       'link': {},
       'apostrophe-rich-text': {
