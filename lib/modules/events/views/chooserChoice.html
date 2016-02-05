@@ -4,6 +4,10 @@
 {# You can also access data.relationship, which will be present if the #}
 {# join is by array and has a relationship schema. -Tom #}
 
-<h4>{{ choice.title }}</h4>
-<h5>{{ choice.date }}</h5>
-<h5><em>{{ relationship.feature }}</em></h5>
+{% extends "chooserChoiceBase.html" %}
+
+{% block title %}{{ choice.title }}{% endblock %}
+
+{% block meta %}{{ choice.date }}{% endblock %}
+
+{% block body %}{% if relationship.feature %}{{ relationship.feature }}{% endif %}{% endblock %}
