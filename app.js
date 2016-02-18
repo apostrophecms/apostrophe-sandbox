@@ -45,18 +45,6 @@ var apos = require('apostrophe')({
           }
         },
         {
-          type: 'array',
-          name: 'addresses',
-          label: 'Addresses',
-          schema: [
-            {
-              name: 'address',
-              type: 'string',
-              label: 'Address'
-            }
-          ]
-        },
-        {
           type: 'joinByArray',
           name: '_events',
           label: 'Events',
@@ -73,6 +61,13 @@ var apos = require('apostrophe')({
           relationshipsField: 'relationship',
           relationshipTemplate: 'events:relationshipEditor.html',
           // relationshipEditor: 'apostrophe-grommet-events-relationship'
+        }
+      ],
+      arrangeFields: [
+        {
+          name: 'foo',
+          label: 'Foo',
+          fields: [ 'inventor' ]
         }
       ]
     },
