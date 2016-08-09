@@ -21,6 +21,7 @@
     "apostrophe-groups": "0.5.x",
     "apostrophe-people": "0.5.x",
     "apostrophe-redirects": "0.5.x",
+    "apostrophe-schema-widgets": "^0.5.22",
     "apostrophe-search": "0.5.x",
     "apostrophe-site": "0.5.x",
     "apostrophe-snippets": "^0.5.79",

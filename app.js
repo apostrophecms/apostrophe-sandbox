@@ -116,6 +116,29 @@ site.init({
       files: ["./public/js/modules/_site.js"]
     },
     'apostrophe-demo-login': {
+    },
+    'apostrophe-schema-widgets': {
+      widgets: [
+        {
+          name: 'price',
+          label: 'Price',
+          instructions: 'Enter a price.',
+          schema: [
+            {
+              name: 'price',
+              type: 'string',
+              label: 'Price',
+              required: true
+            },
+            {
+              name: 'url',
+              type: 'url',
+              label: 'URL',
+              required: true
+            }
+          ]
+        }
+      ]
     }
   },
 
