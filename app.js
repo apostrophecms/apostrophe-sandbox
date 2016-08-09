@@ -73,8 +73,13 @@ site.init({
 
   // These are the modules we want to bring into the project.
   modules: {
-    // Styles required by the new editor, must go FIRST
-    'apostrophe-editor-2': {},
+    'apostrophe-editor-2': {
+      config: {
+        // By default we would also remove Superscript and Subscript,
+        // so we're actually removing less functionality at this point. -Tom
+        removeButtons: 'Underline'
+      }
+    },
     'apostrophe-ui-2': {},
     'apostrophe-blog-2': {
       perPage: 5,
@@ -125,6 +130,19 @@ site.init({
   assets: {
     stylesheets: ['site'],
     scripts: ['_site-compiled']
+  },
+
+  sanitizeHtml: {
+    allowedTags: [ 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul',
+    'ol', 'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br',
+    'div', 'table', 'thead', 'caption', 'tbody', 'tr', 'th', 'td', 'pre', 'sub', 'sup' ],
+    allowedAttributes: {
+      a: [ 'href', 'name', 'target', 'id' ],
+      img: [ 'src' ],
+    },
+    selfClosing: [ 'img', 'br', 'hr', 'area', 'base', 'basefont', 'input',
+    'link', 'meta' ],
+    allowedSchemes: [ 'http', 'https', 'ftp', 'mailto' ]
   },
 
   afterInit: function(callback) {
