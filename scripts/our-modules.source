@@ -1,0 +1,3 @@
+# Several scripts source this so we maintain just one list
+
+modules=(appy uploadfs joinr apostrophe apostrophe-snippets apostrophe-blog apostrophe-events apostrophe-map apostrophe-pages apostrophe-people apostrophe-groups apostrophe-sections apostrophe-twitter apostrophe-rss apostrophe-site sanitize-html apostrophe-editor-2 apostrophe-ui-2 apostrophe-blocks apostrophe-fancy-page apostrophe-schemas apostrophe-redirects apostrophe-search oembetter apostrophe-workflow apostrophe-blog-2 apostrophe-schema-widgets apostrophe-moderator broadband)
