@@ -4,30 +4,17 @@ var apos = require('apostrophe')({
 
   // These are the modules we want to bring into the project.
   modules: {
+    
+    'apostrophe-templates': { viewsFolderFallback: __dirname + '/views' },
+    
     // This configures the apostrophe-users module to add an admin-level
     // group by default
-    'apostrophe-templates': { viewsFolderFallback: __dirname + '/views' },
-    'apostrophe-users': {
-      groups: [
-        {
-          title: 'guest',
-          permissions: [ ]
-        },
-        {
-          title: 'admin',
-          permissions: [ 'admin' ]
-        }
-      ]
-    },
+    'apostrophe-users': {},
+    
     // This configures the apostrophe-assets module to push a 'site.less'
     // stylesheet by default
-    'apostrophe-assets': {
-      stylesheets: [
-        {
-          name: 'site'
-        }
-      ]
-    }
+    'apostrophe-assets': {}
+    
     // Add your modules and their respective configuration here!
   }
 
