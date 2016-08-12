@@ -1,0 +1,121 @@
+.demo-blog-header-background .demo-inner
+{
+  position: relative;
+  height: 100%;
+}
+
+.demo-blog-header
+{
+  position: absolute;
+  // padding-left: 17%;
+  bottom: 1rem;
+  left: 0; right: 0;
+  // width: 75%;
+  color: @white;
+  z-index: 1;
+
+  .demo-blog-header-wrapper
+  {
+    padding-left: 17%;
+  }
+
+  @media screen and @iphone
+  {
+    left: 5%;
+    width: 70%;
+
+   .demo-blog-header-wrapper
+    {
+      padding-left: 0;
+    } 
+  }
+}
+
+.demo-blog-header-background
+{
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+  padding: 0;
+
+  @media screen and @narrow
+  {
+    height: 400px;
+  }
+  @media screen and @iphone
+  {
+    height: 300px;
+  }
+
+  .demo-blog-header-block
+  {
+    height: 560px;
+    @media screen and @narrow
+    {
+      height: 400px;
+    }
+    @media screen and @iphone
+    {
+      height: 300px;
+    }
+  &::after
+  {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+    display: block;
+    content: '';
+
+    background-color: fade(@dark, 30%);
+  }
+  }
+}
+
+
+.demo-blog-header-block
+{
+  height: 100%;
+  background-size: cover;
+  position: relative;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  // position: absolute;
+  // top: 0; right: 0; bottom: 0; left: 0;
+  .apos-slideshow .apos-slideshow-items
+  {
+    display: block;
+  }
+  .apos-ui-container {top: 6rem; left: 1rem;}
+  .apos-singleton, .apos-normal-view, .apos-content, .apos-slideshow
+  {
+    height: 100%;
+    width: 100%;
+  }
+
+  .apos-slideshow-items
+  {
+    display: block;
+    height: 100%;
+
+    .apos-slideshow-item
+    {
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .apos-slideshow-image
+    {
+      opacity: 0;
+    }
+  }
+
+
+}
+
+
+.demo-blog-header-slideshow-control
+{
+  top: 6rem;
+  position: relative;
+}

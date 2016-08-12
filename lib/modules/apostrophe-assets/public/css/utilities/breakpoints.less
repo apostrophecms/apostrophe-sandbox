@@ -1,0 +1,57 @@
+// media query variables
+@iphone: ~'(max-width: 570px)';
+@iphonePortrait: ~'(max-width: 350px)';
+@narrow: ~'(max-width: 790px)';
+@small: ~'(max-width: 660px), only screen and @{iphone}';
+@short: ~'(max-height: 600px)';
+@wide: ~'(min-width: 1550px)';
+@tabletLandscape: ~'(max-width: 1024px)';
+
+.hide-desktop{display: none;}
+.invisible-desktop {opacity: 0;}
+
+body{
+  @media screen and @narrow
+  {
+    .hide-desktop {display: block;}
+    // .hide-mobile{ display: none !important; }
+    // .invisible-mobile {opacity: 0 !important; }
+    // .invisible-desktop {opacity: 1;}
+  }
+  @media screen and @narrow
+  {
+    .hide-mobile{ display: none; }
+    // .invisible-iphone {opacity: 0 !important; }
+  }
+
+  @media screen and @iphonePortrait
+  {
+    
+  }
+}
+
+html
+{
+  @media screen and @wide
+  {
+    // font-size: @root-font-size * 1.1 * 1px;
+    // line-height: 150%;
+    // .inner
+    // {
+    //   max-width: 1280px
+    // }
+
+  }
+  @media screen and @iphone
+  {
+    // font-size: 13px;
+  }
+
+  body
+  {
+   @media screen and @narrow
+   {
+    // background: red !important;
+   } 
+  }
+}

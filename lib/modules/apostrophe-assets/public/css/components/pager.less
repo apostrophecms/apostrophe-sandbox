@@ -1,0 +1,58 @@
+.demo-pager
+{
+
+}
+
+.pager-number
+{
+  position: relative;
+  margin: 0 0.5em;
+  a
+  {
+    color: @dark;
+    .Karla(@text-small);
+  }
+  &.pager-active::after
+  {
+    position: absolute;
+    bottom: -3px;
+    left: -25%;
+    width: 150%;
+
+    content: '';
+    .inline-bottom;
+    border-bottom: 1px solid @red;
+  }
+}
+
+.pager-arrow
+{
+  position: relative;
+  color: @red;
+  .Karla(@text-small);
+}
+
+.pager-prev
+{
+  &::before
+  {
+    position: relative;
+    left: -1.5em;
+    top: 3px;
+    content: '͢';
+    .inline-top;
+    .transform(rotate(180deg));
+  }
+}
+
+.pager-next
+{
+  &::after
+  {
+    position: relative;
+    right: -1.5em;
+    bottom: 3px;
+    content: '͢';
+    .inline-top;
+  }
+}

@@ -1,0 +1,41 @@
+.demo-blog-index-page
+{
+
+	.demo-pageheader
+	{
+		h3 { color: @dark; }
+	}
+	@media screen and @narrow
+	{
+		.demo-pageheader
+		{
+			margin-top: 6.5rem;
+		}
+
+		.blog-listing-image,
+		.blog-listing-info
+		{
+			width: 50%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.blog-listing-info
+		{
+			padding-left: 1rem;
+		}
+		.blog-card-head
+		{
+			width: 100%;
+		}
+	}
+	@media screen and @iphone
+	{
+		.blog-listing-image,
+		.blog-listing-info
+		{
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}

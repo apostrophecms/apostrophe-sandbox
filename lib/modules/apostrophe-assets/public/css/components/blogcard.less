@@ -1,0 +1,168 @@
+.demo-blog-card
+{
+  position: relative;
+  width: 100%;
+  margin-bottom: 3rem;
+
+  text-align: left;
+
+  border-radius: 2px;
+  overflow: hidden;
+
+  @media screen and @narrow
+  {
+    background: @white;
+    margin-bottom: 2rem;
+    // border-bottom: 1px solid @gray;
+  }
+
+  .blog-card-title-container
+  {
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
+    z-index: 2;
+  }
+
+  .blog-card-author
+  {
+    .KarlaBold(@text-tiny);
+  }
+
+  .blog-card-title
+  {
+    margin-bottom: 0.5rem;
+    line-height: 1.2em;
+    color: @white;
+  }
+
+  .blog-card-excerpt-container
+  {
+    padding: 1rem;
+    background-color: @white;
+    border-radius: 0 0 2px 2px;
+
+    @media screen and @narrow
+    {
+      width: 50%;
+      margin-left: 50%;
+    }
+  }
+
+  .blog-card-excerpt
+  {
+    position: relative;
+    overflow: hidden;
+
+    height: 6em;
+    margin-bottom: 1rem;
+
+    .font-size(@text-tiny);
+    line-height: 1.2em;
+
+    @media screen and @narrow
+    {
+      height: 6rem;
+    }
+    &::after
+    {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+
+      display: block;
+      content: '';
+
+      .gradient(70%);
+    }
+  }
+
+}
+
+.blog-card-head
+{
+  position: relative;
+  height: 162px;
+  color: @white;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+
+  .apos-slideshow-items,
+  .apos-slideshow,
+  .apos-content,
+  .apos-normal-view
+  {
+    height: 100%;
+  }
+  img
+  {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  .apos-slideshow-item
+  {
+    height: 162px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &::after
+  {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: fade(@dark, 20%);
+    content: '';
+  }
+
+  @media screen and @narrow
+  {
+    width: 50%;
+    float: left;
+
+    &, .apos-slideshow-item
+    {
+      height: 184px;
+    }
+
+
+    .apos-slideshow-item {background-size: cover; background-position: center; }
+    img{ opacity: 0; height: 162px;}
+  }
+}
+
+.sticker
+{
+  .inline-block(middle);
+  padding: 0.3rem 1rem;
+  background-color: @dark;
+  color: @white;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.sticker--red
+{
+  background-color: @red;
+}
+
+.sticker--overlap
+{
+  position: absolute;
+  top: -1em;
+  right: 0;
+  left: 0;
+  margin: auto;
+  height: 30px;
+  width: 50%;
+  // .transform( translateX(-50%) );
+
+  @media screen and @iphone
+  {
+    // height: 25px;
+    padding-top: 0.5rem;
+  }
+}

@@ -1,0 +1,101 @@
+@root-font-size: 18px;
+
+// factors of the root font size.
+// only use these! e.g `.Karla(@text-small);`
+@text-micro:  0.65;
+@text-tiny:   0.8;
+@text-small:  1;
+@text-medium: 1.33333;
+@text-large:  2;
+@text-huge:   2.5;
+@text-insane: 2.75;
+
+body, html {
+  font-size: @root-font-size;
+  color: @dark;
+
+  @media screen and @iphone
+  {
+    font-size: 15px;
+  }
+}
+
+p,
+body { .Karla(@text-small);      }
+h1   { .KarlaBold(@text-insane); }
+h2   { .KarlaBold(@text-huge);   }
+h3   { .KarlaBold(@text-huge);   }
+h4   { .KarlaBold(@text-large);  }
+h5   { .KarlaBold(@text-medium); }
+h6   { .KarlaBold(@text-small);  }
+
+@media screen and @iphone
+{
+  h3 { .KarlaBold(@text-large); }
+}
+
+h1,h2,h3,h4,h5,h6
+{
+  position: relative;
+  line-height: 1.5em;
+  @media screen and @iphone
+  {
+    line-height: 1.2em;
+  }
+}
+body
+{
+  line-height: 1.25em;
+}
+
+p
+{
+  line-height: 1.5em;
+  .Karla(@text-small);
+  strong { .KarlaBold();   }
+  em     { .KarlaItalic(); }
+}
+
+a
+{
+  .KarlaBold();
+  color: @red;
+  text-decoration: none;
+}
+
+code
+{
+  display: block;
+  padding: 1em;
+  overflow-x: scroll;
+
+  color: @blue;
+
+  background-color: @white;
+
+  a, strong, em, &
+  {
+    font-family: 'Andale Mono', 'Courier', monospace;
+  }
+
+  a
+  {
+    color: @green;
+  }
+
+  strong
+  {
+    font-weight: bold;
+  }
+  em
+  {
+    font-weight: normal;
+    font-style: italic !important;
+  }
+}
+
+// hotfixies
+// .apos-rich-text em
+// {
+//   font-style: normal;
+// }

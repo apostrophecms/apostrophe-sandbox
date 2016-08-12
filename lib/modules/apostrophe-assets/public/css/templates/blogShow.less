@@ -1,0 +1,37 @@
+.demo-blog-show-page
+{
+	.top {background-color: transparent; padding-bottom: 0;}
+	.demo-inner
+	{
+		position: absolute;
+		z-index: 1;
+		right: 0; left: 0;
+	}
+
+	@media screen and @narrow
+	{
+		.off-canvas-trigger
+		{
+			right: 5rem;
+			&:after{ color: @white;}
+		}
+		#a-toolbox
+		{
+			position: relative;
+			path, g
+			{
+				fill: @white;
+			}
+		}
+	}
+}
+
+body:not(.collapse-header).demo-blog-show-page{
+	@media screen and @narrow
+	{
+		.demo-inner
+		{
+			position: relative;
+		}
+	}
+}

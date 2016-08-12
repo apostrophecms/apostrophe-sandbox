@@ -1,0 +1,118 @@
+@font-face {
+  font-family: 'karla';
+  src: url('../fonts/karla-regular-webfont.eot');
+  src: url('../fonts/karla-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/karla-regular-webfont.woff') format('woff'),
+       url('../fonts/karla-regular-webfont.ttf') format('truetype'),
+       url('../fonts/karla-regular-webfont.svg#montserratbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'karla';
+  src: url('../fonts/karla-italic-webfont.eot');
+  src: url('../fonts/karla-italic-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/karla-italic-webfont.woff') format('woff'),
+       url('../fonts/karla-italic-webfont.ttf') format('truetype'),
+       url('../fonts/karla-italic-webfont.svg#montserratbold') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'karla';
+  src: url('../fonts/karla-bold-webfont.eot');
+  src: url('../fonts/karla-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/karla-bold-webfont.woff') format('woff'),
+       url('../fonts/karla-bold-webfont.ttf') format('truetype'),
+       url('../fonts/karla-bold-webfont.svg#montserratbold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'karla';
+  src: url('../fonts/karla-bolditalic-webfont.eot');
+  src: url('../fonts/karla-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/karla-bolditalic-webfont.woff') format('woff'),
+       url('../fonts/karla-bolditalic-webfont.ttf') format('truetype'),
+       url('../fonts/karla-bolditalic-webfont.svg#montserratbold') format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+
+*
+{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// utils
+
+.font-size(@rem)
+{
+  font-size: round(@rem * @root-font-size) * 1px;
+  font-size: @rem * 1rem;
+}
+
+.line-height(@rem)
+{
+  line-height: round(@rem * @root-font-size) * 1px;
+  line-height: @rem * 1rem;
+}
+
+// mixins
+
+.Karla() {
+  font-family: 'Karla', 'Helvetica', 'Arial', sans-serif;
+  font-weight: normal;
+}
+.Karla(@size) {
+  font-family: 'Karla', 'Helvetica', 'Arial', sans-serif;
+  font-weight: normal;
+  .font-size(@size);
+}
+
+//
+
+.KarlaItalic() {
+  font-family: 'Karla', 'Helvetica', 'Arial', sans-serif;
+  font-style: italic;
+}
+.KarlaItalic(@size) {
+  font-family: 'Karla', 'Helvetica', 'Arial', sans-serif;
+  font-style: italic;
+  .font-size(@size);
+}
+
+//
+
+.KarlaBold() {
+  font-family: 'Karla', 'Helvetica', 'Arial', sans-serif;
+  font-weight: bold;
+}
+.KarlaBold(@size) {
+  font-family: 'Karla', 'Helvetica', 'Arial', sans-serif;
+  font-weight: bold;
+  .font-size(@size);
+}
+
+//
+
+.KarlaBoldItalic() {
+  font-family: 'Karla', 'Helvetica', 'Arial', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+}
+.KarlaBoldItalic(@size) {
+  font-family: 'Karla', 'Helvetica', 'Arial', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  .font-size(@size);
+}
