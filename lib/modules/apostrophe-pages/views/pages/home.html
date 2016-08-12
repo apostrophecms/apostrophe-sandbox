@@ -1,7 +1,7 @@
 {% extends 'apostrophe-templates:layout.html' %}
 
 {% block bodyClass %}{{ super() }} home-page{% endblock %}
-{% block title %}Home{% endblock %}
+{% block title %}Apostrophe Sandbox: {{ data.page.title | e }}{% endblock %}
 
 {% block main %}
   <div class="block content">

@@ -1,5 +1,6 @@
 {% extends 'apostrophe-templates:layout.html' %}
 {% block bodyClass %}{{ super() }} default-page{% endblock %}
+{% block title %}Apostrophe Sandbox: {{ data.page.title | e }}{% endblock %}
 {% block headerMessage %}You are on the "Default Page" template of the Apostrophe demo site.{% endblock %}
 {% block upperClass %}bg-gold{% endblock %}
 

@@ -2,7 +2,11 @@
 {% import 'macros/nav.html' as nav %}
 {% import 'global/svg/toolbox.html' as tool %}
 
+
 {% block beforeMain %}
+  <div class="off-canvas-container">
+    {{ nav.nav(data, {classes: 'off-canvas-nav hide-desktop', logo: true, showChildren: true}) }}
+  </div>
   <div class="block top">
       <div class="inner demo-inner">
         <header>
