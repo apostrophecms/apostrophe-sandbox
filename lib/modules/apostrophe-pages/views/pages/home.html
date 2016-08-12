@@ -1,5 +1,6 @@
 {% extends 'apostrophe-templates:layout.html' %}
 
+{% block bodyClass %}{{ super() }} home-page{% endblock %}
 {% block title %}Home{% endblock %}
 
 {% block main %}
@@ -8,7 +9,11 @@
       <div class="demo-pageheader">
         <img class="demo-apos-lockup pageheader-logo" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">
         {{ apos.singleton(data.page, 'homepageText', 'apostrophe-rich-text', {
-            toolbar: [ 'Bold', 'Italic' ]
+          toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+          styles: [
+            { name: 'Title', element: 'h3' },
+            { name: 'Paragraph', element: 'p' }
+          ]
         }) }}
       </div>
     </div>
@@ -20,10 +25,18 @@
           widgets: {
            'apostrophe-rich-text': {
               toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
-              styles:  [ 
-                { name: 'p', element: 'p', attributes: { 'class': 'sb-richText-p'} }
+              styles: [
+                { name: 'Title', element: 'h3' },
+                { value: 'h5', label: 'Subtitle' },
+                { name: 'Paragraph', element: 'p' }
               ]
-            }
+            },
+            'apostrophe-images': {
+              minSize: [ 700, 350 ],
+              aspectRatio: [ 2, 1 ],
+              size: 'full'
+            },
+            'apostrophe-video': {}
           }
         }) }}
       </div>
@@ -44,12 +57,18 @@
         widgets: {
          'apostrophe-rich-text': {
             toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
-            styles:  [ 
-              { name: 'Text', element: 'p', attributes: { 'class': 'sb-richText-p'} },
-              { name: 'Title', element: 'h1', attributes: { 'class': 'sb-richText-h1'} },
-              { name: 'Subtitle', element: 'h3', attributes: { 'class': 'sb-richText-h3'} }
+            styles: [
+              { name: 'Title', element: 'h3' },
+              { value: 'h5', label: 'Subtitle' },
+              { name: 'Paragraph', element: 'p' }
             ]
-          }
+          },
+          'apostrophe-images': {
+            minSize: [ 700, 350 ],
+            aspectRatio: [ 2, 1 ],
+            size: 'full'
+          },
+          'apostrophe-video': {}
         }
       }) }}
     </div>

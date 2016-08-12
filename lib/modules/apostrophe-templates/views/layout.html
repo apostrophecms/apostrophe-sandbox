@@ -1,4 +1,7 @@
 {% extends data.outerLayout %}
+{% import 'macros/nav.html' as nav %}
+{% import 'global/svg/toolbox.html' as tool %}
+
 
 {% block beforeMain %}
   <div class="block top">
@@ -9,10 +12,10 @@
             <p>Content in the demo can be edited in context by clicking on the pencil of each content type. Feel free to mess anything up, this page will automatically refresh every hour restoring the original content. If anything seems strange, someone else using the demo site has likely made a change. Check out <a href="http://apostrophenow.org" target="blank">apostrophenow.org</a> for more information.</p>
           </div>
           {# TODO CREATE NAV MACROS #}
-          {# {{ nav(page, {classes: 'hide-mobile'}) }} #}
+          {{ nav.nav(page, {classes: 'hide-mobile'}) }}
           <a href="#" class="off-canvas-trigger hide-desktop">
             <svg class="a-toolbox">
-              <use xlink:href="#a-toolbox" />
+              {{ tool.icon() }}
             </svg>
           </a>
 
@@ -30,4 +33,26 @@
 {% block main %}
   {% block mainContent %}
   {% endblock %}
+{% endblock %}
+
+{% block afterMain %}
+  <footer class="block footer">
+    <div class="inner">
+      {% block footerContent %}
+        <div class="inline-middle width-50">
+          Apostrophe is led by <a href="http://punkave.com">P'unk Avenue</a> in Philadelphia, PA.
+        </div>{#
+      #}<div class="inline-middle width-50 align-right">
+          <a class="inline-top footer-logo" href="http://punkave.com">
+            <img src="/images/demo_logo_punk.png" class="" alt="P'unk Avenue" width="150" height="32" />
+          </a>
+        </div>
+      {% endblock %}
+    </div>
+    <div class="inner">
+      <div class="linode-credit">
+        Generously hosted by <a href="http://linode.com">linode</a>.
+      </div>
+    </div>
+  </footer>
 {% endblock %}

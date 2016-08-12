@@ -6,6 +6,11 @@ var apos = require('apostrophe')({
   modules: {
     
     'apostrophe-templates': { viewsFolderFallback: __dirname + '/views' },
+    'apostrophe-express': {
+      session: {
+        secret: 'ksajhfkdsfha43fahif3a8asdfkyfsd7f'
+      }
+    },
     
     // This configures the apostrophe-users module to add an admin-level
     // group by default
