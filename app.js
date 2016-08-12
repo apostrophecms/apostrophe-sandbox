@@ -1,11 +1,12 @@
 var apos = require('apostrophe')({
-  shortName: 'testProject',
-  title: 'testProject',
+  shortName: 'apostrophe-sandbox-2-0-0',
+  title: 'Apostrophe Sandbox 2.0.0',
 
   // These are the modules we want to bring into the project.
   modules: {
     // This configures the apostrophe-users module to add an admin-level
     // group by default
+    'apostrophe-templates': { viewsFolderFallback: __dirname + '/views' },
     'apostrophe-users': {
       groups: [
         {
