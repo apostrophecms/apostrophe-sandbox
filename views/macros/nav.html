@@ -1,4 +1,4 @@
-{% macro nav(page, options) %}
+{% macro nav(data, options) %}
 	<nav class="demo-nav{% if options.classes%} {{options.classes}}{% endif%}">
 		{% if options.logo %}
 			<div class="demo-nav-logo">
@@ -10,15 +10,15 @@
 		{% endif %}
 	  <ul>
 	    <li class="nav-item">
-	    	{% if not page.ancestors.length %}
-	    		<a href="/" class="active">{{ page.title }}</a>
+	    	{% if not data.page._ancestors.length %}
+	    		<a href="{{ data.home._url }}" class="active">{{ data.home.title }}</a>
 	    	{% else %}
-	      	<a href="{{ page.ancestors[0].url }}" {% if page.slug == '/' %}class="active"{% endif %}>{{ page.ancestors[0].title }}</a>
+	      	<a href="{{ data.home._url }}" {% if page.slug == '/' %}class="active"{% endif %}>{{ data.home.title }}</a>
 	      {% endif %}
 	    </li>
-	    {% for item in page.tabs %}
+	    {% for tab in data.home._children %}
 	      <li class="nav-item">
-	        <a href="{{ item.url }}" {% if page.slug == item.slug %}class="active"{% endif %}>{{ item.title }}</a>
+	        <a href="{{ tab._url }}" class="{% if tab._id == data.page._id %}active{% endif %}">{{ tab.title }}</a>
 	      </li>
 	    {% endfor %}
 	  </ul>

@@ -1,0 +1,74 @@
+{% extends 'apostrophe-templates:layout.html' %}
+{% block bodyClass %}{{ super() }} default-page{% endblock %}
+{% block headerMessage %}You are on the "Default Page" template of the Apostrophe demo site.{% endblock %}
+{% block upperClass %}bg-gold{% endblock %}
+
+{% block headerContent %}
+  <div class="demo-pageheader">
+    <div class="column column--vertical-center width-50">
+      <h3 class="hide-desktop page-title">{{data.page.title}}</h3>
+      <ul class="subnav-items hide-desktop">
+        {% for ancestor in data.page._ancestors %}
+          <li class="subnav-item">
+            <a href="{{ ancestor._url }}">{{ ancestor.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      {{ apos.singleton(data.page, 'pageHeader', 'apostrophe-rich-text', {
+        toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+        styles: [
+          { name: 'Title', element: 'h3' },
+          { name: 'Subtitle', element: 'h4' }
+        ]
+      }) }}
+      {#<h2 class="pageheader-heading">The First Anaste.</h2>
+      <h4 class="pageheader-subheading">The garage is, in it's own way, a land.</h4>#}
+    </div>{#
+  #}<div class="column column--vertical-center width-50 align-right">
+      <div class="demo-image-sticker">
+        {{ apos.singleton(data.page, 'sticker', 'apostrophe-images', { limit: 1, aspectRatio: [1, 1] }) }}
+        <img class="demo-apos-shadow image-sticker" src="/images/demo_logo_apos_shadow.png" alt="Apostrophe">
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block mainContent %}
+  <div class="block content">
+    <div class="inner">
+      <div class="demo-subnav inline-top width-25">
+        {% if data.page._ancestors[1].type == 'default' %}
+          <a class="subnav-parent" href="{{ data.page._ancestors[1]._url }}">← {{ data.page._ancestors[1].title }}</a>
+        {% endif %}
+        <div class="subnav-page-title hide-mobile">{{ data.page.title }}</div>
+        <ul class="subnav-items hide-mobile">
+          {% for child in data.page._children %}
+            <li class="subnav-item">
+              <a href="{{ child._url }}">{{ child.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>{#
+    #}<div class="demo-main inline-top width-75">
+      {{ apos.area(data.page, 'main', {
+        widgets: {
+         'apostrophe-rich-text': {
+            toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+            styles: [
+              { name: 'Title', element: 'h3' },
+              { value: 'h5', label: 'Subtitle' },
+              { name: 'Paragraph', element: 'p' }
+            ]
+          },
+          'apostrophe-images': {
+            minSize: [ 700, 350 ],
+            aspectRatio: [ 2, 1 ],
+            size: 'full'
+          },
+          'apostrophe-video': {}
+        }
+      }) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

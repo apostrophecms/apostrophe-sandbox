@@ -2,7 +2,6 @@
 {% import 'macros/nav.html' as nav %}
 {% import 'global/svg/toolbox.html' as tool %}
 
-
 {% block beforeMain %}
   <div class="block top">
       <div class="inner demo-inner">
@@ -12,7 +11,7 @@
             <p>Content in the demo can be edited in context by clicking on the pencil of each content type. Feel free to mess anything up, this page will automatically refresh every hour restoring the original content. If anything seems strange, someone else using the demo site has likely made a change. Check out <a href="http://apostrophenow.org" target="blank">apostrophenow.org</a> for more information.</p>
           </div>
           {# TODO CREATE NAV MACROS #}
-          {{ nav.nav(page, {classes: 'hide-mobile'}) }}
+          {{ nav.nav(data, {classes: 'hide-mobile'}) }}
           <a href="#" class="off-canvas-trigger hide-desktop">
             <svg class="a-toolbox">
               {{ tool.icon() }}
