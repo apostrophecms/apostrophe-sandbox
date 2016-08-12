@@ -1,11 +1,57 @@
 {% extends data.outerLayout %}
 
 {% block title %}Home{% endblock %}
+
 {% block main %}
-  <div class="main-content">
-    <h3>Hello world!
-      <a class="login-link" href="/login">Login</a>
-    </h3>
-    <p>This is a very barebones Apostrophe project. Now, get to work and make a real website!</p>
+  <div class="block content">
+    <div class="inner">
+      <div class="demo-pageheader">
+        <img class="demo-apos-lockup pageheader-logo" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">
+        {{ apos.singleton(data.page, 'homepageText', 'apostrophe-rich-text', {
+            toolbar: [ 'Bold', 'Italic' ]
+        }) }}
+      </div>
+    </div>
+    <div class="demo-workspaces-marquee"></div>
+    <div class="block content--bottom">
+      <div class="inner demo-pageheader">
+        {# This Area needs Slideshow, and Video Widgets! #}
+        {{ apos.area(data.page, 'main', {
+          widgets: {
+           'apostrophe-rich-text': {
+              toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+              styles:  [ 
+                { name: 'p', element: 'p', attributes: { 'class': 'sb-richText-p'} }
+              ]
+            }
+          }
+        }) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="block bg-gray block--5">
+    <div class="inner">
+      {# TODO Create Blog Widget #}
+      {# {{ aposSingleton(page, 'blogWidget', 'blog', { limit: 3 }) }} #}
+    </div>
+  </div>
+
+  <div class="block content--bottom">
+    <div class="inner demo-pageheader">
+      {# This Area needs Slideshow, and Video Widgets! #}
+      {{ apos.area(data.page, 'mainBottom', {
+        widgets: {
+         'apostrophe-rich-text': {
+            toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+            styles:  [ 
+              { name: 'Text', element: 'p', attributes: { 'class': 'sb-richText-p'} },
+              { name: 'Title', element: 'h1', attributes: { 'class': 'sb-richText-h1'} },
+              { name: 'Subtitle', element: 'h3', attributes: { 'class': 'sb-richText-h3'} }
+            ]
+          }
+        }
+      }) }}
+    </div>
   </div>
 {% endblock %}
