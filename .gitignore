@@ -14,3 +14,4 @@ public/css/master-*.less
 .jshintrc
 public/js/_site-compiled.js
 deployment/settings.staging
+scripts/sync-up

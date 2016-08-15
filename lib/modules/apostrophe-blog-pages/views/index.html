@@ -1,0 +1,49 @@
+{% extends 'apostrophe-templates:layout.html' %}
+{% import 'macros/blogMacros.html' as blog %}
+{% block bodyClass %} demo-blog-index-page{% endblock %}
+{% block headerMessage %}You are on the "Blog Index" template of the Apostrophe demo site.{% endblock %}
+{% block upperClass %}bg-gold{% endblock %}
+{% block title %}Apostrophe Sandbox: {{ data.page.title | e }}{% endblock %}
+
+{% block headerContent %}
+<div class="demo-pageheader">
+  <div class="column column--vertical-center width-50">
+    {{ apos.singleton(data.page, 'pageHeader', 'apostrophe-rich-text', {
+      toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+      styles: [
+        { name: 'Title', element: 'h3' },
+        { name: 'Subtitle', element: 'h4' }
+      ]
+    }) }}
+  </div>{#
+    #}<div class="column column--vertical-center width-50 align-right">
+    <div class="demo-image-sticker">
+      {{ apos.singleton(data.page, 'sticker', 'apostrophe-images', { limit: 1, aspectRatio: [1, 1] }) }}
+      <img class="demo-apos-shadow image-sticker" src="/images/demo_logo_apos_shadow.png" alt="Apostrophe">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block mainContent %}
+
+<div class="block content">
+  <div class="inner">
+    {# {% if data.page._edit %}
+      <div data-new-blog-post>
+        <div class="apos-ui-container">
+          <a class="apos-control apos-button" href="#"><i class="icon-plus"></i> New Blog Post</a>
+      </div>
+      </div>
+    {% endif %} #}
+    {# TODO RENDER BLOG LISTINGS!! #}
+     {{ blog.renderBlogListings(data.pieces) }}
+    
+    {# {%- if ((pager.page > 1) or (pager.total > 1)) -%} #}
+      {# <div class="demo-pager align-right">{{ renderPager(pager, page.slug) }}</div> #}
+    {# {%- endif -%} #}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,6 +1,8 @@
 var apos = require('apostrophe')({
-  shortName: 'apostrophe-sandbox-2-0-0',
+  shortName: 'apostrophe-sandbox',
   title: 'Apostrophe Sandbox 2.0.0',
+  
+  bundles: ['apostrophe-blog'],
 
   // These are the modules we want to bring into the project.
   modules: {
@@ -12,15 +14,15 @@ var apos = require('apostrophe')({
       }
     },
     
-    // This configures the apostrophe-users module to add an admin-level
-    // group by default
+    // Standard Apostrophe Modules
+    'apostrophe-assets': {},
+    'apostrophe-blog': {},
+    'apostrophe-blog-pages': {},
     'apostrophe-users': {},
     
-    // This configures the apostrophe-assets module to push a 'site.less'
-    // stylesheet by default
-    'apostrophe-assets': {}
+    // Apostrophe Sandbox (as-) specific modules
+    'as-helpers': {}
     
-    // Add your modules and their respective configuration here!
   }
 
 });

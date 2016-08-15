@@ -4,6 +4,7 @@
 
 
 {% block beforeMain %}
+<script>console.log({{ data | json }});</script>
   <div class="off-canvas-container">
     {{ nav.nav(data, {classes: 'off-canvas-nav hide-desktop', logo: true, showChildren: true}) }}
   </div>

@@ -1,0 +1,55 @@
+{%- macro renderBlogListings(pieces, options) -%}
+  {%- if pieces -%}
+    <ul class="blog-listings">
+      {%- for piece in pieces -%}
+        {{ renderBlogListing(piece) }}
+      {%- endfor -%}
+    </ul>
+  {%- else -%}
+    <h2>{{ __('There are no blog posts yet.') }}</h2>
+  {%- endif -%}
+{%- endmacro -%}
+
+{%- macro renderBlogListing(piece) -%}
+{% set image = apos.images.first(piece) or null %}
+  <li class="column width-100 demo-blog-listing">
+    <div class="column width-33 blog-listing-image">
+      <div class="blog-card-head" {% if image %}style="background-image:url({{ apos.attachments.url(image) }})"{% endif %}>
+        {%- if image -%}
+          <img src="{{ apos.attachments.url(image) }}">
+        {%- endif -%}
+      </div>
+      <span class="sticker sticker--overlap">{{ piece.publishedAt | date('MMM DD, YYYY' ) }}</span>
+    </div>{#
+      #}<div class="column width-66 blog-listing-info">
+      <h5 class="blog-listing-title"><a href="{{ piece._url }}">{{ piece.title | e }}</a></h5>
+      {% if piece.authorId %}
+        <h6 class="blog-listing-author">by {{ piece._author.title }}</h6>
+      {% endif %}
+      <div class="blog-listing-excerpt">{{ apos.sandbox.areaToPlainText(piece, 'main') | truncate(200) }}</div>
+      {# <div class="blog-listing-excerpt">{{ apos.singleton(piece, 'main', 'apostrophe-rich-text', { edit: false, truncate: 50 } ) }}</div> #}
+      <a href="{{ piece._url }}" alt="Read More">Read More</a>
+    </div>
+  </li>
+{%- endmacro -%}
+
+{%- macro blogCard(piece) -%}
+  <div class="column width-30">
+    <div class="demo-blog-card">
+      <div class="blog-card-head">
+        {{ aposSingleton(piece, 'image', 'slideshow', { limit: 1, aspectRatio: [324, 162], noHeight: true, edit: false, size: 'one-third' }) }}
+        <div class="blog-card-title-container">
+          <a href="{{ piece.url }}"><h6 class="blog-card-title">{{ piece.title }}</h6></a>
+          {% if piece.authorId %}
+            <span class="blog-card-author">by {{ piece._author.title }}</span>
+          {% endif %}
+        </div>
+      </div>
+      <div class="blog-card-excerpt-container">
+        <p class="blog-card-excerpt">{{ aposAreaPlaintext(data.piece, 'main', { truncate: 300 }) }}</p>
+        <a href="{{ piece.url }}">Read More</a>
+      </div>
+    </div>
+    <span class="sticker sticker--overlap">{{ piece.publishedAt | date('MMM Do, YYYY') }}</span>
+  </div>
+{%- endmacro -%}

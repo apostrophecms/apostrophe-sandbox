@@ -13,6 +13,10 @@
   "author": "P'unk Avenue",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "punkave/apostrophe#unstable"
+    "apostrophe": "punkave/apostrophe#unstable",
+    "moment": "^2.14.1",
+    "apostrophe-blog": "punkave/apostrophe-blog#unstable",
+    "html2plaintext": "^1.0.1",
+    "lodash": "^3.1.0"
   }
 }

@@ -1,0 +1,83 @@
+{% extends 'apostrophe-templates:layout.html' %}
+
+{% block bodyClass %}{{ super() }} demo-blog-show-page{% endblock %}
+
+{# Article specific title tag, for Facebook, SEO, etc. #}
+{%- block title -%}
+  {{ data.page.title | e }} &ndash; {{ data.piece.title | e }}
+{%- endblock -%}
+
+{% block upperClass %}demo-blog-header-background{% endblock %}
+{% block headerBackground %}
+{% set image = data.page.image.items[0]._items[0] %}
+  <div class="block demo-blog-header-block">
+<!--   <div class="block demo-blog-header-block" {% if image %}style="background-image:url({{ aposFilePath(image) }})" {% endif %}>
+ --> 
+    {{ apos.singleton(data.piece, 'slideshow', 'apostrophe-images', { limit: 1 }) }}
+    <div class="demo-blog-header-background-slideshow" >
+      <div class="demo-blog-header inner">
+        <div class="demo-blog-header-wrapper">
+          <div class="sticker">{{ data.piece.publishedAt | date('MMM Do, YYYY') }}</div>
+          <h3>{{ data.piece.title }}</h3>
+          {% if data.piece.authorId %}
+            <h5>by {{ data.piece._author.title }}</h5>
+          {% endif %}
+        </div>
+
+      </div>
+      <div class="demo-blog-header-slideshow-control">
+
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block headerContent %}{% endblock %}
+
+{% block mainContent %}
+  <div class="block">
+    <div class="inner">
+      <div class="demo-blog-gutter">
+        <div class="demo-blog-author">
+          <div class="demo-blog-author-image">
+            {# {{ aposSingleton(data.piece._author, 'thumbnail', 'slideshow', { noHeight: true, edit: false}) }} #}
+          </div>
+          <div class="demo-blog-author-bio">
+            {% if data.page.authorId %}
+                {{ apos.area(data.page._author, 'body', {
+                  widgets: {
+                   'apostrophe-rich-text': {}
+                 }
+               }) }}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="demo-blog-content">
+        
+        {{ apos.area(data.piece, 'main', {
+          widgets: {
+            'apostrophe-rich-text': {
+               toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+               styles: [
+                 { name: 'Title', element: 'h3' },
+                 { value: 'h5', label: 'Subtitle' },
+                 { name: 'Paragraph', element: 'p' }
+               ]
+             },
+            'apostrophe-images': {
+              minSize: [ 700, 350 ],
+              aspectRatio: [ 2, 1 ],
+              size: 'full'
+            },
+            'apostrophe-video': {}
+          }
+        }) }}
+        
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
