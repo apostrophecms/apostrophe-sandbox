@@ -1,0 +1,5 @@
+{% import 'macros/blogMacros.html' as blog %}
+
+{%- for piece in data.widget._pieces -%}
+  {{ blog.blogCard(piece) }}
+{%- endfor -%}

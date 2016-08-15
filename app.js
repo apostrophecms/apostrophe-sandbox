@@ -18,6 +18,7 @@ var apos = require('apostrophe')({
     'apostrophe-assets': {},
     'apostrophe-blog': {},
     'apostrophe-blog-pages': {},
+    'apostrophe-blog-widgets': {},
     'apostrophe-users': {},
     
     // Apostrophe Sandbox (as-) specific modules
