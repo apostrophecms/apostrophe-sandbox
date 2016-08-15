@@ -42,11 +42,13 @@
       <div class="demo-blog-gutter">
         <div class="demo-blog-author">
           <div class="demo-blog-author-image">
-            {# {{ aposSingleton(data.piece._author, 'thumbnail', 'slideshow', { noHeight: true, edit: false}) }} #}
+            {% if data.piece._author.thumbnail.items.length %}
+              {{ apos.singleton(data.piece._author, 'thumbnail', 'apostrophe-images', { noHeight: true, edit: false}) }}
+            {% endif %}
           </div>
           <div class="demo-blog-author-bio">
-            {% if data.page.authorId %}
-                {{ apos.area(data.page._author, 'body', {
+            {% if data.piece._author %}
+                {{ apos.area(data.piece._author, 'body', {
                   widgets: {
                    'apostrophe-rich-text': {}
                  }
