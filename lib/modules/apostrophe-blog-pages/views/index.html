@@ -5,6 +5,8 @@
 {% block upperClass %}bg-gold{% endblock %}
 {% block title %}Apostrophe Sandbox: {{ data.page.title | e }}{% endblock %}
 
+{% import 'apostrophe-pager:macros.html' as pager %}
+
 {% block headerContent %}
 <div class="demo-pageheader">
   <div class="column column--vertical-center width-50">
@@ -38,10 +40,8 @@
       </div>
     {% endif %} #}
      {{ blog.renderBlogListings(data.pieces) }}
-    
-    {# {%- if ((pager.page > 1) or (pager.total > 1)) -%} #}
-      {# <div class="demo-pager align-right">{{ renderPager(pager, page.slug) }}</div> #}
-    {# {%- endif -%} #}
+     
+     <div class="demo-pager align-right">{{ pager.render({ page: data.currentPage, total: data.totalPages }, '#') }}</div> 
   </div>
 </div>
 
