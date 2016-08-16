@@ -2,7 +2,7 @@
 
 # Sync script for our master copy of the sandbox
 
-TARGET="production"
+TARGET="master"
 
 read -p "THIS WILL CRUSH THE SITE'S MASTER CONTENT. Are you sure? " -n 1 -r
 echo
