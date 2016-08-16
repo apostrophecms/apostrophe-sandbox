@@ -22,7 +22,8 @@ var apos = require('apostrophe')({
     'apostrophe-users': {},
     
     // Apostrophe Sandbox (as-) specific modules
-    'as-helpers': {}
+    'as-helpers': {},
+    'as-two-column-block-widgets': {}
   }
 
 });

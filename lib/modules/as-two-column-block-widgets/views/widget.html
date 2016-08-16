@@ -1,0 +1,41 @@
+<div class="as-two-column-block">
+  <div class="column width-60">
+    {{ apos.area(data.widget, 'left', {
+      widgets: {
+       'apostrophe-rich-text': {
+          toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+          styles: [
+            { name: 'Title', element: 'h3' },
+            { value: 'h5', label: 'Subtitle' },
+            { name: 'Paragraph', element: 'p' }
+          ]
+        },
+        'apostrophe-images': {
+          minSize: [ 700, 350 ],
+          aspectRatio: [ 2, 1 ],
+          size: 'full'
+        },
+        'apostrophe-video': {}
+      }
+    }) }}
+  </div>
+  <div class="column width-40">
+    {{ apos.area(data.widget, 'right', {
+      widgets: {
+       'apostrophe-rich-text': {
+          toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+          styles: [
+            { name: 'Title', element: 'h3' },
+            { value: 'h5', label: 'Subtitle' },
+            { name: 'Paragraph', element: 'p' }
+          ]
+        },
+        'apostrophe-images': {
+          minSize: [ 700, 350 ],
+          aspectRatio: [ 2, 1 ],
+          size: 'full'
+        }
+      }
+    }) }}
+  </div>
+</div>

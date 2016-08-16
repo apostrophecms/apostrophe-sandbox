@@ -23,7 +23,8 @@
         {# This Area needs Slideshow, and Video Widgets! #}
         {{ apos.area(data.page, 'main', {
           widgets: {
-           'apostrophe-rich-text': {
+            'as-two-column-block': {},
+            'apostrophe-rich-text': {
               toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
               styles: [
                 { name: 'Title', element: 'h3' },
@@ -37,7 +38,7 @@
               size: 'full'
             },
             'apostrophe-video': {}
-          }
+            }
         }) }}
       </div>
     </div>
