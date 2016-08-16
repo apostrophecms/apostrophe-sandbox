@@ -1,5 +1,5 @@
 var apos = require('apostrophe')({
-  shortName: 'apostrophe-sandbox',
+  shortName: 'apostrophesandbox',
   title: 'Apostrophe Sandbox 2.0.0',
   
   bundles: ['apostrophe-blog'],
@@ -23,7 +23,6 @@ var apos = require('apostrophe')({
     
     // Apostrophe Sandbox (as-) specific modules
     'as-helpers': {}
-    
   }
 
 });
