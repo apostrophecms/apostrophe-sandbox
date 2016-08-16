@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Sync script for our master copy of the sandbox
+
+TARGET="production"
+
+read -p "THIS WILL CRUSH THE SITE'S MASTER CONTENT. Are you sure? " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
+
+source deployment/settings || exit 1
+source "deployment/settings.$TARGET" || exit 1
+
+dbName=apostrophesandbox
+
+projectName=$PROJECT
+
+remoteDbName=new-demo-master
+
+#Enter the SSH username/url for the remote server.
+remoteSSH=$USER@$SERVER
+
+echo "Syncing MongoDB"
+mongodump -d $dbName -o /tmp/mongodump.$dbName &&
+rsync -av  /tmp/mongodump.$dbName/ $remoteSSH:/tmp/mongodump.$dbName  &&
+rm -rf /tmp/mongodump.$dbName &&
+echo "Restoring"
+ssh $remoteSSH mongorestore --drop -d $remoteDbName /tmp/mongodump.$dbName/$dbName &&
+echo "Syncing Files" &&
+rsync -av --delete ./public/uploads/ $remoteSSH:/opt/stagecoach/apps/$projectName/uploads &&
+echo "Synced up to $TARGET"

@@ -1,19 +1,13 @@
 #!/bin/sh
 
-echo "FOR STAGING ONLY ON THIS DEMO SITE."
-
-TARGET="$1"
-if [ -z "$TARGET" ]; then
-  echo "Usage: ./scripts/sync-down production"
-  echo "(or as appropriate)"
-  exit 1
-fi
+TARGET="production"
 
 source deployment/settings || exit 1
 source "deployment/settings.$TARGET" || exit 1
 
-#Enter the Mongo DB name (should be same locally and remotely).
-dbName=$PROJECT
+dbName=apostrophesandbox
+
+remoteDbName=new-demo-master
 
 #Enter the Project name (should be what you called it for stagecoach).
 projectName=$PROJECT
@@ -22,7 +16,7 @@ projectName=$PROJECT
 remoteSSH=$USER@$SERVER
 
 echo "Syncing MongoDB"
-ssh $remoteSSH mongodump -d $dbName -o /tmp/mongodump.$dbName &&
+ssh $remoteSSH mongodump -d $remoteDbName -o /tmp/mongodump.$dbName &&
 rsync -av $remoteSSH:/tmp/mongodump.$dbName/ /tmp/mongodump.$dbName  &&
 ssh $remoteSSH rm -rf /tmp/mongodump.$dbName &&
 mongorestore --drop -d $dbName /tmp/mongodump.$dbName/$dbName &&
