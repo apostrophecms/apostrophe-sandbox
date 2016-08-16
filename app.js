@@ -1,6 +1,7 @@
 var apos = require('apostrophe')({
   shortName: 'apostrophesandbox',
   title: 'Apostrophe Sandbox 2.0.0',
+  demo: true,
   
   bundles: ['apostrophe-blog'],
 
