@@ -143,3 +143,36 @@ header { position: relative; }
   background-color: @heavy-gold;
   padding-bottom: 2rem;
 }
+
+.demo-header
+{
+  h5
+  {
+    display: inline-block;
+  }
+  .demo-login-button
+  {
+    top: -12px;
+    right: 0px;
+    padding: 30px;
+    text-align: right;
+    position: absolute;
+    @media (max-width: 570px)
+    {
+      display: none;
+    }
+    &:hover
+    {
+      a:hover
+      {
+        border-bottom: 1px solid white;
+        padding-bottom: 3px;
+      }
+    }
+    a 
+    {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
