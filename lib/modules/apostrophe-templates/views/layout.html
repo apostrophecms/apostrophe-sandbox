@@ -28,8 +28,10 @@
             {%- if not data.user and not data.user._permissions.admin -%}
               <h5 class="demo-login-button"><a href="/login"><span>&#xf090;</span>Login</a></h5>
             {%- endif -%}
-            <p>CLICK ON TEXT BELOW TO EDIT IT. Also try the "+" signs that appear when you hover over the page.</p>
-            <p>Content in the demo can be edited in context by clicking on each content type. Feel free to mess anything up, this page will automatically refresh every hour restoring the original content. If anything seems strange, someone else using the demo site has likely made a change. <!-- Check out <a href="http://apostrophenow.org" target="blank">apostrophenow.org</a> for more information. --></p>
+            <p><strong>Just click on text to edit it.</strong> There is no save button because <strong>your edits are saved automatically.</strong></p>
+            <p>To add images, slideshow and more <strong>click the "+" icons</strong> that appear when you hover the mouse over the page.</p>
+            <p>Be sure to visit the "blog" and "default" pages, and try clicking "Page Menu" to create new subpages.</p>
+            <p>Have fun!</p>
           </div>
           {{ nav.nav(data, {classes: 'hide-mobile'}) }}
           <a href="#" class="off-canvas-trigger hide-desktop">
