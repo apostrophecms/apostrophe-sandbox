@@ -21,10 +21,15 @@ var apos = require('apostrophe')({
     'apostrophe-blog-pages': {},
     'apostrophe-blog-widgets': {},
     'apostrophe-users': {},
-    
+
     // Apostrophe Sandbox (as-) specific modules
     'as-helpers': {},
-    'as-two-column-block-widgets': {}
+    'as-two-column-block-widgets': {},
+
+    // REMOVE ME IMMEDIATELY if you are not running a public demo
+    // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
+    // 'demo-autologin': {},
+
   }
 
 });

@@ -8,12 +8,23 @@
     <div class="inner">
       <div class="demo-pageheader">
         <img class="demo-apos-lockup pageheader-logo" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">
-        {{ apos.singleton(data.page, 'homepageText', 'apostrophe-rich-text', {
-          toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
-          styles: [
-            { name: 'Title', element: 'h3' },
-            { name: 'Paragraph', element: 'p' }
-          ]
+        {# This Area needs Slideshow, and Video Widgets! #}
+        {{ apos.area(data.page, 'homepageText', {
+          widgets: {
+            'apostrophe-rich-text': {
+              toolbar: [ 'Styles', 'Bold', 'Italic', 'Blockquote', 'Link', 'Anchor', 'Unlink', 'BulletedList' ],
+              styles: [
+                { name: 'Title', element: 'h3' },
+                { name: 'Paragraph', element: 'p' }
+              ]
+            },
+            'apostrophe-images': {
+              minSize: [ 700, 350 ],
+              aspectRatio: [ 2, 1 ],
+              size: 'full'
+            },
+            'apostrophe-video': {}
+            }
         }) }}
       </div>
     </div>
