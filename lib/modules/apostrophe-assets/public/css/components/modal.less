@@ -1,0 +1,48 @@
+.demo-modal
+{
+	background: rgba(102,102,255,0.60);
+	transition: all 0.3s ease;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+}
+
+.demo-modal-content
+{
+	padding: 60px;
+	background: white;
+	text-align: center;
+	max-width: 700px;
+  margin: 30vh auto;
+
+  h4, img
+  {
+  	margin-bottom: 10px;
+  }
+
+  p 
+  {
+  	margin-bottom: 15px;
+  }
+
+  button
+  {
+  	border: 0;
+  	background-color: @green;
+  	color: white;
+  	padding: 10px 15px;
+  	font-size: 18px;
+    padding: 20px 50px;
+    font-weight: 700;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+    &:hover
+    {
+    	cursor: pointer;
+    	background-color: darken(@green, 10%);
+    }
+  }
+}
