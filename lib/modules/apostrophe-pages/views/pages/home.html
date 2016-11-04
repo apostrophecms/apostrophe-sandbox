@@ -8,7 +8,7 @@
     <div class="inner">
       <div class="demo-pageheader">
         <img class="demo-apos-lockup pageheader-logo" src="/images/demo_logo_apos_lockup.png" alt="Apostrophe">
-        {# This Area needs Slideshow, and Video Widgets! #}
+         
         {{ apos.area(data.page, 'homepageText', {
           widgets: {
             'apostrophe-rich-text': {
@@ -31,8 +31,8 @@
     <div class="demo-workspaces-marquee"></div>
     <div class="block content--bottom">
       <div class="inner demo-pageheader">
-        {# This Area needs Slideshow, and Video Widgets! #}
         {{ apos.area(data.page, 'main', {
+          blockLevelControls: true,
           widgets: {
             'as-two-column-block': {},
             'apostrophe-rich-text': {
@@ -57,14 +57,12 @@
 
   <div class="block bg-gray block--5">
     <div class="inner">
-      {# TODO Create Blog Widget #}
        {{ apos.singleton(data.page, 'blogWidget', 'apostrophe-blog' ) }} 
     </div>
   </div>
 
   <div class="block content--bottom">
     <div class="inner demo-pageheader">
-      {# This Area needs Slideshow, and Video Widgets! #}
       {{ apos.area(data.page, 'mainBottom', {
         widgets: {
          'apostrophe-rich-text': {
