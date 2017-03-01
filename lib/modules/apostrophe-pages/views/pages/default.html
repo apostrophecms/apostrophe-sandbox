@@ -51,6 +51,18 @@
         </ul>
       </div>{#
     #}<div class="demo-main inline-top width-75">
+
+      <p>Test</p>
+
+      {% if data.page._edit %} 
+      {{ apos.singleton(data.page, 'numberOfReviews', 'apostrophe-rich-text', { toolbar: ['Bold', 'Italic', 'Subscript', 'Superscript', 'Link', 'Unlink'] }) }} 
+      {% else %} 
+      {{ apos.areas.richText(data.page.numberOfReviews, { delimiter: ',' }) }} 
+      {% endif %}
+
+      </a>
+      <p>End Test</p>
+
       {{ apos.area(data.page, 'main', {
         widgets: {
          'apostrophe-rich-text': {
