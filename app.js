@@ -29,7 +29,47 @@ var apos = require('apostrophe')({
     // REMOVE ME IMMEDIATELY if you are not running a public demo
     // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
     'demo-autologin': {},
-
+    
+    'apostrophe-workflow': {
+      locales: [
+        {
+          name: 'default',
+          children: [
+            {
+              name: 'eu',
+              children: [
+                {
+                  name: 'fr'
+                },
+                {
+                  name: 'ch',
+                  children: [
+                    {
+                      name: 'ch-fr'
+                    },
+                    {
+                      name: 'ch-it'
+                    },
+                    {
+                      name: 'ch-de'
+                    },
+                  ]
+                }
+              ]
+            },
+            {
+              name: 'na',
+              children: [
+                {
+                  name: 'us'
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      defaultLocale: 'default'
+    }
   }
 
 });
