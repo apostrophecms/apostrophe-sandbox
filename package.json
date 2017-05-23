@@ -15,6 +15,7 @@
   "dependencies": {
     "apostrophe": "^2.0.0",
     "apostrophe-blog": "^2.0.0",
+    "deep-get-set": "^1.1.0",
     "html2plaintext": "^1.0.1",
     "lodash": "^3.1.0",
     "moment": "^2.14.1"
