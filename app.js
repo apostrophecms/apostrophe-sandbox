@@ -1,5 +1,5 @@
 var apos = require('apostrophe')({
-  shortName: 'workflowsandbox',
+  shortName: 'workflow',
   title: 'Apostrophe Sandbox 2.0.0',
   demo: true,
   
