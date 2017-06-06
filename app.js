@@ -1,9 +1,21 @@
+module.exports = function ready(_callback) {
+  callback = _callback;
+};
+
+var callback;
+
 var apos = require('apostrophe')({
   shortName: 'apostrophesandbox',
   title: 'Apostrophe Sandbox 2.0.0',
   demo: true,
   root: module,
   bundles: ['apostrophe-blog'],
+
+  afterListen: function(err) {
+    if (callback) {
+      return callback(err);
+    }
+  },
 
   // These are the modules we want to bring into the project.
   modules: {
@@ -31,44 +43,7 @@ var apos = require('apostrophe')({
     // 'demo-autologin': {},
     
     'apostrophe-workflow': {
-      alias: 'workflow',
-      locales: [
-        {
-          name: 'default',
-          children: [
-            {
-              name: 'eu',
-              children: [
-                {
-                  name: 'fr'
-                },
-                {
-                  name: 'ch',
-                  children: [
-                    {
-                      name: 'ch-fr'
-                    },
-                    {
-                      name: 'ch-it'
-                    },
-                    {
-                      name: 'ch-de'
-                    },
-                  ]
-                }
-              ]
-            },
-            {
-              name: 'na',
-              children: [
-                {
-                  name: 'us'
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      alias: 'workflow'
     },
     
     'apostrophe-debug': {}
@@ -76,3 +51,5 @@ var apos = require('apostrophe')({
   }
 
 });
+
+
