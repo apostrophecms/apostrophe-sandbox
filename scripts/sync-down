@@ -25,7 +25,9 @@ echo "Syncing MongoDB"
 ssh $remoteSSH mongodump -d $dbName -o /tmp/mongodump.$dbName &&
 rsync -av $remoteSSH:/tmp/mongodump.$dbName/ /tmp/mongodump.$dbName  &&
 ssh $remoteSSH rm -rf /tmp/mongodump.$dbName &&
-mongorestore --drop -d $dbName /tmp/mongodump.$dbName/$dbName &&
+# noIndexRestore increases compatibility between 3.x and 2.x,
+# and Apostrophe will recreate the indexes correctly at startup
+mongorestore --noIndexRestore --drop -d $dbName /tmp/mongodump.$dbName/$dbName &&
 echo "Syncing Files" &&
 rsync -av --delete $remoteSSH:/opt/stagecoach/apps/$projectName/uploads/ ./public/uploads  &&
 echo "Synced down from $TARGET"
