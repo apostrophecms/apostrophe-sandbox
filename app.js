@@ -31,18 +31,22 @@ var apos = require('apostrophe')({
     'demo-autologin': {},
     
     'apostrophe-workflow': {
+      subdomains: true,
       locales: [
         {
           name: 'default',
+          private: true,
           children: [
             {
               name: 'eu',
+              private: true,
               children: [
                 {
                   name: 'fr'
                 },
                 {
                   name: 'ch',
+                  private: true,
                   children: [
                     {
                       name: 'ch-fr'
@@ -59,6 +63,7 @@ var apos = require('apostrophe')({
             },
             {
               name: 'na',
+              private: true,
               children: [
                 {
                   name: 'us'
