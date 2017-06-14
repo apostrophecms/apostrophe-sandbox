@@ -61,7 +61,13 @@
     <div class="inner">
       {% block footerContent %}
         <div class="inline-middle width-50">
-          Apostrophe is led by <a href="http://punkave.com">P'unk Avenue</a> in Philadelphia, PA.
+          {{ apos.area(data.global, 'footer', {
+            widgets: {
+              'apostrophe-rich-text': {
+                controls: [ 'Bold', 'Italic' ]
+              }
+            }
+          }) }}
         </div>{#
       #}<div class="inline-middle width-50 align-right">
           <a class="inline-top footer-logo" href="http://punkave.com">
