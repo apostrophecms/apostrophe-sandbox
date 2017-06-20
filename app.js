@@ -31,7 +31,7 @@ var apos = require('apostrophe')({
     'demo-autologin': {},
     
     'apostrophe-workflow': {
-      subdomains: true,
+      subdomains: false,
       locales: [
         {
           name: 'default',
