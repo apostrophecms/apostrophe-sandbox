@@ -7,11 +7,14 @@ var apos = require('apostrophe')({
 
   // These are the modules we want to bring into the project.
   modules: {
-    
+  
     'apostrophe-templates': { viewsFolderFallback: __dirname + '/views' },
     'apostrophe-express': {
       session: {
-        secret: 'ksajhfkdsfha43fahif3a8asdfkyfsd7f'
+        secret: 'ksajhfkdsfha43fahif3a8asdfkyfsd7f',
+        cookie: {
+          // domain: 'workflow.com'
+        }
       }
     },
     
@@ -28,10 +31,10 @@ var apos = require('apostrophe')({
 
     // REMOVE ME IMMEDIATELY if you are not running a public demo
     // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
-    'demo-autologin': {},
+    // 'demo-autologin': {},
     
     'apostrophe-workflow': {
-      subdomains: false,
+      prefixes: true,
       locales: [
         {
           name: 'default',
