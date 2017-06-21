@@ -17,6 +17,12 @@ var apos = require('apostrophe')({
         }
       }
     },
+
+    // This is necessary because apostrophe-workflow isn't a theme yet,
+    // fix that ASAP
+    'apostrophe-docs': {
+      trashInSchema: true
+    },
     
     // Standard Apostrophe Modules
     'apostrophe-assets': {},
@@ -34,7 +40,8 @@ var apos = require('apostrophe')({
     'demo-autologin': {},
     
     'apostrophe-workflow': {
-      prefixes: true,
+      alias: 'workflow',
+      // prefixes: true,
       locales: [
         {
           name: 'default',
@@ -45,20 +52,24 @@ var apos = require('apostrophe')({
               private: true,
               children: [
                 {
-                  name: 'fr'
+                  name: 'fr',
+                  label: 'France'
                 },
                 {
                   name: 'ch',
                   private: true,
                   children: [
                     {
-                      name: 'ch-fr'
+                      name: 'ch-fr',
+                      label: 'Swiss French'
                     },
                     {
-                      name: 'ch-it'
+                      name: 'ch-it',
+                      label: 'Swiss Italian'
                     },
                     {
-                      name: 'ch-de'
+                      name: 'ch-de',
+                      label: 'Swiss German'
                     },
                   ]
                 }
@@ -69,7 +80,8 @@ var apos = require('apostrophe')({
               private: true,
               children: [
                 {
-                  name: 'us'
+                  name: 'us',
+                  label: 'United States'
                 }
               ]
             }

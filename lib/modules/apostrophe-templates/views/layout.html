@@ -81,6 +81,13 @@
         Generously hosted by <a href="http://linode.com">linode</a>.
       </div>
     </div>
+    <div class="locale-switcher">
+      <ul>
+        {% for localization in apos.workflow.localizations() %}
+          <li><a href="{{ localization._url | build({ workflowLocale: localization.workflowLocale }) }}">{{ localization.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
   </footer>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
