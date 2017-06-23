@@ -29,6 +29,87 @@ var apos = require('apostrophe')({
     // REMOVE ME IMMEDIATELY if you are not running a public demo
     // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
     'demo-autologin': {},
+    
+    // The most implicit schema config ever!
+
+    // articles module
+
+    'opinions': {
+      name: 'opinion',
+      extend: 'apostrophe-pieces',
+      addFields: [
+        {
+          name: '_author',
+          type: 'joinByOne'
+        }
+      ]
+    },
+
+    // authors module
+    'authors': {
+      name: 'author',
+      extend: 'apostrophe-pieces',
+      addFields: [
+        {
+          name: '_opinions',
+          type: 'joinByOneReverse'
+        },
+        {
+          name: '_comments',
+          type: 'joinByOneReverse'
+        },
+        {
+          name: '_commentsEdited',
+          type: 'joinByOneReverse',
+          withType: 'comment',
+          reverseOf: '_editor'
+        },
+        {
+          name: '_collabs',
+          withType: 'collaboration',
+          type: 'joinByArrayReverse'
+        },
+        {
+          name: '_edited',
+          withType: 'collaboration',
+          type: 'joinByArrayReverse',
+          reverseOf: '_editors'
+        },
+      ]
+    },
+    
+    'comments': {
+      name: 'comment',
+      extend: 'apostrophe-pieces',
+      addFields: [
+        {
+          name: '_author',
+          type: 'joinByOne'
+        },
+        {
+          name: '_editor',
+          type: 'joinByOne',
+          withType: 'author'
+        }
+      ]
+    },
+    
+    'collaborations': {
+      name: 'collaboration',
+      extend: 'apostrophe-pieces',
+      addFields: [
+        {
+          name: '_contributors',
+          withType: 'author',
+          type: 'joinByArray'
+        },
+        {
+          name: '_editors',
+          withType: 'author',
+          type: 'joinByArray'
+        },
+      ]
+    }
 
   }
 
