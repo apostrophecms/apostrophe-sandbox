@@ -13,10 +13,17 @@
   "author": "P'unk Avenue",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.0.0",
+    "apostrophe": "punkave/apostrophe#workflow-accommodations-1",
     "apostrophe-blog": "^2.0.0",
+    "async": "^2.4.0",
+    "boring": "^0.1.0",
+    "cuid": "^1.3.8",
+    "fs-extra": "^3.0.0",
     "html2plaintext": "^1.0.1",
-    "lodash": "^3.1.0",
-    "moment": "^2.14.1"
+    "http-proxy": "^1.16.2",
+    "lodash": "^3.10.1",
+    "moment": "^2.14.1",
+    "mongodb": "^2.2.26",
+    "shelljs": "^0.7.6"
   }
 }
