@@ -3,8 +3,6 @@ var apos = require('apostrophe')({
   title: 'Apostrophe Sandbox 2.0.0',
   demo: true,
   
-  bundles: ['apostrophe-blog'],
-
   // These are the modules we want to bring into the project.
   modules: {
   
@@ -16,12 +14,6 @@ var apos = require('apostrophe')({
           // domain: 'workflow.com'
         }
       }
-    },
-
-    // This is necessary because apostrophe-workflow isn't a theme yet,
-    // fix that ASAP
-    'apostrophe-docs': {
-      trashInSchema: true
     },
     
     // Standard Apostrophe Modules
