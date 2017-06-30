@@ -92,7 +92,6 @@ function initDb(callback) {
         return callback(err);
       }
       db = _db;
-      console.log('* * * db: ', !!db);
       return callback(null);
     });
   }
