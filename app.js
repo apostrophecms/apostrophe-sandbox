@@ -195,10 +195,11 @@ function newSite(callback) {
           if (err) {
             // It's chill, try again until we get a free port.
             // Don't waste a mongodb connection.
-            return apos.db.destroy(false, function() {
+            return apos.destroy && apos.destroy(function() {
               return attempt(callback);
             });
           }
+          apos._id = site._id;
           return callback(null);
         },
 
