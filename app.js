@@ -217,7 +217,7 @@ function newSite(callback) {
             session: {
               secret: 'ksajhfkdsfha43fahif3a8asdfkyfsd7f'
             },
-            port: port
+            forcePort: port
           },
           
           'apostrophe-attachments': {
