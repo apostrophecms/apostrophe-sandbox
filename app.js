@@ -23,19 +23,6 @@ var mainHome = 'http://' + main + '/';
 var db;
 var sites;
 
-if (argv._.length) {
-  // An Apostrophe task. Create just one site to run it without race conditions, let it exit on its own.
-  // This doesn't let us run tasks that are truly individual to the sites, but we don't need them
-  // for the current demo
-  return newSite(function(err, site) {
-    if (err) {
-      console.error(err);
-      process.exit(1);
-    }
-    // The task will exit on its own
-  });
-}
-
 // Middleware to proxy to the individual sites
 app.use(function(req, res, next) {
   var site = req.get('Host');
@@ -88,7 +75,7 @@ app.get('/spinup', function(req, res) {
 
 return async.series([
   initDb,
-  listen
+  listenOrTask
 ], function(err) {
   console.error(err);
   process.exit(1);
@@ -105,6 +92,7 @@ function initDb(callback) {
         return callback(err);
       }
       db = _db;
+      console.log('* * * db: ', !!db);
       return callback(null);
     });
   }
@@ -117,7 +105,21 @@ function initDb(callback) {
   }
 }
 
-function listen(callback) {
+function listenOrTask(callback) {
+
+  if (argv._.length) {
+    // An Apostrophe task. Create just one site to run it without race conditions, let it exit on its own.
+    // This doesn't let us run tasks that are truly individual to the sites, but we don't need them
+    // for the current demo
+    return newSite(function(err, site) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+      // The task will exit on its own
+    });
+  }
+
   proxy = httpProxy.createProxyServer({});
 
   return app.listen(process.env.PORT ? parseInt(process.env.PORT) : 3000, function(err) {
