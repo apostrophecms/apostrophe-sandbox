@@ -1,3 +1,12 @@
+// THIS IS NOT THE WAY TO MAKE A REGULAR WEBSITE WITH
+// APOSTROPHE. This is just a special way we bootstrap a
+// multisite environment for our demo. That requires
+// a special proxy.
+//
+// So please, look at the docs and follow the simple instructions
+// for spinning up a site with the CLI. A normal app.js
+// is not complicated at all!
+
 var _ = require('lodash');
 var async = require('async');
 var argv = require('boring')();
@@ -56,11 +65,18 @@ app.use(function(req, res, next) {
   return next();
 });
 
-// "Home page" simply spins up a demo and redirects you there
-// (TODO: this isn't really sufficient, we should have a progress
-// display and we should work hard to bust bots from doing this)
+// A simple hack to send the user momentarily to a URL
+// that is blocked by robots.txt, in hopes of mildly discouraging
+// crazed webspiders from spinning up a billion demos
 
 app.get('/', function(req, res) {
+  return res.redirect('/spinup');
+});
+
+// Simply spins up a demo and redirects you there
+// (TODO a progress display would be nice here)
+
+app.get('/spinup', function(req, res) {
   return newSite(function(err, site) {
     if (err) {
       console.error(err);
