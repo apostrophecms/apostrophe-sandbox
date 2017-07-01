@@ -65,9 +65,7 @@ app.get('/', function(req, res) {
 
 app.get('/spinup', function(req, res) {
   var userAgent = req.headers['user-agent'] || '';
-  console.log(userAgent);
   if (userAgent.match(/baidu|uptimerobot|mj12bot|googlebot|surdotlybot|bingbot|yandexbot|bingpreview/i)) {
-    console.log('blocked bot');
     return res.status(403).send('no spiders please');
   }
   return newSite(function(err, site) {
