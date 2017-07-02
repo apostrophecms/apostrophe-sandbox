@@ -65,7 +65,7 @@ app.get('/', function(req, res) {
 
 app.get('/spinup', function(req, res) {
   var userAgent = req.headers['user-agent'] || '';
-  if (userAgent.match(/baidu|uptimerobot|mj12bot|googlebot|surdotlybot|bingbot|yandexbot|bingpreview/i)) {
+  if (userAgent.match(/baidu|uptimerobot|mj12bot|googlebot|surdotlybot|bingbot|yandexbot|bingpreview|firefox\/40\.1/i)) {
     return res.status(403).send('no spiders please');
   }
   return newSite(function(err, site) {
