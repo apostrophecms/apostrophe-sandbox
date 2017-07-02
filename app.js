@@ -249,7 +249,9 @@ function newSite(callback) {
           // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
           'demo-autologin': {},
           
-          'end-of-life': {}
+          'end-of-life': {
+            sites: sites
+          }
         }
       });
     }
