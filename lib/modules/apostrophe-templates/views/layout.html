@@ -4,6 +4,12 @@
 
 
 {% block beforeMain %}
+  {% if data.user %}
+    <div style="right: 0px; position: absolute; padding: 24px; background-color: #def; color: black; border-radius: 6px; margin: 4px;">
+      {{ data.user.username }}
+    </div>
+  {% endif %}
+  {#
   <div class="demo-modal">
     <div class="demo-modal-content">
       <img src="/images/demo-computer.svg" alt="ApostropheCMS Demo Site">
@@ -15,6 +21,7 @@
       <button>Let's Get Started</button>
     </div>
   </div>
+  #}
   <div class="off-canvas-container">
     {{ nav.nav(data, {classes: 'off-canvas-nav hide-desktop', logo: true, showChildren: true}) }}
   </div>
