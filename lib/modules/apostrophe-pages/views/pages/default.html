@@ -62,14 +62,18 @@
             ]
           },
           'apostrophe-images': {
-            minSize: [ 700, 350 ],
-            aspectRatio: [ 2, 1 ],
-            size: 'full'
+            focalPoint: true,
+            size: 'full',
+            noHeight: true
           },
           'apostrophe-video': {}
         }
       }) }}
       </div>
+      {% set image = apos.images.first(data.page.main) %}
+      {% if image %}
+        <div class="focal-point-test" style="background-position: {{ apos.attachments.focalPointToBackgroundPosition(image) }}; background-image: url({{ apos.attachments.url(image, { size: 'one-half' }) }})"></div>
+      {% endif %}
       <div class="block content--bottom">
         {{ apos.area(data.page, 'block', {
           blockLevelControls: true,
