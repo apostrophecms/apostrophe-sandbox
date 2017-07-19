@@ -1,5 +1,5 @@
 var apos = require('apostrophe')({
-  shortName: 'apostrophesandbox',
+  shortName: 'apostrophe-workflow-client-sandbox',
   title: 'Apostrophe Sandbox 2.0.0',
   demo: true,
   
@@ -30,6 +30,49 @@ var apos = require('apostrophe')({
     // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
     'demo-autologin': {},
 
+    'apostrophe-workflow': {
+      prefixes: true,
+      locales: [{
+        name: 'default',
+        private: true,
+        children: [{
+            name: 'na',
+            private: true,
+            children: [{
+                name: 'ca',
+                private: true,
+                children: [{
+                    name: 'ca-en'
+                  },
+                  {
+                    name: 'ca-fr'
+                  }
+                ]
+              },
+              {
+                name: 'us',
+                private: true,
+                children: [{
+                    name: 'us-en'
+                  },
+                  {
+                    name: 'us-sp'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            name: 'uk',
+            private: true,
+            children: [{
+              name: 'uk-en'
+            }]
+          }
+        ]
+      }],
+      defaultLocale: 'default'
+    }
   }
 
 });

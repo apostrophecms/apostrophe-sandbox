@@ -13,7 +13,8 @@
   "author": "P'unk Avenue",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.0.0",
+    "apostrophe": "punkave/apostrophe#workflow-accommodations-1",
+    "apostrophe-workflow": "punkave/apostrophe-workflow#2.x",
     "apostrophe-blog": "^2.0.0",
     "html2plaintext": "^1.0.1",
     "lodash": "^3.1.0",
