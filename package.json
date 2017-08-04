@@ -13,7 +13,7 @@
   "author": "P'unk Avenue",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "punkave/apostrophe#workflow-accommodations-1",
+    "apostrophe": "^2.0.0",
     "apostrophe-blog": "^2.0.0",
     "async": "^2.4.0",
     "boring": "^0.1.0",

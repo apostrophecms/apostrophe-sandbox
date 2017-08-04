@@ -91,7 +91,12 @@ function initDb(callback) {
     collection
   ], callback);
   function connect(callback) {
-    return mongo.MongoClient.connect('mongodb://localhost:27017/demos', function(err, _db) {
+    return mongo.MongoClient.connect('mongodb://localhost:27017/demos', {
+      autoReconnect: true,
+      // retry forever
+      reconnectTries: Number.MAX_VALUE,
+      reconnectInterval: 1000
+    }, function(err, _db) {
       if (err) {
         return callback(err);
       }
