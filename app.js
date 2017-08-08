@@ -16,7 +16,9 @@ var apos = require('apostrophe')({
     },
     
     // Standard Apostrophe Modules
-    'apostrophe-assets': {},
+    'apostrophe-assets': {
+      minify: true
+    },
     'apostrophe-blog': {},
     'apostrophe-blog-pages': {},
     'apostrophe-blog-widgets': {},
@@ -29,6 +31,13 @@ var apos = require('apostrophe')({
     // REMOVE ME IMMEDIATELY if you are not running a public demo
     // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
     'demo-autologin': {},
+
+    'apostrophe-caches-redis': {},
+    'apostrophe-caches': {
+      redis: {
+        // options for the redis npm module go here
+      }
+    }
 
   }
 
