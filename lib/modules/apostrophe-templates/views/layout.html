@@ -4,6 +4,11 @@
 
 
 {% block beforeMain %}
+  {% if data.user %}
+    <div style="right: 0px; position: absolute; padding: 24px; background-color: #def; color: black; border-radius: 6px; margin: 4px;">
+      {{ data.user.username }}
+    </div>
+  {% endif %}
   <div class="demo-modal">
     <div class="demo-modal-content">
       <img src="/images/demo-computer.svg" alt="ApostropheCMS Demo Site">
@@ -26,7 +31,7 @@
               You are using the Apostrophe demo site.
             {% endblock %}</h5>
             {%- if not data.user and not data.user._permissions.admin -%}
-              <h5 class="demo-login-button"><a href="/login"><span>&#xf090;</span>Login</a></h5>
+              <h5 class="demo-login-button"><a href="/auth/gitlab/login"><span>&#xf090;</span>Login</a></h5>
             {%- endif -%}
             <p><strong>Just click on text to edit it.</strong> There is no save button because <strong>your edits are saved automatically.</strong></p>
             <p>To add images, slideshow and more <strong>click the "+" icons</strong> that appear when you hover the mouse over the page.</p>

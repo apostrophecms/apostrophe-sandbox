@@ -17,6 +17,8 @@
     "apostrophe-blog": "^2.0.0",
     "html2plaintext": "^1.0.1",
     "lodash": "^3.1.0",
-    "moment": "^2.14.1"
+    "moment": "^2.14.1",
+    "passport-gitlab2": "^3.0.0",
+    "passport-google-oauth20": "^1.0.0"
   }
 }
