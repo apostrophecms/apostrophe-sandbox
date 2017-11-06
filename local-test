@@ -1,0 +1,3 @@
+#!/bin/bash
+
+DOMAIN=atest.com:3000 MAIN=demo.atest.com:3000 TEST_IDS=1 node app

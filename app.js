@@ -22,6 +22,10 @@ var main = process.env.MAIN || 'demo.apostrophecms.org';
 var mainHome = 'http://' + main + '/';
 var db;
 var sites;
+var lowPort = parseInt(process.env.LOW_PORT || '4000');
+var totalPorts = parseInt(process.env.TOTAL_PORTS || '50000');
+var testIds = !!process.env.TEST_IDS;
+var nextTestSiteId = 1;
 
 // Middleware to proxy to the individual sites
 app.use(function(req, res, next) {
@@ -39,14 +43,35 @@ app.use(function(req, res, next) {
         // Expired or invalid URL
         return res.redirect(mainHome);
       }
-      return proxy.web(req, res, { target: 'http://127.0.0.1:' + site.port }, function(e) {
-        if (e) {
-          // Proxy error — assume site is no longer running and forget about it
-          return sites.remove({ _id: site._id }, function() {
-            return res.redirect(mainHome);
-          });
-        }
-      });
+      var attempts = 0;
+      function attempt() {
+        return proxy.web(req, res, { target: 'http://127.0.0.1:' + site.port }, function(e) {
+          if (e) {
+            // Site not running right now — revive it
+            return runSite(site, function(err) {
+              if (err) {
+                console.error(err);
+                return fail();
+              }
+              attempts++;
+              // No good reason this would go past 1 attempt, 
+              // but let's be patient
+              if (attempts === 3) {
+                return fail();
+              }
+              return attempt();
+              function fail() {
+                // Can't resume this site
+                return sites.remove({ _id: site._id }, function() {
+                  return res.redirect(mainHome);
+                });
+              }
+            });
+          }
+          // All is well
+        });
+      }
+      return attempt();
     });
   }
   return next();
@@ -139,16 +164,25 @@ function listenOrTask(callback) {
   });
 }
 
+function nextSiteId() {
+  if (testIds) {
+    var result = 'a' + nextTestSiteId;
+    nextTestSiteId++;
+    return result;
+  }
+  return cuid();
+}
+
 function newSite(callback) {
   var start = Date.now();
   var site = {
-    _id: cuid(),
+    _id: nextSiteId(),
     createdAt: new Date(),
   };
   return async.series([
     copyDatabase,
     hardlinkFiles,
-    runSite,
+    _.partial(runSite, site),
     insertSite
   ], function(err) {
     if (err) {
@@ -187,83 +221,84 @@ function newSite(callback) {
       }, callback);
     }
   }
-
-  function runSite(callback) {
-    
-    return attempt(callback);
-
-    function attempt(callback) {
-
-      // The available free-port-finder modules all have race conditions and
-      // no provision for avoiding popular ports like 3000. -Tom
-
-      var port = Math.floor(4000 + Math.random() * 50000);
-      site.port = port;
-      var apos = require('apostrophe')({
-        afterListen: function(err) {
-          if (err) {
-            // It's chill, try again until we get a free port.
-            // Don't waste a mongodb connection.
-            return apos.destroy && apos.destroy(function() {
-              return attempt(callback);
-            });
-          }
-          apos._id = site._id;
-          return callback(null);
-        },
-
-        shortName: 'demo-' + site._id,
-        title: 'Apostrophe Sandbox 2.x',
-        demo: true,
-        
-        bundles: ['apostrophe-blog'],
-        
-        // These are the modules we want to bring into the project.
-        modules: {
-          
-          'apostrophe-templates': { viewsFolderFallback: __dirname + '/views' },
-          'apostrophe-express': {
-            session: {
-              secret: 'ksajhfkdsfha43fahif3a8asdfkyfsd7f'
-            },
-            forcePort: port
-          },
-          
-          'apostrophe-attachments': {
-            uploadfs: {
-              uploadsPath: __dirname + '/public/uploads/' + site._id,
-              uploadsUrl: '/uploads/' + site._id,
-              tempPath: __dirname + '/data/temp/' + site._id + '/uploadfs'
-            }
-          },
-          
-          'apostrophe-assets': {
-            minify: true
-          },
-
-          'apostrophe-blog': {},
-          'apostrophe-blog-pages': {},
-          'apostrophe-blog-widgets': {},
-          'apostrophe-users': {},
-
-          // Apostrophe Sandbox (as-) specific modules
-          'as-helpers': {},
-          'as-two-column-block-widgets': {},
-
-          // REMOVE ME IMMEDIATELY if you are not running a public demo
-          // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
-          'demo-autologin': {},
-          
-          'end-of-life': {
-            sites: sites
-          }
-        }
-      });
-    }
-  }
   
   function insertSite(callback) {
     return sites.insert(site, callback);
   }
 }
 
+function runSite(site, callback) {
+  
+  return attempt(callback);
+
+  function attempt(callback) {
+
+    // The available free-port-finder modules all have race conditions and
+    // no provision for avoiding popular ports like 3000. -Tom
+
+    var port = site.port || Math.floor(lowPort + Math.random() * totalPorts);
+    site.port = port;
+    var apos = require('apostrophe')({
+      afterListen: function(err) {
+        if (err) {
+          // It's chill, try again until we get a free port.
+          // Don't waste a mongodb connection.
+          return apos.destroy && apos.destroy(function() {
+            return attempt(callback);
+          });
+        }
+        apos._id = site._id;
+        return callback(null);
+      },
+
+      shortName: 'demo-' + site._id,
+      title: 'Apostrophe Sandbox 2.x',
+      demo: true,
+      
+      bundles: ['apostrophe-blog'],
+      
+      // These are the modules we want to bring into the project.
+      modules: {
+        'apostrophe-db': {
+          db: db
+        },
+        'apostrophe-templates': { viewsFolderFallback: __dirname + '/views' },
+        'apostrophe-express': {
+          session: {
+            secret: 'ksajhfkdsfha43fahif3a8asdfkyfsd7f'
+          },
+          forcePort: port
+        },
+        
+        'apostrophe-attachments': {
+          uploadfs: {
+            uploadsPath: __dirname + '/public/uploads/' + site._id,
+            uploadsUrl: '/uploads/' + site._id,
+            tempPath: __dirname + '/data/temp/' + site._id + '/uploadfs'
+          }
+        },
+        
+        'apostrophe-assets': {
+          minify: true
+        },
+
+        'apostrophe-blog': {},
+        'apostrophe-blog-pages': {},
+        'apostrophe-blog-widgets': {},
+        'apostrophe-users': {},
+
+        // Apostrophe Sandbox (as-) specific modules
+        'as-helpers': {},
+        'as-two-column-block-widgets': {},
+
+        // REMOVE ME IMMEDIATELY if you are not running a public demo
+        // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
+        'demo-autologin': {},
+        
+        'end-of-life': {
+          sites: sites
+        }
+      }
+    });
+  }
+}
