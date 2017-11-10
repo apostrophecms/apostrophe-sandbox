@@ -91,7 +91,9 @@
     <div class="locale-switcher">
       <ul>
         {% for localization in apos.workflow.localizations() %}
-          <li><a href="{{ localization._url | build({ workflowLocale: localization.workflowLocale }) }}">{{ localization.label }}</a></li>
+          {% if localization._url %}
+            <li><a href="{{ localization._url | build({ workflowLocale: localization.workflowLocale }) }}">{{ localization.label }}</a></li>
+          {% endif %}
         {% endfor %}
       </ul>
     </div>

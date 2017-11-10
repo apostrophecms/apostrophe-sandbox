@@ -2,9 +2,19 @@ var apos = require('apostrophe')({
   shortName: 'workflowsandbox',
   title: 'Apostrophe Sandbox 2.0.0',
   demo: true,
+  baseUrl: 'http://test1.apostrophe:3000',
   
   // These are the modules we want to bring into the project.
   modules: {
+
+    'apostrophe-site-map': {
+      // array of doc types you do NOT want
+      // to include, even though they are
+      // accessible on the site. You can also
+      // do this at the command line
+      excludeTypes: [],
+      perLocale: true
+    },
   
     'apostrophe-templates': { viewsFolderFallback: __dirname + '/views' },
     'apostrophe-express': {
@@ -33,54 +43,21 @@ var apos = require('apostrophe')({
     
     'apostrophe-workflow': {
       alias: 'workflow',
-      // prefixes: true,
+      hostnames: {
+        'en': 'test1.apostrophe',
+        'fr': 'test2.apostrophe'
+      },
       locales: [
         {
-          name: 'default',
-          private: true,
-          children: [
-            {
-              name: 'eu',
-              private: true,
-              children: [
-                {
-                  name: 'fr',
-                  label: 'France'
-                },
-                {
-                  name: 'ch',
-                  private: true,
-                  children: [
-                    {
-                      name: 'ch-fr',
-                      label: 'Swiss French'
-                    },
-                    {
-                      name: 'ch-it',
-                      label: 'Swiss Italian'
-                    },
-                    {
-                      name: 'ch-de',
-                      label: 'Swiss German'
-                    },
-                  ]
-                }
-              ]
-            },
-            {
-              name: 'na',
-              private: true,
-              children: [
-                {
-                  name: 'us',
-                  label: 'United States'
-                }
-              ]
-            }
-          ]
+          name: 'en',
+          label: 'en'
+        },
+        {
+          name: 'fr',
+          label: 'fr'
         }
       ],
-      defaultLocale: 'default'
+      defaultLocale: 'default',
     }
   }
 
