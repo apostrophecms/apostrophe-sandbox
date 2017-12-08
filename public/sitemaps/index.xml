@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <sitemap>
+    <loc>http://test1.apostrophe:3000/sitemaps/en.xml</loc>
+    <lastmod>2017-11-21T18:59:58.745Z</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>http://test1.apostrophe:3000/sitemaps/fr.xml</loc>
+    <lastmod>2017-11-21T18:59:58.745Z</lastmod>
+  </sitemap>
+</sitemapindex>

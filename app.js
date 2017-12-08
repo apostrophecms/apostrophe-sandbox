@@ -2,7 +2,7 @@ var apos = require('apostrophe')({
   shortName: 'workflowsandbox',
   title: 'Apostrophe Sandbox 2.0.0',
   demo: true,
-  baseUrl: 'http://test1.apostrophe:3000',
+  baseUrl: 'http://localhost:3000',
   
   // These are the modules we want to bring into the project.
   modules: {
@@ -43,22 +43,26 @@ var apos = require('apostrophe')({
     
     'apostrophe-workflow': {
       alias: 'workflow',
-      hostnames: {
-        'en': 'test1.apostrophe',
-        'fr': 'test2.apostrophe'
-      },
       locales: [
         {
-          name: 'en',
-          label: 'en'
+          name: 'default',
+          label: 'Default',
+          children: [
+            {
+              name: 'en',
+              label: 'en'
+            },
+            {
+              name: 'fr',
+              label: 'fr'
+            }
+          ]
         },
-        {
-          name: 'fr',
-          label: 'fr'
-        }
       ],
       defaultLocale: 'default',
-    }
+    },
+
+    'apostrophe-site-review': {}
   }
 
 });
