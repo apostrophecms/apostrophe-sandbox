@@ -62,7 +62,22 @@ var apos = require('apostrophe')({
       defaultLocale: 'default',
     },
 
-    'apostrophe-site-review': {}
+    'apostrophe-review-and-deploy': {
+      deployTo: [
+        {
+          name: '3001',
+          baseUrl: 'http://localhost:3001',
+          prefix: '',
+          apikey: 'XYZ'
+        },
+        {
+          name: '3002',
+          baseUrl: 'http://localhost:3002',
+          prefix: '',
+          apikey: 'XYZ'
+        }
+      ]
+    }
   }
 
 });
