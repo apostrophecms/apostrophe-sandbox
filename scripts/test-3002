@@ -1,0 +1,2 @@
+PORT=3002 APOS_MONGODB_URI=mongodb://localhost:27017/workflowsandbox-3002 node app
+
