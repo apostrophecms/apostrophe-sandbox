@@ -76,7 +76,10 @@ var apos = require('apostrophe')({
           prefix: '',
           apikey: 'XYZ'
         }
-      ]
+      ],
+      receiveFrom: {
+        apikey: 'XYZ'
+      }
     }
   }
 
