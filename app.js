@@ -296,7 +296,8 @@ function runSite(site, callback) {
         'demo-autologin': {},
         
         'end-of-life': {
-          sites: sites
+          sites: sites,
+          db: db
         }
       }
     });
