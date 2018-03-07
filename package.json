@@ -13,9 +13,9 @@
   "author": "P'unk Avenue",
   "license": "MIT",
   "dependencies": {
-    "apostrophe": "^2.29.1",
+    "apostrophe": "apostrophecms/apostrophe#dgad-344",
     "apostrophe-blog": "^2.1.1",
-    "apostrophe-workflow": "^2.0.0",
+    "apostrophe-workflow": "apostrophecms/apostrophe#dgad-344",
     "html2plaintext": "^1.0.1",
     "lodash": "^3.1.0",
     "moment": "^2.14.1"

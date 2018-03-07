@@ -50,7 +50,8 @@ var apos = require('apostrophe')({
           children: [
             {
               name: 'en',
-              label: 'en'
+              label: 'en',
+              stylesheet: 'en'
             },
             {
               name: 'fr',
@@ -60,6 +61,7 @@ var apos = require('apostrophe')({
         },
       ],
       defaultLocale: 'default',
+      defaultStylesheet: 'default'
     },
 
     'apostrophe-review-and-deploy': {
