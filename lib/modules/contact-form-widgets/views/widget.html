@@ -1,0 +1,43 @@
+{# in lib/modules/contact-form-widgets/views/widget.html #}
+<form class="contact-form" data-contact-form>
+  <!--{{ data.schema | dump }}-->
+  <button>This button should not be submitting the form but it is!</button>
+  {%- for field in data.schema -%}
+	  <div class='form-group '>
+	  	{% if field.type == 'file' %}
+	  		<div class="file-input">
+	  			<div class="form-label">{{ field.label }}</div>
+	  			<div class="file-path no-file">Select a file...</div>
+	  			<label for="{{ field.name }}">
+	  			<button class="btn-yellow btn"> Browse</button>
+		  			<input type="file" id="ContactFormUpload" name="{{ field.name }}" data-multiple-caption="{count} files selected"/>
+		  		</label>
+		  	</div>
+	  	{% else %}
+		  	<label for="{{ field.name }}" class="">{{ field.label }}</label>
+		  	{%- if field.textarea -%}
+		  		<textarea name="{{ field.name}}" placeholder="{{ field.placeholder }}" class="{{ field.class }}"></textarea>
+		  		{% else %}
+		  		<input type="text" name="{{ field.name }}" placeholder="{{ field.placeholder }}"/>
+		  	{% endif %}
+		  {% endif %}
+	  </div>
+	{% endfor %}
+
+	<div class="form-group row">
+		<div class="col-sm-9">
+			 <div id="Grecaptcha"></div>
+
+		</div>
+		<div class="col-sm-3 text-right">
+			<button type="submit" class="submit-btn img-circle btn btn-yellow">submit</button>
+
+		</div>
+
+	</div>
+
+  {# Later gets hoisted out and becomes visible #}
+  <div class="thank-you" data-thank-you>
+    <h4>Thank you for getting in touch! We'll respond soon.</h4>
+  </div>
+</form>
