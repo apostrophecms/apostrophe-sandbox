@@ -2,7 +2,7 @@ var apos = require('apostrophe')({
   shortName: 'workflowsandbox',
   title: 'Apostrophe Sandbox 2.0.0',
   demo: true,
-  baseUrl: 'http://localhost:' + (process.env.PORT || 3000)',
+  baseUrl: 'http://localhost:' + (process.env.PORT || 3000),
   
   // These are the modules we want to bring into the project.
   modules: {
