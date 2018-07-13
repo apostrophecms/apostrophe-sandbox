@@ -3,7 +3,7 @@ var apos = require('apostrophe')({
   title: 'Apostrophe Sandbox 2.0.0',
   demo: true,
   baseUrl: 'http://localhost:' + (process.env.PORT || 3000),
-  
+
   // These are the modules we want to bring into the project.
   modules: {
 
@@ -15,7 +15,7 @@ var apos = require('apostrophe')({
       excludeTypes: [],
       perLocale: true
     },
-  
+
     'apostrophe-templates': { viewsFolderFallback: __dirname + '/views' },
     'apostrophe-express': {
       session: {
@@ -25,7 +25,7 @@ var apos = require('apostrophe')({
         }
       }
     },
-    
+
     // Standard Apostrophe Modules
     'apostrophe-assets': {},
     'apostrophe-blog': {},
@@ -40,7 +40,7 @@ var apos = require('apostrophe')({
     // REMOVE ME IMMEDIATELY if you are not running a public demo
     // that should let EVERYBODY be INSTANTLY loggged in AS ADMIN!
     // 'demo-autologin': {},
-    
+
     'apostrophe-workflow': {
       alias: 'workflow',
       locales: [
@@ -67,12 +67,6 @@ var apos = require('apostrophe')({
         {
           name: '3001',
           baseUrl: 'http://localhost:3001',
-          prefix: '',
-          apikey: 'XYZ'
-        },
-        {
-          name: '3002',
-          baseUrl: 'http://localhost:3002',
           prefix: '',
           apikey: 'XYZ'
         }
